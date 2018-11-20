@@ -40,5 +40,10 @@ class TaskViewController: UIViewController {
     
     @IBAction func taskDetailButton(_ sender: Any) {
     }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    }
 }
 

@@ -9,6 +9,7 @@
 import UIKit
 
 class StatsScreenViewController: UIViewController {
+    weak var delegate: StatsScreenViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
