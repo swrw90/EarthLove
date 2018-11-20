@@ -15,6 +15,7 @@
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */; };
 		C790033C21A483CE00737CBD /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033B21A483CE00737CBD /* TaskDetailViewController.swift */; };
+		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScreenViewController.swift; sourceTree = "<group>"; };
 		C790033B21A483CE00737CBD /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */,
 				C790032721A37B4500737CBD /* SearchViewController.swift */,
 				C790033B21A483CE00737CBD /* TaskDetailViewController.swift */,
+				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C790032C21A37B4600737CBD /* Assets.xcassets */,
 				C790032E21A37B4600737CBD /* LaunchScreen.storyboard */,
@@ -146,6 +149,7 @@
 			files = (
 				C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */,
 				C790032821A37B4500737CBD /* SearchViewController.swift in Sources */,
+				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C790032621A37B4500737CBD /* TaskViewController.swift in Sources */,
 				C790033C21A483CE00737CBD /* TaskDetailViewController.swift in Sources */,
@@ -348,6 +352,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */,
+			);
+			currentVersion = C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */;
+			path = EarthLove.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C790031821A37B4500737CBD /* Project object */;
 }
