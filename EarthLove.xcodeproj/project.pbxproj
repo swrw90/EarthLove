@@ -13,6 +13,7 @@
 		C790032B21A37B4500737CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032921A37B4500737CBD /* Main.storyboard */; };
 		C790032D21A37B4600737CBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C790032C21A37B4600737CBD /* Assets.xcassets */; };
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
+		C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C790032C21A37B4600737CBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C790032F21A37B4600737CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				C790032321A37B4500737CBD /* AppDelegate.swift */,
 				C790032521A37B4500737CBD /* TaskViewController.swift */,
+				C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */,
 				C790032721A37B4500737CBD /* SecondViewController.swift */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C790032C21A37B4600737CBD /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */,
 				C790032821A37B4500737CBD /* SecondViewController.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C790032621A37B4500737CBD /* TaskViewController.swift in Sources */,
