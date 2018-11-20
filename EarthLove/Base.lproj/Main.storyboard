@@ -71,6 +71,7 @@
                                         <state key="normal" title="Stats"/>
                                         <connections>
                                             <action selector="statsButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="MBP-Uu-vce"/>
+                                            <segue destination="UgQ-Lh-R4n" kind="show" id="DPr-qX-rkj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpQ-Zs-dC5">
@@ -78,6 +79,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="taskDetailButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="jBo-QA-v0F"/>
+                                            <segue destination="2w4-0R-QQ7" kind="show" id="GAY-uT-mk3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -96,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="769" y="-298"/>
         </scene>
         <!--Stats Screen View Controller-->
         <scene sceneID="Bei-nP-7CW">
@@ -174,9 +176,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrh-3r-OcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="-321"/>
+            <point key="canvasLocation" x="1609" y="-298"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Task Detail View Controller-->
+        <scene sceneID="Bel-1k-nvU">
+            <objects>
+                <viewController id="2w4-0R-QQ7" customClass="TaskDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FL4-8g-5uT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="D7M-c8-tEL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNW-Dt-jZo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="469"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="KLF-mE-NCk">
             <objects>
                 <viewController id="v08-8m-6Cc" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -218,10 +235,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yxF-P1-9AK"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="3Ko-gU-LQ0"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhN-tU-2hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="359"/>
+            <point key="canvasLocation" x="769" y="469"/>
         </scene>
         <!--SearchViewController-->
         <scene sceneID="wg7-f3-ORb">
@@ -256,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
+            <point key="canvasLocation" x="-1" y="786"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -270,6 +288,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="v08-8m-6Cc" kind="relationship" relationship="viewControllers" id="W4c-XO-tSE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
