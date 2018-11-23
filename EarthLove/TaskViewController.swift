@@ -28,6 +28,11 @@ class TaskViewController: UIViewController {
     }
     
     @IBAction func favoriteButton(_ sender: Any) {
+        let alertController = UIAlertController(
+            title: "Favorite",
+            message: "Favorite Clicked",
+            preferredStyle: UIAlertController.Style.alert
+        )
     }
     
     
@@ -40,6 +45,8 @@ class TaskViewController: UIViewController {
     
     @IBAction func taskDetailButton(_ sender: Any) {
     }
+    
+
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

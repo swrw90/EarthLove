@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		C790032421A37B4500737CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032321A37B4500737CBD /* AppDelegate.swift */; };
 		C790032621A37B4500737CBD /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032521A37B4500737CBD /* TaskViewController.swift */; };
-		C790032821A37B4500737CBD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032721A37B4500737CBD /* SearchViewController.swift */; };
+		C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032721A37B4500737CBD /* HistoryViewController.swift */; };
 		C790032B21A37B4500737CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032921A37B4500737CBD /* Main.storyboard */; };
 		C790032D21A37B4600737CBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C790032C21A37B4600737CBD /* Assets.xcassets */; };
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
-		C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */; };
-		C790033C21A483CE00737CBD /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033B21A483CE00737CBD /* TaskDetailViewController.swift */; };
+		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
+		C790033C21A483CE00737CBD /* ChallengeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -22,13 +22,13 @@
 		C790032021A37B4500737CBD /* EarthLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C790032321A37B4500737CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C790032521A37B4500737CBD /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
-		C790032721A37B4500737CBD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C790032721A37B4500737CBD /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		C790032A21A37B4500737CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C790032C21A37B4600737CBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C790032F21A37B4600737CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsScreenViewController.swift; sourceTree = "<group>"; };
-		C790033B21A483CE00737CBD /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,9 +64,9 @@
 			children = (
 				C790032321A37B4500737CBD /* AppDelegate.swift */,
 				C790032521A37B4500737CBD /* TaskViewController.swift */,
-				C790033721A3F1AE00737CBD /* StatsScreenViewController.swift */,
-				C790032721A37B4500737CBD /* SearchViewController.swift */,
-				C790033B21A483CE00737CBD /* TaskDetailViewController.swift */,
+				C790033721A3F1AE00737CBD /* StatsViewController.swift */,
+				C790032721A37B4500737CBD /* HistoryViewController.swift */,
+				C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */,
 				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C790032C21A37B4600737CBD /* Assets.xcassets */,
@@ -147,12 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C790033821A3F1AE00737CBD /* StatsScreenViewController.swift in Sources */,
-				C790032821A37B4500737CBD /* SearchViewController.swift in Sources */,
+				C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */,
+				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C790032621A37B4500737CBD /* TaskViewController.swift in Sources */,
-				C790033C21A483CE00737CBD /* TaskDetailViewController.swift in Sources */,
+				C790033C21A483CE00737CBD /* ChallengeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
