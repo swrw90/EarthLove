@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskViewController: UIViewController {
+class ChallengeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +17,9 @@ class TaskViewController: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var taskImage: UIImageView!
-    @IBOutlet weak var taskTitle: UILabel!
-    @IBOutlet weak var taskDescription: UITextView!
+    @IBOutlet weak var challengeImage: UIImageView!
+    @IBOutlet weak var challengeTitle: UILabel!
+    @IBOutlet weak var challengeDescription: UITextView!
     
     
     //MARK: - Actions
@@ -27,30 +27,12 @@ class TaskViewController: UIViewController {
     @IBAction func skipButton(_ sender: Any) {
     }
     
-    @IBAction func favoriteButton(_ sender: Any) {
-        let alertController = UIAlertController(
-            title: "Favorite",
-            message: "Favorite Clicked",
-            preferredStyle: UIAlertController.Style.alert
-        )
-    }
-    
-    
     @IBAction func completeButton(_ sender: Any) {
     }
     
-    
-    @IBAction func statsButton(_ sender: Any) {
-    }
-    
-    @IBAction func taskDetailButton(_ sender: Any) {
-    }
-    
-
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
 }
-

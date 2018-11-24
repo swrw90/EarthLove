@@ -8,8 +8,8 @@
 
 import UIKit
 
-class StatsScreenViewController: UIViewController {
-    weak var delegate: StatsScreenViewController?
+class StatsViewController: UIViewController {
+    weak var delegate: StatsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
