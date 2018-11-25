@@ -258,7 +258,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search Completed Challenges" translatesAutoresizingMaskIntoConstraints="NO" id="PT8-EG-zlN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="16" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Wxj-AX-6X0"/>
@@ -272,7 +272,7 @@
                             <constraint firstItem="JaN-oS-FEa" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="fd2-BY-FVU"/>
                             <constraint firstItem="PT8-EG-zlN" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="iHP-qb-0Bd"/>
                             <constraint firstItem="PT8-EG-zlN" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="jPC-pz-co6"/>
-                            <constraint firstItem="PT8-EG-zlN" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="kev-Iq-vsG"/>
+                            <constraint firstItem="PT8-EG-zlN" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="16" id="kev-Iq-vsG"/>
                             <constraint firstItem="JaN-oS-FEa" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="p9L-pN-WbI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>

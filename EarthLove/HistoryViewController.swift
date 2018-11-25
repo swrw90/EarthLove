@@ -50,11 +50,16 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HistoryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
         searchResults = []
         for i in 0...2 {
             searchResults.append(String(format: "Fake Result %d for '%@'", i, searchBar.text!))
         }
         tableView.reloadData()
     }
-    
+ 
+    func position(for bar: UIBarPositioning) -> UIBarPosition {
+        return .topAttached
+    }
 }
