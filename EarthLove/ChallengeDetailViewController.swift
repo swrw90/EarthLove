@@ -1,5 +1,5 @@
 //
-//  StatsScreenViewController.swift
+//  TaskDetailViewController.swift
 //  EarthLove
 //
 //  Created by Seth Watson on 11/20/18.
@@ -8,13 +8,8 @@
 
 import UIKit
 
-class StatsScreenViewController: UIViewController {
-    
+class ChallengeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
-
-
-
