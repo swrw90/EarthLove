@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
-    
+    var hasSearched = false
     var searchResults = [SearchResult]()
     
     //MARK: - Outlets
@@ -30,7 +30,11 @@ tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResults.count
+        if !hasSearched {
+            return 1
+        } else {
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,12 +53,22 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel!.text = searchResult.title
             cell.detailTextLabel!.text = searchResult.subTitle
         }
-        
-        let searchResult = searchResults[indexPath.row]
-        cell.textLabel!.text = searchResult.title
-        cell.detailTextLabel!.text = searchResult.subTitle
+
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if searchResults.count == 0 {
+            return nil
+        } else {
+            return indexPath
+        }
+    }
+    
 }
 
 
@@ -72,6 +86,8 @@ extension HistoryViewController: UISearchBarDelegate {
             searchResult.subTitle = searchBar.text!
             searchResults.append(searchResult)
         }
+        
+        hasSearched = true
         tableView.reloadData()
     }
  
