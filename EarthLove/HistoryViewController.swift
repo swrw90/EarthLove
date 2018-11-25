@@ -10,7 +10,7 @@ import UIKit
 
 class HistoryViewController: UIViewController {
     
-    var searchResults = [String]()
+    var searchResults = [SearchResult]()
     
     //MARK: - Outlets
 
@@ -28,19 +28,22 @@ tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
 //MARK: - TableView Data Source
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "SearchResultsCell"
+        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         
-        var cell:UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
         
-        cell.textLabel!.text = searchResults[indexPath.row]
+        let searchResult = searchResults[indexPath.row]
+        cell.textLabel!.text = searchResult.title
+        cell.detailTextLabel!.text = searchResult.subTitle
         return cell
     }
 }
@@ -54,7 +57,11 @@ extension HistoryViewController: UISearchBarDelegate {
         
         searchResults = []
         for i in 0...2 {
-            searchResults.append(String(format: "Fake Result %d for '%@'", i, searchBar.text!))
+            let searchResult = SearchResult()
+            print(searchResult.title)
+            searchResult.title = String(format: "Fake Result %d for", i)
+            searchResult.subTitle = searchBar.text!
+            searchResults.append(searchResult)
         }
         tableView.reloadData()
     }
