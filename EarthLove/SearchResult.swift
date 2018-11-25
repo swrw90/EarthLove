@@ -6,4 +6,8 @@
 //  Copyright © 2018 Seth Watson. All rights reserved.
 //
 
-import Foundation
+
+class SearchResult {
+    var title = ""
+    var subTitle = ""
+}
