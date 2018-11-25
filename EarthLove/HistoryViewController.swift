@@ -41,6 +41,15 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
         
+        if searchResults.count == 0 {
+            cell.textLabel!.text = ("Nothing Found")
+            cell.detailTextLabel!.text = ""
+        } else {
+            let searchResult = searchResults[indexPath.row]
+            cell.textLabel!.text = searchResult.title
+            cell.detailTextLabel!.text = searchResult.subTitle
+        }
+        
         let searchResult = searchResults[indexPath.row]
         cell.textLabel!.text = searchResult.title
         cell.detailTextLabel!.text = searchResult.subTitle
