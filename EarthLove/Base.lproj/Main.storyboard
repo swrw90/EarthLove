@@ -273,10 +273,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="searchBar" destination="PT8-EG-zlN" id="HVd-Kf-SfJ"/>
-                        <outlet property="tableView" destination="JaN-oS-FEa" id="yfy-6s-MOZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
