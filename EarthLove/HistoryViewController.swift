@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController {
     }
     
     //MARK: - Outlets
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,7 +31,7 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = 80
         tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
-
+        
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
         
@@ -40,7 +40,7 @@ class HistoryViewController: UIViewController {
     }
 }
 
-    //MARK: - TableView Data Source
+//MARK: - TableView Data Source
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -88,18 +88,18 @@ extension HistoryViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         
         searchResults = []
-        for i in 0...2 {
-            let searchResult = SearchResult()
-            print(searchResult.title)
-            searchResult.title = String(format: "Fake Result %d for", i)
-            searchResult.subTitle = searchBar.text!
-            searchResults.append(searchResult)
+        if searchBar.text! != "justin bieber" {
+            for i in 0...2 {
+                let searchResult = SearchResult()
+                searchResult.title = String(format: "Fake Result %d for", i)
+                searchResult.subTitle = searchBar.text!
+                searchResults.append(searchResult)
+            }
+            hasSearched = true
+            tableView.reloadData()
         }
-        
-        hasSearched = true
-        tableView.reloadData()
     }
- 
+    
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
