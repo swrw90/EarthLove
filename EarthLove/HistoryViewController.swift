@@ -12,6 +12,13 @@ class HistoryViewController: UIViewController {
     var hasSearched = false
     var searchResults = [SearchResult]()
     
+    
+    //MARK: - TableView Cell Identifiers
+    
+    struct TableViewCellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
+    }
+    
     //MARK: - Outlets
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -25,8 +32,8 @@ class HistoryViewController: UIViewController {
 tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         
         tableView.rowHeight = 80
-        let cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "SearchResultCell")
+        let cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
     }
 }
 
@@ -44,7 +51,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
         
         if searchResults.count == 0 {
             cell.titleLabel.text = ("Nothing Found")
