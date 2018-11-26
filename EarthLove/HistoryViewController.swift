@@ -40,8 +40,7 @@ class HistoryViewController: UIViewController {
     }
 }
 
-
-//MARK: - TableView Data Source
+    //MARK: - TableView Data Source
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -54,7 +53,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
         
         if searchResults.count == 0 {
             return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
