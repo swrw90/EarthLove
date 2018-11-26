@@ -24,6 +24,7 @@ class HistoryViewController: UIViewController {
         
 tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         
+        tableView.rowHeight = 80
         let cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "SearchResultCell")
     }
@@ -43,16 +44,15 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchResultsCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as! SearchResultCell
         
         if searchResults.count == 0 {
-            cell.textLabel!.text = ("Nothing Found")
-            cell.detailTextLabel!.text = ""
+            cell.titleLabel.text = ("Nothing Found")
+            cell.subTitleLabel.text = ""
         } else {
             let searchResult = searchResults[indexPath.row]
-            cell.textLabel!.text = searchResult.title
-            cell.detailTextLabel!.text = searchResult.subTitle
+            cell.titleLabel.text = searchResult.title
+            cell.subTitleLabel.text = searchResult.subTitle
         }
 
         return cell
