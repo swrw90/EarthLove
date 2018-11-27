@@ -19,4 +19,15 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func rateApp(_ sender: Any) {
+    }
+    
+    
+    @IBAction func contact(_ sender: Any) {
+    }
+    
+    @IBAction func displayTerms(_ sender: Any) {
+        
+    }
+    
 }
