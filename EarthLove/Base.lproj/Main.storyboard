@@ -22,7 +22,7 @@
                                 <rect key="frame" x="16" y="20" width="343" height="579"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-9v-dge" userLabel="Challenge Image">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-9v-dge" userLabel="Category Image View">
                                         <rect key="frame" x="51" y="54" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -82,9 +82,9 @@
                         <barButtonItem key="rightBarButtonItem" title="Detail" id="yha-oO-Yre"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="challengeDescription" destination="NjU-tY-Sir" id="ATN-Or-OdG"/>
-                        <outlet property="challengeImage" destination="hfr-9v-dge" id="gHk-cX-iUE"/>
-                        <outlet property="challengeTitle" destination="Arq-qv-2qb" id="feV-zy-d25"/>
+                        <outlet property="categoryImageView" destination="hfr-9v-dge" id="vdn-5p-sPY"/>
+                        <outlet property="descriptionLabel" destination="NjU-tY-Sir" id="oNZ-qP-hX8"/>
+                        <outlet property="titleLabel" destination="Arq-qv-2qb" id="l5z-MW-TGC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -195,7 +195,7 @@
         <!--Settings View Controller-->
         <scene sceneID="KLF-mE-NCk">
             <objects>
-                <viewController id="v08-8m-6Cc" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController id="v08-8m-6Cc" customClass="SettingsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ibc-7k-Hvi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,6 +230,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Terms"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjf-Sc-xtd">
+                                <rect key="frame" x="24" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="close:" destination="v08-8m-6Cc" eventType="touchUpInside" id="Twy-s7-Xjf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yxF-P1-9AK"/>
@@ -240,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhN-tU-2hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-298"/>
+            <point key="canvasLocation" x="1636" y="-298.2008995502249"/>
         </scene>
         <!--HistoryViewController-->
         <scene sceneID="wg7-f3-ORb">
