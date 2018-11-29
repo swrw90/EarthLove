@@ -75,6 +75,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let pathURL = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: pathURL)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                
+                let jsonArray = jsonResult as! [[String: Any ]]
+                let title = jsonArray[0]["title"] as Any
+                print(title)
+                
             } catch {
                 print(error.localizedDescription)
             }
