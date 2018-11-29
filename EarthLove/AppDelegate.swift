@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
     // MARK: - Helper Methods
     
     func customizeAppearance() {
@@ -56,8 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.tintColor = UIColor(red: 10/255, green: 80/255, blue: 20/255, alpha: 1)
     }
     
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
+        
+        let tabController = window!.rootViewController as! UITabBarController
+        
+        if let tabViewControllers = tabController.viewControllers {
+            let controller = tabController.viewControllers?.first as! ChallengeViewController
+            controller.managedObjectContext = managedObjectContext
+        }
         return true
     }
 

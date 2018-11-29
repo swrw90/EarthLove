@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class ChallengeViewController: UIViewController {
     
+    var managedObjectContext: NSManagedObjectContext?
     
     // MARK: - Outlets
     
