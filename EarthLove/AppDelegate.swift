@@ -67,6 +67,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let controller = tabController.viewControllers?.first as! ChallengeViewController
             controller.managedObjectContext = managedObjectContext
         }
+        
+        
+        
+        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
+            do {
+                let pathURL = URL(fileURLWithPath: path)
+                let data = try Data(contentsOf: pathURL)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        
         return true
     }
 

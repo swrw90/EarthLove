@@ -31,7 +31,7 @@ class ChallengeViewController: UIViewController {
         super.viewDidLoad()
         
         challenge = ChallengeTestModel(title: "Test title for challenge", image: UIImage(named: "gamer"), description: "This is a test description that needs to be displayed on to the screen.")
-        
+    
         setupUI()
     }
     

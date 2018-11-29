@@ -1,4 +1,4 @@
-{
+[
     { "title": "Unplug It",
     "summary": "",
     "identifier": 1,
@@ -70,5 +70,6 @@
         "identifier": 12,
         "isCompleted": false,
         "category": "work",
-    },
-}
+    }
+]
+
