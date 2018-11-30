@@ -68,23 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller.managedObjectContext = managedObjectContext
         }
         
-        
-        
+        // Find path to json, make path into URL, get data from json, parse json data
         if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
             do {
                 let pathURL = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: pathURL)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                
-                let jsonArray = jsonResult as! [[String: Any ]]
-                let title = jsonArray[0]["title"] as Any
-                print(title)
-                
+                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
+                    Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
+                }
             } catch {
                 print(error.localizedDescription)
             }
         }
-        
         
         return true
     }

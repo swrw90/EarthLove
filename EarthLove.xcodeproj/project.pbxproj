@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C72CC70D21AC899A0025FC32 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CC70C21AC899A0025FC32 /* Challenge.swift */; };
 		C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */; };
 		C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */; };
 		C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */; };
@@ -42,7 +41,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C72CC70C21AC899A0025FC32 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				C76C0A5621AB655100AA6071 /* SearchResultCell.xib */,
 				C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */,
 				C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */,
-				C72CC70C21AC899A0025FC32 /* Challenge.swift */,
 				C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */,
 				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
@@ -193,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */,
-				C72CC70D21AC899A0025FC32 /* Challenge.swift in Sources */,
 				C79E0B9621AA85CA0022D6A0 /* SearchResult.swift in Sources */,
 				C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
