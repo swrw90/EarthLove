@@ -11,7 +11,9 @@ import CoreData
 
 class ChallengeViewController: UIViewController {
     
-    var managedObjectContext: NSManagedObjectContext?
+    var managedObjectContext = NSManagedObjectContext()
+    
+    
     
     // MARK: - Outlets
     
@@ -21,14 +23,19 @@ class ChallengeViewController: UIViewController {
     
     
     // MARK: - Properties
-
+    
+    
     
     // MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
+        
+        do {
+           let challenge = Challenge.fetch(with: 1, in: managedObjectContext)
+            print(challenge)
+        }
     }
     
     func setupUI() {
@@ -50,4 +57,6 @@ class ChallengeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
     }
+    
 }
+
