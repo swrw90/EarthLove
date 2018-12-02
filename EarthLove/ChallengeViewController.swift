@@ -11,9 +11,7 @@ import CoreData
 
 class ChallengeViewController: UIViewController {
     
-    var managedObjectContext = NSManagedObjectContext()
-    
-    
+    var managedObjectContext: NSManagedObjectContext?
     
     // MARK: - Outlets
     
@@ -30,18 +28,21 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         
-        do {
-           let challenge = Challenge.fetch(with: 1, in: managedObjectContext)
-            print(challenge)
+        if let context = managedObjectContext {
+            if let challenge = Challenge.fetch(with: 14, in: context) {
+                print(challenge)
+                setupChallengeUI(with: challenge)
+            }
         }
     }
     
-    func setupUI() {
-//        titleLabel.text = challenge?.title
-//        descriptionLabel.text = challenge?.description
-//        categoryImageView.image = challenge?.image
+    func setupChallengeUI(with challenge: Challenge) {
+                titleLabel.text = challenge.title
+                descriptionLabel.text = challenge.summary
+        if let category = challenge.category {
+                categoryImageView.image = UIImage(named: category)
+        }
     }
     
     //MARK: - Actions
@@ -55,8 +56,7 @@ class ChallengeViewController: UIViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
     }
-    
 }
 

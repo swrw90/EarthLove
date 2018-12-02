@@ -70,6 +70,18 @@
         "identifier": 12,
         "isCompleted": false,
         "category": "work",
+    },
+    { "title": "Adopt a Highway",
+        "summary": "Gather a group of friends and work together to clean up a section of the highway. Be sure to wear bright colors and remain cautious of traffic.",
+        "identifier": 13,
+        "isCompleted": false,
+        "category": "volunteer",
+    },
+    { "title": "Out in the Country",
+        "summary": "Plan a camping or hiking trip. Connecting with nature is a great reminder of what you're protecting by completing these challenges.",
+        "identifier": 14,
+        "isCompleted": false,
+        "category": "recreational",
     }
 ]
 
