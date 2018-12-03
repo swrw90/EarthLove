@@ -23,14 +23,12 @@ class ChallengeViewController: UIViewController {
     // MARK: - Properties
     
     
-    
     // MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let context = managedObjectContext {
-            if let challenge = Challenge.fetch(with: 14, in: context) {
+            if let challenge = Challenge.fetch(with: 13, in: context) {
                 print(challenge)
                 setupChallengeUI(with: challenge)
             }

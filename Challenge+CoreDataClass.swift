@@ -24,7 +24,7 @@ public class Challenge: NSManagedObject {
             fatalError("Failed to save")
         }
     }
-    
+        
     class func challenge(from json: JSON, in context: NSManagedObjectContext) -> Challenge? {
         // Make sure these properties are coming from the json. If it's not Challenge cannot exist
         // so return nil.
@@ -49,10 +49,13 @@ public class Challenge: NSManagedObject {
         return challenge
     }
     
+    class func count(for request: NSFetchRequest<NSFetchRequestResult>) throws -> Int {
+        return 1
+    }
+    
     /// Fetch the Challenge object with identifier.
     class func fetch(with identifier: Int64, in context: NSManagedObjectContext) -> Challenge? {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        
         fetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Challenge.identifier), identifier)
         fetchRequest.fetchLimit = 2
         
