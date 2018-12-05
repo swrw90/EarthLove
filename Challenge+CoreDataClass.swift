@@ -49,10 +49,6 @@ public class Challenge: NSManagedObject {
         return challenge
     }
     
-    class func count(for request: NSFetchRequest<NSFetchRequestResult>) throws -> Int {
-        return 1
-    }
-    
     /// Fetch the Challenge object with identifier.
     class func fetch(with identifier: Int64, in context: NSManagedObjectContext) -> Challenge? {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
@@ -67,6 +63,18 @@ public class Challenge: NSManagedObject {
             return nil
         }
     }
+    
+    /// Setup fetchRequest
+    let request: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+    
+    var fetchRequest:NSFetchRequest<Challenge> = {
+        let request = NSFetchRequest<Challenge>(entityName: Challenge)
+    }
+    
+    /// Setup NSPredicate & sortDescriptor
+    let predicate = NSPredicate(format: "%K == NO", argumentArray: [#keyPath(Challenge.isCompleted), "false"])
+    let sortDescriptor = NSSortDescriptor(key: "fetchOffset", ascending: true)
+//    fetchRequest.sortDescriptor = [sortDescriptor]
 }
 
 
