@@ -27,19 +27,25 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let context = managedObjectContext {
-            if let challenge = Challenge.fetch(with: 13, in: context) {
-                print(challenge)
-                setupChallengeUI(with: challenge)
+            
+            if let fetchRequest = Challenge.createRandomChallengeFetchRequest(with: context) {
+                
+                if let challenge = Challenge.fetchRandomChallenge(with: fetchRequest, in: context) {
+//                    print(challenge)
+                    setupChallengeUI(with: challenge)
+                }
             }
         }
     }
     
+    
     func setupChallengeUI(with challenge: Challenge) {
-                titleLabel.text = challenge.title
-                descriptionLabel.text = challenge.summary
+        titleLabel.text = challenge.title
+        descriptionLabel.text = challenge.summary
         if let category = challenge.category {
-                categoryImageView.image = UIImage(named: category)
+            categoryImageView.image = UIImage(named: category)
         }
     }
     

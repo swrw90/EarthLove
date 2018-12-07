@@ -65,42 +65,85 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    static var incompleteChallengeFetchRequest: NSFetchRequest<Challenge> {
-        // Create an instance of NSFetchRequest of Challenge type
-        let request: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+    /// Fetch Challenge using offset
+    class func fetchRandomChallenge(with fetchRequest: NSFetchRequest<Challenge>, in context: NSManagedObjectContext) -> Challenge? {
         
-        // Format fetchRequest to fetch Challenges with property isCompleted set to false
-        request.predicate = NSPredicate(format: "%K == NO", #keyPath(Challenge.isCompleted))
-        
-        // Use sortDescriptors to define the order of response from the fetchRequest, no order necessary, set to empty array
-        request.sortDescriptors = []
-        
-        return request
-    }
-    
-    class func getContextCount(in context: NSManagedObjectContext) -> Int {
         do {
-            return try context.count(for: incompleteChallengeFetchRequest)
+            // Get length of context
+//            let count = try context.count(for: fetchRequest)
+//            print(count)
+            // Get random number ranging from 0 and mangagedObjectContext count
+//            let randomNumber = Int.random(in: 1 ..< count)
+            
+            // Set random number as fetchOffset property for fetchRequest
+//            fetchRequest.fetchOffset = randomNumber
+            let offset = fetchRequest.fetchOffset
+            print("offset: \(offset)")
+            let challenges =  try context.fetch(fetchRequest)
+            print(challenges)
+            
+            print("challenge: \(challenges[offset])")
+            return challenges[offset]
         } catch {
             print("error")
-            return 0
+            return nil
         }
-    }
-    
-    class func createChallengeFetchOffset(with count: Int, using fetchRequest: NSFetchRequest<Challenge>) -> Int {
-        // Get random number ranging from 0 and mangagedObjectContext count
-        let randomNumber = Int.random(in: 0 ..< count)
         
-        // Set random number as fetchOffset property for fetchRequest
-        fetchRequest.fetchOffset = randomNumber
-        return fetchRequest.fetchOffset
     }
     
-    class func getRandomIncompleteChallenge(in context: NSManagedObjectContext, with identifier: Int64) -> Challenge? {
-        if let challenge = fetch(with: identifier, in: context) {
-            return challenge
-        } else {
+    class func createRandomChallengeFetchRequest(with context: NSManagedObjectContext) -> NSFetchRequest<Challenge>? {
+        
+        do {
+            // Create an instance of NSFetchRequest of Challenge type
+            let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+            
+            // Format fetchRequest to fetch Challenges with property isCompleted set to false
+            fetchRequest.predicate = NSPredicate(format: "%K == NO", #keyPath(Challenge.isCompleted))
+            
+            // Use sortDescriptors to define the order of response from the fetchRequest, no order necessary, set to empty array
+            fetchRequest.sortDescriptors = []
+            
+            let count = try context.count(for: fetchRequest)
+            let randomNumber = Int.random(in: 0 ..< count)
+            fetchRequest.fetchOffset = randomNumber
+            
+            
+            return fetchRequest
+        } catch {
+            print("error")
             return nil
         }
     }
+    
+    
+    //    class func getRandomIncompleteChallenge(in context: NSManagedObjectContext, with offset: Int) -> Challenge? {
+    //        if let challenge = fetch(with: offset, in: context) {
+    //            return challenge
+    //        } else {
+    //            return nil
+    //        }
+    //    }
+    
+    //    static var incompleteChallengeFetchRequest: NSFetchRequest<Challenge> {
+    //    }
+    //
+    //    class func getContextCount(in context: NSManagedObjectContext) -> Int {
+    //        do {
+    //            return try context.count(for: incompleteChallengeFetchRequest)
+    //        } catch {
+    //            print("error")
+    //            return 0
+    //        }
 }
+
+//    class func createChallengeFetchOffset(with count: Int, using fetchRequest: NSFetchRequest<Challenge>) -> Int {
+//
+//        return offset
+//
+//    }
+
+
+
+
+
+
