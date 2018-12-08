@@ -41,7 +41,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    
+    // Configure ChallengeVC UI using Challenge object
     func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary

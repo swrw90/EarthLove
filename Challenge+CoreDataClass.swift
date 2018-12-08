@@ -15,7 +15,11 @@ typealias JSON = [String: Any]
 @objc(Challenge)
 public class Challenge: NSManagedObject {
     
-    // map challenges from json and save into context
+    /// Map challenges from json and save into context.
+    ///
+    /// - Parameters:
+    ///     - json: Array of json to be parsed.
+    ///     - context: NSManagedObjectContext to be used to insert the Challenge objects.
     class func insertToStore(from json: [JSON], in context: NSManagedObjectContext)  {
         _ = json.compactMap { challenge(from: $0, in: context) }
         
@@ -26,7 +30,13 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    // return a hydrated Challenge object from json to be saved into context
+    /// Return a hydrated Challenge object from json to be saved into context.
+    ///
+    /// - Parameters:
+    ///     - json: Array of json Challenge objects.
+    ///     - context: NSManagedObjectContext to be used to modify Challenge objects.
+    /// - Returns: Returns a hydrated Challenge object.
+    
     class func challenge(from json: JSON, in context: NSManagedObjectContext) -> Challenge? {
         // Make sure these properties are coming from the json. If it's not Challenge cannot exist
         // so return nil.
@@ -52,6 +62,12 @@ public class Challenge: NSManagedObject {
     }
     
     /// Fetch the Challenge object with identifier.
+    ///
+    /// - Parameters:
+    ///     - identifier: Use the identifiers property on the Challenge object to retrieve object by its ID.
+    ///     - context: NSManagedObjectContext used to retrieve Challenge object from.
+    /// - Returns: Returns a specific Challenge object retrieved by its identifier.
+    
     class func fetch(with identifier: Int64, in context: NSManagedObjectContext) -> Challenge? {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Challenge.identifier), identifier)
@@ -66,7 +82,12 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    /// Fetch a random Challenge using fetchRequest
+    /// Fetch a random Challenge using fetchRequest.
+    ///
+    /// - Parameters:
+    ///     - fetchRequest: Use NSFetchRequest to retrieve Challenge from context if it meets constraints of the fetchRequest.
+    ///     - context: Retrieve Challenge object contained within NSManagedObjectContext.
+    /// - Returns: Returns a random Challenge object.
     class func fetchRandomChallenge(with fetchRequest: NSFetchRequest<Challenge>, in context: NSManagedObjectContext) -> Challenge? {
         
         do {
@@ -80,7 +101,12 @@ public class Challenge: NSManagedObject {
         
     }
     
-    // create Fetch Request to be used for getting a random Challenge
+    /// Create Fetch Request to be used for getting a random Challenge
+    ///
+    /// - Parameters:
+    ///     - context: NSMangedObjectContext to be used getting a count of stored objects.
+    /// - Returns: NSFetchRequest with constraints to be used when performing fetch for Challenge objects in context.
+    
     class func createRandomChallengeFetchRequest(with context: NSManagedObjectContext) -> NSFetchRequest<Challenge>? {
         
         do {
