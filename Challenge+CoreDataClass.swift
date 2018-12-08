@@ -69,27 +69,16 @@ public class Challenge: NSManagedObject {
     class func fetchRandomChallenge(with fetchRequest: NSFetchRequest<Challenge>, in context: NSManagedObjectContext) -> Challenge? {
         
         do {
-            // Get length of context
-//            let count = try context.count(for: fetchRequest)
-//            print(count)
-            // Get random number ranging from 0 and mangagedObjectContext count
-//            let randomNumber = Int.random(in: 1 ..< count)
-            
-            // Set random number as fetchOffset property for fetchRequest
-//            fetchRequest.fetchOffset = randomNumber
-            let offset = fetchRequest.fetchOffset
-            print("offset: \(offset)")
             let challenges =  try context.fetch(fetchRequest)
-            print(challenges)
+            let challenge = challenges.randomElement()
+                return challenge
+            } catch {
+                print("error")
+                return nil
+            }
             
-            print("challenge: \(challenges[offset])")
-            return challenges[offset]
-        } catch {
-            print("error")
-            return nil
         }
-        
-    }
+
     
     class func createRandomChallengeFetchRequest(with context: NSManagedObjectContext) -> NSFetchRequest<Challenge>? {
         
@@ -114,36 +103,4 @@ public class Challenge: NSManagedObject {
             return nil
         }
     }
-    
-    
-    //    class func getRandomIncompleteChallenge(in context: NSManagedObjectContext, with offset: Int) -> Challenge? {
-    //        if let challenge = fetch(with: offset, in: context) {
-    //            return challenge
-    //        } else {
-    //            return nil
-    //        }
-    //    }
-    
-    //    static var incompleteChallengeFetchRequest: NSFetchRequest<Challenge> {
-    //    }
-    //
-    //    class func getContextCount(in context: NSManagedObjectContext) -> Int {
-    //        do {
-    //            return try context.count(for: incompleteChallengeFetchRequest)
-    //        } catch {
-    //            print("error")
-    //            return 0
-    //        }
 }
-
-//    class func createChallengeFetchOffset(with count: Int, using fetchRequest: NSFetchRequest<Challenge>) -> Int {
-//
-//        return offset
-//
-//    }
-
-
-
-
-
-
