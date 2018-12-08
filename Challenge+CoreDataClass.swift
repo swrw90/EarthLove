@@ -15,7 +15,7 @@ typealias JSON = [String: Any]
 @objc(Challenge)
 public class Challenge: NSManagedObject {
     
-    
+    // map challenges from json and save into context
     class func insertToStore(from json: [JSON], in context: NSManagedObjectContext)  {
         _ = json.compactMap { challenge(from: $0, in: context) }
         
@@ -26,6 +26,7 @@ public class Challenge: NSManagedObject {
         }
     }
     
+    // return a hydrated Challenge object from json to be saved into context
     class func challenge(from json: JSON, in context: NSManagedObjectContext) -> Challenge? {
         // Make sure these properties are coming from the json. If it's not Challenge cannot exist
         // so return nil.
@@ -65,21 +66,21 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    /// Fetch Challenge using offset
+    /// Fetch a random Challenge using fetchRequest
     class func fetchRandomChallenge(with fetchRequest: NSFetchRequest<Challenge>, in context: NSManagedObjectContext) -> Challenge? {
         
         do {
             let challenges =  try context.fetch(fetchRequest)
             let challenge = challenges.randomElement()
-                return challenge
-            } catch {
-                print("error")
-                return nil
-            }
-            
+            return challenge
+        } catch {
+            print("error")
+            return nil
         }
-
+        
+    }
     
+    // create Fetch Request to be used for getting a random Challenge
     class func createRandomChallengeFetchRequest(with context: NSManagedObjectContext) -> NSFetchRequest<Challenge>? {
         
         do {

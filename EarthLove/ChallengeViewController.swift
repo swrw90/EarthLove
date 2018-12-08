@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// Handles displaying Challenge object, skiping and completing Challenges
 class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
@@ -33,7 +34,7 @@ class ChallengeViewController: UIViewController {
             if let fetchRequest = Challenge.createRandomChallengeFetchRequest(with: context) {
                 
                 if let challenge = Challenge.fetchRandomChallenge(with: fetchRequest, in: context) {
-//                    print(challenge)
+
                     setupChallengeUI(with: challenge)
                 }
             }
