@@ -57,6 +57,13 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    func showSkipAlert() {
+        let alert = UIAlertController(title: "Out of Skips", message: "You're out of skips for the next 24 hours. Try to complete the challenge!", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     
     //MARK: - Actions
     
@@ -67,8 +74,8 @@ class ChallengeViewController: UIViewController {
         displayNewChallenge()
         skipCount += 1
         
-        if skipCount == 3 {
-            print("3 skips")
+        if skipCount >= 3 {
+            showSkipAlert()
         }
         
         
