@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// Handles displaying Challenge object, skiping and completing Challenges
 class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
@@ -45,8 +46,9 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    
-    
+
+    // Configure ChallengeVC UI using Challenge object
+
     func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
