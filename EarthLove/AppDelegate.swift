@@ -13,8 +13,41 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    
+    // MARK: - Core Data stack
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "EarthLove")
+        container.loadPersistentStores(completionHandler: {
+            storeDescription, error in
+            if let error = error {
+                fatalError("Could not load data store: \(error)")
+            }
+        })
+        return container
+    }()
 
-
+    lazy var managedObjectContext: NSManagedObjectContext = self.persistentContainer.viewContext
+    
+    
+    // MARK: - Core Data Saving support
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    
     // MARK: - Helper Methods
     
     func customizeAppearance() {
@@ -24,8 +57,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.tintColor = UIColor(red: 10/255, green: 80/255, blue: 20/255, alpha: 1)
     }
     
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
+        
+        let tabController = window!.rootViewController as! UITabBarController
+        
+        if let tabViewControllers = tabController.viewControllers {
+            let controller = tabController.viewControllers?.first as! ChallengeViewController
+            controller.managedObjectContext = managedObjectContext
+        }
+        
+        // Find path to json, make path into URL, get data from json, parse json data
+        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
+            do {
+                let pathURL = URL(fileURLWithPath: path)
+                let data = try Data(contentsOf: pathURL)
+                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
+                    Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
         return true
     }
 
@@ -53,50 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "EarthLove")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
+
 
 
 }
