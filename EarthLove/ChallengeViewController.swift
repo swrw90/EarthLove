@@ -11,7 +11,10 @@ import CoreData
 
 // Handles displaying Challenge object, skiping and completing Challenges
 class ChallengeViewController: UIViewController {
-    
+    let currentDateTime = Date()
+    var dateComponents = DateComponents()
+    let formatter = DateFormatter()
+    let hour = Calendar.current.component(.hour, from: Date())
     var managedObjectContext: NSManagedObjectContext?
     var skipCount = 0
     
@@ -30,16 +33,33 @@ class ChallengeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        dateComponents.timeZone = TimeZone(abbreviation: "PDT")
+        print(currentDateTime)
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        print("hour: \(hour)")
         displayNewChallenge()
     }
     
     
     private func displayNewChallenge() {
+        
         if let context = managedObjectContext {
             
             if let fetchRequest = Challenge.createRandomChallengeFetchRequest(with: context) {
+                // Create a shared defaults object and set it's forKey value to Date()
+                UserDefaults.standard.set(Date(), forKey:"creationTime")
                 
+                // Unwrap the defaults object forKey "creationTime"
+                if let date = UserDefaults.standard.object(forKey: "creationTime") as? Date {
+                    
+                    // Compare the defaults object to to current Date by our, if >= 24 set skipCount to 0 and allow skipping Challenges
+                    if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 24 {
+                        skipCount = 0
+                    }
+                }
+               
                 if let challenge = Challenge.fetchRandomChallenge(with: fetchRequest, in: context) {
+                    
                     setupChallengeUI(with: challenge)
                 }
             }
@@ -71,11 +91,12 @@ class ChallengeViewController: UIViewController {
     // if skip is clicked 3 times any addition clicks will trigger HUD informing there are no more skips allowed for 24 hours.
     // after 24 hours reset number of allowed skips to 3
     @IBAction func skipButton(_ sender: Any ) {
-        displayNewChallenge()
         skipCount += 1
         
         if skipCount >= 3 {
             showSkipAlert()
+        } else {
+            displayNewChallenge()
         }
         
         
