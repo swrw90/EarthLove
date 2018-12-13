@@ -87,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         center.requestAuthorization(options: [.alert, .sound]) {
             granted, error in
             if granted {
+                center.delegate = self
                 print("Notifications permission granted.")
             } else {
                 print("Notifications permission denied.")
@@ -98,12 +99,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         content.body = "Time for your daily Earth Love challenge!"
         content.sound = UNNotificationSound.default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: "Challenge Notification", content: content, trigger: trigger)
         
         center.add(request)
         
         return true
+    }
+    
+    
+    // MARK: - User Notification Delegate
+    
+    // This is invoked when local notification is posted, it logs message to debug pane.
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Received local notification: \(notification)")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

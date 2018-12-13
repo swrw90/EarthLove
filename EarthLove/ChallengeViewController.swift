@@ -11,12 +11,37 @@ import CoreData
 
 // Handles displaying Challenge object, skiping and completing Challenges
 class ChallengeViewController: UIViewController {
-    let currentDateTime = Date()
-    var dateComponents = DateComponents()
-    let formatter = DateFormatter()
-    let hour = Calendar.current.component(.hour, from: Date())
+    
+    
+    // MARK: - Properties
+    
+    private var challenge: Challenge? {
+        didSet {
+            // 1. Check if old Challenge is not the same as new Challenge
+            guard oldValue != challenge else { return }
+            
+            // 2. Set UserDefaults to store new Challenge id
+            if let challenge = challenge {
+                UserDefaults.standard.set(challenge.identifier, forKey: challengeIdentifierKey)
+                
+                // 3. Update UI
+                setupChallengeUI(with: challenge)
+            }
+        }
+    }
+    
+    lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter
+    }()
+    
     var managedObjectContext: NSManagedObjectContext?
     var skipCount = 0
+    let challengeIdentifierKey = "identifier"
+    let creationTimeKey = "creationTime"
+    let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
+    
     
     // MARK: - Outlets
     
@@ -25,50 +50,48 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     
     
-    // MARK: - Properties
-    
-    
     // MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dateComponents.timeZone = TimeZone(abbreviation: "PDT")
-        print(currentDateTime)
-        formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        print("hour: \(hour)")
-        displayNewChallenge()
+        // Check for a challengeIdentifier, if there isn't one call displayNewChallenge
+        if let challengeIdentifier = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 {
+            // Unwrap the UserDefault stored value for the challenge's creationTime
+            if let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date {
+                // Use the challenge creation time value to check if 24 hours has passed since the challenge was created
+                if abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours {
+                    displayNewChallenge()
+                } else {
+                    // Time lapsed since last challenge is less than 24 hours, fetch the most recently displayed challenge by its identifier and set it to challenge property.
+                    if let context = managedObjectContext {
+                       self.challenge = Challenge.fetch(with: challengeIdentifier, in: context)
+                    }
+                }
+            } else {
+                displayNewChallenge()
+            }
+        } else {
+            displayNewChallenge()
+        }
     }
-    
     
     private func displayNewChallenge() {
         
         if let context = managedObjectContext {
             
             if let fetchRequest = Challenge.createRandomChallengeFetchRequest(with: context) {
-                // Create a shared defaults object and set it's forKey value to Date()
-                UserDefaults.standard.set(Date(), forKey:"creationTime")
-                
-                // Unwrap the defaults object forKey "creationTime"
-                if let date = UserDefaults.standard.object(forKey: "creationTime") as? Date {
-                    
-                    // Compare the defaults object to to current Date by our, if >= 24 set skipCount to 0 and allow skipping Challenges
-                    if let diff = Calendar.current.dateComponents([.hour], from: date, to: Date()).hour, diff >= 24 {
-                        skipCount = 0
-                    }
-                }
-               
                 if let challenge = Challenge.fetchRandomChallenge(with: fetchRequest, in: context) {
-                    
-                    setupChallengeUI(with: challenge)
+                    // Create a shared defaults object and set it's forKey value to Date()
+                    UserDefaults.standard.set(Date(), forKey: creationTimeKey)
+                    self.challenge = challenge
                 }
             }
         }
     }
     
-
+    
     // Configure ChallengeVC UI using Challenge object
-
+    
     func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
