@@ -37,10 +37,22 @@ class ChallengeViewController: UIViewController {
     }()
     
     var managedObjectContext: NSManagedObjectContext?
-    var skipCount = 0
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
-    let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
+    let skipTimeStampKey = "skipTimeStamp"
+    let skipCountKey = "skipCount"
+    
+    var skipCount: Int {
+        get {
+            guard let skipCount = UserDefaults.standard.value(forKey: skipCountKey) as? Int else { fatalError("Somethings fucked up with count") }
+            return skipCount
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: skipCountKey)
+        }
+    }
+    
+    let secondsInTwentyFourHours: TimeInterval = 5
     
     
     // MARK: - Outlets
@@ -52,43 +64,58 @@ class ChallengeViewController: UIViewController {
     
     // MARK: - View Controller Life Cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Check for a challengeIdentifier, if there isn't one call displayNewChallenge
-        if let challengeIdentifier = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 {
-            // Unwrap the UserDefault stored value for the challenge's creationTime
-            if let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date {
-                // Use the challenge creation time value to check if 24 hours has passed since the challenge was created
-                if abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours {
-                    displayNewChallenge()
-                } else {
-                    // Time lapsed since last challenge is less than 24 hours, fetch the most recently displayed challenge by its identifier and set it to challenge property.
-                    if let context = managedObjectContext {
-                       self.challenge = Challenge.fetch(with: challengeIdentifier, in: context)
-                    }
-                }
-            } else {
-                displayNewChallenge()
-            }
-        } else {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        displayChallenge()
+    }
+    
+    /// Checks if the creation time has lapsed 24 hours.
+    private var hasTwentyFourHoursPassed: Bool {
+        guard let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date else { return false }
+        return abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours
+    }
+    
+    /// Handles if it needs to display a new random challenge or fetch previously displayed challenge.
+    func displayChallenge() {
+        if hasTwentyFourHoursPassed {
             displayNewChallenge()
+            skipCount = 0
+        } else {
+            guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
+            challenge = Challenge.fetch(with: id, in: context)
         }
+    }
+    
+    func checkChallengeCreationTime() {
+//        // Check for a challengeIdentifier, if there isn't one call displayNewChallenge
+//        if let challengeIdentifier = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 {
+//            // Unwrap the UserDefault stored value for the challenge's creationTime
+//            if let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date {
+//                // Use the challenge creation time value to check if 24 hours has passed since the challenge was created
+//                if abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours {
+//                    displayNewChallenge()
+//                    skipCount = 0
+//                    UserDefaults.standard.set(skipCount, forKey: skipCountKey)
+//                } else {
+//                    // Time lapsed since last challenge is less than 24 hours, fetch the most recently displayed challenge by its identifier and set it to challenge property.
+//                    if let context = managedObjectContext {
+//                        self.challenge = Challenge.fetch(with: challengeIdentifier, in: context)
+//                    }
+//                }
+//            } else {
+//                displayNewChallenge()
+//            }
+//        } else {
+//            displayNewChallenge()
+//        }
     }
     
     private func displayNewChallenge() {
-        
-        if let context = managedObjectContext {
-            
-            if let fetchRequest = Challenge.createRandomChallengeFetchRequest(with: context) {
-                if let challenge = Challenge.fetchRandomChallenge(with: fetchRequest, in: context) {
-                    // Create a shared defaults object and set it's forKey value to Date()
-                    UserDefaults.standard.set(Date(), forKey: creationTimeKey)
-                    self.challenge = challenge
-                }
-            }
-        }
+        guard let context = managedObjectContext, let challenge = Challenge.fetchRandomChallenge(from: context) else { return }
+        UserDefaults.standard.set(Date(), forKey: creationTimeKey)
+        self.challenge = challenge
     }
-    
     
     // Configure ChallengeVC UI using Challenge object
     
@@ -115,14 +142,11 @@ class ChallengeViewController: UIViewController {
     // after 24 hours reset number of allowed skips to 3
     @IBAction func skipButton(_ sender: Any ) {
         skipCount += 1
-        
-        if skipCount >= 3 {
+        if skipCount > 3 {
             showSkipAlert()
         } else {
             displayNewChallenge()
         }
-        
-        
     }
     
     @IBAction func completeButton(_ sender: Any) {
@@ -144,4 +168,3 @@ class ChallengeViewController: UIViewController {
     
     
 }
-

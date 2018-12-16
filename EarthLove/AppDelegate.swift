@@ -64,8 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let tabController = window!.rootViewController as! UITabBarController
         
-        if let tabViewControllers = tabController.viewControllers {
-            let controller = tabController.viewControllers?.first as! ChallengeViewController
+        if let controller = tabController.viewControllers?.first as? ChallengeViewController {
             controller.managedObjectContext = managedObjectContext
         }
         
