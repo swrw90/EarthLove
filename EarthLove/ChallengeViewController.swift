@@ -87,30 +87,6 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    func checkChallengeCreationTime() {
-//        // Check for a challengeIdentifier, if there isn't one call displayNewChallenge
-//        if let challengeIdentifier = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 {
-//            // Unwrap the UserDefault stored value for the challenge's creationTime
-//            if let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date {
-//                // Use the challenge creation time value to check if 24 hours has passed since the challenge was created
-//                if abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours {
-//                    displayNewChallenge()
-//                    skipCount = 0
-//                    UserDefaults.standard.set(skipCount, forKey: skipCountKey)
-//                } else {
-//                    // Time lapsed since last challenge is less than 24 hours, fetch the most recently displayed challenge by its identifier and set it to challenge property.
-//                    if let context = managedObjectContext {
-//                        self.challenge = Challenge.fetch(with: challengeIdentifier, in: context)
-//                    }
-//                }
-//            } else {
-//                displayNewChallenge()
-//            }
-//        } else {
-//            displayNewChallenge()
-//        }
-    }
-    
     private func displayNewChallenge() {
         guard let context = managedObjectContext, let challenge = Challenge.fetchRandomChallenge(from: context) else { return }
         UserDefaults.standard.set(Date(), forKey: creationTimeKey)
@@ -127,6 +103,19 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    func hasChallengeCompleted() {
+        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
+            challenge.isCompleted = true
+    }
+    
+    func showChallengeCompletedAlert() {
+        let alert = UIAlertController(title: "Great Job!", message: "You completed your daily challenge! Check back in 24 hours for the next challenge!", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func showSkipAlert() {
         let alert = UIAlertController(title: "Out of Skips", message: "You're out of skips for the next 24 hours. Try to complete the challenge!", preferredStyle: .alert)
         
@@ -137,7 +126,7 @@ class ChallengeViewController: UIViewController {
     
     //MARK: - Actions
     
-    // if clicked dismiss current challenge object and update UI to display new challenge object.
+    // on press dismiss current challenge object and update UI to display new challenge object.
     // if skip is clicked 3 times any addition clicks will trigger HUD informing there are no more skips allowed for 24 hours.
     // after 24 hours reset number of allowed skips to 3
     @IBAction func skipButton(_ sender: Any ) {
@@ -150,10 +139,13 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func completeButton(_ sender: Any) {
+        // on press trigger HUD celebrating Challenge completion.
+        showChallengeCompletedAlert()
         
-        print("called")
-        // if clicked trigger HUD celebrating Challenge completion.
         // change Challenge.isCompleted to true until all challenges are complete or 1 year passes.
+        hasChallengeCompleted()
+        
+        
         // display pending challenge view for 24 hours informing user must wait 24 hours for a new challenge and that they will be notified
         // after 24 hours use local notification to alert user new challenge is available.
         // Use count of completed challenges to reward user with a fortune every 7 completed challenges
