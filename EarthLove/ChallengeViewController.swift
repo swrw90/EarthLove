@@ -44,7 +44,7 @@ class ChallengeViewController: UIViewController {
     
     var skipCount: Int {
         get {
-            guard let skipCount = UserDefaults.standard.value(forKey: skipCountKey) as? Int else { fatalError("Somethings fucked up with count") }
+            guard let skipCount = UserDefaults.standard.value(forKey: skipCountKey) as? Int else { fatalError("Somethings messed up with count") }
             return skipCount
         }
         set {
@@ -52,8 +52,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    let secondsInTwentyFourHours: TimeInterval = 5
-    
+    let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
     
     // MARK: - Outlets
     
@@ -105,7 +104,7 @@ class ChallengeViewController: UIViewController {
     
     func hasChallengeCompleted() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
-            challenge.isCompleted = true
+        challenge.isCompleted = true
     }
     
     func showChallengeCompletedAlert() {
@@ -138,7 +137,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    @IBAction func completeButton(_ sender: Any) {
+    @IBAction func completeButton(for segue: UIStoryboardSegue, sender: Any?) {
         // on press trigger HUD celebrating Challenge completion.
         showChallengeCompletedAlert()
         
@@ -155,11 +154,11 @@ class ChallengeViewController: UIViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "showPendingViewController" {
+            guard let controller = segue.destination as? PendingChallengeViewController else { return }
+            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
+            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+        }
     }
-    
-//    func displayPendingVC() {
-//        view.sendSubview(toBack: subview)
-//    }
-    
 }
+
