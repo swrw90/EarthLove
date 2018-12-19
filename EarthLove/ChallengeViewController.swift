@@ -59,7 +59,8 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
-    
+    @IBOutlet weak var completedButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     // MARK: - View Controller Life Cycle
     
@@ -80,6 +81,8 @@ class ChallengeViewController: UIViewController {
         if hasTwentyFourHoursPassed {
             displayNewChallenge()
             skipCount = 0
+            completedButton.isHidden = true
+            skipButton.isHidden = true
         } else {
             guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
             challenge = Challenge.fetch(with: id, in: context)
@@ -107,14 +110,6 @@ class ChallengeViewController: UIViewController {
         challenge.isCompleted = true
     }
     
-    func showChallengeCompletedAlert() {
-        let alert = UIAlertController(title: "Great Job!", message: "You completed your daily challenge! Check back in 24 hours for the next challenge!", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
     func showSkipAlert() {
         let alert = UIAlertController(title: "Out of Skips", message: "You're out of skips for the next 24 hours. Try to complete the challenge!", preferredStyle: .alert)
         
@@ -122,6 +117,7 @@ class ChallengeViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+
     
     //MARK: - Actions
     
@@ -138,12 +134,12 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func completeButton(for segue: UIStoryboardSegue, sender: Any?) {
+
         // on press trigger HUD celebrating Challenge completion.
-        showChallengeCompletedAlert()
+//        showChallengeCompletedAlert()
         
         // change Challenge.isCompleted to true until all challenges are complete or 1 year passes.
-        hasChallengeCompleted()
-        
+//        hasChallengeCompleted()
         
         // display pending challenge view for 24 hours informing user must wait 24 hours for a new challenge and that they will be notified
         // after 24 hours use local notification to alert user new challenge is available.
@@ -151,9 +147,16 @@ class ChallengeViewController: UIViewController {
         // update StatsViewController to display percentage and ratio of completed challenges, filtered by category
     }
     
+    func updateUI() {
+        skipButton.isOpaque = true
+        skipButton.isEnabled = false
+    }
+    
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        updateUI()
+        
         if segue.identifier == "showPendingViewController" {
             guard let controller = segue.destination as? PendingChallengeViewController else { return }
             controller.secondsInTwentyFourHours = secondsInTwentyFourHours

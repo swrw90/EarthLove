@@ -30,8 +30,9 @@ class PendingChallengeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         runChallengeTimer()
+        
     }
-    
+
     func runChallengeTimer()  {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
@@ -41,12 +42,11 @@ class PendingChallengeViewController: UIViewController {
         guard let challengeCreationTime = challengeCreationTime else { return nil }
         let time = (twentyFourHours - abs(challengeCreationTime.timeIntervalSinceNow))
         
-        var hours = Int(time / secondsInAnHour)
-        var minutes = Int(time / 60) % 60
-        var seconds = Int(time) % 60
-        seconds -= 1
+        let hours = Int(time / secondsInAnHour)
+        let minutes = Int(time / 60) % 60
+        let seconds = Int(time) % 60
         
-        return ("\(hours): \(minutes): \(seconds)")
+        return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
         
     }
     
@@ -61,6 +61,8 @@ class PendingChallengeViewController: UIViewController {
     
     @IBOutlet weak var countdownLabel: UILabel!
     
-
+    deinit {
+        timer.invalidate()
+    }
     
 }
