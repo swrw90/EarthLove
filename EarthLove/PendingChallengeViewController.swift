@@ -46,7 +46,7 @@ class PendingChallengeViewController: UIViewController {
         var seconds = Int(time) % 60
         seconds -= 1
         
-        return ("Hours: \(hours) Minutes: \(minutes) Seconds: \(seconds)")
+        return ("\(hours): \(minutes): \(seconds)")
         
     }
     
