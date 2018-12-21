@@ -62,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
+        // Register the initial skipCount value from ChallangeVC to UserDefaults
+        if UserDefaults.standard.object(forKey: "skipCount") == nil {
+            UserDefaults.standard.register(defaults: ["skipCount" : 0])
+        }
+        
         let tabController = window!.rootViewController as! UITabBarController
         
         if let controller = tabController.viewControllers?.first as? ChallengeViewController {
@@ -137,9 +142,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-    
-    
-    
-    
+   
 }
-

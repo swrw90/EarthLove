@@ -62,11 +62,11 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    
     // MARK: - View Controller Life Cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         displayChallenge()
     }
     
@@ -105,9 +105,11 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    func hasChallengeCompleted() {
+    func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
+        print(challenge)
         challenge.isCompleted = true
+        print(challenge)
     }
     
     func showSkipAlert() {
@@ -125,6 +127,7 @@ class ChallengeViewController: UIViewController {
     // if skip is clicked 3 times any addition clicks will trigger HUD informing there are no more skips allowed for 24 hours.
     // after 24 hours reset number of allowed skips to 3
     @IBAction func skipButton(_ sender: Any ) {
+//        UserDefaults.standard.set(skipCount, forKey: skipCountKey)
         skipCount += 1
         if skipCount > 3 {
             showSkipAlert()
@@ -156,6 +159,7 @@ class ChallengeViewController: UIViewController {
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         updateUI()
+        changeCompletionStatus()
         
         if segue.identifier == "showPendingViewController" {
             guard let controller = segue.destination as? PendingChallengeViewController else { return }
