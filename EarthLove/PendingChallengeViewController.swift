@@ -54,22 +54,14 @@ class PendingChallengeViewController: UIViewController {
     
     /// Assigns timeRemaining to PendingChallengeVC countdown label.
     @objc func updateTimer() {
-        guard let timeRemaining = formatTime() else { return }
-        countdownLabel.text = timeRemaining
+        countdownLabel.text = formatTime()
     }
     
     
     //    MARK: - Actions
     
     @IBAction func closePressed(_ sender: Any) {
+        timer?.invalidate()
         dismiss(animated: true, completion: nil)
     }
-    
-    deinit {
-        
-        // Stops timer.
-        guard let timer = timer else { return }
-        timer.invalidate()
-    }
-    
 }
