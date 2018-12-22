@@ -20,6 +20,7 @@ class HistoryViewController: UIViewController {
         static let nothingFoundCell = "NothingFoundCell"
     }
     
+    
     //MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!

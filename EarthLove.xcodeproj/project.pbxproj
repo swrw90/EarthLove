@@ -16,13 +16,13 @@
 		C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5621AB655100AA6071 /* SearchResultCell.xib */; };
 		C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */; };
 		C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */; };
+		C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */; };
 		C790032421A37B4500737CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032321A37B4500737CBD /* AppDelegate.swift */; };
 		C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032521A37B4500737CBD /* ChallengeViewController.swift */; };
 		C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032721A37B4500737CBD /* HistoryViewController.swift */; };
 		C790032B21A37B4500737CBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032921A37B4500737CBD /* Main.storyboard */; };
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
-		C790033C21A483CE00737CBD /* ChallengeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
 		C79E0B9621AA85CA0022D6A0 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +49,7 @@
 		C76C0A5621AB655100AA6071 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeViewController.swift; sourceTree = "<group>"; };
 		C790032021A37B4500737CBD /* EarthLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C790032321A37B4500737CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C790032521A37B4500737CBD /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		C790032F21A37B4600737CBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
-		C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
 		C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +96,7 @@
 			children = (
 				C790032321A37B4500737CBD /* AppDelegate.swift */,
 				C790032521A37B4500737CBD /* ChallengeViewController.swift */,
+				C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */,
 				C74A325621AF774E00C8ACE3 /* testData.json */,
 				C790033721A3F1AE00737CBD /* StatsViewController.swift */,
 				C790032721A37B4500737CBD /* HistoryViewController.swift */,
@@ -103,7 +104,6 @@
 				C76C0A5621AB655100AA6071 /* SearchResultCell.xib */,
 				C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */,
 				C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */,
-				C790033B21A483CE00737CBD /* ChallengeDetailViewController.swift */,
 				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */,
@@ -195,10 +195,10 @@
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
+				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
 				C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */,
 				C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */,
-				C790033C21A483CE00737CBD /* ChallengeDetailViewController.swift in Sources */,
 				C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

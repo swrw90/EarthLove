@@ -88,7 +88,10 @@ public class Challenge: NSManagedObject {
     ///     - fetchRequest: Use NSFetchRequest to retrieve Challenge from context if it meets constraints of the fetchRequest.
     ///     - context: Retrieve Challenge object contained within NSManagedObjectContext.
     /// - Returns: Returns a random Challenge object.
-    class func fetchRandomChallenge(with fetchRequest: NSFetchRequest<Challenge>, in context: NSManagedObjectContext) -> Challenge? {
+    class func fetchRandomChallenge(from context: NSManagedObjectContext) -> Challenge? {
+        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        fetchRequest.predicate = isNotCompletedPredicate
+        fetchRequest.sortDescriptors = []
         
         do {
             let challenges =  try context.fetch(fetchRequest)
@@ -98,36 +101,10 @@ public class Challenge: NSManagedObject {
             print("error")
             return nil
         }
-        
     }
     
-    /// Create Fetch Request to be used for getting a random Challenge
-    ///
-    /// - Parameters:
-    ///     - context: NSMangedObjectContext to be used getting a count of stored objects.
-    /// - Returns: NSFetchRequest with constraints to be used when performing fetch for Challenge objects in context.
-    
-    class func createRandomChallengeFetchRequest(with context: NSManagedObjectContext) -> NSFetchRequest<Challenge>? {
-        
-        do {
-            // Create an instance of NSFetchRequest of Challenge type
-            let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-            
-            // Format fetchRequest to fetch Challenges with property isCompleted set to false
-            fetchRequest.predicate = NSPredicate(format: "%K == NO", #keyPath(Challenge.isCompleted))
-            
-            // Use sortDescriptors to define the order of response from the fetchRequest, no order necessary, set to empty array
-            fetchRequest.sortDescriptors = []
-            
-            let count = try context.count(for: fetchRequest)
-            let randomNumber = Int.random(in: 0 ..< count)
-            fetchRequest.fetchOffset = randomNumber
-            
-            
-            return fetchRequest
-        } catch {
-            print("error")
-            return nil
-        }
+    /// Creates a predicate to use to get only challenges that have not been completed.
+    private static var isNotCompletedPredicate: NSPredicate {
+        return NSPredicate(format: "%K = NO", #keyPath(Challenge.isCompleted))
     }
 }
