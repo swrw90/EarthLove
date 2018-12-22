@@ -103,6 +103,8 @@ class ChallengeViewController: UIViewController {
     func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
         challenge.isCompleted = true
+        
+        try? context.save()
     }
     
     /// Displays alerts on the fourth press of the skip button. Informs user no more skips until 24 hours passes.
