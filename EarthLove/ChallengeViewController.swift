@@ -142,6 +142,7 @@ class ChallengeViewController: UIViewController {
         changeCompletionStatus()
     }
     
+    
     //MARK: - Navigation
     
     // Prepares PendingChallengeVC by passing necessary data during segue.
