@@ -20,6 +20,7 @@ class ChallengeViewController: UIViewController {
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
+    let showPendingViewControllerKey = "showPendingViewController"
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
     
     private var challenge: Challenge? {
@@ -37,17 +38,10 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    // Loads DateFormatter whenever formatter is called.
-    lazy var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        return formatter
-    }()
-    
     // Returns value of skip count from UserDefaults.
     var skipCount: Int {
         get {
-            guard let skipCount = UserDefaults.standard.value(forKey: skipCountKey) as? Int else { fatalError("Somethings messed up with count") }
+            guard let skipCount = UserDefaults.standard.value(forKey: skipCountKey) as? Int else { fatalError("Skip count is nil.") }
             return skipCount
         }
         set {
@@ -90,8 +84,6 @@ class ChallengeViewController: UIViewController {
         if hasTwentyFourHoursPassed {
             displayNewChallenge()
             skipCount = 0
-            completedButton.isHidden = true
-            skipButton.isHidden = true
         } else {
             guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
             challenge = Challenge.fetch(with: id, in: context)
@@ -135,21 +127,25 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    // Update UI after a challenge is completed.
-    func updateUI() {
-        skipButton.isOpaque = true
-        skipButton.isEnabled = false
+    // Update skip button after a challenge is completed.
+    func updateSkipButton() {
+        skipButton.isOpaque = challenge?.isCompleted == true
+        skipButton.isEnabled = challenge?.isCompleted == false
     }
     
+    
+    @IBAction func completedPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
+        updateSkipButton()
+        changeCompletionStatus()
+    }
     
     //MARK: - Navigation
     
     // Prepares PendingChallengeVC by passing necessary data during segue.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        updateUI()
-        changeCompletionStatus()
         
-        if segue.identifier == "showPendingViewController" {
+        if segue.identifier == showPendingViewControllerKey {
             guard let controller = segue.destination as? PendingChallengeViewController else { return }
             controller.secondsInTwentyFourHours = secondsInTwentyFourHours
             controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date

@@ -8,25 +8,16 @@
 
 import UIKit
 
+/// Displays a countdown timer until the next challenge is available.
 class PendingChallengeViewController: UIViewController {
     
     
     // MARK: - Properties
     
-    var timer = Timer()
+    var timer: Timer?
     var secondsInTwentyFourHours: TimeInterval?
     var challengeCreationTime: Date?
-    var countdownDate = Date()
     let secondsInAnHour: Double = 3600
-    
-    lazy var formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        
-        return formatter
-    }()
     
     
     //    MARK: - Outlets
@@ -44,13 +35,13 @@ class PendingChallengeViewController: UIViewController {
     
     /// Starts timer countdown until next challenge is available.
     func runChallengeTimer()  {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        updateTimer()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
     ///  Sets values for the pending challenge timer and returns them in a formatted string. 
     func formatTime() -> String? {
-        guard let twentyFourHours = secondsInTwentyFourHours else { return nil }
-        guard let challengeCreationTime = challengeCreationTime else { return nil }
+        guard let twentyFourHours = secondsInTwentyFourHours, let challengeCreationTime = challengeCreationTime else { return nil }
         let time = (twentyFourHours - abs(challengeCreationTime.timeIntervalSinceNow))
         
         let hours = Int(time / secondsInAnHour)
@@ -77,6 +68,7 @@ class PendingChallengeViewController: UIViewController {
     deinit {
         
         // Stops timer.
+        guard let timer = timer else { return }
         timer.invalidate()
     }
     

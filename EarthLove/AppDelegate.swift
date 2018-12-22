@@ -88,31 +88,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
-        // Notifications Authorization
-        
-        // Show alert requesting permission for local notifications.
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) {
-            granted, error in
-            if granted {
-                center.delegate = self
-                print("Notifications permission granted.")
-            } else {
-                print("Notifications permission denied.")
-            }
-        }
-        
-        // Display local notification indicating a new challenge is available.
-        let content = UNMutableNotificationContent()
-        content.title = "Daily Challenge"
-        content.body = "Time for your daily Earth Love challenge!"
-        content.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "Challenge Notification", content: content, trigger: trigger)
-        
-        center.add(request)
-        
         return true
     }
     
