@@ -103,8 +103,37 @@ public class Challenge: NSManagedObject {
         }
     }
     
+    
+    /// Fetch completed Challenges using fetchRequest.
+    ///
+    /// - Parameters:
+    ///     - fetchRequest: Use NSFetchRequest to retrieve Challenges from context if it meets constraints of the fetchRequest.
+    ///     - context: Retrieve Challenge objects contained within NSManagedObjectContext.
+    /// - Returns: Returns an array of completed Challenge objects.
+    
+    class func fetchCompletedChallenges(from context: NSManagedObjectContext) -> [Challenge?] {
+        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        fetchRequest.predicate = isCompletedPredicate
+        fetchRequest.sortDescriptors = []
+        
+        do {
+            let challenges = try context.fetch(fetchRequest)
+            print(challenges)
+            return challenges
+        } catch {
+            print("Error getting completed challenges.")
+            return [nil]
+        }
+    }
+    
+    
     /// Creates a predicate to use to get only challenges that have not been completed.
     private static var isNotCompletedPredicate: NSPredicate {
         return NSPredicate(format: "%K = NO", #keyPath(Challenge.isCompleted))
+    }
+    
+    /// Creates a predicate to use to get only challenges that have been completed.
+    private static var isCompletedPredicate: NSPredicate {
+        return NSPredicate(format: "%K = YES", #keyPath(Challenge.isCompleted))
     }
 }
