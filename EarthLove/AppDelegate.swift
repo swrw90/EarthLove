@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     var window: UIWindow?
     
-    
+
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             storeDescription, error in
             if let error = error {
                 fatalError("Could not load data store: \(error)")
-            }
+            } 
         })
         return container
     }()
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: - Core Data Saving support
     
+    // Saves context if it has any changes.
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -51,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: - Helper Methods
     
+    // Set styling for SearchBar in HistoryVC.
     func customizeAppearance() {
         let barTintColor = UIColor(red: 20/255, green: 80/255, blue: 20/255, alpha: 1)
         UISearchBar.appearance().barTintColor = barTintColor
@@ -62,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
-        // Register the initial skipCount value from ChallangeVC to UserDefaults
+        // Register the initial skipCount value from ChallangeVC to UserDefaults.
         if UserDefaults.standard.object(forKey: "skipCount") == nil {
             UserDefaults.standard.register(defaults: ["skipCount" : 0])
         }
@@ -73,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             controller.managedObjectContext = managedObjectContext
         }
         
-        // Find path to json, make path into URL, get data from json, parse json data
+        // Find path to json, make path into URL, get data from json, parse json data.
         if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
             do {
                 let pathURL = URL(fileURLWithPath: path)
@@ -87,6 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         // Notifications Authorization
+        
+        // Show alert requesting permission for local notifications.
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) {
             granted, error in
@@ -98,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
         
+        // Display local notification indicating a new challenge is available.
         let content = UNMutableNotificationContent()
         content.title = "Daily Challenge"
         content.body = "Time for your daily Earth Love challenge!"
