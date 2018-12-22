@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-// Handles displaying Challenge object, skiping and completing Challenges.
+/// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
     
     
@@ -80,7 +80,7 @@ class ChallengeViewController: UIViewController {
     }
     
     /// Handles if it needs to display a new random challenge or fetch previously displayed challenge.
-    func displayChallenge() {
+    private func displayChallenge() {
         if hasTwentyFourHoursPassed {
             displayNewChallenge()
             skipCount = 0
@@ -91,7 +91,7 @@ class ChallengeViewController: UIViewController {
     }
     
     /// Configure ChallengeVC UI using Challenge object.
-    func setupChallengeUI(with challenge: Challenge) {
+    private func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
         if let category = challenge.category {
@@ -100,7 +100,7 @@ class ChallengeViewController: UIViewController {
     }
     
     /// Changes the isCompleted of a challenge with the specified id.
-    func changeCompletionStatus() {
+    private func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
         challenge.isCompleted = true
         
@@ -108,7 +108,7 @@ class ChallengeViewController: UIViewController {
     }
     
     /// Displays alerts on the fourth press of the skip button. Informs user no more skips until 24 hours passes.
-    func showSkipAlert() {
+    private func showSkipAlert() {
         let alert = UIAlertController(title: "Out of Skips", message: "You're out of skips for the next 24 hours. Try to complete the challenge!", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
@@ -130,13 +130,13 @@ class ChallengeViewController: UIViewController {
     }
     
     // Update skip button after a challenge is completed.
-    func updateSkipButton() {
+    private func updateSkipButton() {
         skipButton.isOpaque = challenge?.isCompleted == true
         skipButton.isEnabled = challenge?.isCompleted == false
     }
     
     
-    @IBAction func completedPressed(_ sender: UIButton) {
+    @IBAction private func completedPressed(_ sender: UIButton) {
         performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()

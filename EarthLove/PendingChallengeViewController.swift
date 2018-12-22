@@ -22,7 +22,7 @@ class PendingChallengeViewController: UIViewController {
     
     //    MARK: - Outlets
     
-    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet private weak var countdownLabel: UILabel!
     
     
     // MARK: - Lifecycle Methods
@@ -34,13 +34,13 @@ class PendingChallengeViewController: UIViewController {
     }
     
     /// Starts timer countdown until next challenge is available.
-    func runChallengeTimer()  {
+    private func runChallengeTimer()  {
         updateTimer()
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
     }
     
     ///  Sets values for the pending challenge timer and returns them in a formatted string. 
-    func formatTime() -> String? {
+    private func formatTime() -> String? {
         guard let twentyFourHours = secondsInTwentyFourHours, let challengeCreationTime = challengeCreationTime else { return nil }
         let time = (twentyFourHours - abs(challengeCreationTime.timeIntervalSinceNow))
         
@@ -53,14 +53,14 @@ class PendingChallengeViewController: UIViewController {
     }
     
     /// Assigns timeRemaining to PendingChallengeVC countdown label.
-    @objc func updateTimer() {
+    @objc private func updateTimer() {
         countdownLabel.text = formatTime()
     }
     
     
     //    MARK: - Actions
     
-    @IBAction func closePressed(_ sender: Any) {
+    @IBAction private func closePressed(_ sender: Any) {
         timer?.invalidate()
         dismiss(animated: true, completion: nil)
     }

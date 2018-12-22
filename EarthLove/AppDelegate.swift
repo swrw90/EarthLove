@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // MARK: - Core Data Saving support
     
-    // Saves context if it has any changes.
+    /// Saves context if it has any changes.
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
