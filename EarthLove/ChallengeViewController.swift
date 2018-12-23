@@ -20,7 +20,7 @@ class ChallengeViewController: UIViewController {
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
-    let showPendingViewControllerKey = "showPendingViewController"
+    let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
     
     private var challenge: Challenge? {

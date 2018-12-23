@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class StatsViewController: UIViewController {
-    weak var delegate: StatsViewController?
+    var managedObjectContext: NSManagedObjectContext?
     
     override func viewDidLoad() {
         super.viewDidLoad()

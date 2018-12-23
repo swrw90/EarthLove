@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class HistoryViewController: UIViewController {
+    
+    
+    // MARK: - Properties
+    
+    var managedObjectContext: NSManagedObjectContext?
     var hasSearched = false
     var searchResults = [SearchResult]()
     
@@ -38,6 +44,14 @@ class HistoryViewController: UIViewController {
         
         cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+        
+        getCompletedChallenges()
+    }
+    
+    private func getCompletedChallenges() {
+        guard let context = managedObjectContext else { return }
+        let challenges: [Challenge?] = Challenge.fetchCompletedChallenges(from: context)
+        print(challenges)
     }
 }
 
@@ -81,7 +95,6 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
 
 //MARK: - SearchBarDelegate
 
