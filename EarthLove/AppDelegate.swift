@@ -78,6 +78,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             controller.managedObjectContext = managedObjectContext
         }
         
+        
+                if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
+                    controller1.managedObjectContext = managedObjectContext
+                    controller2.managedObjectContext = managedObjectContext
+                    controller3.managedObjectContext = managedObjectContext
+                }
+        
+        
         // Find path to json, make path into URL, get data from json, parse json data.
         if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
             do {

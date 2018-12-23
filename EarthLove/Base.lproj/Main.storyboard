@@ -149,7 +149,7 @@
         <!--Stats-->
         <scene sceneID="Bei-nP-7CW">
             <objects>
-                <viewController id="UgQ-Lh-R4n" customClass="StatsViewController" sceneMemberID="viewController">
+                <viewController id="UgQ-Lh-R4n" customClass="StatsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GLa-KE-y9k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
