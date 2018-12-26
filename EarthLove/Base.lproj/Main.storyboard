@@ -375,14 +375,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JaN-oS-FEa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="562"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="dt3-gB-CVR"/>
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" placeholder="Search Completed Challenges" translatesAutoresizingMaskIntoConstraints="NO" id="PT8-EG-zlN">
-                                <rect key="frame" x="0.0" y="16" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Wxj-AX-6X0"/>
@@ -392,12 +392,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JaN-oS-FEa" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="7Is-f5-2it"/>
+                            <constraint firstItem="JaN-oS-FEa" firstAttribute="top" secondItem="PT8-EG-zlN" secondAttribute="bottom" id="C3d-KL-ber"/>
                             <constraint firstAttribute="bottom" secondItem="JaN-oS-FEa" secondAttribute="bottom" constant="49" id="Xfn-84-Dy8"/>
                             <constraint firstItem="JaN-oS-FEa" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="fd2-BY-FVU"/>
                             <constraint firstItem="PT8-EG-zlN" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="iHP-qb-0Bd"/>
                             <constraint firstItem="PT8-EG-zlN" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" id="jPC-pz-co6"/>
-                            <constraint firstItem="PT8-EG-zlN" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="16" id="kev-Iq-vsG"/>
-                            <constraint firstItem="JaN-oS-FEa" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="p9L-pN-WbI"/>
+                            <constraint firstItem="PT8-EG-zlN" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="-20" id="kev-Iq-vsG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>

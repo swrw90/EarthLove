@@ -41,12 +41,11 @@ public class Challenge: NSManagedObject {
         // Make sure these properties are coming from the json. If it's not Challenge cannot exist
         // so return nil.
         guard let identifier = json["identifier"] as? Int64,
-            let isCompleted = json["isCompleted"] as? Bool else { return nil }
+            let isCompleted = json["isCompleted"] as? Bool,
+            let category = json["category"] as? String else { return nil }
         
         // fetch the challenge with identifier, if it doesn't exist create a new one.
         let challenge = fetch(with: identifier, in: context) ?? Challenge(context: context)
-        
-        let category = json["category"] as? String
         let summary = json["summary"] as? String
         let title = json["title"] as? String
         
@@ -111,10 +110,10 @@ public class Challenge: NSManagedObject {
     ///     - context: Retrieve Challenge objects contained within NSManagedObjectContext.
     /// - Returns: Returns an array of completed Challenge objects.
     
-    class func fetchCompletedChallenges(from context: NSManagedObjectContext) -> [Challenge?] {
+    class func fetchCompletedChallenges(from context: NSManagedObjectContext) -> [Challenge] {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.predicate = isCompletedPredicate
-        fetchRequest.sortDescriptors = []
+        fetchRequest.sortDescriptors = [] // TODO: - Sort by date of completion.
         
         do {
             let challenges = try context.fetch(fetchRequest)
@@ -122,7 +121,7 @@ public class Challenge: NSManagedObject {
             return challenges
         } catch {
             print("Error getting completed challenges.")
-            return [nil]
+            return []
         }
     }
     
