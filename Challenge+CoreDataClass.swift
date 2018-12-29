@@ -132,7 +132,7 @@ public class Challenge: NSManagedObject {
     }
     
     /// Creates a predicate to use to get only challenges that have been completed.
-    private static var isCompletedPredicate: NSPredicate {
+    static var isCompletedPredicate: NSPredicate {
         return NSPredicate(format: "%K = YES", #keyPath(Challenge.isCompleted))
     }
 }
