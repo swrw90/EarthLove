@@ -44,12 +44,7 @@ class HistoryViewController: UIViewController {
         if let fetchedResultsController = _fetchedResultsController { return fetchedResultsController }
         
         var fetchedResultsController: NSFetchedResultsController<Challenge>
-        
-        // TODO: - Move to core data class as a func
-        // Create a fetchRequest for completed challenges.
-        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        fetchRequest.predicate = Challenge.isCompletedPredicate
-        fetchRequest.sortDescriptors = [] // Support ordering by completion date
+        let fetchRequest = Challenge.createCompletedChallengesFetchRequest()
         
         // Create an instance of NSFetchedResultsController using fetchRequest and context.
         fetchedResultsController = NSFetchedResultsController<Challenge>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)

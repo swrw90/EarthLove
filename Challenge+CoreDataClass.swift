@@ -126,6 +126,15 @@ public class Challenge: NSManagedObject {
     }
     
     
+    /// Create a fetchRequest for completed challenges.
+    class func createCompletedChallengesFetchRequest() -> NSFetchRequest<Challenge>{
+        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        fetchRequest.predicate = Challenge.isCompletedPredicate
+        fetchRequest.sortDescriptors = [] // Support ordering by completion date
+        return fetchRequest
+    }
+    
+    
     /// Creates a predicate to use to get only challenges that have not been completed.
     private static var isNotCompletedPredicate: NSPredicate {
         return NSPredicate(format: "%K = NO", #keyPath(Challenge.isCompleted))
