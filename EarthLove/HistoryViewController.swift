@@ -87,6 +87,7 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // Returns a row for each fetched object or 1 row for NothingFoundCell if fetched objects is nil
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return fetchedResultsController.fetchedObjects?.count ?? 1

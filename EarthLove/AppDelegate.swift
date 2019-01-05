@@ -8,13 +8,11 @@
 
 import UIKit
 import CoreData
-import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    
     
     // MARK: - Core Data stack
     
@@ -64,29 +62,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
-        // Register the initial skipCount value from ChallangeVC to UserDefaults.
-        if UserDefaults.standard.object(forKey: "skipCount") == nil {
-            UserDefaults.standard.register(defaults: ["skipCount" : 0])
-        }
-        
-        // Register initial Challenge for ChallengeVC to UserDefaults
-        UserDefaults.standard.register(defaults: ["identifier" : 1])
-        
         let tabController = window!.rootViewController as! UITabBarController
         
         if let controller = tabController.viewControllers?.first as? ChallengeViewController {
             controller.managedObjectContext = managedObjectContext
         }
-        
-        
                 if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
                     controller1.managedObjectContext = managedObjectContext
                     controller2.managedObjectContext = managedObjectContext
                     controller3.managedObjectContext = managedObjectContext
                 }
         
+        let isFirstLaunch = determineIsFirstLaunch()
+        
+        if isFirstLaunch {
+            parseChallengeJSON()
+        } else {
+            print("App has already previously launched.")
+        }
         
         // Find path to json, make path into URL, get data from json, parse json data.
+        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
+//        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
+//            do {
+//                let pathURL = URL(fileURLWithPath: path)
+//                let data = try Data(contentsOf: pathURL)
+//                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
+//                    Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
+//                }
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+
+        return true
+    }
+    
+    func determineIsFirstLaunch() -> Bool {
+        let defaults = UserDefaults.standard
+        
+        if let firstLaunch = defaults.string(forKey: "firstLaunch") {
+            print("App has already launched : \(firstLaunch)")
+            
+            return false
+        } else {
+            print("App launched for first time")
+            defaults.set(true, forKey: "firstLaunch")
+            
+            // Register the initial skipCount value from ChallangeVC to UserDefaults.
+            if UserDefaults.standard.object(forKey: "skipCount") == nil {
+                UserDefaults.standard.register(defaults: ["skipCount" : 0])
+            }
+            
+            // Register initial Challenge for ChallengeVC to UserDefaults
+            UserDefaults.standard.register(defaults: ["identifier" : 1])
+
+            return true
+        }
+    }
+    
+    func parseChallengeJSON() {
+        // Find path to json, make path into URL, get data from json, parse json data.
+        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
         if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
             do {
                 let pathURL = URL(fileURLWithPath: path)
@@ -98,16 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print(error.localizedDescription)
             }
         }
-
-        return true
-    }
-    
-    
-    // MARK: - User Notification Delegate
-    
-    // This is invoked when local notification is posted, it logs message to debug pane.
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("Received local notification: \(notification)")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
