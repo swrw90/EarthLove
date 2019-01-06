@@ -95,12 +95,12 @@ class ChallengeViewController: UIViewController {
     private func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
-        categoryImageView.image = UIImage(named: challenge.category)
+        categoryImageView.image = challenge.category.iconImage
     }
     
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
-        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
+        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
         challenge.isCompleted = true
         
         try? context.save()

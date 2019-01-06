@@ -100,7 +100,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         // Assign at the indexPath to challenge constant to be displayed in the returned cell.
         let challenge = fetchedResultsController.object(at: indexPath)
         cell.titleLabel.text = challenge.title
-        cell.subTitleLabel.text = challenge.category
+        cell.subTitleLabel.text = challenge.category.rawValue
+        cell.categoryImageView.image = challenge.category.iconImage
         return cell
     }
     

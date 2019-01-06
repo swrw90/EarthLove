@@ -67,11 +67,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let controller = tabController.viewControllers?.first as? ChallengeViewController {
             controller.managedObjectContext = managedObjectContext
         }
-                if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
-                    controller1.managedObjectContext = managedObjectContext
-                    controller2.managedObjectContext = managedObjectContext
-                    controller3.managedObjectContext = managedObjectContext
-                }
+        if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
+            controller1.managedObjectContext = managedObjectContext
+            controller2.managedObjectContext = managedObjectContext
+            controller3.managedObjectContext = managedObjectContext
+        }
         
         let isFirstLaunch = determineIsFirstLaunch()
         
@@ -80,25 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("App has already previously launched.")
         }
-        
-        // Find path to json, make path into URL, get data from json, parse json data.
-        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-//        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
-//            do {
-//                let pathURL = URL(fileURLWithPath: path)
-//                let data = try Data(contentsOf: pathURL)
-//                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
-//                    Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
-//                }
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-
         return true
     }
     
-    func determineIsFirstLaunch() -> Bool {
+    
+    private func determineIsFirstLaunch() -> Bool {
         let defaults = UserDefaults.standard
         
         if let firstLaunch = defaults.string(forKey: "firstLaunch") {
@@ -116,12 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Register initial Challenge for ChallengeVC to UserDefaults
             UserDefaults.standard.register(defaults: ["identifier" : 1])
-
+            
+            // Set initial Challenge creation time.
+            // TODO: - Move this logic outside of App Delegate.
+            UserDefaults.standard.set(Date(), forKey: "creationTime")
             return true
         }
     }
     
-    func parseChallengeJSON() {
+    private func parseChallengeJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
         if let path = Bundle.main.path(forResource: "testData", ofType: "json") {

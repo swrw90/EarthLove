@@ -15,6 +15,24 @@ typealias JSON = [String: Any]
 @objc(Challenge)
 public class Challenge: NSManagedObject {
     
+    private let categoryKey = "category"
+    @NSManaged private var primitiveCategory: String
+    
+    var category: Category {
+        get {
+            willAccessValue(forKey: categoryKey)
+            let category = Category(rawValue: primitiveCategory)
+            didAccessValue(forKey: categoryKey)
+            
+            return category ?? .home
+        }
+        set {
+            willChangeValue(forKey: categoryKey)
+            primitiveCategory = newValue.rawValue
+            didChangeValue(forKey: categoryKey)
+        }
+    }
+    
     /// Map challenges from json and save into context.
     ///
     /// - Parameters:
@@ -42,7 +60,7 @@ public class Challenge: NSManagedObject {
         // so return nil.
         guard let identifier = json["identifier"] as? Int64,
             let isCompleted = json["isCompleted"] as? Bool,
-            let category = json["category"] as? String else { return nil }
+            let category = Category(rawValue: json["category"] as? String ?? "") else { return nil }
         
         // fetch the challenge with identifier, if it doesn't exist create a new one.
         let challenge = fetch(with: identifier, in: context) ?? Challenge(context: context)

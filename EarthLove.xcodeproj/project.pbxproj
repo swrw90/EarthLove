@@ -13,6 +13,7 @@
 		C74A325721AF774E00C8ACE3 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = C74A325621AF774E00C8ACE3 /* testData.json */; };
 		C74A325921AFB19B00C8ACE3 /* testData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = C74A325621AF774E00C8ACE3 /* testData.json */; };
 		C74A325B21B357CB00C8ACE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74A325A21B357CB00C8ACE3 /* Assets.xcassets */; };
+		C759256921E195AB006D04C2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759256821E195AB006D04C2 /* Category.swift */; };
 		C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5621AB655100AA6071 /* SearchResultCell.xib */; };
 		C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */; };
 		C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */; };
@@ -46,6 +47,7 @@
 		C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C74A325621AF774E00C8ACE3 /* testData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
 		C74A325A21B357CB00C8ACE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C759256821E195AB006D04C2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C76C0A5621AB655100AA6071 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				C790032E21A37B4600737CBD /* LaunchScreen.storyboard */,
 				C790033121A37B4600737CBD /* Info.plist */,
 				C74A325A21B357CB00C8ACE3 /* Assets.xcassets */,
+				C759256821E195AB006D04C2 /* Category.swift */,
 			);
 			path = EarthLove;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */,
 				C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */,
 				C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */,
+				C759256921E195AB006D04C2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
