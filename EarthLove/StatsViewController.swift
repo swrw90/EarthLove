@@ -16,7 +16,34 @@ class StatsViewController: UIViewController {
         super.viewDidLoad()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        calculateStatsPercetanges()
+        
+    }
+    private func getCompletedChallengesByCategory() -> [Challenge]{
+        guard let context = managedObjectContext else { return [] }
+        
+        let completedChallengesByCategory = Challenge.createCompletedByCategoryFetchRequest(category: .work, from: context)
+        
+        return completedChallengesByCategory
+    }
+    
+    private func calculateStatsPercetanges() {
+        guard let context = managedObjectContext else { return }
+        guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return }
+        
+        let completedWorkChallenges = getCompletedChallengesByCategory()
+        let completedWorkChallengesCount = completedWorkChallenges.count
+        
+        print(contextCount, "Context Count")
+        print(completedWorkChallengesCount, "Work Count")
+        
+//        let workChallengePercentage = completedWorkChallengesCount / contextCount * 100
+
+        let workChallengePercentage = 12 / 33 * 100
+        
+        print(workChallengePercentage, "Work Challenges Percentage")
+    }
 }
-
-
-

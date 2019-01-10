@@ -78,6 +78,24 @@ public class Challenge: NSManagedObject {
         return challenge
     }
     
+    /// Get count of all Challenge objects in context.
+    ///
+    /// - Parameters:
+    ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
+    /// - Returns: Returns an Int of all Challenge objects in context.
+    
+    class func getAllChallengesCount(in context: NSManagedObjectContext) -> Int? {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Challenge.fetchRequest()
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            return count
+        } catch {
+            print("error") // switch to assert
+            return nil
+        }
+    }
+    
     /// Fetch the Challenge object with identifier.
     ///
     /// - Parameters:
@@ -143,15 +161,31 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    
     /// Create a fetchRequest for completed challenges.
     class func createCompletedChallengesFetchRequest() -> NSFetchRequest<Challenge>{
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.predicate = Challenge.isCompletedPredicate
-        fetchRequest.sortDescriptors = [] // Support ordering by completion date
+        fetchRequest.sortDescriptors = [] // Support ordering by completion date.
         return fetchRequest
     }
     
+    /// Create a fetchRequest for completed challenges filtered by their category.
+    class func createCompletedByCategoryFetchRequest(category: Category, from context: NSManagedObjectContext) -> [Challenge] {
+        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        
+        /// Creates a predicate to use to get only challenges that have been completed by category.
+        fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
+        fetchRequest.sortDescriptors = [] // Support ordering by completion date.
+        
+        do {
+            let completedChallengesByCategory = try context.fetch(fetchRequest)
+            
+            return completedChallengesByCategory
+        } catch {
+            print("Error getting challenge by category.")
+            return []
+        }
+    }
     
     /// Creates a predicate to use to get only challenges that have not been completed.
     private static var isNotCompletedPredicate: NSPredicate {
@@ -162,4 +196,5 @@ public class Challenge: NSManagedObject {
     static var isCompletedPredicate: NSPredicate {
         return NSPredicate(format: "%K = YES", #keyPath(Challenge.isCompleted))
     }
+    
 }
