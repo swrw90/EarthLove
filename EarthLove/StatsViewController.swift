@@ -10,8 +10,12 @@ import UIKit
 import CoreData
 
 class StatsViewController: UIViewController {
+    
+    // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
     
+    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +26,8 @@ class StatsViewController: UIViewController {
         calculateStatsPercetanges()
         
     }
+    
+    /// Returns an array of Challenge objects for a specific category.
     private func getCompletedChallengesByCategory() -> [Challenge]{
         guard let context = managedObjectContext else { return [] }
         
@@ -30,20 +36,21 @@ class StatsViewController: UIViewController {
         return completedChallengesByCategory
     }
     
-    private func calculateStatsPercetanges() {
-        guard let context = managedObjectContext else { return }
-        guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return }
+    /// Returns percentages of completed challenges for each category.
+    private func calculateStatsPercetanges() -> Int? {
+        guard let context = managedObjectContext else { return nil }
+        guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil}
         
         let completedWorkChallenges = getCompletedChallengesByCategory()
         let completedWorkChallengesCount = completedWorkChallenges.count
         
         print(contextCount, "Context Count")
         print(completedWorkChallengesCount, "Work Count")
-        
-//        let workChallengePercentage = completedWorkChallengesCount / contextCount * 100
 
-        let workChallengePercentage = 12 / 33 * 100
-        
+//        let workChallengePercentage = Int(completedWorkChallengesCount / contextCount * 100)
+        let workChallengePercentage = 1 / 13
         print(workChallengePercentage, "Work Challenges Percentage")
+        
+        return 0 // workChallengePercentage
     }
 }
