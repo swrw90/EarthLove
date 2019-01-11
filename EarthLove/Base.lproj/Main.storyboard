@@ -271,6 +271,16 @@
                     <tabBarItem key="tabBarItem" title="Stats" id="dbx-vd-4Gu"/>
                     <navigationItem key="navigationItem" id="QA0-TW-xa0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="homePercentageLabel" destination="F65-be-vfp" id="6tB-bH-RXb"/>
+                        <outlet property="homeRatioLabel" destination="WK2-es-t4l" id="f8G-Dx-wTP"/>
+                        <outlet property="recreationalPercentageLabel" destination="wGm-Dn-PfG" id="EoA-13-tIu"/>
+                        <outlet property="recreationalRatioLabel" destination="8GE-X8-FWq" id="eD9-Q0-6Uz"/>
+                        <outlet property="volunteerPercentageLabel" destination="sg1-H5-UR0" id="zrV-OY-VvH"/>
+                        <outlet property="volunteerRatioLabel" destination="1uU-e8-4Sq" id="sCb-0N-Dd9"/>
+                        <outlet property="workPercentageLabel" destination="6pe-Rz-5ty" id="7EC-Uj-wLA"/>
+                        <outlet property="workRatioLabel" destination="0jI-fC-xfX" id="VMh-fX-u3S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrh-3r-OcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

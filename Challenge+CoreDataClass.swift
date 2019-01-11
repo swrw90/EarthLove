@@ -84,11 +84,11 @@ public class Challenge: NSManagedObject {
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
     /// - Returns: Returns an Int of all Challenge objects in context.
     
-    class func getAllChallengesCount(in context: NSManagedObjectContext) -> Int? {
+    class func getAllChallengesCount(in context: NSManagedObjectContext) -> Double? {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Challenge.fetchRequest()
         
         do {
-            let count = try context.count(for: fetchRequest)
+            let count = try Double(context.count(for: fetchRequest))
             return count
         } catch {
             print("error") // switch to assert

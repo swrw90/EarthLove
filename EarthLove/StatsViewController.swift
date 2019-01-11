@@ -27,6 +27,23 @@ class StatsViewController: UIViewController {
         
     }
     
+//    MARK: - Outlets
+    
+    // Labels to display percentages for each category.
+    @IBOutlet weak var homePercentageLabel: UILabel!
+    @IBOutlet weak var workPercentageLabel: UILabel!
+    @IBOutlet weak var recreationalPercentageLabel: UILabel!
+    @IBOutlet weak var volunteerPercentageLabel: UILabel!
+    
+    // Labels to display ratio of completed challenges to uncompleted for each category. 
+    @IBOutlet weak var homeRatioLabel: UILabel!
+    @IBOutlet weak var workRatioLabel: UILabel!
+    @IBOutlet weak var recreationalRatioLabel: UILabel!
+    @IBOutlet weak var volunteerRatioLabel: UILabel!
+    
+    
+    
+    
     /// Returns an array of Challenge objects for a specific category.
     private func getCompletedChallengesByCategory() -> [Challenge]{
         guard let context = managedObjectContext else { return [] }
@@ -37,20 +54,20 @@ class StatsViewController: UIViewController {
     }
     
     /// Returns percentages of completed challenges for each category.
-    private func calculateStatsPercetanges() -> Int? {
+    private func calculateStatsPercetanges() -> Double? {
         guard let context = managedObjectContext else { return nil }
         guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil}
         
         let completedWorkChallenges = getCompletedChallengesByCategory()
-        let completedWorkChallengesCount = completedWorkChallenges.count
+        let completedWorkChallengesCount = Double(completedWorkChallenges.count)
         
         print(contextCount, "Context Count")
         print(completedWorkChallengesCount, "Work Count")
 
-//        let workChallengePercentage = Int(completedWorkChallengesCount / contextCount * 100)
-        let workChallengePercentage = 1 / 13
+        let workChallengePercentage = Double(completedWorkChallengesCount / contextCount * 100.0)
+
         print(workChallengePercentage, "Work Challenges Percentage")
         
-        return 0 // workChallengePercentage
+        return workChallengePercentage
     }
 }
