@@ -11,7 +11,7 @@ import UIKit
 enum Category: String {
     case work
     case home
-    case recretional
+    case recreational
     case volunteer
     
     var iconImage: UIImage? {
