@@ -140,17 +140,21 @@ class StatsViewController: UIViewController {
         recreationalPercentageLabel.text = String(Int(recreationalChallengePercentage)) + "%"
         volunteerPercentageLabel.text = String(Int(volunteerChallengePercentage)) + "%"
         
-        let completedHomeChallenges = getCompletedWorkChallenges()
-        let completedHomeChallengesCount = Double(completedHomeChallenges.count)
+        let completedHomeChallenges = getCompletedHomeChallenges()
+        let completedHomeChallengesCount = String(Int(completedHomeChallenges.count))
         
         let completedWorkChallenges = getCompletedWorkChallenges()
-        let completedWorkChallengesCount = Double(completedWorkChallenges.count)
+        let completedWorkChallengesCount = String(Int(completedWorkChallenges.count))
         
         let completedRecreationalChallenges = getCompletedRecreationalChallenges()
-        let completedRecreationalChallengesCount = Double(completedRecreationalChallenges.count)
+        let completedRecreationalChallengesCount = String(Int(completedRecreationalChallenges.count))
         
         let completedVolunteerChallenges = getCompletedVolunteerChallenges()
-        let completedVolunteerChallengesCount = Double(completedVolunteerChallenges.count)
+        let completedVolunteerChallengesCount = String(Int(completedVolunteerChallenges.count))
         
+        homeRatioLabel.text = completedHomeChallengesCount + "/200"
+        workRatioLabel.text = completedWorkChallengesCount + "/200"
+        recreationalRatioLabel.text = completedRecreationalChallengesCount + "/200"
+        volunteerRatioLabel.text = completedVolunteerChallengesCount + "/200"
     }
 }
