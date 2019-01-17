@@ -84,12 +84,19 @@ public class Challenge: NSManagedObject {
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
     /// - Returns: Returns an Int of all Challenge objects in context.
     
-    class func getAllChallengesCount(in context: NSManagedObjectContext) -> Double? {
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Challenge.fetchRequest()
+    class func getAllChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Double? {
+        var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         
         do {
+            if category != nil {
+                fetchRequest = challengesByCategoryFetchRequest(with: category!)
             let count = try Double(context.count(for: fetchRequest))
+                print(count, "category count")
             return count
+            } else {
+                let count = try Double(context.count(for: fetchRequest))
+                return count
+            }
         } catch {
             print("error") // switch to assert
             return nil
@@ -138,6 +145,14 @@ public class Challenge: NSManagedObject {
         }
     }
     
+    // Creates a fetch request with constraints to return all challenges by passed in category.
+    class func challengesByCategoryFetchRequest(with category: Category) -> NSFetchRequest<Challenge> {
+        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "category = %@", category.rawValue)
+        fetchRequest.sortDescriptors = []
+        return fetchRequest
+    }
+    
     
     /// Fetch completed Challenges using fetchRequest.
     ///
@@ -162,7 +177,7 @@ public class Challenge: NSManagedObject {
     }
     
     /// Create a fetchRequest for completed challenges.
-    class func createCompletedChallengesFetchRequest() -> NSFetchRequest<Challenge>{
+    class func createCompletedChallengesFetchRequest() -> NSFetchRequest<Challenge> {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.predicate = Challenge.isCompletedPredicate
         fetchRequest.sortDescriptors = [] // Support ordering by completion date.

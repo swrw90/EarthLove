@@ -11,21 +11,21 @@ import CoreData
 
 class StatsViewController: UIViewController {
     
+    
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
     
-    
-    // MARK: - Lifecycle Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    private var allCompletedCount: Int? = 1 {
+        didSet {
+            print("Old value\(String(describing: oldValue)) new value \(String(describing: allCompletedCount))")
+            guard oldValue != allCompletedCount else { return }
+            
+            if let allCompletedCount = allCompletedCount {
+                print("oldValue is \(allCompletedCount)")
+            }
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setupUI()
-        
-    }
     
     //    MARK: - Outlets
     
@@ -41,40 +41,29 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var recreationalRatioLabel: UILabel!
     @IBOutlet weak var volunteerRatioLabel: UILabel!
     
-    /// Returns an array of Challenge objects for a specific category.
-    private func getCompletedHomeChallenges() -> [Challenge]{
-        guard let context = managedObjectContext else { return [] }
-        
-        let completedHomeChallenges = Challenge.createCompletedByCategoryFetchRequest(category: .home, from: context)
-        
-        return completedHomeChallenges
+    
+    // MARK: - Lifecycle Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let context = managedObjectContext else { return }
+
+        guard let allChallengeByCategoryCount = Challenge.getAllChallengesCount(in: context, with: .work) else { return }
+        allCompletedCount = Int(allChallengeByCategoryCount)
     }
     
-    /// Returns an array of Challenge objects for a specific category.
-    private func getCompletedWorkChallenges() -> [Challenge]{
-        guard let context = managedObjectContext else { return [] }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupUI()
         
-        let completedWorkChallenges = Challenge.createCompletedByCategoryFetchRequest(category: .work, from: context)
-        
-        return completedWorkChallenges
     }
     
-    /// Returns an array of Challenge objects for a specific category.
-    private func getCompletedRecreationalChallenges() -> [Challenge]{
-        guard let context = managedObjectContext else { return [] }
-        
-        let completedRecreationalChallenges = Challenge.createCompletedByCategoryFetchRequest(category: .recreational, from: context)
-        
-        return completedRecreationalChallenges
-    }
     
-    /// Returns an array of Challenge objects for a specific category.
-    private func getCompletedVolunteerChallenges() -> [Challenge]{
+    /// Returns an array of Challenge objects for a honme category.
+    private func getCompletedChallenges(with category: Category) -> [Challenge]{
         guard let context = managedObjectContext else { return [] }
         
-        let completedVolunteerChallenges = Challenge.createCompletedByCategoryFetchRequest(category: .volunteer, from: context)
-        
-        return completedVolunteerChallenges
+        return Challenge.createCompletedByCategoryFetchRequest(category: category, from: context)
     }
     
     /// Returns percentage of completed challenges for home category.
@@ -82,7 +71,7 @@ class StatsViewController: UIViewController {
         guard let context = managedObjectContext else { return nil }
         guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil }
         
-        let completedHomeChallenges = getCompletedHomeChallenges()
+        let completedHomeChallenges = getCompletedChallenges(with: .home)
         let completedHomeChallengesCount = Double(completedHomeChallenges.count)
         
         let homeChallengePercentage = Double(completedHomeChallengesCount / contextCount * 100.0)
@@ -95,7 +84,7 @@ class StatsViewController: UIViewController {
         guard let context = managedObjectContext else { return nil }
         guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil }
         
-        let completedWorkChallenges = getCompletedWorkChallenges()
+        let completedWorkChallenges = getCompletedChallenges(with: .work)
         let completedWorkChallengesCount = Double(completedWorkChallenges.count)
         
         let workChallengePercentage = Double(completedWorkChallengesCount / contextCount * 100.0)
@@ -108,7 +97,7 @@ class StatsViewController: UIViewController {
         guard let context = managedObjectContext else { return nil }
         guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil }
         
-        let completedRecreationalChallenges = getCompletedRecreationalChallenges()
+        let completedRecreationalChallenges = getCompletedChallenges(with: .recreational)
         let completedRecreationalChallengesCount = Double(completedRecreationalChallenges.count)
         
         let recreationalChallengePercentage = Double(completedRecreationalChallengesCount / contextCount * 100.0)
@@ -121,7 +110,7 @@ class StatsViewController: UIViewController {
         guard let context = managedObjectContext else { return nil }
         guard let contextCount = Challenge.getAllChallengesCount(in: context) else { return nil }
         
-        let completedVolunteerChallenges = getCompletedVolunteerChallenges()
+        let completedVolunteerChallenges = getCompletedChallenges(with: .volunteer)
         let completedVolunteerChallengesCount = Double(completedVolunteerChallenges.count)
         
         let volunteerChallengePercentage = Double(completedVolunteerChallengesCount / contextCount * 100.0)
@@ -129,6 +118,7 @@ class StatsViewController: UIViewController {
         return volunteerChallengePercentage
     }
     
+    /// Update Stats view labels and UI.
     private func setupUI() {
         guard let homeChallengePercentage = calculateHomePercentage() else { return }
         guard let workChallengePercentage = calculateWorkPercentage() else { return }
@@ -140,21 +130,22 @@ class StatsViewController: UIViewController {
         recreationalPercentageLabel.text = String(Int(recreationalChallengePercentage)) + "%"
         volunteerPercentageLabel.text = String(Int(volunteerChallengePercentage)) + "%"
         
-        let completedHomeChallenges = getCompletedHomeChallenges()
+        let completedHomeChallenges = getCompletedChallenges(with: .home)
         let completedHomeChallengesCount = String(Int(completedHomeChallenges.count))
         
-        let completedWorkChallenges = getCompletedWorkChallenges()
+        let completedWorkChallenges = getCompletedChallenges(with: .work)
         let completedWorkChallengesCount = String(Int(completedWorkChallenges.count))
         
-        let completedRecreationalChallenges = getCompletedRecreationalChallenges()
+        let completedRecreationalChallenges = getCompletedChallenges(with: .recreational)
         let completedRecreationalChallengesCount = String(Int(completedRecreationalChallenges.count))
         
-        let completedVolunteerChallenges = getCompletedVolunteerChallenges()
+        let completedVolunteerChallenges = getCompletedChallenges(with: .volunteer)
         let completedVolunteerChallengesCount = String(Int(completedVolunteerChallenges.count))
         
         homeRatioLabel.text = completedHomeChallengesCount + "/200"
         workRatioLabel.text = completedWorkChallengesCount + "/200"
         recreationalRatioLabel.text = completedRecreationalChallengesCount + "/200"
         volunteerRatioLabel.text = completedVolunteerChallengesCount + "/200"
+        
     }
 }
