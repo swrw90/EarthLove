@@ -47,7 +47,7 @@ class StatsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let context = managedObjectContext else { return }
-
+        
         guard let allChallengeByCategoryCount = Challenge.getAllChallengesCount(in: context, with: .work) else { return }
         allCompletedCount = Int(allChallengeByCategoryCount)
     }
@@ -120,6 +120,17 @@ class StatsViewController: UIViewController {
     
     /// Update Stats view labels and UI.
     private func setupUI() {
+        
+        guard let context = managedObjectContext else { return }
+        
+        guard let allWorkChallengesCount = Challenge.getAllChallengesCount(in: context, with: .work) else { return }
+        
+        guard let allHomeChallengesCount = Challenge.getAllChallengesCount(in: context, with: .home) else { return }
+        
+        
+        
+        
+        
         guard let homeChallengePercentage = calculateHomePercentage() else { return }
         guard let workChallengePercentage = calculateWorkPercentage() else { return }
         guard let recreationalChallengePercentage = calculateRecreationalPercentage() else { return }
@@ -136,16 +147,24 @@ class StatsViewController: UIViewController {
         let completedWorkChallenges = getCompletedChallenges(with: .work)
         let completedWorkChallengesCount = String(Int(completedWorkChallenges.count))
         
-        let completedRecreationalChallenges = getCompletedChallenges(with: .recreational)
-        let completedRecreationalChallengesCount = String(Int(completedRecreationalChallenges.count))
         
-        let completedVolunteerChallenges = getCompletedChallenges(with: .volunteer)
-        let completedVolunteerChallengesCount = String(Int(completedVolunteerChallenges.count))
+        
         
         homeRatioLabel.text = completedHomeChallengesCount + "/200"
         workRatioLabel.text = completedWorkChallengesCount + "/200"
-        recreationalRatioLabel.text = completedRecreationalChallengesCount + "/200"
-        volunteerRatioLabel.text = completedVolunteerChallengesCount + "/200"
+        let completedRecreationalChallenges = getCompletedChallenges(with: .recreational)
+
+        
+        guard let allRecreationalChallengesCount = Challenge.getAllChallengesCount(in: context, with: .recreational) else { return }
+        
+        recreationalRatioLabel.text = "\(completedRecreationalChallenges.count) / \(Int(allRecreationalChallengesCount))"
+        
+        // Volunteer count label
+        let completedVolunteerChallenges = getCompletedChallenges(with: .volunteer)
+        
+        guard let allVolunteerChallengesCount = Challenge.getAllChallengesCount(in: context, with: .volunteer) else { return }
+        
+        volunteerRatioLabel.text = "\(completedVolunteerChallenges.count) / \(Int(allVolunteerChallengesCount))"
         
     }
 }
