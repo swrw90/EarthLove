@@ -17,7 +17,7 @@ class HistoryViewController: UIViewController {
     
     
     // MARK: - Properties
-
+    
     var managedObjectContext: NSManagedObjectContext?
     
     
@@ -44,7 +44,7 @@ class HistoryViewController: UIViewController {
         if let fetchedResultsController = _fetchedResultsController { return fetchedResultsController }
         
         var fetchedResultsController: NSFetchedResultsController<Challenge>
-        let fetchRequest = Challenge.createCompletedChallengesFetchRequest()
+        let fetchRequest = Challenge.completedChallengesFetchRequest()
         
         // Create an instance of NSFetchedResultsController using fetchRequest and context.
         fetchedResultsController = NSFetchedResultsController<Challenge>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -74,7 +74,7 @@ class HistoryViewController: UIViewController {
         
         cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
-
+        
     }
     
     private func getCompletedChallenges() -> [Challenge] {

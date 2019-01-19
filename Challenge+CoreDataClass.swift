@@ -78,7 +78,7 @@ public class Challenge: NSManagedObject {
         return challenge
     }
     
-    /// Get count of all Challenge objects in context.
+    /// Get count of all Challenge objects in context or count of all Challenge objects by filtered by category.
     ///
     /// - Parameters:
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
@@ -89,12 +89,13 @@ public class Challenge: NSManagedObject {
         
         do {
             if category != nil {
-                fetchRequest = challengesByCategoryFetchRequest(with: category!)
-            let count = try Double(context.count(for: fetchRequest))
+                fetchRequest = allChallengesFetchRequest(with: category!)
+                let count = try Double(context.count(for: fetchRequest))
                 print(count, "category count")
-            return count
+                return count
             } else {
                 let count = try Double(context.count(for: fetchRequest))
+                print(count, "all challenges count")
                 return count
             }
         } catch {
@@ -103,7 +104,7 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    /// Fetch the Challenge object with identifier.
+    /// Fetch a Challenge object using an identifier.
     ///
     /// - Parameters:
     ///     - identifier: Use the identifiers property on the Challenge object to retrieve object by its ID.
@@ -124,7 +125,7 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    /// Fetch a random Challenge using fetchRequest.
+    /// Fetch a random incomplete Challenge using fetchRequest.
     ///
     /// - Parameters:
     ///     - fetchRequest: Use NSFetchRequest to retrieve Challenge from context if it meets constraints of the fetchRequest.
@@ -145,60 +146,60 @@ public class Challenge: NSManagedObject {
         }
     }
     
-    // Creates a fetch request with constraints to return all challenges by passed in category.
-    class func challengesByCategoryFetchRequest(with category: Category) -> NSFetchRequest<Challenge> {
-        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "category = %@", category.rawValue)
-        fetchRequest.sortDescriptors = []
-        return fetchRequest
-    }
-    
-    
-    /// Fetch completed Challenges using fetchRequest.
+    /// Fetch all completed Challenges or all completed challenges filtered by category›.
     ///
     /// - Parameters:
     ///     - fetchRequest: Use NSFetchRequest to retrieve Challenges from context if it meets constraints of the fetchRequest.
     ///     - context: Retrieve Challenge objects contained within NSManagedObjectContext.
     /// - Returns: Returns an array of completed Challenge objects.
     
-    class func fetchCompletedChallenges(from context: NSManagedObjectContext) -> [Challenge] {
-        let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        fetchRequest.predicate = isCompletedPredicate
+    class func fetchCompletedChallenges(from context: NSManagedObjectContext, category: Category? = nil) -> [Challenge] {
+        
+        var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.sortDescriptors = [] // TODO: - Sort by date of completion.
         
         do {
-            let challenges = try context.fetch(fetchRequest)
-            print(challenges)
-            return challenges
-        } catch {
-            print("Error getting completed challenges.")
-            return []
+            if category != nil {
+                fetchRequest = completedChallengesFetchRequest(category: category!)
+                
+                guard let challengesByCategory = try? context.fetch(fetchRequest) else { return [] }
+                
+                return challengesByCategory
+                
+            } else {
+                fetchRequest.predicate = isCompletedPredicate
+                guard let challenges = try? context.fetch(fetchRequest) else { return [] }
+                
+                return challenges
+            }
         }
     }
     
-    /// Create a fetchRequest for completed challenges.
-    class func createCompletedChallengesFetchRequest() -> NSFetchRequest<Challenge> {
+    
+    /// Create a fetchRequest for all completed challenges or all completed challenges by category.
+    class func completedChallengesFetchRequest(category: Category? = nil) -> NSFetchRequest<Challenge> {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        fetchRequest.predicate = Challenge.isCompletedPredicate
         fetchRequest.sortDescriptors = [] // Support ordering by completion date.
-        return fetchRequest
+        
+        if category != nil {
+            fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category!.rawValue)
+            
+            return fetchRequest
+        } else {
+            fetchRequest.predicate = Challenge.isCompletedPredicate
+            return fetchRequest
+        }
     }
     
-    /// Create a fetchRequest for completed challenges filtered by their category.
-    class func createCompletedByCategoryFetchRequest(category: Category, from context: NSManagedObjectContext) -> [Challenge] {
+    /// Creates a fetch request for all challenges or all challenges by category.
+    class func allChallengesFetchRequest(with category: Category? = nil) -> NSFetchRequest<Challenge> {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
-        
-        /// Creates a predicate to use to get only challenges that have been completed by category.
-        fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
-        fetchRequest.sortDescriptors = [] // Support ordering by completion date.
-        
-        do {
-            let completedChallengesByCategory = try context.fetch(fetchRequest)
-            
-            return completedChallengesByCategory
-        } catch {
-            print("Error getting challenge by category.")
-            return []
+        fetchRequest.sortDescriptors = []
+        if category != nil {
+            fetchRequest.predicate = NSPredicate(format: "category = %@", category!.rawValue)
+            return fetchRequest
+        } else {
+            return fetchRequest
         }
     }
     

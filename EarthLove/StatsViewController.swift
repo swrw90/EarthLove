@@ -14,8 +14,9 @@ class StatsViewController: UIViewController {
     
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
+
     
-    private var allCompletedCount: Int? = 1 {
+    private var allCompletedCount: Int? {
         didSet {
             print("Old value\(String(describing: oldValue)) new value \(String(describing: allCompletedCount))")
             guard oldValue != allCompletedCount else { return }
@@ -46,10 +47,7 @@ class StatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let context = managedObjectContext else { return }
         
-        guard let allChallengeByCategoryCount = Challenge.getAllChallengesCount(in: context, with: .work) else { return }
-        allCompletedCount = Int(allChallengeByCategoryCount)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,12 +56,11 @@ class StatsViewController: UIViewController {
         
     }
     
-    
-    /// Returns an array of Challenge objects for a honme category.
+    /// Returns an array of Challenge objects for a category.
     private func getCompletedChallenges(with category: Category) -> [Challenge]{
         guard let context = managedObjectContext else { return [] }
         
-        return Challenge.createCompletedByCategoryFetchRequest(category: category, from: context)
+        return Challenge.fetchCompletedChallenges(from: context, category: category)
     }
     
     /// Returns percentage of completed challenges for home category.
