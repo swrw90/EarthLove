@@ -109,6 +109,7 @@ public class Challenge: NSManagedObject {
                 fetchRequest = completedChallengesFetchRequest(category: category)
                 return try? context.count(for: fetchRequest)
             } else {
+                fetchRequest = completedChallengesFetchRequest()
                 return try? context.count(for: fetchRequest)
             }
         }

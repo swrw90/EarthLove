@@ -43,6 +43,7 @@ class StatsViewController: UIViewController {
     @IBOutlet weak var workRatioLabel: UILabel!
     @IBOutlet weak var recreationalRatioLabel: UILabel!
     @IBOutlet weak var volunteerRatioLabel: UILabel!
+    @IBOutlet weak var totalRatioLabel: UILabel!
     
     
     // MARK: - Lifecycle Methods
@@ -103,5 +104,11 @@ class StatsViewController: UIViewController {
             volunteerPercentageLabel.text = String(categoryChallengePercentage) + "%"
             volunteerRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
         }
+        
+        if let completedCount = allCompletedCount, let challengesCount = allChallengesCount {
+        totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
+        }
+        
+        
     }
 }
