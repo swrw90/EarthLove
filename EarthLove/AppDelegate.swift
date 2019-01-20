@@ -73,8 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             controller3.managedObjectContext = managedObjectContext
         }
         
-        let isFirstLaunch = determineIsFirstLaunch()
-        
         if isFirstLaunch {
             parseChallengeJSON()
         } else {
@@ -84,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-    private func determineIsFirstLaunch() -> Bool {
+    var isFirstLaunch: Bool {
         let defaults = UserDefaults.standard
         
         if let firstLaunch = defaults.string(forKey: "firstLaunch") {

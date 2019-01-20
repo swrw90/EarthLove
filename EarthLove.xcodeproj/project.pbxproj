@@ -25,7 +25,6 @@
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
-		C79E0B9621AA85CA0022D6A0 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,7 +60,6 @@
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
-		C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */,
 				C76C0A5621AB655100AA6071 /* SearchResultCell.xib */,
 				C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */,
-				C79E0B9521AA85CA0022D6A0 /* SearchResult.swift */,
 				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */,
@@ -193,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */,
-				C79E0B9621AA85CA0022D6A0 /* SearchResult.swift in Sources */,
 				C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
