@@ -54,7 +54,6 @@ public class Challenge: NSManagedObject {
     ///     - json: Array of json Challenge objects.
     ///     - context: NSManagedObjectContext to be used to modify Challenge objects.
     /// - Returns: Returns a hydrated Challenge object.
-    
     class func challenge(from json: JSON, in context: NSManagedObjectContext) -> Challenge? {
         // Make sure these properties are coming from the json. If it's not Challenge cannot exist
         // so return nil.
@@ -62,12 +61,12 @@ public class Challenge: NSManagedObject {
             let isCompleted = json["isCompleted"] as? Bool,
             let category = Category(rawValue: json["category"] as? String ?? "") else { return nil }
         
-        // fetch the challenge with identifier, if it doesn't exist create a new one.
+        // Fetch the challenge with identifier, if it doesn't exist create a new one.
         let challenge = fetch(with: identifier, in: context) ?? Challenge(context: context)
         let summary = json["summary"] as? String
         let title = json["title"] as? String
         
-        // Hybdrate
+        // Hydrate
         challenge.identifier = identifier
         challenge.isCompleted = isCompleted
         
@@ -82,8 +81,7 @@ public class Challenge: NSManagedObject {
     ///
     /// - Parameters:
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
-    /// - Returns: Returns an Int? of all Challenge objects in context.
-    
+    /// - Returns: Returns an Int? count of all Challenge objects in context.
     class func getAllChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Int? {
         var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         
@@ -102,8 +100,7 @@ public class Challenge: NSManagedObject {
     ///
     /// - Parameters:
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
-    /// - Returns: Returns an Int? of all completed Challenge objects in context or by category.
-    
+    /// - Returns: Returns an Int? count of all completed Challenge objects in context or by category.
     class func getAllCompletedChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Int? {
         var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         
@@ -123,7 +120,6 @@ public class Challenge: NSManagedObject {
     ///     - identifier: Use the identifiers property on the Challenge object to retrieve object by its ID.
     ///     - context: NSManagedObjectContext used to retrieve Challenge object from.
     /// - Returns: Returns a specific Challenge object retrieved by its identifier.
-    
     class func fetch(with identifier: Int64, in context: NSManagedObjectContext) -> Challenge? {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Challenge.identifier), identifier)
@@ -165,7 +161,6 @@ public class Challenge: NSManagedObject {
     ///     - fetchRequest: Use NSFetchRequest to retrieve Challenges from context if it meets constraints of the fetchRequest.
     ///     - context: Retrieve Challenge objects contained within NSManagedObjectContext.
     /// - Returns: Returns an array of completed Challenge objects.
-    
     class func fetchCompletedChallenges(from context: NSManagedObjectContext, category: Category? = nil) -> [Challenge] {
         
         var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()

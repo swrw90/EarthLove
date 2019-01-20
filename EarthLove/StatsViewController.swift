@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// Display percentage of challenges completed and ratio of completed to incomplete.
 class StatsViewController: UIViewController {
     
     
@@ -84,6 +85,7 @@ class StatsViewController: UIViewController {
         
     }
     
+    /// Set values from challenges count and percentages to UILabels.
     private func configureUI(for category: Category, with context: NSManagedObjectContext) {
          guard let categoryChallengePercentage = calculateCompletedPercentage(with: category), let categoryChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: category), let allCategoryChallengesCount = Challenge.getAllChallengesCount(in: context, with: category) else { return }
         

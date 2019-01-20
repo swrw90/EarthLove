@@ -21,7 +21,7 @@ class HistoryViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -77,6 +77,7 @@ class HistoryViewController: UIViewController {
         
     }
     
+    /// Get an array of all complted challenges.
     private func getCompletedChallenges() -> [Challenge] {
         guard let context = managedObjectContext else { return [] }
         return Challenge.fetchCompletedChallenges(from: context)
@@ -85,6 +86,7 @@ class HistoryViewController: UIViewController {
 
 //MARK: - TableView Data Source
 
+/// Handle TableView setup.
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Returns a row for each fetched object or 1 row for NothingFoundCell if fetched objects is nil
@@ -93,8 +95,10 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         return fetchedResultsController.fetchedObjects?.count ?? 1
     }
     
+    // Returns a UITableViewCell with UILabel and UIImage values set.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // Dequeue cell to be reused.
         guard let cell = tableView.dequeueReusableCell(withIdentifier: searchResultCell, for: indexPath) as? SearchResultCell else { return UITableViewCell() }
         
         // Assign at the indexPath to challenge constant to be displayed in the returned cell.
@@ -105,6 +109,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // Animates cell when it is pressed.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -113,6 +118,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - SearchBarDelegate
 
+/// Handle search bar input.
 extension HistoryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -123,6 +129,7 @@ extension HistoryViewController: UISearchBarDelegate {
     }
 }
 
+/// Reloads tableView if HistoryVC content has changed. 
 extension HistoryViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()

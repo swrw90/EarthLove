@@ -22,7 +22,8 @@ class ChallengeViewController: UIViewController {
     let skipCountKey = "skipCount"
     let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
-    
+   
+    // Watches for challenge value to change.
     private var challenge: Challenge? {
         didSet {
             // 1. Check if old Challenge is not the same as new Challenge.
