@@ -20,9 +20,10 @@ class ChallengeViewController: UIViewController {
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
-    let showPendingViewControllerKey = "showPendingViewController"
+    let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
-    
+   
+    // Watches for challenge value to change.
     private var challenge: Challenge? {
         didSet {
             // 1. Check if old Challenge is not the same as new Challenge.
@@ -87,6 +88,7 @@ class ChallengeViewController: UIViewController {
         } else {
             guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
             challenge = Challenge.fetch(with: id, in: context)
+            updateSkipButton()
         }
     }
     
@@ -94,14 +96,12 @@ class ChallengeViewController: UIViewController {
     private func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
-        if let category = challenge.category {
-            categoryImageView.image = UIImage(named: category)
-        }
+        categoryImageView.image = challenge.category.iconImage
     }
     
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
-        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return  }
+        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
         challenge.isCompleted = true
         
         try? context.save()
@@ -135,7 +135,7 @@ class ChallengeViewController: UIViewController {
         skipButton.isEnabled = challenge?.isCompleted == false
     }
     
-    
+    // Handle completed button press.
     @IBAction private func completedPressed(_ sender: UIButton) {
         performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()

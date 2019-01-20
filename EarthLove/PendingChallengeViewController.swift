@@ -30,7 +30,6 @@ class PendingChallengeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         runChallengeTimer()
-        
     }
     
     /// Starts timer countdown until next challenge is available.

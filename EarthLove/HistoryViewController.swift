@@ -7,102 +7,131 @@
 //
 
 import UIKit
+import CoreData
 
+private let searchResultCell = "SearchResultCell"
+private let nothingFoundCell = "NothingFoundCell"
+
+/// MARK: - Displays the history of users completed challenges.
 class HistoryViewController: UIViewController {
-    var hasSearched = false
-    var searchResults = [SearchResult]()
     
     
-    //MARK: - TableView Cell Identifiers
+    // MARK: - Properties
     
-    struct TableViewCellIdentifiers {
-        static let searchResultCell = "SearchResultCell"
-        static let nothingFoundCell = "NothingFoundCell"
-    }
+    var managedObjectContext: NSManagedObjectContext?
     
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    // MARK: - NSFetchedResultsController
+    
+    // Set delegate for any old versions of fetchedResultsController to nil to prevent memory leaks.
+    private var _fetchedResultsController: NSFetchedResultsController<Challenge>? {
+        didSet {
+            oldValue?.delegate = nil
+        }
+    }
+    
+    /// Check if fetchedResultsController already exists, if so return it, if not create a new instance of fetchedResultsController and set it to _fetchedResultsController.
+    private var fetchedResultsController: NSFetchedResultsController<Challenge> {
+        guard let context = managedObjectContext else { fatalError("Couldn't find context.") }
+        
+        // Check if fetchedResultsController already exists.
+        if let fetchedResultsController = _fetchedResultsController { return fetchedResultsController }
+        
+        var fetchedResultsController: NSFetchedResultsController<Challenge>
+        let fetchRequest = Challenge.completedChallengesFetchRequest()
+        
+        // Create an instance of NSFetchedResultsController using fetchRequest and context.
+        fetchedResultsController = NSFetchedResultsController<Challenge>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        // Set value of _fetchedResultsController.
+        _fetchedResultsController = fetchedResultsController
+        
+        do {
+            // performFetch can throw, try performFetch and catch any errors.
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to fetch data \(error)")
+        }
+        
+        return fetchedResultsController
+    }
     
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-        tableView.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         
-        var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
+        var cellNib = UINib(nibName: searchResultCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: searchResultCell)
         
-        cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.nothingFoundCell)
+        cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        
+    }
+    
+    /// Get an array of all complted challenges.
+    private func getCompletedChallenges() -> [Challenge] {
+        guard let context = managedObjectContext else { return [] }
+        return Challenge.fetchCompletedChallenges(from: context)
     }
 }
 
-
 //MARK: - TableView Data Source
 
+/// Handle TableView setup.
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
+    // Returns a row for each fetched object or 1 row for NothingFoundCell if fetched objects is nil
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !hasSearched {
-            return 1
-        } else {
-            return searchResults.count
-        }
+        
+        return fetchedResultsController.fetchedObjects?.count ?? 1
     }
     
+    // Returns a UITableViewCell with UILabel and UIImage values set.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if searchResults.count == 0 {
-            return tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.nothingFoundCell, for: indexPath)
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.searchResultCell, for: indexPath) as! SearchResultCell
-            
-            let searchResult = searchResults[indexPath.row]
-            cell.titleLabel.text = searchResult.title
-            cell.subTitleLabel.text = searchResult.subTitle
-            return cell
-        }
+        // Dequeue cell to be reused.
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: searchResultCell, for: indexPath) as? SearchResultCell else { return UITableViewCell() }
+        
+        // Assign at the indexPath to challenge constant to be displayed in the returned cell.
+        let challenge = fetchedResultsController.object(at: indexPath)
+        cell.titleLabel.text = challenge.title
+        cell.subTitleLabel.text = challenge.category.rawValue
+        cell.categoryImageView.image = challenge.category.iconImage
+        return cell
     }
     
+    // Animates cell when it is pressed.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if searchResults.count == 0 {
-            return nil
-        } else {
-            return indexPath
-        }
-    }
-    
 }
 
 
 //MARK: - SearchBarDelegate
 
+/// Handle search bar input.
 extension HistoryViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
-        searchResults = []
-        if searchBar.text! != "justin bieber" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.title = String(format: "Fake Result %d for", i)
-                searchResult.subTitle = searchBar.text!
-                searchResults.append(searchResult)
-            }
-            hasSearched = true
-            tableView.reloadData()
-        }
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
+    }
+}
+
+/// Reloads tableView if HistoryVC content has changed. 
+extension HistoryViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
     }
 }

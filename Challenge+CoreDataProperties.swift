@@ -18,7 +18,6 @@ extension Challenge {
     }
 
     @NSManaged public var summary: String?
-    @NSManaged public var category: String?
     @NSManaged public var identifier: Int64
     @NSManaged public var isCompleted: Bool
     @NSManaged public var title: String?
