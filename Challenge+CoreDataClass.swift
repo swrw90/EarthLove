@@ -82,25 +82,38 @@ public class Challenge: NSManagedObject {
     ///
     /// - Parameters:
     ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
-    /// - Returns: Returns an Int of all Challenge objects in context.
+    /// - Returns: Returns an Int? of all Challenge objects in context.
     
-    class func getAllChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Double? {
+    class func getAllChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Int? {
         var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         
         do {
-            if category != nil {
-                fetchRequest = allChallengesFetchRequest(with: category!)
-                let count = try Double(context.count(for: fetchRequest))
-                print(count, "category count")
-                return count
+            if let category = category {
+                fetchRequest = allChallengesFetchRequest(with: category)
+              
+                return try? context.count(for: fetchRequest)
             } else {
-                let count = try Double(context.count(for: fetchRequest))
-                print(count, "all challenges count")
-                return count
+                return try? context.count(for: fetchRequest)
             }
-        } catch {
-            print("error") // switch to assert
-            return nil
+        }
+    }
+    
+    /// Get count of all completed Challenge objects in context or count of all completed Challenge objects by filtered by category.
+    ///
+    /// - Parameters:
+    ///     - context: NSManagedObjectContext used to get count of Challenge objects in context.
+    /// - Returns: Returns an Int? of all completed Challenge objects in context or by category.
+    
+    class func getAllCompletedChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Int? {
+        var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
+        
+        do {
+            if let category = category {
+                fetchRequest = completedChallengesFetchRequest(category: category)
+                return try? context.count(for: fetchRequest)
+            } else {
+                return try? context.count(for: fetchRequest)
+            }
         }
     }
     
@@ -159,8 +172,8 @@ public class Challenge: NSManagedObject {
         fetchRequest.sortDescriptors = [] // TODO: - Sort by date of completion.
         
         do {
-            if category != nil {
-                fetchRequest = completedChallengesFetchRequest(category: category!)
+            if let category = category {
+                fetchRequest = completedChallengesFetchRequest(category: category)
                 
                 guard let challengesByCategory = try? context.fetch(fetchRequest) else { return [] }
                 
@@ -181,8 +194,8 @@ public class Challenge: NSManagedObject {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.sortDescriptors = [] // Support ordering by completion date.
         
-        if category != nil {
-            fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category!.rawValue)
+        if let category = category {
+            fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
             
             return fetchRequest
         } else {
@@ -195,8 +208,9 @@ public class Challenge: NSManagedObject {
     class func allChallengesFetchRequest(with category: Category? = nil) -> NSFetchRequest<Challenge> {
         let fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         fetchRequest.sortDescriptors = []
-        if category != nil {
-            fetchRequest.predicate = NSPredicate(format: "category = %@", category!.rawValue)
+        
+        if let category = category {
+            fetchRequest.predicate = NSPredicate(format: "category = %@", category .rawValue)
             return fetchRequest
         } else {
             return fetchRequest
