@@ -15,15 +15,16 @@ class StatsViewController: UIViewController {
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
     
+    private var allChallengesCount: Int? {
+        guard let context = managedObjectContext else { return nil }
+        
+        return Challenge.getAllChallengesCount(in: context)
+    }
     
     private var allCompletedCount: Int? {
         didSet {
-            print("Old value\(String(describing: oldValue)) new value \(String(describing: allCompletedCount))")
             guard oldValue != allCompletedCount else { return }
-            
-            if let allCompletedCount = allCompletedCount {
-                print("oldValue is \(allCompletedCount)")
-            }
+            setupUI()
         }
     }
     
@@ -52,7 +53,9 @@ class StatsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupUI()
+        
+        guard let context = managedObjectContext else { return }
+        allCompletedCount = Challenge.getAllCompletedChallengesCount(in: context)
         
     }
     
@@ -68,57 +71,35 @@ class StatsViewController: UIViewController {
         
         return Int(challengesCompletedPercentage)
     }
-
+    
     
     /// Update Stats view labels and UI with challenge completion percentage and ratio of complete to incomplete.
     private func setupUI() {
         
         guard let context = managedObjectContext else { return }
         
-        // Set completed challenge value to UILabel text.
-        guard let homeChallengePercentage = calculateCompletedPercentage(with: .home) else { return }
+        Category.allCases.forEach {
+            configureUI(for: $0, with: context)
+        }
         
-        homePercentageLabel.text = String(homeChallengePercentage) + "%"
+    }
+    
+    private func configureUI(for category: Category, with context: NSManagedObjectContext) {
+         guard let categoryChallengePercentage = calculateCompletedPercentage(with: category), let categoryChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: category), let allCategoryChallengesCount = Challenge.getAllChallengesCount(in: context, with: category) else { return }
         
-        guard let workChallengePercentage = calculateCompletedPercentage(with: .work) else { return }
-        
-        workPercentageLabel.text = String(workChallengePercentage) + "%"
-        
-        guard let recreationalChallengePercentage = calculateCompletedPercentage(with: .recreational) else { return }
-        
-        recreationalPercentageLabel.text = String(recreationalChallengePercentage) + "%"
-        
-        guard let volunteerChallengePercentage = calculateCompletedPercentage(with: .volunteer) else { return }
-        
-        volunteerPercentageLabel.text = String(volunteerChallengePercentage) + "%"
-        
-        // Set count of challenges completed & incomplete ratio to UILabel.
-        // Home UILabel
-        guard let completedHomeChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: .home) else { return }
-        
-        guard let allHomeChallengesCount = Challenge.getAllChallengesCount(in: context, with: .home) else { return }
-        
-        homeRatioLabel.text = "\(completedHomeChallengesCount) / \(allHomeChallengesCount)"
-        
-        // Work UILabel
-        guard let completedWorkChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: .work) else { return }
-        
-        guard let allWorkChallengesCount = Challenge.getAllChallengesCount(in: context, with: .work) else { return }
-        
-        workRatioLabel.text = "\(completedWorkChallengesCount) /\(allWorkChallengesCount)"
-        
-        // Recreational UILabel
-        guard let completedRecreationalChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: .recreational) else { return }
-        
-        guard let allRecreationalChallengesCount = Challenge.getAllChallengesCount(in: context, with: .recreational) else { return }
-        
-        recreationalRatioLabel.text = "\(completedRecreationalChallengesCount) /\(allRecreationalChallengesCount)"
-        
-        // Volunteer UILabel
-        guard let completedVolunteerChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: .volunteer) else { return }
-        
-        guard let allVolunteerChallengesCount = Challenge.getAllChallengesCount(in: context, with: .volunteer) else { return }
-        
-        volunteerRatioLabel.text = "\(completedVolunteerChallengesCount) /\(allVolunteerChallengesCount)"
+        switch category {
+        case .home:
+            homePercentageLabel.text = String(categoryChallengePercentage) + "%"
+            homeRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
+        case .work:
+            workPercentageLabel.text = String(categoryChallengePercentage) + "%"
+            workRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
+        case .recreational:
+            recreationalPercentageLabel.text = String(categoryChallengePercentage) + "%"
+            recreationalRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
+        case .volunteer:
+            volunteerPercentageLabel.text = String(categoryChallengePercentage) + "%"
+            volunteerRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Category: String {
+enum Category: String, CaseIterable {
     case work
     case home
     case recreational
