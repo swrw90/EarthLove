@@ -191,7 +191,7 @@ public class Challenge: NSManagedObject {
         fetchRequest.sortDescriptors = [] // Support ordering by completion date.
         
         if let category = category {
-            fetchRequest.predicate = NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
+            fetchRequest.predicate = completedByCategoryPredicate(with: category)
             
             return fetchRequest
         } else {
@@ -206,7 +206,7 @@ public class Challenge: NSManagedObject {
         fetchRequest.sortDescriptors = []
         
         if let category = category {
-            fetchRequest.predicate = NSPredicate(format: "category = %@", category .rawValue)
+            fetchRequest.predicate = allChallengesByCategoryPredicate(with: category)
             return fetchRequest
         } else {
             return fetchRequest
@@ -223,4 +223,13 @@ public class Challenge: NSManagedObject {
         return NSPredicate(format: "%K = YES", #keyPath(Challenge.isCompleted))
     }
     
+    /// Creates a predicate with constraints to return all challenges for a specified category.
+    private class func allChallengesByCategoryPredicate(with category: Category) -> NSPredicate {
+        return NSPredicate(format: "category = %@", category .rawValue)
+    }
+    
+    /// Createsa predicate with constraints to return completed challenges by category.
+    private class func completedByCategoryPredicate(with category: Category) -> NSPredicate {
+        return NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
+    }
 }
