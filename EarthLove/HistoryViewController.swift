@@ -11,6 +11,9 @@ import CoreData
 
 private let searchResultCell = "SearchResultCell"
 private let nothingFoundCell = "NothingFoundCell"
+private let showChallengeViewControllerKey = "showChallengeViewController"
+
+
 
 /// MARK: - Displays the history of users completed challenges.
 class HistoryViewController: UIViewController {
@@ -82,7 +85,12 @@ class HistoryViewController: UIViewController {
         guard let context = managedObjectContext else { return [] }
         return Challenge.fetchCompletedChallenges(from: context)
     }
+    
+    @IBAction func displayCategoriesMenu(_ sender: Any) {
+    }
 }
+
+
 
 //MARK: - TableView Data Source
 
@@ -106,28 +114,39 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = challenge.title
         cell.subTitleLabel.text = challenge.category.rawValue
         cell.categoryImageView.image = challenge.category.iconImage
+        
         return cell
     }
     
     // Animates cell when it is pressed.
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath, segue: UIStoryboardSegue, sender: Any?) {
+        print("called")
+//        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: showChallengeViewControllerKey, sender: nil)
+        
+        if segue.identifier == showChallengeViewControllerKey {
+            guard let controller = segue.destination as? ChallengeViewController
+                else { return }
+            
+        }
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showChallengeViewControllerKey {
+                    print("called here")
+            guard let controller = segue.destination as? ChallengeViewController
+                else { return }
+        }
+    }
+    
+    
 }
 
 
 //MARK: - SearchBarDelegate
 
-/// Handle search bar input.
-extension HistoryViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-    }
-    
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
-}
 
 /// Reloads tableView if HistoryVC content has changed. 
 extension HistoryViewController: NSFetchedResultsControllerDelegate {
@@ -135,3 +154,5 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
         tableView.reloadData()
     }
 }
+
+//

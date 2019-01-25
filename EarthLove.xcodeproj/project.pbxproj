@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C71C890621FBB5B000FB119F /* CategoriesMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C890521FBB5B000FB119F /* CategoriesMenu.swift */; };
 		C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */; };
 		C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */; };
 		C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C71C890521FBB5B000FB119F /* CategoriesMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesMenu.swift; sourceTree = "<group>"; };
 		C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				C790033121A37B4600737CBD /* Info.plist */,
 				C74A325A21B357CB00C8ACE3 /* Assets.xcassets */,
 				C759256821E195AB006D04C2 /* Category.swift */,
+				C71C890521FBB5B000FB119F /* CategoriesMenu.swift */,
 			);
 			path = EarthLove;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */,
 				C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */,
+				C71C890621FBB5B000FB119F /* CategoriesMenu.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
