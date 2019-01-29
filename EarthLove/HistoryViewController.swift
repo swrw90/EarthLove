@@ -25,8 +25,7 @@ class HistoryViewController: UIViewController {
     
     
     // MARK: - Outlets
-    
-    @IBOutlet weak var searchBar: UISearchBar!
+
     @IBOutlet weak var tableView: UITableView!
     
     
