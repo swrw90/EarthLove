@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvF-Ce-m3c">
-                        <rect key="frame" x="152" y="29" width="71" height="21"/>
+                        <rect key="frame" x="137" y="29" width="100" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -30,7 +30,7 @@
             <connections>
                 <outlet property="categoryLabel" destination="VvF-Ce-m3c" id="Pcc-vo-Nrp"/>
             </connections>
-            <point key="canvasLocation" x="-161" y="-50"/>
+            <point key="canvasLocation" x="-162.40000000000001" y="-50.374812593703155"/>
         </tableViewCell>
     </objects>
 </document>
