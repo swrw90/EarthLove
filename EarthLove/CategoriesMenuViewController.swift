@@ -39,4 +39,12 @@ class CategoriesMenuViewController: UITableViewController {
 
             return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Remove categoriesMenuVC from view stack.
+        self.willMove(toParent: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParent()
+    }
 }
