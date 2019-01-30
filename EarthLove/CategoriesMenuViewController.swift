@@ -23,10 +23,7 @@ class CategoriesMenuViewController: UITableViewController {
 
     }
     
-    
-    //    MARK: - Outlets
-    
-    
+
     // MARK - TableView Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,12 +35,8 @@ class CategoriesMenuViewController: UITableViewController {
             
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCell, for: indexPath) as? CategoryCell else { return UITableViewCell() }
         
-        
-        
             cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue
 
-        
-        
             return cell
     }
 }

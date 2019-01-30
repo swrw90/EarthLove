@@ -12,7 +12,7 @@ import CoreData
 private let searchResultCell = "SearchResultCell"
 private let nothingFoundCell = "NothingFoundCell"
 private let showChallengeViewControllerKey = "showChallengeViewController"
-
+private let categoriesMenuIdentifier = "CategoriesMenu"
 
 
 /// MARK: - Displays the history of users completed challenges.
@@ -86,6 +86,25 @@ class HistoryViewController: UIViewController {
     }
     
     @IBAction func displayCategoriesMenu(_ sender: Any) {
+        
+        // Creates an instance of CategoriesMenuViewController
+        guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
+        
+        // Defines the constraints of the overlay view, using IB auto-constraints.
+        categoriesMenuVC.view.frame = self.view.bounds;
+        
+        // Called by addChild just before adding categoriesVC over top historyVC to prepare.
+        categoriesMenuVC.willMove(toParent: self)
+        
+        // Adds categoriesMenuVC to top level of view hierchy list.
+        self.view.addSubview(categoriesMenuVC.view)
+        
+        // Adds categoriesMenuVC as a child to historyVC
+        self.addChild(categoriesMenuVC)
+        
+        // Called after categoriesVc has moved as an overlay to historyVC.
+        categoriesMenuVC.didMove(toParent: self)
+        
     }
 }
 
