@@ -10,6 +10,13 @@ import UIKit
 
 private let categoryCell = "categoryCell"
 
+// 1. Use delegation pattern (Ceate a protocol here) to notify the delegate that category was selected.
+
+protocol CategoriesMenuViewControllerDelegate: AnyObject {
+    func handleSelectedCategory(category: Category)
+    
+}
+
 class CategoriesMenuViewController: UITableViewController {
     
     // MARK: - Lifecycle Methods
@@ -20,8 +27,11 @@ class CategoriesMenuViewController: UITableViewController {
         
         let cellNib = UINib(nibName: String(describing: CategoryCell.self), bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: categoryCell)
-
+        
     }
+    
+    // 2. create weak var delegate property here.
+    weak var delegate: CategoriesMenuViewControllerDelegate?
     
 
     // MARK - TableView Data Source
@@ -41,6 +51,9 @@ class CategoriesMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        // 3. send a message to delegate and pass in the category that was selected
+        delegate?.handleSelectedCategory(category: .work)
         
         // Remove categoriesMenuVC from view stack.
         self.willMove(toParent: nil)

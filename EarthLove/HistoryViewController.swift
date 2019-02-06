@@ -24,6 +24,8 @@ class HistoryViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     
+    // 5. create a selectedCategory property.
+    var selectedCategory: Category?
     
     // MARK: - Outlets
 
@@ -48,6 +50,8 @@ class HistoryViewController: UIViewController {
         
         var fetchedResultsController: NSFetchedResultsController<Challenge>
         let fetchRequest = Challenge.completedChallengesFetchRequest()
+        
+        // 8. set fetchRequest predicate to filter out everything but selected category. Only do this IF selectedCategory exists.
         
         // Create an instance of NSFetchedResultsController using fetchRequest and context.
         fetchedResultsController = NSFetchedResultsController<Challenge>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -92,6 +96,9 @@ class HistoryViewController: UIViewController {
         // Creates an instance of CategoriesMenuViewController
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
         
+        // 2.5 set delegate on CateogriesMenuViewController to self.
+        categoriesMenuVC.delegate = self
+        
         // Defines the constraints of the overlay view, using IB auto-constraints.
         categoriesMenuVC.view.frame = self.view.bounds;
         
@@ -111,13 +118,10 @@ class HistoryViewController: UIViewController {
 }
 
 
-
 //MARK: - TableView Data Source
 
 /// Handle TableView setup.
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
     
     // Returns a row for each fetched object or 1 row for NothingFoundCell if fetched objects is nil
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -140,31 +144,19 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("called")
+    // Displays overlay of ChallangeVC when row is selected.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Creates an instance of ChallengeViewController
         guard let challengeVC: ChallengeViewController = self.storyboard!.instantiateViewController(withIdentifier: challengeViewControllerIdentifier) as? ChallengeViewController else { return }
         
-        // Defines the constraints of the overlay view, using IB auto-constraints.
-        challengeVC.view.frame = self.view.bounds;
-        
-        // Called by addChild just before adding categoriesVC over top historyVC to prepare.
+        // Moves the instance of challengeVC on top of the view hierchy list and sizes the views overlay.
+        challengeVC.view.frame = self.view.bounds
         challengeVC.willMove(toParent: self)
-        
-        // Adds categoriesMenuVC to top level of view hierchy list.
         self.view.addSubview(challengeVC.view)
-        
-        // Adds categoriesMenuVC as a child to historyVC
         self.addChild(challengeVC)
-        
-        // Called after categoriesVc has moved as an overlay to historyVC.
         challengeVC.didMove(toParent: self)
     }
-    
-
     
 }
 
@@ -179,4 +171,27 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
-//
+
+
+// 4. Create an extension of HistoryViewController to conform to protocol you created and
+//    conform to the protocl by adding the protocol method that passes in the category.
+
+extension HistoryViewController: CategoriesMenuViewControllerDelegate {
+   
+    
+    func handleSelectedCategory(category: Category) {
+        
+        print("category selection protocol called.\(category)")
+       
+        // 6. set the selected category to the one that was selected from CategoriesVC that was passed into here by delegation pattern
+        selectedCategory = category
+    }
+    
+    
+}
+
+
+
+
+
+// 7. Nil out the fetchedResultsController.
