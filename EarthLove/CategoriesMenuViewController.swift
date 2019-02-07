@@ -33,7 +33,7 @@ class CategoriesMenuViewController: UITableViewController {
     // 2. create weak var delegate property here.
     weak var delegate: CategoriesMenuViewControllerDelegate?
     
-
+    
     // MARK - TableView Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,18 +42,18 @@ class CategoriesMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCell, for: indexPath) as? CategoryCell else { return UITableViewCell() }
         
-            cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue
-
-            return cell
+        cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        delegate?.handleSelectedCategory(category: Category.allCases[indexPath.row])
 
-        // 3. send a message to delegate and pass in the category that was selected
-        delegate?.handleSelectedCategory(category: .work)
         
         // Remove categoriesMenuVC from view stack.
         self.willMove(toParent: nil)

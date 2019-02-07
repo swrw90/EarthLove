@@ -178,20 +178,11 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
 
 extension HistoryViewController: CategoriesMenuViewControllerDelegate {
    
-    
     func handleSelectedCategory(category: Category) {
-        
-        print("category selection protocol called.\(category)")
        
+        print(category)
+        
         // 6. set the selected category to the one that was selected from CategoriesVC that was passed into here by delegation pattern
         selectedCategory = category
     }
-    
-    
 }
-
-
-
-
-
-// 7. Nil out the fetchedResultsController.
