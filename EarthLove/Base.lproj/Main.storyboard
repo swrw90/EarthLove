@@ -446,6 +446,7 @@
                     <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>
                         <outlet property="tableView" destination="JaN-oS-FEa" id="34R-ko-Yzx"/>
                         <segue destination="9pv-A4-QxB" kind="show" identifier="showChallengeViewController" id="JAl-6b-YoI"/>
                     </connections>

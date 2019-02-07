@@ -30,6 +30,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var categoryHeader: UIButton!
     
     
     // MARK: - NSFetchedResultsController
@@ -165,9 +166,9 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
     func handleSelectedCategory(category: Category) {
 
         selectedCategory = category
+        categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
         _fetchedResultsController = nil
         
         self.tableView.reloadData()
-        
     }
 }
