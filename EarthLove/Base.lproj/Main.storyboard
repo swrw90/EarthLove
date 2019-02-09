@@ -105,10 +105,7 @@
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="8rJ-Kc-sve" kind="presentation" identifier="showHistoryVC" modalTransitionStyle="flipHorizontal" id="Lb5-pK-lMf">
-                                                <segue key="commit" inheritsFrom="parent" id="8nF-Pl-vvR"/>
-                                                <segue key="preview" inheritsFrom="commit" id="X04-El-QQ4"/>
-                                            </segue>
+                                            <action selector="dismissChallengeVC:" destination="9pv-A4-QxB" eventType="touchUpInside" id="W29-eV-rn1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -585,7 +582,6 @@
         <image name="work" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Lb5-pK-lMf"/>
         <segue reference="4m0-5g-rYv"/>
     </inferredMetricsTieBreakers>
 </document>

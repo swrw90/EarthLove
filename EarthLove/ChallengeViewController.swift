@@ -148,6 +148,9 @@ class ChallengeViewController: UIViewController {
             displayNewChallenge()
         }
     }
+    @IBAction func dismissChallengeVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     // Update skip button after a challenge is completed.
     private func updateSkipButton() {
