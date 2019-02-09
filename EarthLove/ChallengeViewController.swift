@@ -60,6 +60,8 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var returnToHistoryVCButton: UIButton!
+    
     
     
     // MARK: - View Controller Life Cycle
@@ -68,9 +70,7 @@ class ChallengeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let completedChallenge = completedChallenge {
-            titleLabel.text = completedChallenge.title
-            descriptionLabel.text = completedChallenge.summary
-            categoryImageView.image = completedChallenge.category.iconImage
+            setupSelectedChallengeUI(with: completedChallenge)
         } else {
             displayChallenge()
         }
@@ -103,6 +103,17 @@ class ChallengeViewController: UIViewController {
     
     /// Configure ChallengeVC UI using Challenge object.
     private func setupChallengeUI(with challenge: Challenge) {
+        titleLabel.text = challenge.title
+        descriptionLabel.text = challenge.summary
+        categoryImageView.image = challenge.category.iconImage
+    }
+    
+    /// Setup UI for Challenge selected in HistoryVC
+    private func setupSelectedChallengeUI(with challenge: Challenge) {
+        completedButton.isHidden = true
+        skipButton.isHidden = true
+        returnToHistoryVCButton.isHidden = false
+        
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
         categoryImageView.image = challenge.category.iconImage

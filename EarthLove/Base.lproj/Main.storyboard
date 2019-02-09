@@ -96,6 +96,21 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="share"/>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTz-Du-J8w">
+                                        <rect key="frame" x="185" y="588" width="45" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="51"/>
+                                        <state key="normal" title="↻">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="8rJ-Kc-sve" kind="presentation" identifier="showHistoryVC" modalTransitionStyle="flipHorizontal" id="Lb5-pK-lMf">
+                                                <segue key="commit" inheritsFrom="parent" id="8nF-Pl-vvR"/>
+                                                <segue key="preview" inheritsFrom="commit" id="X04-El-QQ4"/>
+                                            </segue>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -137,6 +152,7 @@
                         <outlet property="categoryImageView" destination="hfr-9v-dge" id="vdn-5p-sPY"/>
                         <outlet property="completedButton" destination="IFU-fu-3W5" id="MWm-nh-pBz"/>
                         <outlet property="descriptionLabel" destination="NjU-tY-Sir" id="oNZ-qP-hX8"/>
+                        <outlet property="returnToHistoryVCButton" destination="qTz-Du-J8w" id="9zt-uu-16s"/>
                         <outlet property="skipButton" destination="1ks-Q4-KNS" id="wPt-BI-VYc"/>
                         <outlet property="titleLabel" destination="Arq-qv-2qb" id="l5z-MW-TGC"/>
                         <segue destination="f0b-23-H3N" kind="presentation" identifier="showPendingViewController" id="yMb-BX-jXz"/>
@@ -569,6 +585,7 @@
         <image name="work" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Lb5-pK-lMf"/>
         <segue reference="4m0-5g-rYv"/>
     </inferredMetricsTieBreakers>
 </document>
