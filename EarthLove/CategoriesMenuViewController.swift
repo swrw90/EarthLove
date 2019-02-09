@@ -10,8 +10,6 @@ import UIKit
 
 private let categoryCell = "categoryCell"
 
-// 1. Use delegation pattern (Ceate a protocol here) to notify the delegate that category was selected.
-
 protocol CategoriesMenuViewControllerDelegate: AnyObject {
     func handleSelectedCategory(category: Category)
     
@@ -30,7 +28,6 @@ class CategoriesMenuViewController: UITableViewController {
         
     }
     
-    // 2. create weak var delegate property here.
     weak var delegate: CategoriesMenuViewControllerDelegate?
     
     

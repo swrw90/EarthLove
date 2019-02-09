@@ -448,12 +448,12 @@
                     <connections>
                         <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>
                         <outlet property="tableView" destination="JaN-oS-FEa" id="34R-ko-Yzx"/>
-                        <segue destination="9pv-A4-QxB" kind="show" identifier="showChallengeViewController" id="JAl-6b-YoI"/>
+                        <segue destination="9pv-A4-QxB" kind="presentation" identifier="showChallengeViewController" modalTransitionStyle="flipHorizontal" id="4m0-5g-rYv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.043478260869566" y="479.34782608695656"/>
+            <point key="canvasLocation" x="12" y="479"/>
         </scene>
         <!--CategoriesMenuViewController-->
         <scene sceneID="hmK-Z2-7vL">
@@ -569,6 +569,6 @@
         <image name="work" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JAl-6b-YoI"/>
+        <segue reference="4m0-5g-rYv"/>
     </inferredMetricsTieBreakers>
 </document>

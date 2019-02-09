@@ -23,9 +23,8 @@ class HistoryViewController: UIViewController {
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
-    
-    // 5. create a selectedCategory property.
     var selectedCategory: Category?
+    var completedChallenge: Challenge?
     
     // MARK: - Outlets
     
@@ -51,9 +50,6 @@ class HistoryViewController: UIViewController {
         
         var fetchedResultsController: NSFetchedResultsController<Challenge>
         let fetchRequest = Challenge.completedChallengesFetchRequest(category: selectedCategory)
-        
-        // 8. set fetchRequest predicate to filter out everything but selected category. Only do this IF selectedCategory exists.
-
         
         // Create an instance of NSFetchedResultsController using fetchRequest and context.
         fetchedResultsController = NSFetchedResultsController<Challenge>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -139,20 +135,32 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     // Displays overlay of ChallangeVC when row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Creates an instance of ChallengeViewController
-        guard let challengeVC: ChallengeViewController = self.storyboard!.instantiateViewController(withIdentifier: challengeViewControllerIdentifier) as? ChallengeViewController else { return }
+        completedChallenge = fetchedResultsController.object(at: indexPath)
         
-        // Moves the instance of challengeVC on top of the view hierchy list and sizes the views overlay.
-        challengeVC.view.frame = self.view.bounds
-        challengeVC.willMove(toParent: self)
-        self.view.addSubview(challengeVC.view)
-        self.addChild(challengeVC)
-        challengeVC.didMove(toParent: self)
+        performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
+        
+        //         Moves the instance of challengeVC on top of the view hierchy list and sizes the views overlay.
+        //        challengeVC.view.frame = self.view.bounds
+        //        challengeVC.willMove(toParent: self)
+        //        self.view.addSubview(challengeVC.view)
+        //        self.addChild(challengeVC)
+        //        challengeVC.didMove(toParent: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == showChallengeViewControllerKey {
+            guard let challengeVC = segue.destination as? ChallengeViewController else { return }
+            
+            challengeVC.completedChallenge = completedChallenge
+
+        }
     }
     
 }
 
-// MARK: - FecthedResultsControllerDelegate
+// MARK: - FecthedResultsControllerDelegate.
 
 /// Reloads tableView if HistoryVC content has changed.
 extension HistoryViewController: NSFetchedResultsControllerDelegate {
@@ -161,10 +169,13 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+
+// MARK: - CategoriesMenuViewControllerDelegate.
+
 extension HistoryViewController: CategoriesMenuViewControllerDelegate {
     
     func handleSelectedCategory(category: Category) {
-
+        
         selectedCategory = category
         categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
         _fetchedResultsController = nil

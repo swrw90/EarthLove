@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
     
@@ -16,13 +17,14 @@ class ChallengeViewController: UIViewController {
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
+    var completedChallenge: Challenge?
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
     let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
-   
+    
     // Watches for challenge value to change.
     private var challenge: Challenge? {
         didSet {
@@ -64,7 +66,14 @@ class ChallengeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        displayChallenge()
+        
+        if let completedChallenge = completedChallenge {
+            titleLabel.text = completedChallenge.title
+            descriptionLabel.text = completedChallenge.summary
+            categoryImageView.image = completedChallenge.category.iconImage
+        } else {
+            displayChallenge()
+        }
     }
     
     /// Checks if the creation time has lapsed 24 hours.
