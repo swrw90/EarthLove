@@ -22,6 +22,7 @@ class ChallengeViewController: UIViewController {
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
+    let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
     
@@ -49,6 +50,17 @@ class ChallengeViewController: UIViewController {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: skipCountKey)
+        }
+    }
+    
+    // Returns value of numberOfTimesCompleted count from UserDefaults.
+    var numberOfTimesCompleted: Int {
+        get {
+            guard let numberOfTimesCompleted = UserDefaults.standard.value(forKey: numberOfTimesCompletedKey) as? Int else { fatalError("Number of times completed count is nil") }
+            return numberOfTimesCompleted
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: numberOfTimesCompletedKey)
         }
     }
     
@@ -160,6 +172,11 @@ class ChallengeViewController: UIViewController {
     
     // Handle completed button press.
     @IBAction private func completedPressed(_ sender: UIButton) {
+        numberOfTimesCompleted += 1
+        if numberOfTimesCompleted == 1 {
+            print("Network call for fortune cookie. Count: \(numberOfTimesCompleted)")
+        }
+        
         performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()

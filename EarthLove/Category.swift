@@ -9,7 +9,6 @@
 import UIKit
 
 enum Category: String, CaseIterable {
-    case all
     case work
     case home
     case recreational

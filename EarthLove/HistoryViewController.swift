@@ -176,15 +176,10 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
     
     func handleSelectedCategory(category: Category) {
         
-        if category == .all {
-
-            categoryHeader.setTitle("All", for: .normal)
-            _fetchedResultsController = nil
-        } else {
         selectedCategory = category
         categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
         _fetchedResultsController = nil
-        }
+        
         self.tableView.reloadData()
     }
 }

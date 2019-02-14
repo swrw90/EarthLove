@@ -58,3 +58,4 @@ class CategoriesMenuViewController: UITableViewController {
         self.removeFromParent()
     }
 }
+
