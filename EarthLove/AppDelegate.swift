@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if isFirstLaunch {
             parseChallengeJSON()
+            parseFortuneJSON()
         } else {
             print("App has already previously launched.")
         }
@@ -116,12 +117,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func parseChallengeJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "challengeData", ofType: "json") {
             do {
                 let pathURL = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: pathURL)
                 if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
                     Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func parseFortuneJSON() {
+        // Find path to json, make path into URL, get data from json, parse json data.
+        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
+        if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
+            do {
+                let pathURL = URL(fileURLWithPath: path)
+                let data = try Data(contentsOf: pathURL)
+                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
+                    Fortune.insertToStore(from: jsonResult, in: managedObjectContext)
                 }
             } catch {
                 print(error.localizedDescription)

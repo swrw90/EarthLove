@@ -160,6 +160,7 @@ class ChallengeViewController: UIViewController {
             displayNewChallenge()
         }
     }
+    
     @IBAction func dismissChallengeVC(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
