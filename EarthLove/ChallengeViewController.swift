@@ -80,6 +80,8 @@ class ChallengeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        guard let context = managedObjectContext else { return }
+        Fortune.getRandomFortune(in: context)
         
         if let completedChallenge = completedChallenge {
             setupSelectedChallengeUI(with: completedChallenge)

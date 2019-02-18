@@ -75,6 +75,9 @@ public class Fortune: NSManagedObject {
         return try? context.count(for: fetchRequest)
     }
     
-//    class func getRandomFortune()
+    class func getRandomFortune(in context: NSManagedObjectContext) {
+        let numberOfFortunes = getAllFortunesCount(in: context)
+        print(numberOfFortunes)
+    }
 }
 
