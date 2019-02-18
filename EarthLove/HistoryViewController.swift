@@ -108,9 +108,10 @@ class HistoryViewController: UIViewController {
         categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
         
         let transition = CATransition()
+        transition.duration = 0.5
         transition.type = CATransitionType.moveIn
         transition.subtype = CATransitionSubtype.fromTop
-        view.layer.add(transition, forKey: nil)
+        categoriesMenuVC.view.layer.add(transition, forKey: nil)
     }
 }
 
@@ -143,17 +144,9 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Displays overlay of ChallangeVC when row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    
         completedChallenge = fetchedResultsController.object(at: indexPath)
-        
         performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
-        
-        //         Moves the instance of challengeVC on top of the view hierchy list and sizes the views overlay.
-        //        challengeVC.view.frame = self.view.bounds
-        //        challengeVC.willMove(toParent: self)
-        //        self.view.addSubview(challengeVC.view)
-        //        self.addChild(challengeVC)
-        //        challengeVC.didMove(toParent: self)
         
     }
     
@@ -168,6 +161,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
 
 // MARK: - FecthedResultsControllerDelegate.
 
