@@ -49,13 +49,18 @@ class CategoriesMenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         delegate?.handleSelectedCategory(category: Category.allCases[indexPath.row])
         
         // Remove categoriesMenuVC from view stack.
         self.willMove(toParent: nil)
-        self.view.removeFromSuperview()
-        self.removeFromParent()
+        
+        self.view.frame.origin.y = self.view.frame.height
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        self.view.layer.add(transition, forKey: nil)
     }
 }
 
