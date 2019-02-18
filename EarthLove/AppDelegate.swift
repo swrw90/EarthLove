@@ -82,7 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
     var isFirstLaunch: Bool {
         let defaults = UserDefaults.standard
         
@@ -133,17 +132,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func parseFortuneJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-        if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
-            do {
-                let pathURL = URL(fileURLWithPath: path)
-                let data = try Data(contentsOf: pathURL)
-                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
-                    Fortune.insertToStore(from: jsonResult, in: managedObjectContext)
+       
+        DispatchQueue.global(qos: .background).async {
+            if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
+                do {
+                    let pathURL = URL(fileURLWithPath: path)
+                    let data = try Data(contentsOf: pathURL)
+                    DispatchQueue.main.async {
+                        guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON], let json = jsonResult else { return }
+                        Fortune.insertToStore(from: json, in: self.managedObjectContext)
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
-            } catch {
-                print(error.localizedDescription)
             }
         }
+
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

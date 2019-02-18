@@ -81,6 +81,7 @@ class HistoryViewController: UIViewController {
         cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
         
+       
     }
     
     /// Get an array of all complted challenges.
@@ -90,18 +91,22 @@ class HistoryViewController: UIViewController {
     }
     
     @IBAction func displayCategoriesMenu(_ sender: Any) {
-        
+
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
-        
+
         categoriesMenuVC.delegate = self
-        categoriesMenuVC.view.frame = self.view.bounds;
+        let newFrame = CGRect(x: view.frame.origin.x, y: view.frame.maxY, width: view.frame.width, height: view.frame.height)
+
+
+        categoriesMenuVC.view.frame = newFrame
         categoriesMenuVC.willMove(toParent: self)
-        
-        self.view.addSubview(categoriesMenuVC.view)
-        self.addChild(categoriesMenuVC)
-        
+
+        addChild(categoriesMenuVC)
+        view.addSubview(categoriesMenuVC.view)
+
         categoriesMenuVC.didMove(toParent: self)
         
+        categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
     }
 }
 

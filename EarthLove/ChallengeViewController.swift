@@ -56,7 +56,7 @@ class ChallengeViewController: UIViewController {
     // Returns value of numberOfTimesCompleted count from UserDefaults.
     var numberOfTimesCompleted: Int {
         get {
-            guard let numberOfTimesCompleted = UserDefaults.standard.value(forKey: numberOfTimesCompletedKey) as? Int else { fatalError("Number of times completed count is nil") }
+            guard let numberOfTimesCompleted = UserDefaults.standard.value(forKey: numberOfTimesCompletedKey) as? Int else { fatalError("Number of times completed count is nil.") }
             return numberOfTimesCompleted
         }
         set {

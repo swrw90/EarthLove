@@ -22,7 +22,13 @@ public class Fortune: NSManagedObject {
             fatalError("Failed to save")
         }
     }
-    
+   
+    /// Return a hydrated Fortune object from json to be saved into context.
+    ///
+    /// - Parameters:
+    ///     - json: Array of json Fortune objects.
+    ///     - context: NSManagedObjectContext to be used to modify Fortune objects.
+    /// - Returns: Returns a hydrated Fortune object.
     class func fortune(from json: JSON, in context: NSManagedObjectContext) -> Fortune? {
         // Make sure these properties are coming from the json. If it's not Fortune cannot exist
         // so return nil.
@@ -44,6 +50,12 @@ public class Fortune: NSManagedObject {
         return fortune
     }
     
+    /// Fetch a Fortune object using an identifier.
+    ///
+    /// - Parameters:
+    ///     - identifier: Use the identifiers property on the Fortune object to retrieve object by its ID.
+    ///     - context: NSManagedObjectContext used to retrieve Fortune object from.
+    /// - Returns: Returns a specific Fortune object retrieved by its identifier.
     class func fetch(with identifier: Int64, in context: NSManagedObjectContext) -> Fortune? {
         let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "%K == %d", #keyPath(Fortune.identifier), identifier)
@@ -57,5 +69,12 @@ public class Fortune: NSManagedObject {
             return nil
         }
     }
+    
+    class func getAllFortunesCount(in context: NSManagedObjectContext) -> Int? {
+        var fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
+        return try? context.count(for: fetchRequest)
+    }
+    
+//    class func getRandomFortune()
 }
 
