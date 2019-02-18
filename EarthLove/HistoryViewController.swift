@@ -97,7 +97,6 @@ class HistoryViewController: UIViewController {
         categoriesMenuVC.delegate = self
         let newFrame = CGRect(x: view.frame.origin.x, y: view.frame.maxY, width: view.frame.width, height: view.frame.height)
 
-
         categoriesMenuVC.view.frame = newFrame
         categoriesMenuVC.willMove(toParent: self)
 
@@ -107,6 +106,11 @@ class HistoryViewController: UIViewController {
         categoriesMenuVC.didMove(toParent: self)
         
         categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
+        
+        let transition = CATransition()
+        transition.type = CATransitionType.moveIn
+        transition.subtype = CATransitionSubtype.fromTop
+        view.layer.add(transition, forKey: nil)
     }
 }
 
