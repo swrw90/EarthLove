@@ -18,6 +18,7 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
+    var fortuneView: FortuneView?
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
@@ -78,10 +79,16 @@ class ChallengeViewController: UIViewController {
     
     // MARK: - View Controller Life Cycle
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let context = managedObjectContext else { return }
-        Fortune.getRandomFortune(in: context)
+        
+        displayRandomFortune()
         
         if let completedChallenge = completedChallenge {
             setupSelectedChallengeUI(with: completedChallenge)
@@ -156,6 +163,7 @@ class ChallengeViewController: UIViewController {
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
         skipCount += 1
+                displayRandomFortune()
         if skipCount > 3 {
             showSkipAlert()
         } else {
@@ -183,6 +191,22 @@ class ChallengeViewController: UIViewController {
         performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()
+
+    }
+    
+    // Display random fortune's data.
+    private func displayRandomFortune() {
+        guard let context = managedObjectContext else { return }
+        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
+        let fortuneView: FortuneView = FortuneView.instanceOfFortuneNib() as! FortuneView
+        
+        // Add subview to top level view.
+        self.view.addSubview(fortuneView)
+        fortuneView.fortuneLabel.text = summary
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            fortuneView.frame.origin.y = self.view.frame.height / 2
+        })
     }
     
     
@@ -198,3 +222,5 @@ class ChallengeViewController: UIViewController {
         }
     }
 }
+
+

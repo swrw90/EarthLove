@@ -19,7 +19,6 @@ private let challengeViewControllerIdentifier = "ChallengeViewController"
 /// MARK: - Displays the history of users completed challenges.
 class HistoryViewController: UIViewController {
     
-    
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
@@ -31,6 +30,8 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryHeader: UIButton!
     
+    
+    private var categoriesMenuViewController: CategoriesMenuViewController?
     
     // MARK: - NSFetchedResultsController
     
@@ -91,8 +92,12 @@ class HistoryViewController: UIViewController {
     }
     
     @IBAction func displayCategoriesMenu(_ sender: Any) {
-
+        
+        guard categoriesMenuViewController == nil else { return }
+        
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
+        
+        self.categoriesMenuViewController = categoriesMenuVC
 
         categoriesMenuVC.delegate = self
         let newFrame = CGRect(x: view.frame.origin.x, y: view.frame.maxY, width: view.frame.width, height: view.frame.height)
@@ -178,6 +183,15 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
 extension HistoryViewController: CategoriesMenuViewControllerDelegate {
     
     func handleSelectedCategory(category: Category) {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
+        }, completion: { _ in
+            // Remove categoriesMenuVC from view stack.
+            self.categoriesMenuViewController?.willMove(toParent: nil)
+            
+            self.categoriesMenuViewController = nil
+        })
         
         selectedCategory = category
         categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)

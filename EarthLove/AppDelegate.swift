@@ -139,6 +139,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let pathURL = URL(fileURLWithPath: path)
                     let data = try Data(contentsOf: pathURL)
                     DispatchQueue.main.async {
+                        do {
+                            try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                        } catch {
+                            print(error)
+                        }
+                        
                         guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON], let json = jsonResult else { return }
                         Fortune.insertToStore(from: json, in: self.managedObjectContext)
                     }

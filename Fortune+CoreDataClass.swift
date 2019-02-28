@@ -22,7 +22,7 @@ public class Fortune: NSManagedObject {
             fatalError("Failed to save")
         }
     }
-   
+    
     /// Return a hydrated Fortune object from json to be saved into context.
     ///
     /// - Parameters:
@@ -33,8 +33,8 @@ public class Fortune: NSManagedObject {
         // Make sure these properties are coming from the json. If it's not Fortune cannot exist
         // so return nil.
         guard let identifier = json["identifier"] as? Int64,
-            let isCompleted = json["isCompleted"] as? Bool
-        else { return nil }
+            let hasDisplayed = json["hasDisplayed"] as? Bool
+            else { return nil }
         
         // Fetch the fortune with identifier, if it doesn't exist create a new one.
         let fortune = fetch(with: identifier, in: context) ?? Fortune(context: context)
@@ -42,10 +42,8 @@ public class Fortune: NSManagedObject {
         
         // Hydrate
         fortune.identifier = identifier
-        fortune.isCompleted = isCompleted
+        fortune.hasDisplayed = hasDisplayed
         fortune.summary = summary
-        
-        print("\(fortune)")
         
         return fortune
     }
@@ -71,13 +69,36 @@ public class Fortune: NSManagedObject {
     }
     
     class func getAllFortunesCount(in context: NSManagedObjectContext) -> Int? {
-        var fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
-        return try? context.count(for: fetchRequest)
+        let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
+        fetchRequest.predicate = hasNotDisplayedFortunePredicate
+
+        let count = try? context.count(for: fetchRequest)
+        print(count)
+        return count
     }
     
-    class func getRandomFortune(in context: NSManagedObjectContext) {
-        let numberOfFortunes = getAllFortunesCount(in: context)
-        print(numberOfFortunes)
+    class func getRandomFortune(in context: NSManagedObjectContext) -> Fortune? {
+        guard let numberOfFortunes = getAllFortunesCount(in: context), numberOfFortunes > 0 else { return nil }
+        let randomNumber = Int.random(in: 0 ..< numberOfFortunes)
+        print(randomNumber)
+        
+        let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
+        fetchRequest.fetchOffset = randomNumber
+        fetchRequest.fetchLimit = 1
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.predicate = hasNotDisplayedFortunePredicate
+        
+        do {
+            let randomFortune = try context.fetch(fetchRequest)
+            print(randomFortune)
+            return randomFortune.first
+        } catch {
+            print("error")
+            return nil
+        }
+    }
+    
+    static var hasNotDisplayedFortunePredicate: NSPredicate {
+        return NSPredicate(format: "%K = NO", #keyPath(Fortune.hasDisplayed))
     }
 }
-

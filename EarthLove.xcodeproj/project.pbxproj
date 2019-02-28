@@ -23,6 +23,8 @@
 		C77025E82215670600D9C549 /* Fortune+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */; };
 		C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */; };
 		C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */ = {isa = PBXBuildFile; fileRef = C77025EC22156F4F00D9C549 /* fortuneData.json */; };
+		C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025EE2227B82800D9C549 /* FortuneView.swift */; };
+		C77025F12227B95500D9C549 /* FortuneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77025F02227B95500D9C549 /* FortuneView.xib */; };
 		C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */; };
 		C790032421A37B4500737CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032321A37B4500737CBD /* AppDelegate.swift */; };
 		C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032521A37B4500737CBD /* ChallengeViewController.swift */; };
@@ -62,6 +64,8 @@
 		C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C77025EC22156F4F00D9C549 /* fortuneData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortuneData.json; sourceTree = "<group>"; };
+		C77025EE2227B82800D9C549 /* FortuneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneView.swift; sourceTree = "<group>"; };
+		C77025F02227B95500D9C549 /* FortuneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneView.xib; sourceTree = "<group>"; };
 		C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeViewController.swift; sourceTree = "<group>"; };
 		C790032021A37B4500737CBD /* EarthLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C790032321A37B4500737CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		C790031721A37B4500737CBD = {
 			isa = PBXGroup;
 			children = (
+				C77025EE2227B82800D9C549 /* FortuneView.swift */,
+				C77025F02227B95500D9C549 /* FortuneView.xib */,
 				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
 				C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */,
 				C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */,
@@ -194,6 +200,7 @@
 				C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */,
 				C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */,
 				C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */,
+				C77025F12227B95500D9C549 /* FortuneView.xib in Resources */,
 				C74A325721AF774E00C8ACE3 /* challengeData.json in Resources */,
 				C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */,
 				C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */,
@@ -217,6 +224,7 @@
 				C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
+				C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
