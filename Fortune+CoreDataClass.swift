@@ -73,7 +73,6 @@ public class Fortune: NSManagedObject {
         fetchRequest.predicate = hasNotDisplayedFortunePredicate
 
         let count = try? context.count(for: fetchRequest)
-        print(count)
         return count
     }
     
