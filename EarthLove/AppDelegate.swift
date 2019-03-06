@@ -103,6 +103,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserDefaults.standard.register(defaults: ["numberOfTimesCompleted" : 0])
             }
             
+            // Register the initial countUntilFortuneDisplays value from ChallengeVC to UserDefaults.
+            if UserDefaults.standard.object(forKey: "countUntilFortuneDisplays") == nil {
+                UserDefaults.standard.register(defaults: ["countUntilFortuneDisplays" : 0])
+            }
+            
             // Register initial Challenge for ChallengeVC to UserDefaults
             UserDefaults.standard.register(defaults: ["identifier" : 1])
             

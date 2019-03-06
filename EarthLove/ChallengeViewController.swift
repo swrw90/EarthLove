@@ -24,6 +24,7 @@ class ChallengeViewController: UIViewController {
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
+    let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
     let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
     
@@ -64,6 +65,19 @@ class ChallengeViewController: UIViewController {
             UserDefaults.standard.set(newValue, forKey: numberOfTimesCompletedKey)
         }
     }
+    
+    
+    // Returns value of countUntilFortuneDisplays count from UserDefaults.
+    var countUntilFortuneDisplays: Int {
+        get {
+            guard let countUntilFortuneDisplays = UserDefaults.standard.value(forKey: countUntilFortuneDisplaysKey) as? Int else { fatalError("Count until Fortune Displays is nil.") }
+            return countUntilFortuneDisplays
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: countUntilFortuneDisplaysKey)
+        }
+    }
+    
     
     
     // MARK: - Outlets
@@ -160,7 +174,7 @@ class ChallengeViewController: UIViewController {
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
         skipCount += 1
-        displayRandomFortune()
+
         if skipCount > 3 {
             showSkipAlert()
         } else {
@@ -181,14 +195,22 @@ class ChallengeViewController: UIViewController {
     // Handle completed button press.
     @IBAction private func completedPressed(_ sender: UIButton) {
         numberOfTimesCompleted += 1
-        if numberOfTimesCompleted == 1 {
-            print("Network call for fortune cookie. Count: \(numberOfTimesCompleted)")
+        countUntilFortuneDisplays += 1
+        
+        if countUntilFortuneDisplays == 7 {
+            handleCountUntilFortuneDisplays()
         }
         
         performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()
         
+    }
+    
+    // Displays random Fortune after count to display fortune is 7, resets count to 0.
+    private func handleCountUntilFortuneDisplays() {
+            displayRandomFortune()
+            countUntilFortuneDisplays = 0
     }
     
     // Display random fortune's data.
