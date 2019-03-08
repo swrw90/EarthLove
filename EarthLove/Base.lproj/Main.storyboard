@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huF-oX-ePZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-9v-dge" userLabel="Category Image View">
                                         <rect key="frame" x="119.66666666666669" y="90" width="175" height="175"/>
@@ -29,7 +29,7 @@
                                         </constraints>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjU-tY-Sir" userLabel="Challenge Description">
-                                        <rect key="frame" x="50" y="320" width="314" height="292"/>
+                                        <rect key="frame" x="50" y="320" width="314" height="297"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="qic-ck-Itg">
-                                        <rect key="frame" x="85.666666666666686" y="620" width="243" height="51"/>
+                                        <rect key="frame" x="85.666666666666686" y="625" width="243" height="51"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ks-Q4-KNS">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="51"/>
@@ -140,7 +140,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="k24-F2-zZR"/>
                     <navigationItem key="navigationItem" id="qC3-Bb-edK">
                         <barButtonItem key="leftBarButtonItem" title="Stats" id="6kR-DR-iiP"/>
                         <barButtonItem key="rightBarButtonItem" title="Detail" id="yha-oO-Yre"/>
@@ -152,14 +151,14 @@
                         <outlet property="returnToHistoryVCButton" destination="qTz-Du-J8w" id="9zt-uu-16s"/>
                         <outlet property="skipButton" destination="1ks-Q4-KNS" id="wPt-BI-VYc"/>
                         <outlet property="titleLabel" destination="Arq-qv-2qb" id="l5z-MW-TGC"/>
-                        <segue destination="f0b-23-H3N" kind="presentation" identifier="showPendingViewController" id="yMb-BX-jXz"/>
+                        <segue destination="f0b-23-H3N" kind="show" identifier="showPendingViewController" id="yMb-BX-jXz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808.79999999999995" y="-298.2008995502249"/>
+            <point key="canvasLocation" x="2275" y="-285"/>
         </scene>
-        <!--Stats-->
+        <!--Stats View Controller-->
         <scene sceneID="Bei-nP-7CW">
             <objects>
                 <viewController id="UgQ-Lh-R4n" customClass="StatsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
@@ -295,7 +294,6 @@
                         <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="yXm-HH-Skf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Stats" id="dbx-vd-4Gu"/>
                     <navigationItem key="navigationItem" id="QA0-TW-xa0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -312,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrh-3r-OcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-726" y="480"/>
+            <point key="canvasLocation" x="-726" y="1177"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="KLF-mE-NCk">
@@ -402,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhN-tU-2hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1636" y="-298.2008995502249"/>
+            <point key="canvasLocation" x="3041" y="-284"/>
         </scene>
         <!--HistoryViewController-->
         <scene sceneID="wg7-f3-ORb">
@@ -424,7 +422,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-Yk-Utc">
-                                <rect key="frame" x="20" y="16" width="374" height="92"/>
+                                <rect key="frame" x="20" y="60" width="374" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR1-g3-ChF">
                                         <rect key="frame" x="137" y="27" width="100" height="38"/>
@@ -456,17 +454,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
+                    <navigationItem key="navigationItem" id="QVy-On-aIc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>
                         <outlet property="tableView" destination="JaN-oS-FEa" id="34R-ko-Yzx"/>
-                        <segue destination="9pv-A4-QxB" kind="presentation" identifier="showChallengeViewController" modalTransitionStyle="flipHorizontal" id="4m0-5g-rYv"/>
+                        <segue destination="Snh-Ud-ah5" kind="presentation" identifier="showChallengeViewController" modalTransitionStyle="flipHorizontal" id="4m0-5g-rYv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="479"/>
+            <point key="canvasLocation" x="862" y="479"/>
         </scene>
         <!--CategoriesMenuViewController-->
         <scene sceneID="hmK-Z2-7vL">
@@ -494,7 +492,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwO-jA-tIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13" y="1215"/>
+            <point key="canvasLocation" x="71" y="1176"/>
         </scene>
         <!--Pending Challenge View Controller-->
         <scene sceneID="c03-1c-00J">
@@ -549,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVV-2O-7qo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="809" y="479"/>
+            <point key="canvasLocation" x="2274" y="479"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -561,14 +559,71 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="Wkd-YA-o8j"/>
-                        <segue destination="UgQ-Lh-R4n" kind="relationship" relationship="viewControllers" id="rVH-db-5Ap"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="iaT-9O-47U"/>
+                        <segue destination="Snh-Ud-ah5" kind="relationship" relationship="viewControllers" id="Wkd-YA-o8j"/>
+                        <segue destination="ZjU-2u-GgY" kind="relationship" relationship="viewControllers" id="rVH-db-5Ap"/>
+                        <segue destination="WqV-n8-BeW" kind="relationship" relationship="viewControllers" id="iaT-9O-47U"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-349" y="-298"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="azp-sU-Mrg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Snh-Ud-ah5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="k24-F2-zZR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aig-Xv-FYm">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="WN9-p0-ueX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rp3-fV-F1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1613" y="-298"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="cqZ-RA-r08">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WqV-n8-BeW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W4E-6t-kaZ">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="8JE-je-PCq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G7l-OA-FqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="72" y="479"/>
+        </scene>
+        <!--Stats-->
+        <scene sceneID="jfI-YS-xrs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjU-2u-GgY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Stats" id="dbx-vd-4Gu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I7O-vN-hUX">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UgQ-Lh-R4n" kind="relationship" relationship="rootViewController" id="buu-zL-Nty"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OqR-Ld-LET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-726.08695652173924" y="479.34782608695656"/>
         </scene>
     </scenes>
     <resources>
@@ -582,6 +637,6 @@
         <image name="work" width="51.200000762939453" height="51.200000762939453"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wkd-YA-o8j"/>
+        <segue reference="4m0-5g-rYv"/>
     </inferredMetricsTieBreakers>
 </document>

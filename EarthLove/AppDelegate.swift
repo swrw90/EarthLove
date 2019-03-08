@@ -63,14 +63,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeAppearance()
         
         let tabController = window!.rootViewController as! UITabBarController
-        
-        if let controller = tabController.viewControllers?.first as? ChallengeViewController {
-            controller.managedObjectContext = managedObjectContext
-        }
-        if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
+        if let tabViewControllers = tabController.viewControllers {
+            
+            var navController = tabViewControllers[0] as! UINavigationController
+            let controller1 = navController.viewControllers.first as! ChallengeViewController
             controller1.managedObjectContext = managedObjectContext
+            
+            navController = tabViewControllers[1] as! UINavigationController
+            let controller2 = navController.viewControllers[0] as! StatsViewController
             controller2.managedObjectContext = managedObjectContext
+            
+            navController = tabViewControllers[2] as! UINavigationController
+            let controller3 = navController.viewControllers[0] as! HistoryViewController
             controller3.managedObjectContext = managedObjectContext
+            
         }
         
         if isFirstLaunch {
@@ -137,7 +143,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func parseFortuneJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-       
+        
         DispatchQueue.global(qos: .background).async {
             if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
                 do {
@@ -158,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
