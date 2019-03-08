@@ -133,6 +133,12 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    // Display completedChallenge for Challenge selected in HistoryVC.
+    class func displayCompletedChallenge(with: Challenge?) {
+        
+    }
+    
+    
     /// Configure ChallengeVC UI using Challenge object.
     private func setupChallengeUI(with challenge: Challenge) {
         titleLabel.text = challenge.title

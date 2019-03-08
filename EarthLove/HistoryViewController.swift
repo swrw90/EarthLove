@@ -82,7 +82,7 @@ class HistoryViewController: UIViewController {
         cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
         
-       
+        
     }
     
     /// Get an array of all complted challenges.
@@ -98,16 +98,16 @@ class HistoryViewController: UIViewController {
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
         
         self.categoriesMenuViewController = categoriesMenuVC
-
+        
         categoriesMenuVC.delegate = self
         let newFrame = CGRect(x: view.frame.origin.x, y: view.frame.maxY, width: view.frame.width, height: view.frame.height)
-
+        
         categoriesMenuVC.view.frame = newFrame
         categoriesMenuVC.willMove(toParent: self)
-
+        
         addChild(categoriesMenuVC)
         view.addSubview(categoriesMenuVC.view)
-
+        
         categoriesMenuVC.didMove(toParent: self)
         
         categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
@@ -149,7 +149,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Displays overlay of ChallangeVC when row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
         completedChallenge = fetchedResultsController.object(at: indexPath)
         performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
         
@@ -158,10 +158,9 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == showChallengeViewControllerKey {
-            guard let challengeVC = segue.destination as? ChallengeViewController else { return }
-            
+            guard let navController = segue.destination as? UINavigationController, let challengeVC = navController.viewControllers.first as? ChallengeViewController else { return }
             challengeVC.completedChallenge = completedChallenge
-
+            
         }
     }
     
