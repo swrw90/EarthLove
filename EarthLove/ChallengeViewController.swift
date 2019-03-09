@@ -88,6 +88,7 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var returnToHistoryVCButton: UIButton!
+    @IBOutlet weak var showPendingVCButton: UIButton!
     
     
     
@@ -132,12 +133,6 @@ class ChallengeViewController: UIViewController {
             updateSkipButton()
         }
     }
-    
-    // Display completedChallenge for Challenge selected in HistoryVC.
-    class func displayCompletedChallenge(with: Challenge?) {
-        
-    }
-    
     
     /// Configure ChallengeVC UI using Challenge object.
     private func setupChallengeUI(with challenge: Challenge) {
@@ -188,6 +183,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    // Dismisses ChallengeViewController from HistoryViewController segue and returns to HistoryViewController.
     @IBAction func dismissChallengeVC(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -211,6 +207,9 @@ class ChallengeViewController: UIViewController {
         updateSkipButton()
         changeCompletionStatus()
         
+    }
+    @IBAction func showPendingViewController(_ sender: Any) {
+        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
     }
     
     // Displays random Fortune after count to display fortune is 7, resets count to 0.
@@ -247,6 +246,9 @@ class ChallengeViewController: UIViewController {
         
         if segue.identifier == showPendingViewControllerKey {
             guard let controller = segue.destination as? PendingChallengeViewController else { return }
+            self.completedButton.isHidden = true
+            self.skipButton.isHidden = true
+            self.showPendingVCButton.isHidden = false
             controller.secondsInTwentyFourHours = secondsInTwentyFourHours
             controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
         }

@@ -93,6 +93,7 @@ class HistoryViewController: UIViewController {
     
     @IBAction func displayCategoriesMenu(_ sender: Any) {
         
+        
         guard categoriesMenuViewController == nil else { return }
         
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
@@ -151,7 +152,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         completedChallenge = fetchedResultsController.object(at: indexPath)
-        performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
+//        performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
+        let challengeVC = storyboard!.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController
+        
+        challengeVC.completedChallenge = completedChallenge
+        navigationController?.pushViewController(challengeVC, animated: true)
         
     }
     

@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController {
         
     }
     
-    @IBAction func close(_ sender: Any) {
+    @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
