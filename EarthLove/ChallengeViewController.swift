@@ -89,7 +89,7 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var returnToHistoryVCButton: UIButton!
     @IBOutlet weak var showPendingVCButton: UIButton!
-    
+    @IBOutlet weak var backButton: UIButton!
     
     
     // MARK: - View Controller Life Cycle
@@ -145,7 +145,6 @@ class ChallengeViewController: UIViewController {
     private func setupSelectedChallengeUI(with challenge: Challenge) {
         completedButton.isHidden = true
         skipButton.isHidden = true
-        returnToHistoryVCButton.isHidden = false
         
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
@@ -185,7 +184,7 @@ class ChallengeViewController: UIViewController {
     
     // Dismisses ChallengeViewController from HistoryViewController segue and returns to HistoryViewController.
     @IBAction func dismissChallengeVC(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     // Update skip button after a challenge is completed.

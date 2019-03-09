@@ -79,20 +79,8 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTz-Du-J8w">
-                                        <rect key="frame" x="185" y="588" width="45" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="51"/>
-                                        <state key="normal" title="↻">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismissChallengeVC:" destination="9pv-A4-QxB" eventType="touchUpInside" id="W29-eV-rn1"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxL-lA-Vpi">
-                                        <rect key="frame" x="193" y="550" width="30" height="30"/>
+                                        <rect key="frame" x="192" y="586" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="first"/>
                                         <connections>
@@ -128,17 +116,27 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" id="qC3-Bb-edK">
-                        <barButtonItem key="leftBarButtonItem" title="Stats" image="settings" id="6kR-DR-iiP">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="a3q-W1-rPs">
+                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vQ9-tW-XTq" userLabel="Back">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dismissChallengeVC:" destination="9pv-A4-QxB" eventType="touchUpInside" id="JpT-lC-6Ga"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Stats" image="settings" id="6kR-DR-iiP">
                             <connections>
                                 <segue destination="dpL-8W-olS" kind="show" id="ReR-bd-nbo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="vQ9-tW-XTq" id="e0H-Fa-SLP"/>
                         <outlet property="categoryImageView" destination="hfr-9v-dge" id="vdn-5p-sPY"/>
                         <outlet property="completedButton" destination="IFU-fu-3W5" id="MWm-nh-pBz"/>
                         <outlet property="descriptionLabel" destination="NjU-tY-Sir" id="oNZ-qP-hX8"/>
-                        <outlet property="returnToHistoryVCButton" destination="qTz-Du-J8w" id="9zt-uu-16s"/>
                         <outlet property="showPendingVCButton" destination="yxL-lA-Vpi" id="YPE-m0-ebS"/>
                         <outlet property="skipButton" destination="1ks-Q4-KNS" id="wPt-BI-VYc"/>
                         <outlet property="titleLabel" destination="Arq-qv-2qb" id="l5z-MW-TGC"/>
@@ -400,7 +398,7 @@
         <!--HistoryViewController-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="HistoryViewController" customClass="HistoryViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryViewController" id="8rJ-Kc-sve" userLabel="HistoryViewController" customClass="HistoryViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
