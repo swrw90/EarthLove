@@ -152,11 +152,12 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         completedChallenge = fetchedResultsController.object(at: indexPath)
-//        performSegue(withIdentifier: showChallengeViewControllerKey, sender: self)
+
         let challengeVC = storyboard!.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController
         
         challengeVC.completedChallenge = completedChallenge
         challengeVC.backButton.isHidden = false
+        challengeVC.navigationItem.rightBarButtonItem = nil
         navigationController?.pushViewController(challengeVC, animated: true)
         
     }
