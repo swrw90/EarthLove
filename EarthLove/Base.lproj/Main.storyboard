@@ -116,16 +116,6 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <navigationItem key="navigationItem" id="qC3-Bb-edK">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="a3q-W1-rPs">
-                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vQ9-tW-XTq" userLabel="Back">
-                                <rect key="frame" x="20" y="7" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="dismissChallengeVC:" destination="9pv-A4-QxB" eventType="touchUpInside" id="JpT-lC-6Ga"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Stats" image="settings" id="6kR-DR-iiP">
                             <connections>
                                 <segue destination="dpL-8W-olS" kind="show" id="ReR-bd-nbo"/>
@@ -133,7 +123,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="vQ9-tW-XTq" id="e0H-Fa-SLP"/>
                         <outlet property="categoryImageView" destination="hfr-9v-dge" id="vdn-5p-sPY"/>
                         <outlet property="completedButton" destination="IFU-fu-3W5" id="MWm-nh-pBz"/>
                         <outlet property="descriptionLabel" destination="NjU-tY-Sir" id="oNZ-qP-hX8"/>

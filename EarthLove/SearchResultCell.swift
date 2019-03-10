@@ -19,13 +19,7 @@ class SearchResultCell: UITableViewCell {
         let selectedView = UIView(frame: CGRect.zero)
         selectedView.backgroundColor = UIColor(red: 20/255, green: 140/255, blue: 60/255, alpha: 0.5)
         selectedBackgroundView = selectedView
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         
-        
-        // Configure the view for the selected state
+        accessoryType = .disclosureIndicator
     }
-    
 }

@@ -97,6 +97,7 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayPendingChallengeTimerView()
         
     }
     
@@ -152,6 +153,27 @@ class ChallengeViewController: UIViewController {
         categoryImageView.image = challenge.category.iconImage
     }
     
+    /// Displays PendingChallengeTimerView if challenge is completed and timer has not lapsed.
+    private func displayPendingChallengeTimerView() {
+        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
+        
+        guard let challenge = Challenge.fetch(with: id, in: context) else { return }
+        
+        if challenge.isCompleted && !hasTwentyFourHoursPassed {
+            guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
+            
+            pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
+            pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+            
+            self.view.addSubview(pendingChallengeTimerView)
+            pendingChallengeTimerView.pinFrameToSuperView()
+        } else if challenge.isCompleted != true {
+            return
+        } else if challenge.isCompleted && hasTwentyFourHoursPassed {
+            displayNewChallenge()
+        }
+    }
+    
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
@@ -175,7 +197,7 @@ class ChallengeViewController: UIViewController {
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
         skipCount += 1
-
+        
         if skipCount > 3 {
             showSkipAlert()
         } else {
@@ -210,25 +232,28 @@ class ChallengeViewController: UIViewController {
         
         pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
         pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+        pendingChallengeTimerView.delegate = self
+        
+        self.pendingChallengeTimerView = pendingChallengeTimerView
         
         self.view.addSubview(pendingChallengeTimerView)
         pendingChallengeTimerView.pinFrameToSuperView()
         
         
-//        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
+        //        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()
         
     }
     
-//    @IBAction func showPendingViewController(_ sender: Any) {
-//        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
-//    }
+    //    @IBAction func showPendingViewController(_ sender: Any) {
+    //        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
+    //    }
     
     // Displays random Fortune after count to display fortune is 7, resets count to 0.
     private func handleCountUntilFortuneDisplays() {
-            displayRandomFortune()
-            countUntilFortuneDisplays = 0
+        displayRandomFortune()
+        countUntilFortuneDisplays = 0
     }
     
     // Display random fortune's data.
@@ -255,15 +280,27 @@ class ChallengeViewController: UIViewController {
     //MARK: - Navigation
     
     // Prepares PendingChallengeVC by passing necessary data during segue.
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == showPendingViewControllerKey {
-//            guard let controller = segue.destination as? PendingChallengeViewController else { return }
-//            self.completedButton.isHidden = true
-//            self.skipButton.isHidden = true
-//            self.showPendingVCButton.isHidden = false
-//            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
-//            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //        if segue.identifier == showPendingViewControllerKey {
+    //            guard let controller = segue.destination as? PendingChallengeViewController else { return }
+    //            self.completedButton.isHidden = true
+    //            self.skipButton.isHidden = true
+    //            self.showPendingVCButton.isHidden = false
+    //            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
+    //            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+    //        }
+    //    }
 }
+
+extension ChallengeViewController: PendingChallengeTimerViewDelegate {
+    
+    func handleCountdownEnding() {
+        pendingChallengeTimerView?.removeFromSuperview()
+        pendingChallengeTimerView = nil
+        displayNewChallenge()
+    }
+}
+
+
+

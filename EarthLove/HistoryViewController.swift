@@ -156,9 +156,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         let challengeVC = storyboard!.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController
         
         challengeVC.completedChallenge = completedChallenge
-        challengeVC.backButton.isHidden = false
         challengeVC.navigationItem.rightBarButtonItem = nil
-        navigationController?.pushViewController(challengeVC, animated: true)
+        show(challengeVC, sender: self)
         
     }
     
