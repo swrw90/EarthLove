@@ -19,6 +19,7 @@ class ChallengeViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
     var fortuneView: FortuneView?
+    var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
@@ -202,14 +203,27 @@ class ChallengeViewController: UIViewController {
             handleCountUntilFortuneDisplays()
         }
         
-        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
+        guard pendingChallengeTimerView == nil else { return }
+        
+        
+        guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
+        
+        pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
+        pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+        
+        self.view.addSubview(pendingChallengeTimerView)
+        pendingChallengeTimerView.pinFrameToSuperView()
+        
+        
+//        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()
         
     }
-    @IBAction func showPendingViewController(_ sender: Any) {
-        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
-    }
+    
+//    @IBAction func showPendingViewController(_ sender: Any) {
+//        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
+//    }
     
     // Displays random Fortune after count to display fortune is 7, resets count to 0.
     private func handleCountUntilFortuneDisplays() {
@@ -241,15 +255,15 @@ class ChallengeViewController: UIViewController {
     //MARK: - Navigation
     
     // Prepares PendingChallengeVC by passing necessary data during segue.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == showPendingViewControllerKey {
-            guard let controller = segue.destination as? PendingChallengeViewController else { return }
-            self.completedButton.isHidden = true
-            self.skipButton.isHidden = true
-            self.showPendingVCButton.isHidden = false
-            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
-            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == showPendingViewControllerKey {
+//            guard let controller = segue.destination as? PendingChallengeViewController else { return }
+//            self.completedButton.isHidden = true
+//            self.skipButton.isHidden = true
+//            self.showPendingVCButton.isHidden = false
+//            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
+//            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+//        }
+//    }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7119AD32234B7D300BFA59A /* UIView+Extension.swift */; };
 		C71C890621FBB5B000FB119F /* CategoriesMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C890521FBB5B000FB119F /* CategoriesMenuViewController.swift */; };
 		C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71C890721FD2A2700FB119F /* CategoryCell.xib */; };
 		C71C890A21FFD21D00FB119F /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C890921FFD21D00FB119F /* CategoryCell.swift */; };
@@ -33,6 +34,8 @@
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
+		C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */; };
+		C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7119AD32234B7D300BFA59A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C71C890521FBB5B000FB119F /* CategoriesMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesMenuViewController.swift; sourceTree = "<group>"; };
 		C71C890721FD2A2700FB119F /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		C71C890921FFD21D00FB119F /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
+		C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingChallengeTimerView.xib; sourceTree = "<group>"; };
+		C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +95,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7119ACF2234B77900BFA59A /* Challenge View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Challenge View";
+			sourceTree = "<group>";
+		};
+		C7119AD02234B77F00BFA59A /* Stats View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Stats View";
+			sourceTree = "<group>";
+		};
+		C7119AD12234B78C00BFA59A /* History View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "History View";
+			sourceTree = "<group>";
+		};
+		C7119AD22234B7C300BFA59A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C7119AD32234B7D300BFA59A /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C790031721A37B4500737CBD = {
 			isa = PBXGroup;
 			children = (
+				C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */,
+				C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */,
 				C77025EE2227B82800D9C549 /* FortuneView.swift */,
 				C77025F02227B95500D9C549 /* FortuneView.xib */,
 				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
@@ -114,6 +151,10 @@
 		C790032221A37B4500737CBD /* EarthLove */ = {
 			isa = PBXGroup;
 			children = (
+				C7119AD22234B7C300BFA59A /* Extensions */,
+				C7119AD12234B78C00BFA59A /* History View */,
+				C7119AD02234B77F00BFA59A /* Stats View */,
+				C7119ACF2234B77900BFA59A /* Challenge View */,
 				C71C890921FFD21D00FB119F /* CategoryCell.swift */,
 				C790032321A37B4500737CBD /* AppDelegate.swift */,
 				C790032521A37B4500737CBD /* ChallengeViewController.swift */,
@@ -201,6 +242,7 @@
 				C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */,
 				C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */,
 				C77025F12227B95500D9C549 /* FortuneView.xib in Resources */,
+				C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */,
 				C74A325721AF774E00C8ACE3 /* challengeData.json in Resources */,
 				C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */,
 				C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */,
@@ -224,10 +266,12 @@
 				C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
+				C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */,
 				C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
+				C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */,
 				C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */,
 				C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */,
 				C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */,
