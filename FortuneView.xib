@@ -30,7 +30,7 @@
             <connections>
                 <outlet property="fortuneLabel" destination="04k-tk-Icg" id="lJ8-7o-ti7"/>
             </connections>
-            <point key="canvasLocation" x="52" y="-89.955022488755631"/>
+            <point key="canvasLocation" x="51.200000000000003" y="-89.955022488755631"/>
         </view>
     </objects>
 </document>

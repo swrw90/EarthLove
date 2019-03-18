@@ -1,5 +1,5 @@
 //
-//  SearchResultCell.swift
+//  HistoryCell.swift
 //  EarthLove
 //
 //  Created by Seth Watson on 11/25/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchResultCell: UITableViewCell {
+class HistoryCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!

@@ -19,16 +19,10 @@ class FortuneView: UIView {
         self.addSubview(dismissButton)
     }
     
-    
     override func awakeFromNib() {
         setupDismissButton()
 
     }
-    
-    // 1. create UIButton
-    // 2. set target to this FortuneView to trigger a function (selector)
-    // 3. add UIButton to subview
-    // 4. removeFromSnukeview in the selector
     
     
     // MARK: Properties
@@ -41,6 +35,7 @@ class FortuneView: UIView {
     
     @objc func dismissFortuneView(sender: UIButton) {
         self.removeFromSuperview()
+        
     }
     
 }

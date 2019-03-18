@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
     
@@ -19,6 +18,7 @@ class ChallengeViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
     var fortuneView: FortuneView?
+    var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
@@ -27,7 +27,7 @@ class ChallengeViewController: UIViewController {
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
+    let secondsInTwentyFourHours: TimeInterval = 24
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -42,6 +42,14 @@ class ChallengeViewController: UIViewController {
                 // 3. Update UI.
                 setupChallengeUI(with: challenge)
             }
+        }
+    }
+    
+    
+    // Cancel Fortune network request after completion.
+    private var networkRequest: URLSessionDataTask? {
+        willSet {
+            networkRequest?.cancel()
         }
     }
     
@@ -67,7 +75,6 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    
     // Returns value of countUntilFortuneDisplays count from UserDefaults.
     var countUntilFortuneDisplays: Int {
         get {
@@ -80,7 +87,6 @@ class ChallengeViewController: UIViewController {
     }
     
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var categoryImageView: UIImageView!
@@ -88,10 +94,6 @@ class ChallengeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
-    @IBOutlet weak var returnToHistoryVCButton: UIButton!
-    @IBOutlet weak var showPendingVCButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
-    
     
     // MARK: - View Controller Life Cycle
     
@@ -160,6 +162,7 @@ class ChallengeViewController: UIViewController {
         guard let challenge = Challenge.fetch(with: id, in: context) else { return }
         
         if challenge.isCompleted && !hasTwentyFourHoursPassed {
+            
             guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
             
             pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
@@ -205,29 +208,18 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    // Dismisses ChallengeViewController from HistoryViewController segue and returns to HistoryViewController.
-    @IBAction func dismissChallengeVC(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-    
     // Update skip button after a challenge is completed.
     private func updateSkipButton() {
         skipButton.isOpaque = challenge?.isCompleted == true
         skipButton.isEnabled = challenge?.isCompleted == false
     }
     
-    // Handle completed button press.
+    /// Whenever completed button is pressed, countUntilFortuneDisplays increments, pendingChallengeTimerView displays, Challenge completion status updates, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, if network request fails pull Fortune from Core Data.
     @IBAction private func completedPressed(_ sender: UIButton) {
         numberOfTimesCompleted += 1
-        countUntilFortuneDisplays += 1
-        
-        if countUntilFortuneDisplays == 7 {
-            handleCountUntilFortuneDisplays()
-        }
+        countUntilFortuneDisplays = 7
         
         guard pendingChallengeTimerView == nil else { return }
-        
-        
         guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
         
         pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
@@ -235,28 +227,35 @@ class ChallengeViewController: UIViewController {
         pendingChallengeTimerView.delegate = self
         
         self.pendingChallengeTimerView = pendingChallengeTimerView
-        
         self.view.addSubview(pendingChallengeTimerView)
         pendingChallengeTimerView.pinFrameToSuperView()
         
-        
-        //        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
         updateSkipButton()
         changeCompletionStatus()
         
+        if countUntilFortuneDisplays == 7 {
+            handleCountUntilFortuneDisplays()
+        }
+        
     }
-    
-    //    @IBAction func showPendingViewController(_ sender: Any) {
-    //        performSegue(withIdentifier: showPendingViewControllerKey, sender: self)
-    //    }
     
     // Displays random Fortune after count to display fortune is 7, resets count to 0.
     private func handleCountUntilFortuneDisplays() {
-        displayRandomFortune()
+        
+        networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
+            
+            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  return }
+            
+            print(fortuneMessage)
+        
+        }
+        
+        self.displayRandomFortune()
         countUntilFortuneDisplays = 0
     }
     
-    // Display random fortune's data.
+    
+    // Display random fortune from core data.
     private func displayRandomFortune() {
         
         guard fortuneView == nil else { return }
@@ -275,22 +274,6 @@ class ChallengeViewController: UIViewController {
             fortuneView.frame.origin.y = self.view.frame.height / 2
         })
     }
-    
-    
-    //MARK: - Navigation
-    
-    // Prepares PendingChallengeVC by passing necessary data during segue.
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //
-    //        if segue.identifier == showPendingViewControllerKey {
-    //            guard let controller = segue.destination as? PendingChallengeViewController else { return }
-    //            self.completedButton.isHidden = true
-    //            self.skipButton.isHidden = true
-    //            self.showPendingVCButton.isHidden = false
-    //            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
-    //            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
-    //        }
-    //    }
 }
 
 extension ChallengeViewController: PendingChallengeTimerViewDelegate {

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-private let searchResultCell = "SearchResultCell"
+private let historyCell = "HistoryCell"
 private let nothingFoundCell = "NothingFoundCell"
 private let showChallengeViewControllerKey = "showChallengeViewController"
 private let categoriesMenuIdentifier = "CategoriesMenu"
@@ -76,8 +76,8 @@ class HistoryViewController: UIViewController {
         
         tableView.rowHeight = 80
         
-        var cellNib = UINib(nibName: searchResultCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: searchResultCell)
+        var cellNib = UINib(nibName: historyCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: historyCell)
         
         cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
@@ -137,7 +137,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Dequeue cell to be reused.
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: searchResultCell, for: indexPath) as? SearchResultCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: historyCell, for: indexPath) as? HistoryCell else { return UITableViewCell() }
         
         // Assign at the indexPath to challenge constant to be displayed in the returned cell.
         let challenge = fetchedResultsController.object(at: indexPath)

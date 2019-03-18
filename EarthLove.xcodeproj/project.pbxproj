@@ -18,8 +18,8 @@
 		C74A325921AFB19B00C8ACE3 /* challengeData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = C74A325621AF774E00C8ACE3 /* challengeData.json */; };
 		C74A325B21B357CB00C8ACE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74A325A21B357CB00C8ACE3 /* Assets.xcassets */; };
 		C759256921E195AB006D04C2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759256821E195AB006D04C2 /* Category.swift */; };
-		C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5621AB655100AA6071 /* SearchResultCell.xib */; };
-		C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */; };
+		C76C0A5721AB655100AA6071 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5621AB655100AA6071 /* HistoryCell.xib */; };
+		C76C0A5921AB6DD900AA6071 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C0A5821AB6DD900AA6071 /* HistoryCell.swift */; };
 		C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */; };
 		C77025E82215670600D9C549 /* Fortune+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */; };
 		C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */; };
@@ -34,6 +34,7 @@
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
+		C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */; };
 		C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */; };
 		C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */; };
 /* End PBXBuildFile section */
@@ -62,8 +63,8 @@
 		C74A325621AF774E00C8ACE3 /* challengeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = challengeData.json; sourceTree = "<group>"; };
 		C74A325A21B357CB00C8ACE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C759256821E195AB006D04C2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		C76C0A5621AB655100AA6071 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
-		C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		C76C0A5621AB655100AA6071 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
+		C76C0A5821AB6DD900AA6071 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
+		C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequest.swift; sourceTree = "<group>"; };
 		C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingChallengeTimerView.xib; sourceTree = "<group>"; };
 		C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,8 +166,9 @@
 				C790033721A3F1AE00737CBD /* StatsViewController.swift */,
 				C790032721A37B4500737CBD /* HistoryViewController.swift */,
 				C76C0A5A21AB882200AA6071 /* NothingFoundCell.xib */,
-				C76C0A5621AB655100AA6071 /* SearchResultCell.xib */,
-				C76C0A5821AB6DD900AA6071 /* SearchResultCell.swift */,
+				C76C0A5621AB655100AA6071 /* HistoryCell.xib */,
+				C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */,
+				C76C0A5821AB6DD900AA6071 /* HistoryCell.swift */,
 				C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */,
 				C790032921A37B4500737CBD /* Main.storyboard */,
 				C72CC70E21ACAB7E0025FC32 /* SettingsViewController.swift */,
@@ -244,7 +247,7 @@
 				C77025F12227B95500D9C549 /* FortuneView.xib in Resources */,
 				C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */,
 				C74A325721AF774E00C8ACE3 /* challengeData.json in Resources */,
-				C76C0A5721AB655100AA6071 /* SearchResultCell.xib in Resources */,
+				C76C0A5721AB655100AA6071 /* HistoryCell.xib in Resources */,
 				C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */,
 				C74A325B21B357CB00C8ACE3 /* Assets.xcassets in Resources */,
 				C790032B21A37B4500737CBD /* Main.storyboard in Resources */,
@@ -269,11 +272,12 @@
 				C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */,
 				C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
+				C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
 				C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */,
 				C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */,
-				C76C0A5921AB6DD900AA6071 /* SearchResultCell.swift in Sources */,
+				C76C0A5921AB6DD900AA6071 /* HistoryCell.swift in Sources */,
 				C74A325521AF315500C8ACE3 /* Challenge+CoreDataProperties.swift in Sources */,
 				C759256921E195AB006D04C2 /* Category.swift in Sources */,
 			);

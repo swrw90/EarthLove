@@ -79,14 +79,6 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxL-lA-Vpi">
-                                        <rect key="frame" x="192" y="586" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="first"/>
-                                        <connections>
-                                            <action selector="showPendingViewController:" destination="9pv-A4-QxB" eventType="touchUpInside" id="r3q-Z6-hke"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -126,7 +118,6 @@
                         <outlet property="categoryImageView" destination="hfr-9v-dge" id="vdn-5p-sPY"/>
                         <outlet property="completedButton" destination="IFU-fu-3W5" id="MWm-nh-pBz"/>
                         <outlet property="descriptionLabel" destination="NjU-tY-Sir" id="oNZ-qP-hX8"/>
-                        <outlet property="showPendingVCButton" destination="yxL-lA-Vpi" id="YPE-m0-ebS"/>
                         <outlet property="skipButton" destination="1ks-Q4-KNS" id="wPt-BI-VYc"/>
                         <outlet property="titleLabel" destination="Arq-qv-2qb" id="l5z-MW-TGC"/>
                         <segue destination="f0b-23-H3N" kind="show" identifier="showPendingViewController" id="yMb-BX-jXz"/>
@@ -373,7 +364,7 @@
                         <viewLayoutGuide key="safeArea" id="yxF-P1-9AK"/>
                     </view>
                     <navigationItem key="navigationItem" id="643-4T-En4">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="kek-Qa-Go0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="kek-Qa-Go0">
                             <connections>
                                 <action selector="back:" destination="v08-8m-6Cc" id="uxb-22-MFY"/>
                             </connections>
@@ -531,6 +522,38 @@
             </objects>
             <point key="canvasLocation" x="2274" y="479"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vKS-Mj-RSZ">
+            <objects>
+                <viewController id="sr1-1G-Ai2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gIa-nx-vYc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KK7-yd-9rh">
+                                <rect key="frame" x="196" y="357" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="poop:" destination="2iX-Wr-W9i" eventType="touchUpInside" id="OWl-L6-r5h"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0q-cy-JJv">
+                                <rect key="frame" x="188" y="239" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rM6-5T-mF6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acO-T4-vYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2iX-Wr-W9i" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2066" y="1213"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -628,7 +651,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="home" width="51.200000762939453" height="51.200000762939453"/>
         <image name="like" width="51.200000762939453" height="51.200000762939453"/>
         <image name="recreational" width="51.200000762939453" height="51.200000762939453"/>
