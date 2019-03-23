@@ -243,11 +243,7 @@ class ChallengeViewController: UIViewController {
     private func handleCountUntilFortuneDisplays() {
         
         networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
-            
-            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  return }
-            
-            print(fortuneMessage)
-        
+        guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  return }
         }
         
         self.displayRandomFortune()
