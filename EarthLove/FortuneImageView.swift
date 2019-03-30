@@ -12,8 +12,9 @@ class FortuneImageView: UIView {
     
     
     // MARK: - Properties
+
     
-    var fortuneCookieImage: UIImageView?
+    @IBOutlet weak var fortuneCookieImage: UIImageView!
     
     override func awakeFromNib() {
          super.awakeFromNib()

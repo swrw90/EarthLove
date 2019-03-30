@@ -18,7 +18,6 @@ class ChallengeViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
     var fortuneMessageView: FortuneMessageView?
-    var fortuneImageView: FortuneImageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
@@ -268,8 +267,9 @@ class ChallengeViewController: UIViewController {
     // Show FortuneImageView which displays an image of a fortune cookie and congratulates the user on completing a challenge
     private func displayFortuneImage() {
         guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
-
-        fortuneImageView.fortuneCookieImage?.image = UIImage(named: "Settings")
+        
+        fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
+        
         self.view.addSubview(fortuneImageView)
         fortuneImageView.pinFrameToSuperView()
     }

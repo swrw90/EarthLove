@@ -16,16 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
-                    <rect key="frame" x="67" y="269" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortune-cookie-image" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
+                    <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="240" id="9hd-MO-MtA"/>
+                        <constraint firstAttribute="width" constant="240" id="BeT-Ca-pVG"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="90W-pU-U01" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XvC-Fa-Ipx"/>
+                <constraint firstItem="90W-pU-U01" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yFA-Ly-6er"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="fortuneCookieImage" destination="90W-pU-U01" id="UDO-69-ckV"/>
+            </connections>
         </view>
     </objects>
     <resources>
-        <image name="settings" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="fortune-cookie-image" width="1800" height="1500"/>
     </resources>
 </document>
