@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortune-cookie-image" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortune-cookie-image" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
                     <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="9hd-MO-MtA"/>

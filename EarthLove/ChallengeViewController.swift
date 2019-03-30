@@ -270,6 +270,7 @@ class ChallengeViewController: UIViewController {
         
         fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
         
+
         self.view.addSubview(fortuneImageView)
         fortuneImageView.pinFrameToSuperView()
     }
