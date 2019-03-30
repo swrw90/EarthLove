@@ -31,7 +31,6 @@ class FortuneRequest {
             }
             // Network Completion is passed the Fortune message from the unwrapped JSON and error is nil.
             completion(unwrappedJSON.first?["message"] as? String, nil)
-            print(unwrappedJSON.first?["message"])
         }
         
         // Starts the dataTask.

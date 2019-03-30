@@ -1,5 +1,5 @@
 //
-//  FortuneViewController.swift
+//  FortuneMessageViewController.swift
 //  EarthLove
 //
 //  Created by Seth Watson on 2/27/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FortuneView: UIView {
+class FortuneMessageView: UIView {
     
     var dismissButton = UIButton()
     

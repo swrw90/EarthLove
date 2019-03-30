@@ -17,7 +17,8 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
-    var fortuneView: FortuneView?
+    var fortuneMessageView: FortuneMessageView?
+    var fortuneImageView: FortuneImageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
@@ -27,7 +28,7 @@ class ChallengeViewController: UIViewController {
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 24
+    let secondsInTwentyFourHours: TimeInterval = 60
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -170,12 +171,14 @@ class ChallengeViewController: UIViewController {
             
             self.view.addSubview(pendingChallengeTimerView)
             pendingChallengeTimerView.pinFrameToSuperView()
+            
         } else if challenge.isCompleted != true {
             return
         } else if challenge.isCompleted && hasTwentyFourHoursPassed {
             displayNewChallenge()
         }
     }
+
     
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
@@ -219,23 +222,14 @@ class ChallengeViewController: UIViewController {
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
         
-        guard pendingChallengeTimerView == nil else { return }
-        guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
-        
-        pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
-        pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
-        pendingChallengeTimerView.delegate = self
-        
-        self.pendingChallengeTimerView = pendingChallengeTimerView
-        self.view.addSubview(pendingChallengeTimerView)
-        pendingChallengeTimerView.pinFrameToSuperView()
-        
-        updateSkipButton()
-        changeCompletionStatus()
-        
         if countUntilFortuneDisplays == 7 {
             handleCountUntilFortuneDisplays()
         }
+        
+       displayPendingChallengeTimerView()
+        
+        updateSkipButton()
+        changeCompletionStatus()
         
     }
     
@@ -246,21 +240,21 @@ class ChallengeViewController: UIViewController {
         guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  return }
         }
         
-        self.displayRandomFortune()
+        displayFortuneImage()
         countUntilFortuneDisplays = 0
     }
     
     
-    // Display random fortune from core data.
-    private func displayRandomFortune() {
+    /// Display random fortune message from core data.
+    private func displayRandomFortuneMessage() {
         
-        guard fortuneView == nil else { return }
+        guard fortuneMessageView == nil else { return }
         
         guard let context = managedObjectContext else { return }
         guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
-        guard let fortuneView = FortuneView.instanceOfFortuneNib() as? FortuneView else { return }
+        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
         
-        self.fortuneView = fortuneView
+        self.fortuneMessageView = fortuneView
         
         // Add subview to top level view.
         self.view.addSubview(fortuneView)
@@ -269,6 +263,15 @@ class ChallengeViewController: UIViewController {
         UIView.animate(withDuration: 0.3, animations: {
             fortuneView.frame.origin.y = self.view.frame.height / 2
         })
+    }
+    
+    // Show FortuneImageView which displays an image of a fortune cookie and congratulates the user on completing a challenge
+    private func displayFortuneImage() {
+        guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
+
+        fortuneImageView.fortuneCookieImage?.image = UIImage(named: "Settings")
+        self.view.addSubview(fortuneImageView)
+        fortuneImageView.pinFrameToSuperView()
     }
 }
 

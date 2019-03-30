@@ -14,6 +14,7 @@ protocol PendingChallengeTimerViewDelegate: AnyObject {
 
 class PendingChallengeTimerView: UIView {
     
+    
     // MARK: - Properties
     
     var timer: Timer?

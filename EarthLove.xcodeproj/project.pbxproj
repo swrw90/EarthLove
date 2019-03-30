@@ -24,8 +24,8 @@
 		C77025E82215670600D9C549 /* Fortune+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */; };
 		C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */; };
 		C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */ = {isa = PBXBuildFile; fileRef = C77025EC22156F4F00D9C549 /* fortuneData.json */; };
-		C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025EE2227B82800D9C549 /* FortuneView.swift */; };
-		C77025F12227B95500D9C549 /* FortuneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77025F02227B95500D9C549 /* FortuneView.xib */; };
+		C77025EF2227B82800D9C549 /* FortuneMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025EE2227B82800D9C549 /* FortuneMessageView.swift */; };
+		C77025F12227B95500D9C549 /* FortuneMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77025F02227B95500D9C549 /* FortuneMessageView.xib */; };
 		C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */; };
 		C790032421A37B4500737CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032321A37B4500737CBD /* AppDelegate.swift */; };
 		C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032521A37B4500737CBD /* ChallengeViewController.swift */; };
@@ -34,6 +34,8 @@
 		C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C790032E21A37B4600737CBD /* LaunchScreen.storyboard */; };
 		C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790033721A3F1AE00737CBD /* StatsViewController.swift */; };
 		C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C790035E21A4A6DE00737CBD /* EarthLove.xcdatamodeld */; };
+		C7A635B02249F6BB0041FB39 /* FortuneImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A635AF2249F6BB0041FB39 /* FortuneImageView.xib */; };
+		C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A635B12249F7580041FB39 /* FortuneImageView.swift */; };
 		C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */; };
 		C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */; };
 		C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */; };
@@ -69,8 +71,8 @@
 		C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fortune+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C77025EC22156F4F00D9C549 /* fortuneData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = fortuneData.json; sourceTree = "<group>"; };
-		C77025EE2227B82800D9C549 /* FortuneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneView.swift; sourceTree = "<group>"; };
-		C77025F02227B95500D9C549 /* FortuneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneView.xib; sourceTree = "<group>"; };
+		C77025EE2227B82800D9C549 /* FortuneMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneMessageView.swift; sourceTree = "<group>"; };
+		C77025F02227B95500D9C549 /* FortuneMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneMessageView.xib; sourceTree = "<group>"; };
 		C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeViewController.swift; sourceTree = "<group>"; };
 		C790032021A37B4500737CBD /* EarthLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C790032321A37B4500737CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,8 @@
 		C790033121A37B4600737CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C790033721A3F1AE00737CBD /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		C790035F21A4A6DE00737CBD /* EarthLove.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EarthLove.xcdatamodel; sourceTree = "<group>"; };
+		C7A635AF2249F6BB0041FB39 /* FortuneImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneImageView.xib; sourceTree = "<group>"; };
+		C7A635B12249F7580041FB39 /* FortuneImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneImageView.swift; sourceTree = "<group>"; };
 		C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequest.swift; sourceTree = "<group>"; };
 		C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingChallengeTimerView.xib; sourceTree = "<group>"; };
 		C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeTimerView.swift; sourceTree = "<group>"; };
@@ -131,8 +135,8 @@
 			children = (
 				C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */,
 				C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */,
-				C77025EE2227B82800D9C549 /* FortuneView.swift */,
-				C77025F02227B95500D9C549 /* FortuneView.xib */,
+				C77025EE2227B82800D9C549 /* FortuneMessageView.swift */,
+				C77025F02227B95500D9C549 /* FortuneMessageView.xib */,
 				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
 				C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */,
 				C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */,
@@ -160,6 +164,8 @@
 				C71C890921FFD21D00FB119F /* CategoryCell.swift */,
 				C790032321A37B4500737CBD /* AppDelegate.swift */,
 				C790032521A37B4500737CBD /* ChallengeViewController.swift */,
+				C7A635AF2249F6BB0041FB39 /* FortuneImageView.xib */,
+				C7A635B12249F7580041FB39 /* FortuneImageView.swift */,
 				C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */,
 				C77025EC22156F4F00D9C549 /* fortuneData.json */,
 				C74A325621AF774E00C8ACE3 /* challengeData.json */,
@@ -241,10 +247,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7A635B02249F6BB0041FB39 /* FortuneImageView.xib in Resources */,
 				C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */,
 				C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */,
 				C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */,
-				C77025F12227B95500D9C549 /* FortuneView.xib in Resources */,
+				C77025F12227B95500D9C549 /* FortuneMessageView.xib in Resources */,
 				C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */,
 				C74A325721AF774E00C8ACE3 /* challengeData.json in Resources */,
 				C76C0A5721AB655100AA6071 /* HistoryCell.xib in Resources */,
@@ -270,8 +277,9 @@
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */,
-				C77025EF2227B82800D9C549 /* FortuneView.swift in Sources */,
+				C77025EF2227B82800D9C549 /* FortuneMessageView.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
+				C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */,
 				C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
