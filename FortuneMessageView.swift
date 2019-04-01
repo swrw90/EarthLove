@@ -30,7 +30,7 @@ class FortuneMessageView: UIView {
     @IBOutlet weak var fortuneLabel: UILabel!
     
     class func instanceOfFortuneNib() -> UIView {
-        return UINib(nibName: "FortuneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+        return UINib(nibName: "FortuneMessageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
     @objc func dismissFortuneView(sender: UIButton) {

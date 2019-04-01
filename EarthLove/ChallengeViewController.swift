@@ -156,7 +156,7 @@ class ChallengeViewController: UIViewController {
     }
     
     /// Displays PendingChallengeTimerView if challenge is completed and timer has not lapsed.
-    private func displayPendingChallengeTimerView() {
+    func displayPendingChallengeTimerView() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
         
         guard let challenge = Challenge.fetch(with: id, in: context) else { return }
@@ -177,7 +177,7 @@ class ChallengeViewController: UIViewController {
             displayNewChallenge()
         }
     }
-
+    
     
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
@@ -222,10 +222,13 @@ class ChallengeViewController: UIViewController {
         countUntilFortuneDisplays = 7
         
         if countUntilFortuneDisplays == 7 {
-            handleCountUntilFortuneDisplays()
+            performFortuneNetworkRequest()
+//            displayFortuneImage()
+//            handleCountUntilFortuneDisplays()
+            countUntilFortuneDisplays = 0
         }
         
-       displayPendingChallengeTimerView()
+        displayPendingChallengeTimerView()
         
         updateSkipButton()
         changeCompletionStatus()
@@ -233,31 +236,49 @@ class ChallengeViewController: UIViewController {
     }
     
     // Displays random Fortune after count to display fortune is 7, resets count to 0.
-    private func handleCountUntilFortuneDisplays() {
-        
-        networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
-        guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  return }
+    //    private func handleCountUntilFortuneDisplays() {
+    //
+    ////        let fortuneMessage = performFortuneNetworkRequest()
+    //
+    ////        displayFortuneImage(with: fortuneMessage)
+    //
+    //        countUntilFortuneDisplays = 0
+    //    }
+    
+    
+    private func performFortuneNetworkRequest()  {
+        DispatchQueue.global(qos: .background).async {
+            self.networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
+                guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
+                
+                 self.fortuneMessage = fortuneMessage
+                DispatchQueue.main.async {
+                    self.displayFortuneImage()
+                }
         }
-        
-        displayFortuneImage()
-        countUntilFortuneDisplays = 0
+
+           
+            print(self.fortuneMessage)
+            self.displayFortuneImage()
+        }
     }
     
     
     /// Display random fortune message from core data.
-    private func displayRandomFortuneMessage() {
+    func displayRandomFortuneMessage() {
         
         guard fortuneMessageView == nil else { return }
         
-        guard let context = managedObjectContext else { return }
-        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
+        //        guard let context = managedObjectContext else { return }
+        //        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
         guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
         
         self.fortuneMessageView = fortuneView
         
         // Add subview to top level view.
         self.view.addSubview(fortuneView)
-        fortuneView.fortuneLabel.text = summary
+        //        fortuneView.fortuneLabel.text = summary
+        fortuneView.fortuneLabel.text = self.fortuneMessage
         
         UIView.animate(withDuration: 0.3, animations: {
             fortuneView.frame.origin.y = self.view.frame.height / 2
@@ -269,8 +290,8 @@ class ChallengeViewController: UIViewController {
         guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
         
         fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
+        fortuneImageView.fortuneMessage = self.fortuneMessage
         
-
         self.view.addSubview(fortuneImageView)
         fortuneImageView.pinFrameToSuperView()
     }
@@ -286,4 +307,10 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
 }
 
 
-
+extension ChallengeViewController: FortuneMessageDelegate {
+    func displayFortuneMessageView() {
+        //          FortuneImageView.fortuneMessage =  self.fortuneMessage
+    }
+    
+    
+}

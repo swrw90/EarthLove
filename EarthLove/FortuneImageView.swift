@@ -8,13 +8,30 @@
 
 import UIKit
 
+protocol FortuneMessageDelegate: class {
+    func displayFortuneMessageView()
+}
+
 class FortuneImageView: UIView {
     
     
     // MARK: - Properties
     
     
+    // Cancel Fortune network request after completion.
+    private var networkRequest: URLSessionDataTask? {
+        willSet {
+            networkRequest?.cancel()
+        }
+    }
+    
+    weak var delegate: FortuneImageView?
+    
     @IBOutlet weak var fortuneCookieImage: UIImageView!
+    var fortuneMessage: String?
+    var fortuneMessageView: FortuneMessageView?
+    var numberOfTapsCount = 0
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,10 +47,33 @@ class FortuneImageView: UIView {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
-        // do something when image tapped
-        print("image tapped")
+        numberOfTapsCount += 1
         
-        fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
+        if numberOfTapsCount == 1 {
+            fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
+        } else if numberOfTapsCount == 2 {
+            fortuneCookieImage.isHidden = true
+            displayFortuneMessageView()
+            
+        }
+        
     }
     
+    private func displayFortuneMessageView() {
+        guard fortuneMessageView == nil else { return }
+        
+        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        
+        self.fortuneMessageView = fortuneView
+        
+        // Add subview to top level view.
+        self.addSubview(fortuneView)
+        fortuneView.fortuneLabel.text = fortuneMessage
+        
+        print(fortuneMessage)
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            fortuneView.frame.origin.y = self.frame.height / 2
+        })
+    }
 }

@@ -79,7 +79,6 @@ public class Fortune: NSManagedObject {
     class func getRandomFortune(in context: NSManagedObjectContext) -> Fortune? {
         guard let numberOfFortunes = getAllFortunesCount(in: context), numberOfFortunes > 0 else { return nil }
         let randomNumber = Int.random(in: 0 ..< numberOfFortunes)
-        print(randomNumber)
         
         let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
         fetchRequest.fetchOffset = randomNumber
@@ -89,7 +88,7 @@ public class Fortune: NSManagedObject {
         
         do {
             let randomFortune = try context.fetch(fetchRequest)
-            print(randomFortune)
+
             return randomFortune.first
         } catch {
             print("error")
