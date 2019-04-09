@@ -223,8 +223,6 @@ class ChallengeViewController: UIViewController {
         
         if countUntilFortuneDisplays == 7 {
             performFortuneNetworkRequest()
-//            displayFortuneImage()
-//            handleCountUntilFortuneDisplays()
             countUntilFortuneDisplays = 0
         }
         
@@ -247,19 +245,13 @@ class ChallengeViewController: UIViewController {
     
     
     private func performFortuneNetworkRequest()  {
-        DispatchQueue.global(qos: .background).async {
-            self.networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
-                guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
-                
-                 self.fortuneMessage = fortuneMessage
-                DispatchQueue.main.async {
-                    self.displayFortuneImage()
-                }
-        }
-
-           
-            print(self.fortuneMessage)
-            self.displayFortuneImage()
+        networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
+            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
+            
+            self.fortuneMessage = fortuneMessage
+            DispatchQueue.main.async {
+                self.displayFortuneImage()
+            }
         }
     }
     
@@ -289,12 +281,14 @@ class ChallengeViewController: UIViewController {
     private func displayFortuneImage() {
         guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
         
+        fortuneImageView.delegate = self
         fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
         fortuneImageView.fortuneMessage = self.fortuneMessage
         
         self.view.addSubview(fortuneImageView)
         fortuneImageView.pinFrameToSuperView()
     }
+    
 }
 
 extension ChallengeViewController: PendingChallengeTimerViewDelegate {
@@ -307,10 +301,34 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
 }
 
 
-extension ChallengeViewController: FortuneMessageDelegate {
-    func displayFortuneMessageView() {
-        //          FortuneImageView.fortuneMessage =  self.fortuneMessage
+extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewDelegate {
+
+    func clearViewStack() {
+        
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        
+        displayPendingChallengeTimerView()
     }
-    
+
+     func displayFortuneMessageView() {
+//                  FortuneImageView.fortuneMessage =  self.fortuneMessage
+        guard fortuneMessageView == nil else { return }
+
+        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        
+        fortuneView.delegate = self
+        self.fortuneMessageView = fortuneView
+
+        // Add subview to top level view.
+        self.view.addSubview(fortuneView)
+        fortuneView.fortuneLabel.text = fortuneMessage
+
+        UIView.animate(withDuration: 0.3, animations: {
+            fortuneView.frame.origin.y = self.view.frame.height / 2
+        })
+    }
+
     
 }

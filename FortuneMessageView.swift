@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol FortuneMessageViewDelegate: class {
+    func clearViewStack()
+}
+
 class FortuneMessageView: UIView {
     
+    weak var delegate: FortuneMessageViewDelegate?
     var dismissButton = UIButton()
     
     private func setupDismissButton() {
@@ -34,8 +39,9 @@ class FortuneMessageView: UIView {
     }
     
     @objc func dismissFortuneView(sender: UIButton) {
-        self.removeFromSuperview()
         
-    }
+        delegate?.clearViewStack()
+//        self.removeFromSuperview()
     
+    }
 }

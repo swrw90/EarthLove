@@ -8,15 +8,16 @@
 
 import UIKit
 
-protocol FortuneMessageDelegate: class {
+protocol FortuneImageViewDelegate: class {
+
     func displayFortuneMessageView()
+    
 }
+
 
 class FortuneImageView: UIView {
     
-    
     // MARK: - Properties
-    
     
     // Cancel Fortune network request after completion.
     private var networkRequest: URLSessionDataTask? {
@@ -25,7 +26,7 @@ class FortuneImageView: UIView {
         }
     }
     
-    weak var delegate: FortuneImageView?
+    weak var delegate: FortuneImageViewDelegate?
     
     @IBOutlet weak var fortuneCookieImage: UIImageView!
     var fortuneMessage: String?
@@ -52,28 +53,24 @@ class FortuneImageView: UIView {
         if numberOfTapsCount == 1 {
             fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
         } else if numberOfTapsCount == 2 {
-            fortuneCookieImage.isHidden = true
-            displayFortuneMessageView()
-            
+            delegate?.displayFortuneMessageView()
+//            fortuneCookieImage.removeFromSuperview()
         }
-        
     }
-    
-    private func displayFortuneMessageView() {
-        guard fortuneMessageView == nil else { return }
-        
-        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
-        
-        self.fortuneMessageView = fortuneView
-        
-        // Add subview to top level view.
-        self.addSubview(fortuneView)
-        fortuneView.fortuneLabel.text = fortuneMessage
-        
-        print(fortuneMessage)
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            fortuneView.frame.origin.y = self.frame.height / 2
-        })
-    }
+    //
+    //    private func displayFortuneMessageView() {
+    //        guard fortuneMessageView == nil else { return }
+    //
+    //        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+    //
+    //        self.fortuneMessageView = fortuneView
+    //
+    //        // Add subview to top level view.
+    //        self.addSubview(fortuneView)
+    //        fortuneView.fortuneLabel.text = fortuneMessage
+    //
+    //        UIView.animate(withDuration: 0.3, animations: {
+    //            fortuneView.frame.origin.y = self.frame.height / 2
+    //        })
+    //    }
 }
