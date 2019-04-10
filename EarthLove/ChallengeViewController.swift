@@ -27,7 +27,7 @@ class ChallengeViewController: UIViewController {
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 60
+    let secondsInTwentyFourHours: TimeInterval = 10
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -140,9 +140,9 @@ class ChallengeViewController: UIViewController {
     
     /// Configure ChallengeVC UI using Challenge object.
     private func setupChallengeUI(with challenge: Challenge) {
-        titleLabel.text = challenge.title
-        descriptionLabel.text = challenge.summary
-        categoryImageView.image = challenge.category.iconImage
+        self.titleLabel.text = challenge.title
+        self.descriptionLabel.text = challenge.summary
+        self.categoryImageView.image = challenge.category.iconImage
     }
     
     /// Setup UI for Challenge selected in HistoryVC
@@ -165,8 +165,11 @@ class ChallengeViewController: UIViewController {
             
             guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
             
+            pendingChallengeTimerView.delegate = self
             pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
             pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+            
+            self.pendingChallengeTimerView = pendingChallengeTimerView
             
             self.view.addSubview(pendingChallengeTimerView)
             pendingChallengeTimerView.pinFrameToSuperView()
@@ -233,16 +236,6 @@ class ChallengeViewController: UIViewController {
         
     }
     
-    // Displays random Fortune after count to display fortune is 7, resets count to 0.
-    //    private func handleCountUntilFortuneDisplays() {
-    //
-    ////        let fortuneMessage = performFortuneNetworkRequest()
-    //
-    ////        displayFortuneImage(with: fortuneMessage)
-    //
-    //        countUntilFortuneDisplays = 0
-    //    }
-    
     
     private func performFortuneNetworkRequest()  {
         networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
@@ -305,7 +298,7 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
 
     func clearViewStack() {
         
-        for view in self.view.subviews {
+        for view in self.view.subviews where view is FortuneImageView || view is FortuneMessageView {
             view.removeFromSuperview()
         }
         
@@ -313,7 +306,6 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
     }
 
      func displayFortuneMessageView() {
-//                  FortuneImageView.fortuneMessage =  self.fortuneMessage
         guard fortuneMessageView == nil else { return }
 
         guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }

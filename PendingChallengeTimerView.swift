@@ -66,6 +66,7 @@ class PendingChallengeTimerView: UIView {
         if remainingTimeInSeconds < 0.0 {
             timer?.invalidate()
             delegate?.handleCountdownEnding()
+            
         }
     }
     

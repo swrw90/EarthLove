@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FortuneImageViewDelegate: class {
-
+    
     func displayFortuneMessageView()
     
 }
@@ -37,7 +37,7 @@ class FortuneImageView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(fortuneImageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         fortuneCookieImage.addGestureRecognizer(tapGestureRecognizer)
         
@@ -47,30 +47,14 @@ class FortuneImageView: UIView {
         return UINib(nibName: "FortuneImageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
-    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
+    @objc func fortuneImageTapped(_ sender: UITapGestureRecognizer) {
         numberOfTapsCount += 1
         
         if numberOfTapsCount == 1 {
             fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
         } else if numberOfTapsCount == 2 {
             delegate?.displayFortuneMessageView()
-//            fortuneCookieImage.removeFromSuperview()
+            fortuneCookieImage.removeFromSuperview()
         }
     }
-    //
-    //    private func displayFortuneMessageView() {
-    //        guard fortuneMessageView == nil else { return }
-    //
-    //        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
-    //
-    //        self.fortuneMessageView = fortuneView
-    //
-    //        // Add subview to top level view.
-    //        self.addSubview(fortuneView)
-    //        fortuneView.fortuneLabel.text = fortuneMessage
-    //
-    //        UIView.animate(withDuration: 0.3, animations: {
-    //            fortuneView.frame.origin.y = self.frame.height / 2
-    //        })
-    //    }
 }
