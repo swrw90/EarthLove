@@ -14,8 +14,14 @@ protocol CategoriesMenuViewControllerDelegate: AnyObject {
     func handleSelectedCategory(category: Category)
     
 }
-
+/// UITableViewController used to display each challenge category.
 class CategoriesMenuViewController: UITableViewController {
+    
+    
+    // MARK: - Properties
+    
+    weak var delegate: CategoriesMenuViewControllerDelegate?
+    
     
     // MARK: - Lifecycle Methods
     
@@ -28,7 +34,6 @@ class CategoriesMenuViewController: UITableViewController {
         
     }
     
-    weak var delegate: CategoriesMenuViewControllerDelegate?
     
     // MARK - TableView Data Source
     
