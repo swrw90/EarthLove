@@ -30,8 +30,8 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryHeader: UIButton!
     
-    
     private var categoriesMenuViewController: CategoriesMenuViewController?
+    private var blurEffectView: UIView?
     
     // MARK: - NSFetchedResultsController
     
@@ -91,10 +91,25 @@ class HistoryViewController: UIViewController {
         return Challenge.fetchCompletedChallenges(from: context)
     }
     
+    // Creates and animates an instance of CategoriesMenuViewController.
     @IBAction func displayCategoriesMenu(_ sender: Any) {
         
-        
-        guard categoriesMenuViewController == nil else { return }
+        guard categoriesMenuViewController == nil else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
+                self.blurEffectView?.alpha = 0.0
+            }, completion: { _ in
+                // Remove categoriesMenuVC from view stack.
+                self.categoriesMenuViewController?.willMove(toParent: nil)
+                
+                self.categoriesMenuViewController = nil
+                
+                self.blurEffectView?.removeFromSuperview()
+            })
+            
+            
+            return
+        }
         
         guard let categoriesMenuVC: CategoriesMenuViewController = self.storyboard!.instantiateViewController(withIdentifier: categoriesMenuIdentifier) as? CategoriesMenuViewController else { return }
         
@@ -110,14 +125,19 @@ class HistoryViewController: UIViewController {
         view.addSubview(categoriesMenuVC.view)
         
         categoriesMenuVC.didMove(toParent: self)
+
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+        self.view.insertSubview(blurEffectView, at: 1)
+        blurEffectView.alpha = 0.0
         
-        categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
+        self.blurEffectView = blurEffectView
         
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.moveIn
-        transition.subtype = CATransitionSubtype.fromTop
-        categoriesMenuVC.view.layer.add(transition, forKey: nil)
+        UIView.animate(withDuration: 0.3) {
+            blurEffectView.alpha = 1.0
+            categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
+        }
     }
 }
 
@@ -151,6 +171,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     // Displays overlay of ChallangeVC when row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        // Set completedChallenge to the challenge selected from the tableview.
         completedChallenge = fetchedResultsController.object(at: indexPath)
 
         let challengeVC = storyboard!.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController

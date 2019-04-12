@@ -30,7 +30,6 @@ class CategoriesMenuViewController: UITableViewController {
     
     weak var delegate: CategoriesMenuViewControllerDelegate?
     
-    
     // MARK - TableView Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
