@@ -12,6 +12,7 @@ import CoreData
 
 typealias JSON = [String: Any]
 
+/// Handles requests for Challenge NSManagedObject.
 @objc(Challenge)
 public class Challenge: NSManagedObject {
     

@@ -8,10 +8,12 @@
 
 import UIKit
 
+/// Contains handleCountdownEnding function to update app after pending challenge timer reaches 0.0
 protocol PendingChallengeTimerViewDelegate: AnyObject {
     func handleCountdownEnding()
 }
 
+/// UIView to display countdown until the next challenge is available.
 class PendingChallengeTimerView: UIView {
     
     
@@ -34,6 +36,7 @@ class PendingChallengeTimerView: UIView {
         runChallengeTimer()
     }
     
+    // Creates an instance of PendingChallengeTimerView nib.
     class func instanceOfPendingChallengeTimerViewNib() -> UIView {
         return UINib(nibName: "PendingChallengeTimerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
@@ -59,7 +62,7 @@ class PendingChallengeTimerView: UIView {
         
     }
     
-    /// Assigns timeRemaining to PendingChallengeVC countdown label.
+    /// Assigns formatted countdown time remaining to PendingChallengeVC countdown label.
     @objc private func updateTimer() {
         countdownLabel.text = formatTime()
         guard let remainingTimeInSeconds = remainingTimeInSeconds else { return }

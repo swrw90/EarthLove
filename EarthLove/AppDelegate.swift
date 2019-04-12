@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
+        // Assigns managedObjectContext to each view using tabViewContrrolers and navController.
         let tabController = window!.rootViewController as! UITabBarController
         if let tabViewControllers = tabController.viewControllers {
             
@@ -79,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
+        // If it's the apps first launch call functions to parse challenge and fortune json.
         if isFirstLaunch {
             parseChallengeJSON()
             parseFortuneJSON()
@@ -88,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // Uses UserDefaults to determine if the app has previously launched. If it's first launch, set UserDefault initial values.
     var isFirstLaunch: Bool {
         let defaults = UserDefaults.standard
         
@@ -124,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // Handles parsing of challenge json and saves it to context.
     private func parseChallengeJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
@@ -140,6 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // Handles parsing of Fortune json and saves it to context.
     private func parseFortuneJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.

@@ -11,8 +11,10 @@ import Foundation
 import CoreData
 
 
+/// Fortune CoreData properties.
 extension Fortune {
 
+    // Returns NSFetchRequest for Fortune entity. 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Fortune> {
         return NSFetchRequest<Fortune>(entityName: "Fortune")
     }

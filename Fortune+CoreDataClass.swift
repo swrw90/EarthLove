@@ -13,6 +13,7 @@ import CoreData
 @objc(Fortune)
 public class Fortune: NSManagedObject {
     
+    /// Saves parsed fortune data to context.
     class func insertToStore(from json: [JSON], in context: NSManagedObjectContext)  {
         _ = json.compactMap { fortune(from: $0, in: context) }
         
@@ -40,7 +41,7 @@ public class Fortune: NSManagedObject {
         let fortune = fetch(with: identifier, in: context) ?? Fortune(context: context)
         let summary = json["summary"] as? String
         
-        // Hydrate
+        // Hydrate fortune.
         fortune.identifier = identifier
         fortune.hasDisplayed = hasDisplayed
         fortune.summary = summary
@@ -68,14 +69,16 @@ public class Fortune: NSManagedObject {
         }
     }
     
+    /// Returns an Int for total count of all fortunes in context.
     class func getAllFortunesCount(in context: NSManagedObjectContext) -> Int? {
         let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
         fetchRequest.predicate = hasNotDisplayedFortunePredicate
-
+        
         let count = try? context.count(for: fetchRequest)
         return count
     }
     
+    /// Returns a random Fortune from context.
     class func getRandomFortune(in context: NSManagedObjectContext) -> Fortune? {
         guard let numberOfFortunes = getAllFortunesCount(in: context), numberOfFortunes > 0 else { return nil }
         let randomNumber = Int.random(in: 0 ..< numberOfFortunes)
@@ -84,19 +87,14 @@ public class Fortune: NSManagedObject {
         fetchRequest.fetchOffset = randomNumber
         fetchRequest.fetchLimit = 1
         fetchRequest.returnsObjectsAsFaults = false
-        fetchRequest.predicate = hasNotDisplayedFortunePredicate
         
         do {
             let randomFortune = try context.fetch(fetchRequest)
-
+            
             return randomFortune.first
         } catch {
             print("error")
             return nil
         }
-    }
-    
-    static var hasNotDisplayedFortunePredicate: NSPredicate {
-        return NSPredicate(format: "%K = NO", #keyPath(Fortune.hasDisplayed))
     }
 }

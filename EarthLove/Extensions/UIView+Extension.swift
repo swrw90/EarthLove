@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Uses anchors to pin frame to super view. 
 extension UIView {
     func pinFrameToSuperView() {
         guard let superview = superview else { return }

@@ -8,15 +8,18 @@
 
 import UIKit
 
+/// Contains clearViewStack function to be called after fortuneMessageView is dismissed.
 protocol FortuneMessageViewDelegate: class {
     func clearViewStack()
 }
 
+/// UIView used to display the fortune message.
 class FortuneMessageView: UIView {
     
     weak var delegate: FortuneMessageViewDelegate?
     var dismissButton = UIButton()
     
+    // Dismisses fortune message view.
     private func setupDismissButton() {
         dismissButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         dismissButton.setBackgroundImage(UIImage(named: "first"), for: UIControl.State.normal)
@@ -34,6 +37,7 @@ class FortuneMessageView: UIView {
     
     @IBOutlet weak var fortuneLabel: UILabel!
     
+    // Creates an instance of FortuneMessageView from nib.
     class func instanceOfFortuneNib() -> UIView {
         return UINib(nibName: "FortuneMessageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
@@ -41,7 +45,5 @@ class FortuneMessageView: UIView {
     @objc func dismissFortuneView(sender: UIButton) {
         
         delegate?.clearViewStack()
-//        self.removeFromSuperview()
-    
     }
 }

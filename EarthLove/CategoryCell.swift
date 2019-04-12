@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Handles CategoryCell awake from nib and animation for nib being selection.
 class CategoryCell: UITableViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
@@ -19,6 +20,7 @@ class CategoryCell: UITableViewCell {
         selectedBackgroundView = selectedView
     }
     
+    // Animates the selected category cell. 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
