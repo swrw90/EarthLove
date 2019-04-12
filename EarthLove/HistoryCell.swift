@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Handles properties and UI update for HistoryCell nib when it is selected. 
 class HistoryCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!

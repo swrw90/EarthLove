@@ -9,6 +9,7 @@
 import UIKit
 import StoreKit
 
+/// Handles SettingsViewController functions and properties. 
 class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {

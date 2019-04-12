@@ -24,14 +24,14 @@ class HistoryViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var selectedCategory: Category?
     var completedChallenge: Challenge?
+    private var categoriesMenuViewController: CategoriesMenuViewController?
+    private var blurEffectView: UIView?
     
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var categoryHeader: UIButton!
     
-    private var categoriesMenuViewController: CategoriesMenuViewController?
-    private var blurEffectView: UIView?
     
     // MARK: - NSFetchedResultsController
     
@@ -125,7 +125,8 @@ class HistoryViewController: UIViewController {
         view.addSubview(categoriesMenuVC.view)
         
         categoriesMenuVC.didMove(toParent: self)
-
+        
+        // Create an instance of UIVisualEffectView with blur effect, animate and add to view stack to blur view behind categoriesMenuVC.
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
@@ -144,7 +145,7 @@ class HistoryViewController: UIViewController {
 
 //MARK: - TableView Data Source
 
-/// Handle TableView setup.
+/// Handle HistoryViewController TableView setup.
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Returns a row for each fetched object or 1 row for NothingFoundCell if fetched objects is nil
@@ -168,12 +169,12 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    // Displays overlay of ChallangeVC when row is selected.
+    // Creates an instance of ChallangeVC when row is selected.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Set completedChallenge to the challenge selected from the tableview.
         completedChallenge = fetchedResultsController.object(at: indexPath)
-
+        
         let challengeVC = storyboard!.instantiateViewController(withIdentifier: "ChallengeViewController") as! ChallengeViewController
         
         challengeVC.completedChallenge = completedChallenge
@@ -184,6 +185,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    // Prepares to segue to ChallengeViewController after completed challenge is selected.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == showChallengeViewControllerKey {
@@ -208,10 +210,11 @@ extension HistoryViewController: NSFetchedResultsControllerDelegate {
 
 // MARK: - CategoriesMenuViewControllerDelegate.
 
+// Executes protocol methods for CategoriesMenuViewControllerDelegate.
 extension HistoryViewController: CategoriesMenuViewControllerDelegate {
     
+    // Animates categoriesMenuVC and blurEffectView after category is selected and removes both views from stack upon completion.
     func handleSelectedCategory(category: Category) {
-        
         UIView.animate(withDuration: 0.3, animations: {
             self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
             self.blurEffectView?.alpha = 0.0
