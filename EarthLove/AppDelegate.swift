@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -61,6 +62,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
+        
+        // Notification Authorization
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) {
+            granted, error in
+            if granted {
+                print("Notifications permission granted.")
+            } else {
+                print("Notifications permission denied.")
+            }
+        }
         
         // Assigns managedObjectContext to each view using tabViewContrrolers and navController.
         let tabController = window!.rootViewController as! UITabBarController
