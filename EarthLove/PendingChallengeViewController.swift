@@ -59,6 +59,7 @@ class PendingChallengeViewController: UIViewController {
     
     //    MARK: - Actions
     
+    // Invalidates timer and dismisses PendingChallengeTimerView.
     @IBAction private func closePressed(_ sender: Any) {
         timer?.invalidate()
         dismiss(animated: true, completion: nil)
