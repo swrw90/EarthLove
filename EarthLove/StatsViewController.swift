@@ -16,12 +16,14 @@ class StatsViewController: UIViewController {
     // MARK: - Properties
     var managedObjectContext: NSManagedObjectContext?
     
+    // Returns a count of all challenges, both complete and incomplete.
     private var allChallengesCount: Int? {
         guard let context = managedObjectContext else { return nil }
         
         return Challenge.getAllChallengesCount(in: context)
     }
     
+    // Watches for value to change and calls setupUI function.
     private var allCompletedCount: Int? {
         didSet {
             guard oldValue != allCompletedCount else { return }
@@ -56,6 +58,7 @@ class StatsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        // Updates count of all completed challenges.
         guard let context = managedObjectContext else { return }
         allCompletedCount = Challenge.getAllCompletedChallengesCount(in: context)
         
@@ -88,7 +91,7 @@ class StatsViewController: UIViewController {
     
     /// Set values from challenges count and percentages to UILabels.
     private func configureUI(for category: Category, with context: NSManagedObjectContext) {
-         guard let categoryChallengePercentage = calculateCompletedPercentage(with: category), let categoryChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: category), let allCategoryChallengesCount = Challenge.getAllChallengesCount(in: context, with: category) else { return }
+        guard let categoryChallengePercentage = calculateCompletedPercentage(with: category), let categoryChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: category), let allCategoryChallengesCount = Challenge.getAllChallengesCount(in: context, with: category) else { return }
         
         switch category {
         case .home:
@@ -106,9 +109,7 @@ class StatsViewController: UIViewController {
         }
         
         if let completedCount = allCompletedCount, let challengesCount = allChallengesCount {
-        totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
+            totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
         }
-        
-        
     }
 }

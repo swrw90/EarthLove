@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Enum used to represent each case for the separate categories and their associated icon image. 
 enum Category: String, CaseIterable {
     case work
     case home

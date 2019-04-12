@@ -16,13 +16,19 @@ class ChallengeViewController: UIViewController {
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
+    var completedChallenge: Challenge?
+    var fortuneMessageView: FortuneMessageView?
+    var fortuneMessage: String?
+    var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
     let creationTimeKey = "creationTime"
     let skipTimeStampKey = "skipTimeStamp"
     let skipCountKey = "skipCount"
+    let numberOfTimesCompletedKey = "numberOfTimesCompleted"
+    let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 60 * 60 * 24
-   
+    let secondsInTwentyFourHours: TimeInterval = 10
+    
     // Watches for challenge value to change.
     private var challenge: Challenge? {
         didSet {
@@ -39,6 +45,14 @@ class ChallengeViewController: UIViewController {
         }
     }
     
+    
+    // Cancel Fortune network request after completion.
+    private var networkRequest: URLSessionDataTask? {
+        willSet {
+            networkRequest?.cancel()
+        }
+    }
+    
     // Returns value of skip count from UserDefaults.
     var skipCount: Int {
         get {
@@ -47,6 +61,28 @@ class ChallengeViewController: UIViewController {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: skipCountKey)
+        }
+    }
+    
+    // Returns value of numberOfTimesCompleted count from UserDefaults.
+    var numberOfTimesCompleted: Int {
+        get {
+            guard let numberOfTimesCompleted = UserDefaults.standard.value(forKey: numberOfTimesCompletedKey) as? Int else { fatalError("Number of times completed count is nil.") }
+            return numberOfTimesCompleted
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: numberOfTimesCompletedKey)
+        }
+    }
+    
+    // Returns value of countUntilFortuneDisplays count from UserDefaults.
+    var countUntilFortuneDisplays: Int {
+        get {
+            guard let countUntilFortuneDisplays = UserDefaults.standard.value(forKey: countUntilFortuneDisplaysKey) as? Int else { fatalError("Count until Fortune Displays is nil.") }
+            return countUntilFortuneDisplays
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: countUntilFortuneDisplaysKey)
         }
     }
     
@@ -62,12 +98,24 @@ class ChallengeViewController: UIViewController {
     
     // MARK: - View Controller Life Cycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        displayChallenge()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        displayPendingChallengeTimerView()
+        
     }
     
-    /// Checks if the creation time has lapsed 24 hours.
+    // If completed challenge is not nil setup selected challenge UI is called to update UI fro challenge selected in HistoryVC. Else, call displayChallenge.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let completedChallenge = completedChallenge {
+            setupSelectedChallengeUI(with: completedChallenge)
+        } else {
+            displayChallenge()
+        }
+    }
+    
+    /// Checks if the challenge creation time has lapsed 24 hours.
     private var hasTwentyFourHoursPassed: Bool {
         guard let challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date else { return false }
         return abs(challengeCreationTime.timeIntervalSinceNow) > secondsInTwentyFourHours
@@ -80,7 +128,7 @@ class ChallengeViewController: UIViewController {
         self.challenge = challenge
     }
     
-    /// Handles if it needs to display a new random challenge or fetch previously displayed challenge.
+    /// Handles if a new random challenge needs to display or else it fetch previously displayed challenge.
     private func displayChallenge() {
         if hasTwentyFourHoursPassed {
             displayNewChallenge()
@@ -94,10 +142,47 @@ class ChallengeViewController: UIViewController {
     
     /// Configure ChallengeVC UI using Challenge object.
     private func setupChallengeUI(with challenge: Challenge) {
+        self.titleLabel.text = challenge.title
+        self.descriptionLabel.text = challenge.summary
+        self.categoryImageView.image = challenge.category.iconImage
+    }
+    
+    /// Setup UI for Challenge selected in HistoryVC
+    private func setupSelectedChallengeUI(with challenge: Challenge) {
+        completedButton.isHidden = true
+        skipButton.isHidden = true
+        
         titleLabel.text = challenge.title
         descriptionLabel.text = challenge.summary
         categoryImageView.image = challenge.category.iconImage
     }
+    
+    /// Creates an instance of PendingChallengeTimerView if challenge is completed and timer has not lapsed.
+    func displayPendingChallengeTimerView() {
+        guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
+        
+        guard let challenge = Challenge.fetch(with: id, in: context) else { return }
+        
+        if challenge.isCompleted && !hasTwentyFourHoursPassed {
+            
+            guard let pendingChallengeTimerView = PendingChallengeTimerView.instanceOfPendingChallengeTimerViewNib() as? PendingChallengeTimerView else { return }
+            
+            pendingChallengeTimerView.delegate = self
+            pendingChallengeTimerView.secondsInTwentyFourHours = secondsInTwentyFourHours
+            pendingChallengeTimerView.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+            
+            self.pendingChallengeTimerView = pendingChallengeTimerView
+            
+            self.view.addSubview(pendingChallengeTimerView)
+            pendingChallengeTimerView.pinFrameToSuperView()
+            
+        } else if challenge.isCompleted != true {
+            return
+        } else if challenge.isCompleted && hasTwentyFourHoursPassed {
+            displayNewChallenge()
+        }
+    }
+    
     
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
@@ -122,6 +207,7 @@ class ChallengeViewController: UIViewController {
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
         skipCount += 1
+        
         if skipCount > 3 {
             showSkipAlert()
         } else {
@@ -129,29 +215,118 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    // Update skip button after a challenge is completed.
+    // Update skip button UI after a challenge is completed.
     private func updateSkipButton() {
         skipButton.isOpaque = challenge?.isCompleted == true
         skipButton.isEnabled = challenge?.isCompleted == false
     }
     
-    // Handle completed button press.
+    /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: showPendingViewControllerKey, sender: nil)
+        numberOfTimesCompleted += 1
+        countUntilFortuneDisplays = 7
+        
+        if countUntilFortuneDisplays == 7 {
+            performFortuneNetworkRequest()
+            countUntilFortuneDisplays = 0
+        }
+        
+        displayPendingChallengeTimerView()
+        
         updateSkipButton()
         changeCompletionStatus()
+        
     }
     
-    
-    //MARK: - Navigation
-    
-    // Prepares PendingChallengeVC by passing necessary data during segue.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == showPendingViewControllerKey {
-            guard let controller = segue.destination as? PendingChallengeViewController else { return }
-            controller.secondsInTwentyFourHours = secondsInTwentyFourHours
-            controller.challengeCreationTime = UserDefaults.standard.value(forKey: creationTimeKey) as? Date
+    /// Performs network request to get a random fortune from api, if error then it calls displayRandomFortuneMessage.
+    private func performFortuneNetworkRequest()  {
+        networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
+            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
+            
+            self.fortuneMessage = fortuneMessage
+            DispatchQueue.main.async {
+                self.displayFortuneImage()
+            }
         }
     }
+    
+    
+    /// Creates an instance of FortuneMessageView, adds it to the view stack and displays a fortune message from CoreData.
+    func displayRandomFortuneMessage() {
+        
+        guard fortuneMessageView == nil else { return }
+        
+        guard let context = managedObjectContext else { return }
+        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
+        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        
+        self.fortuneMessageView = fortuneView
+        
+        // Add subview to top level view.
+        self.view.addSubview(fortuneView)
+        //        fortuneView.fortuneLabel.text = summary
+        fortuneView.fortuneLabel.text = self.fortuneMessage
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            fortuneView.frame.origin.y = self.view.frame.height / 2
+        })
+    }
+    
+    // Creates an instance of FortuneImageView and adds it to view stack.
+    private func displayFortuneImage() {
+        guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
+        
+        fortuneImageView.delegate = self
+        fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
+        fortuneImageView.fortuneMessage = self.fortuneMessage
+        
+        self.view.addSubview(fortuneImageView)
+        fortuneImageView.pinFrameToSuperView()
+    }
+    
+}
+
+/// Hanldes delegation methods for PendingChallengeTimerView.
+extension ChallengeViewController: PendingChallengeTimerViewDelegate {
+    
+    // Removes pending challenge timer view from superview, sets its value to nil and calls display new challenge function.
+    func handleCountdownEnding() {
+        pendingChallengeTimerView?.removeFromSuperview()
+        pendingChallengeTimerView = nil
+        displayNewChallenge()
+    }
+}
+
+/// Handles delegation methods for FortuneImageView and FortuneMessageView.
+extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewDelegate {
+    
+    // Removes FortuneImageView and FortuneMessageView from view stack and calls displayPendingChallengeTimerView function.
+    func clearViewStack() {
+        
+        for view in self.view.subviews where view is FortuneImageView || view is FortuneMessageView {
+            view.removeFromSuperview()
+        }
+        fortuneMessageView = nil
+        displayPendingChallengeTimerView()
+    }
+    
+    //  Creates an instance of FortuneMessageView, animates it and adds it to view stack.
+    func displayFortuneMessageView() {
+        guard fortuneMessageView == nil else { return }
+        
+        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        
+        fortuneView.delegate = self
+        self.fortuneMessageView = fortuneView
+        
+        // Add subview to top level view.
+        self.view.addSubview(fortuneView)
+        fortuneView.fortuneLabel.text = fortuneMessage
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            fortuneView.frame.origin.y = self.view.frame.height / 2
+        })
+    }
+    
+    
 }

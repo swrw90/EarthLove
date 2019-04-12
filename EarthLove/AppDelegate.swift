@@ -62,26 +62,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
+        // Assigns managedObjectContext to each view using tabViewContrrolers and navController.
         let tabController = window!.rootViewController as! UITabBarController
-        
-        if let controller = tabController.viewControllers?.first as? ChallengeViewController {
-            controller.managedObjectContext = managedObjectContext
-        }
-        if let controller1 = tabController.viewControllers?.first as? ChallengeViewController, let controller2 = tabController.viewControllers?[1] as? StatsViewController, let controller3 = tabController.viewControllers?[2] as? HistoryViewController {
+        if let tabViewControllers = tabController.viewControllers {
+            
+            var navController = tabViewControllers[0] as! UINavigationController
+            let controller1 = navController.viewControllers.first as! ChallengeViewController
             controller1.managedObjectContext = managedObjectContext
+            
+            navController = tabViewControllers[1] as! UINavigationController
+            let controller2 = navController.viewControllers[0] as! StatsViewController
             controller2.managedObjectContext = managedObjectContext
+            
+            navController = tabViewControllers[2] as! UINavigationController
+            let controller3 = navController.viewControllers[0] as! HistoryViewController
             controller3.managedObjectContext = managedObjectContext
+            
         }
         
+        // If it's the apps first launch call functions to parse challenge and fortune json.
         if isFirstLaunch {
             parseChallengeJSON()
+            parseFortuneJSON()
         } else {
             print("App has already previously launched.")
         }
         return true
     }
     
-    
+    // Uses UserDefaults to determine if the app has previously launched. If it's first launch, set UserDefault initial values.
     var isFirstLaunch: Bool {
         let defaults = UserDefaults.standard
         
@@ -98,6 +107,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UserDefaults.standard.register(defaults: ["skipCount" : 0])
             }
             
+            // Register the initial numberOfTimesCompleted value from ChallengeVC to UserDefaults.
+            if UserDefaults.standard.object(forKey: "numberOfTimesCompleted") == nil {
+                UserDefaults.standard.register(defaults: ["numberOfTimesCompleted" : 0])
+            }
+            
+            // Register the initial countUntilFortuneDisplays value from ChallengeVC to UserDefaults.
+            if UserDefaults.standard.object(forKey: "countUntilFortuneDisplays") == nil {
+                UserDefaults.standard.register(defaults: ["countUntilFortuneDisplays" : 0])
+            }
+            
             // Register initial Challenge for ChallengeVC to UserDefaults
             UserDefaults.standard.register(defaults: ["identifier" : 1])
             
@@ -108,10 +127,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // Handles parsing of challenge json and saves it to context.
     private func parseChallengeJSON() {
         // Find path to json, make path into URL, get data from json, parse json data.
         // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-        if let path = Bundle.main.path(forResource: "testData", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "challengeData", ofType: "json") {
             do {
                 let pathURL = URL(fileURLWithPath: path)
                 let data = try Data(contentsOf: pathURL)
@@ -122,6 +142,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    // Handles parsing of Fortune json and saves it to context.
+    private func parseFortuneJSON() {
+        // Find path to json, make path into URL, get data from json, parse json data.
+        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
+        
+        DispatchQueue.global(qos: .background).async {
+            if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
+                do {
+                    let pathURL = URL(fileURLWithPath: path)
+                    let data = try Data(contentsOf: pathURL)
+                    DispatchQueue.main.async {
+                        do {
+                            try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                        } catch {
+                            print(error)
+                        }
+                        
+                        guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON], let json = jsonResult else { return }
+                        Fortune.insertToStore(from: json, in: self.managedObjectContext)
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
