@@ -180,6 +180,8 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         challengeVC.navigationItem.rightBarButtonItem = nil
         show(challengeVC, sender: self)
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
