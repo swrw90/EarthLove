@@ -212,11 +212,14 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
         
         UIView.animate(withDuration: 0.3, animations: {
             self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
+            self.blurEffectView?.alpha = 0.0
         }, completion: { _ in
             // Remove categoriesMenuVC from view stack.
             self.categoriesMenuViewController?.willMove(toParent: nil)
             
             self.categoriesMenuViewController = nil
+            
+            self.blurEffectView?.removeFromSuperview()
         })
         
         selectedCategory = category

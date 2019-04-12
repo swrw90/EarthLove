@@ -53,6 +53,7 @@ class FortuneImageView: UIView {
         if numberOfTapsCount == 1 {
             fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
         } else if numberOfTapsCount == 2 {
+            numberOfTapsCount = 0
             delegate?.displayFortuneMessageView()
             fortuneCookieImage.removeFromSuperview()
         }

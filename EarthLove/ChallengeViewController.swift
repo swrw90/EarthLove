@@ -301,7 +301,7 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
         for view in self.view.subviews where view is FortuneImageView || view is FortuneMessageView {
             view.removeFromSuperview()
         }
-        
+        fortuneMessageView = nil
         displayPendingChallengeTimerView()
     }
 
