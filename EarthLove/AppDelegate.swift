@@ -99,6 +99,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("App has already previously launched.")
         }
+        
+        // Test Notification
+        let content = UNMutableNotificationContent()
+        content.title = "Daily Challenge"
+        content.body = "Your daily Earth Love challenge is now available!"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+        let request = UNNotificationRequest(identifier: "ChallengeNotification", content: content, trigger: trigger)
+        
+        center.add(request)
+        
         return true
     }
     
