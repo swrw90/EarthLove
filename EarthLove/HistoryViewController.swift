@@ -227,8 +227,14 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
             self.blurEffectView?.removeFromSuperview()
         })
         
-        selectedCategory = category
-        categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+        if category == .all {
+            selectedCategory = nil
+            categoryHeader.setTitle("all", for: .normal)
+        } else {
+            selectedCategory = category
+            categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+        }
+        
         _fetchedResultsController = nil
         
         self.tableView.reloadData()

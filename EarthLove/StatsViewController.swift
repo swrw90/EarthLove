@@ -94,6 +94,11 @@ class StatsViewController: UIViewController {
         guard let categoryChallengePercentage = calculateCompletedPercentage(with: category), let categoryChallengesCount = Challenge.getAllCompletedChallengesCount(in: context, with: category), let allCategoryChallengesCount = Challenge.getAllChallengesCount(in: context, with: category) else { return }
         
         switch category {
+        case .all:
+            if let completedCount = allCompletedCount, let challengesCount = allChallengesCount {
+                totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
+            }
+            print("all")
         case .home:
             homePercentageLabel.text = String(categoryChallengePercentage) + "%"
             homeRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
@@ -106,10 +111,6 @@ class StatsViewController: UIViewController {
         case .volunteer:
             volunteerPercentageLabel.text = String(categoryChallengePercentage) + "%"
             volunteerRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
-        }
-        
-        if let completedCount = allCompletedCount, let challengesCount = allChallengesCount {
-            totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
         }
     }
 }
