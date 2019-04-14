@@ -28,7 +28,7 @@ class ChallengeViewController: UIViewController {
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 20
+    let secondsInTwentyFourHours: TimeInterval = 24 * 60 * 60
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
