@@ -37,6 +37,8 @@
 		C7A635B02249F6BB0041FB39 /* FortuneImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A635AF2249F6BB0041FB39 /* FortuneImageView.xib */; };
 		C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A635B12249F7580041FB39 /* FortuneImageView.swift */; };
 		C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */; };
+		C7DEEA3922631CD70001B7B5 /* ZeroStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DEEA3822631CD70001B7B5 /* ZeroStateView.xib */; };
+		C7DEEA3B22631E490001B7B5 /* ZeroStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DEEA3A22631E490001B7B5 /* ZeroStateView.swift */; };
 		C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */; };
 		C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		C7A635AF2249F6BB0041FB39 /* FortuneImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneImageView.xib; sourceTree = "<group>"; };
 		C7A635B12249F7580041FB39 /* FortuneImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneImageView.swift; sourceTree = "<group>"; };
 		C7BD0CBA2238B282004EE67E /* FortuneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneRequest.swift; sourceTree = "<group>"; };
+		C7DEEA3822631CD70001B7B5 /* ZeroStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZeroStateView.xib; sourceTree = "<group>"; };
+		C7DEEA3A22631E490001B7B5 /* ZeroStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroStateView.swift; sourceTree = "<group>"; };
 		C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PendingChallengeTimerView.xib; sourceTree = "<group>"; };
 		C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +139,8 @@
 			children = (
 				C7F83C3422349D2300A61715 /* PendingChallengeTimerView.swift */,
 				C7F83C3222349BDE00A61715 /* PendingChallengeTimerView.xib */,
+				C7DEEA3822631CD70001B7B5 /* ZeroStateView.xib */,
+				C7DEEA3A22631E490001B7B5 /* ZeroStateView.swift */,
 				C77025EE2227B82800D9C549 /* FortuneMessageView.swift */,
 				C77025F02227B95500D9C549 /* FortuneMessageView.xib */,
 				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
@@ -253,6 +259,7 @@
 				C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */,
 				C77025F12227B95500D9C549 /* FortuneMessageView.xib in Resources */,
 				C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */,
+				C7DEEA3922631CD70001B7B5 /* ZeroStateView.xib in Resources */,
 				C74A325721AF774E00C8ACE3 /* challengeData.json in Resources */,
 				C76C0A5721AB655100AA6071 /* HistoryCell.xib in Resources */,
 				C77025ED22156F4F00D9C549 /* fortuneData.json in Resources */,
@@ -282,6 +289,7 @@
 				C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */,
 				C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
+				C7DEEA3B22631E490001B7B5 /* ZeroStateView.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
 				C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */,
 				C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */,

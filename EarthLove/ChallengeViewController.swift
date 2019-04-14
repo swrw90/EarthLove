@@ -92,7 +92,6 @@ class ChallengeViewController: UIViewController {
     
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var completedButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
