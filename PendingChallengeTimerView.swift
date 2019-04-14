@@ -32,7 +32,7 @@ class PendingChallengeTimerView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         runChallengeTimer()
     }
     
@@ -72,5 +72,5 @@ class PendingChallengeTimerView: UIView {
             
         }
     }
-    
+
 }

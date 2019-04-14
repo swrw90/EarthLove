@@ -72,7 +72,6 @@ public class Fortune: NSManagedObject {
     /// Returns an Int for total count of all fortunes in context.
     class func getAllFortunesCount(in context: NSManagedObjectContext) -> Int? {
         let fetchRequest: NSFetchRequest<Fortune> = Fortune.fetchRequest()
-        fetchRequest.predicate = hasNotDisplayedFortunePredicate
         
         let count = try? context.count(for: fetchRequest)
         return count
