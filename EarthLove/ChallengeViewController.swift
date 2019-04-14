@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
@@ -27,7 +28,7 @@ class ChallengeViewController: UIViewController {
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 10
+    let secondsInTwentyFourHours: TimeInterval = 20
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -184,6 +185,22 @@ class ChallengeViewController: UIViewController {
     }
     
     
+    // Schedule notification to appear after ends.
+    func scheduleNotificationTimer() {
+
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Daily Challenge"
+        content.body = "Your daily Earth Love challenge is now available!"
+        content.sound = UNNotificationSound.default
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: secondsInTwentyFourHours, repeats: false)
+        let request = UNNotificationRequest(identifier: "ChallengeNotification", content: content, trigger: trigger)
+        
+        center.add(request)
+
+    }
+    
     /// Changes the isCompleted of a challenge with the specified id.
     private func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
@@ -235,6 +252,7 @@ class ChallengeViewController: UIViewController {
         
         updateSkipButton()
         changeCompletionStatus()
+        scheduleNotificationTimer()
         
     }
     

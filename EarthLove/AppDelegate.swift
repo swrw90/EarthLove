@@ -11,7 +11,7 @@ import CoreData
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     
@@ -60,6 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    // MARK: - User Notification Delegates.
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("Received local notification \(notification)")
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
         
@@ -68,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         center.requestAuthorization(options: [.alert, .sound]) {
             granted, error in
             if granted {
+                center.delegate = self
                 print("Notifications permission granted.")
             } else {
                 print("Notifications permission denied.")
@@ -99,17 +106,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("App has already previously launched.")
         }
-        
-        // Test Notification
-        let content = UNMutableNotificationContent()
-        content.title = "Daily Challenge"
-        content.body = "Your daily Earth Love challenge is now available!"
-        content.sound = UNNotificationSound.default
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
-        let request = UNNotificationRequest(identifier: "ChallengeNotification", content: content, trigger: trigger)
-        
-        center.add(request)
         
         return true
     }
