@@ -27,7 +27,8 @@ class ChallengeViewController: UIViewController {
     let skipCountKey = "skipCount"
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
-    let showPendingViewControllerKey = "showPendingViewController" 
+    let showPendingViewControllerKey = "showPendingViewController"
+    let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     let secondsInTwentyFourHours: TimeInterval = 24 * 60 * 60
     
     // Watches for challenge value to change.
@@ -84,6 +85,17 @@ class ChallengeViewController: UIViewController {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: countUntilFortuneDisplaysKey)
+        }
+    }
+    
+    // Returns value of hasCompletedAChallenge from UserDefaults.
+    var hasCompletedAChallenge: Bool {
+        get {
+            guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { fatalError("hasCompletedAChallenge is Bool nil.") }
+            return hasCompletedAChallenge
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: hasCompletedAChallengeKey)
         }
     }
     

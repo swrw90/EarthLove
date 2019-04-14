@@ -24,8 +24,10 @@ class HistoryViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var selectedCategory: Category?
     var completedChallenge: Challenge?
+    var hasCompletedAChallenge: Bool?
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
+    
     
     // MARK: - Outlets
     
@@ -73,6 +75,7 @@ class HistoryViewController: UIViewController {
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         tableView.rowHeight = 80
         
