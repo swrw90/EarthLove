@@ -29,7 +29,7 @@ class ChallengeViewController: UIViewController {
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
     let showPendingViewControllerKey = "showPendingViewController"
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
-    let secondsInTwentyFourHours: TimeInterval = 24 * 60 * 60
+    let secondsInTwentyFourHours: TimeInterval = 60
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -217,6 +217,7 @@ class ChallengeViewController: UIViewController {
     private func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
         challenge.isCompleted = true
+        hasCompletedAChallenge = true
         
         try? context.save()
     }

@@ -9,6 +9,13 @@
 import UIKit
 import CoreData
 
+// MARK - Protocols
+protocol  HistoryViewControllerDelegate: AnyObject {
+    
+    // Set hasCompletedAChallenge to true.
+    func hasCompletedAChallenge()
+}
+
 private let historyCell = "HistoryCell"
 private let nothingFoundCell = "NothingFoundCell"
 private let showChallengeViewControllerKey = "showChallengeViewController"
@@ -24,11 +31,11 @@ class HistoryViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var selectedCategory: Category?
     var completedChallenge: Challenge?
-    var hasCompletedAChallenge: Bool?
+//    var hasCompletedAChallenge: Bool?
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
-    
-    
+
+    let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -77,15 +84,30 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         
         
-        tableView.rowHeight = 80
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
-        var cellNib = UINib(nibName: historyCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: historyCell)
+        guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
         
-        cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        guard let zeroStateView = ZeroStateView.instanceOfZeroStateViewNib() as? ZeroStateView else { return }
         
+        if !hasCompletedAChallenge {
+            self.view.addSubview(zeroStateView)
+            
+        } else {
+            zeroStateView.removeFromSuperview()
+            tableView.rowHeight = 80
+            
+            var cellNib = UINib(nibName: historyCell, bundle: nil)
+            tableView.register(cellNib, forCellReuseIdentifier: historyCell)
+            
+            cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
+            tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        }
         
+
     }
     
     /// Get an array of all complted challenges.
