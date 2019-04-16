@@ -98,7 +98,6 @@ class StatsViewController: UIViewController {
             if let completedCount = allCompletedCount, let challengesCount = allChallengesCount {
                 totalRatioLabel.text = "\(completedCount) / \(challengesCount)"
             }
-            print("all")
         case .home:
             homePercentageLabel.text = String(categoryChallengePercentage) + "%"
             homeRatioLabel.text = "\(categoryChallengesCount) / \(allCategoryChallengesCount)"
