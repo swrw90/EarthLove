@@ -31,7 +31,6 @@ class HistoryViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var selectedCategory: Category?
     var completedChallenge: Challenge?
-//    var hasCompletedAChallenge: Bool?
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
 
@@ -83,7 +82,6 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,11 +91,15 @@ class HistoryViewController: UIViewController {
         
         guard let zeroStateView = ZeroStateView.instanceOfZeroStateViewNib() as? ZeroStateView else { return }
         
-        if !hasCompletedAChallenge {
+        if hasCompletedAChallenge == false {
             self.view.addSubview(zeroStateView)
             
-        } else {
-            zeroStateView.removeFromSuperview()
+        } else if hasCompletedAChallenge == true {
+            
+            for view in self.view.subviews where view is ZeroStateView {
+                view.removeFromSuperview()
+            }
+            
             tableView.rowHeight = 80
             
             var cellNib = UINib(nibName: historyCell, bundle: nil)
@@ -106,8 +108,6 @@ class HistoryViewController: UIViewController {
             cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
             tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
         }
-        
-
     }
     
     /// Get an array of all complted challenges.
