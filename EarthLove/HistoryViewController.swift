@@ -26,6 +26,7 @@ private let challengeViewControllerIdentifier = "ChallengeViewController"
 /// MARK: - Displays the history of users completed challenges.
 class HistoryViewController: UIViewController {
     
+    
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
@@ -35,6 +36,8 @@ class HistoryViewController: UIViewController {
     private var blurEffectView: UIView?
     
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!

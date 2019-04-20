@@ -8,8 +8,8 @@
 
 import UIKit
 
+/// Displayed to indicate to user that they have not completed any challenges yet.
 class ZeroStateView: UIView {
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

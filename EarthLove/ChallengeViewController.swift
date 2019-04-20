@@ -47,7 +47,6 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    
     // Cancel Fortune network request after completion.
     private var networkRequest: URLSessionDataTask? {
         willSet {
