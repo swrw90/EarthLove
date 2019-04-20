@@ -27,8 +27,9 @@ class ChallengeViewController: UIViewController {
     let skipCountKey = "skipCount"
     let numberOfTimesCompletedKey = "numberOfTimesCompleted"
     let countUntilFortuneDisplaysKey = "countUntilFortuneDisplays"
-    let showPendingViewControllerKey = "showPendingViewController" 
-    let secondsInTwentyFourHours: TimeInterval = 20
+    let showPendingViewControllerKey = "showPendingViewController"
+    let hasCompletedAChallengeKey = "hasCompletedAChallenge"
+    let secondsInTwentyFourHours: TimeInterval = 60
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -45,7 +46,6 @@ class ChallengeViewController: UIViewController {
             }
         }
     }
-    
     
     // Cancel Fortune network request after completion.
     private var networkRequest: URLSessionDataTask? {
@@ -84,6 +84,17 @@ class ChallengeViewController: UIViewController {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: countUntilFortuneDisplaysKey)
+        }
+    }
+    
+    // Returns value of hasCompletedAChallenge from UserDefaults.
+    var hasCompletedAChallenge: Bool {
+        get {
+            guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { fatalError("hasCompletedAChallenge is Bool nil.") }
+            return hasCompletedAChallenge
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: hasCompletedAChallengeKey)
         }
     }
     
@@ -205,6 +216,7 @@ class ChallengeViewController: UIViewController {
     private func changeCompletionStatus() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64, let challenge = Challenge.fetch(with: id, in: context) else { return }
         challenge.isCompleted = true
+        hasCompletedAChallenge = true
         
         try? context.save()
     }

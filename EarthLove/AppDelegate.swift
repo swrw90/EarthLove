@@ -143,6 +143,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             // Set initial Challenge creation time.
             // TODO: - Move this logic outside of App Delegate.
             UserDefaults.standard.set(Date(), forKey: "creationTime")
+            
+            // Register the hasCompletedAChallenge initial value for from ChallengeVC to UserDefaults.
+            if UserDefaults.standard.object(forKey: "hasCompletedAChallenge") == nil {
+                UserDefaults.standard.register(defaults: ["hasCompletedAChallenge" : false])
+            }
             return true
         }
     }

@@ -89,7 +89,7 @@ public class Challenge: NSManagedObject {
         do {
             if let category = category {
                 fetchRequest = allChallengesFetchRequest(with: category)
-              
+                
                 return try? context.count(for: fetchRequest)
             } else {
                 return try? context.count(for: fetchRequest)
@@ -193,7 +193,6 @@ public class Challenge: NSManagedObject {
         
         if let category = category {
             fetchRequest.predicate = completedByCategoryPredicate(with: category)
-            
             return fetchRequest
         } else {
             fetchRequest.predicate = Challenge.isCompletedPredicate

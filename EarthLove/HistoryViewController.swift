@@ -9,6 +9,13 @@
 import UIKit
 import CoreData
 
+// MARK - Protocols
+protocol  HistoryViewControllerDelegate: AnyObject {
+    
+    // Set hasCompletedAChallenge to true.
+    func hasCompletedAChallenge()
+}
+
 private let historyCell = "HistoryCell"
 private let nothingFoundCell = "NothingFoundCell"
 private let showChallengeViewControllerKey = "showChallengeViewController"
@@ -19,6 +26,7 @@ private let challengeViewControllerIdentifier = "ChallengeViewController"
 /// MARK: - Displays the history of users completed challenges.
 class HistoryViewController: UIViewController {
     
+    
     // MARK: - Properties
     
     var managedObjectContext: NSManagedObjectContext?
@@ -26,6 +34,9 @@ class HistoryViewController: UIViewController {
     var completedChallenge: Challenge?
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
+    
+    let hasCompletedAChallengeKey = "hasCompletedAChallenge"
+    
     
     // MARK: - Outlets
     
@@ -74,15 +85,37 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 80
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         
-        var cellNib = UINib(nibName: historyCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: historyCell)
+        displayZeroStateView()
+    }
+    
+    /// Display zeroStateView if no challenges completed, else display history table view.
+    private func displayZeroStateView() {
+        guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
         
-        cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        guard let zeroStateView = ZeroStateView.instanceOfZeroStateViewNib() as? ZeroStateView else { return }
         
-        
+        if hasCompletedAChallenge == false {
+            self.view.addSubview(zeroStateView)
+            
+        } else if hasCompletedAChallenge == true {
+            
+            for view in self.view.subviews where view is ZeroStateView {
+                view.removeFromSuperview()
+            }
+            
+            tableView.rowHeight = 80
+            
+            var cellNib = UINib(nibName: historyCell, bundle: nil)
+            tableView.register(cellNib, forCellReuseIdentifier: historyCell)
+            
+            cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
+            tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        }
     }
     
     /// Get an array of all complted challenges.
@@ -227,8 +260,14 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
             self.blurEffectView?.removeFromSuperview()
         })
         
-        selectedCategory = category
-        categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+        if category == .all {
+            selectedCategory = nil
+            categoryHeader.setTitle("all", for: .normal)
+        } else {
+            selectedCategory = category
+            categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+        }
+        
         _fetchedResultsController = nil
         
         self.tableView.reloadData()
