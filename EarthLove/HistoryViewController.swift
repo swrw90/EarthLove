@@ -33,7 +33,7 @@ class HistoryViewController: UIViewController {
     var completedChallenge: Challenge?
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
-
+    
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     // MARK: - Outlets
     
@@ -87,6 +87,11 @@ class HistoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         
+        displayZeroStateView()
+    }
+    
+    /// Display zeroStateView if no challenges completed, else display history table view.
+    private func displayZeroStateView() {
         guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
         
         guard let zeroStateView = ZeroStateView.instanceOfZeroStateViewNib() as? ZeroStateView else { return }

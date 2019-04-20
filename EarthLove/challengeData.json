@@ -106,6 +106,13 @@
         "identifier": 18,
         "isCompleted": false,
         "category": "recreational",
+    },
+    { "title": "Challenge: Drive Sensibly",
+        "summary": "Avoid aggressive driving. “Jack-rabbit” starts and hard braking can increase fuel consumption by as much as 40%",
+        "identifier": 19,
+        "isCompleted": false,
+        "category": "recreational",
     }
 ]
 
+ 
