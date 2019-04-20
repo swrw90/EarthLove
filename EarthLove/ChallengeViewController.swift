@@ -228,6 +228,8 @@ class ChallengeViewController: UIViewController {
         let action = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
+        skipButton.isOpaque = true
     }
     
     

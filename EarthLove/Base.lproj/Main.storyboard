@@ -107,7 +107,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qC3-Bb-edK">
+                    <navigationItem key="navigationItem" title="Daily Challenge" id="qC3-Bb-edK">
                         <barButtonItem key="rightBarButtonItem" title="Stats" image="settings" id="6kR-DR-iiP">
                             <connections>
                                 <segue destination="dpL-8W-olS" kind="show" id="ReR-bd-nbo"/>
@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="2275" y="-285"/>
         </scene>
-        <!--Stats View Controller-->
+        <!--Stats-->
         <scene sceneID="Bei-nP-7CW">
             <objects>
                 <viewController id="UgQ-Lh-R4n" customClass="StatsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,7 +263,7 @@
                         <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="yXm-HH-Skf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QA0-TW-xa0"/>
+                    <navigationItem key="navigationItem" title="Stats" id="QA0-TW-xa0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="homePercentageLabel" destination="F65-be-vfp" id="6tB-bH-RXb"/>
@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="-726" y="1177"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="KLF-mE-NCk">
             <objects>
                 <viewController id="v08-8m-6Cc" customClass="SettingsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
@@ -363,7 +363,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yxF-P1-9AK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="643-4T-En4">
+                    <navigationItem key="navigationItem" title="Settings" id="643-4T-En4">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="kek-Qa-Go0">
                             <connections>
                                 <action selector="back:" destination="v08-8m-6Cc" id="uxb-22-MFY"/>
@@ -433,7 +433,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QVy-On-aIc"/>
+                    <navigationItem key="navigationItem" title="History" id="QVy-On-aIc"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>

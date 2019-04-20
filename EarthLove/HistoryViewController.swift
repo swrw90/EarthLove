@@ -101,6 +101,7 @@ class HistoryViewController: UIViewController {
         
         if hasCompletedAChallenge == false {
             self.view.addSubview(zeroStateView)
+            zeroStateView.pinFrameToSuperView()
             
         } else if hasCompletedAChallenge == true {
             
