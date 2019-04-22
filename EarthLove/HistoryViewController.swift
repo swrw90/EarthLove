@@ -93,6 +93,16 @@ class HistoryViewController: UIViewController {
         displayZeroStateView()
     }
     
+    // Dismiss CategoriesMenuVC if touch outside of CategoriesMenuVC.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // Remove categoriesMenuViewController and blurEffectView from view stack.
+        self.categoriesMenuViewController?.view.removeFromSuperview()
+        self.blurEffectView?.removeFromSuperview()
+        
+    }
+    
+    
     /// Display zeroStateView if no challenges completed, else display history table view.
     private func displayZeroStateView() {
         guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
@@ -253,9 +263,9 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
             self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
             self.blurEffectView?.alpha = 0.0
         }, completion: { _ in
+            
             // Remove categoriesMenuVC from view stack.
             self.categoriesMenuViewController?.willMove(toParent: nil)
-            
             self.categoriesMenuViewController = nil
             
             self.blurEffectView?.removeFromSuperview()

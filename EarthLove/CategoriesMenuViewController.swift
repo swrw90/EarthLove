@@ -54,5 +54,5 @@ class CategoriesMenuViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.handleSelectedCategory(category: Category.allCases[indexPath.row])
     }
+    
 }
-
