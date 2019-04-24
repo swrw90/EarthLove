@@ -273,35 +273,44 @@ class ChallengeViewController: UIViewController {
     /// Performs network request to get a random fortune from api, if error then it calls displayRandomFortuneMessage.
     private func performFortuneNetworkRequest()  {
         networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
-            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
             
             self.fortuneMessage = fortuneMessage
             DispatchQueue.main.async {
+                if (error != nil) {
+                    print("Fortune network request failed. Random Fortune will be pulled from Core Data. \(String(describing: error))");
+                    self.displayFortuneImage()
+
+                } else {
                 self.displayFortuneImage()
+                }
             }
         }
     }
     
     
     /// Creates an instance of FortuneMessageView, adds it to the view stack and displays a fortune message from CoreData.
-    func displayRandomFortuneMessage() {
+    func getRandomFortuneMessageFromCoreData() -> String? {
         
-        guard fortuneMessageView == nil else { return }
+//        guard fortuneMessageView == nil else { return nil }
         
-        guard let context = managedObjectContext else { return }
-        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
-        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        guard let context = managedObjectContext else { return nil }
+        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return nil }
+//        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
         
-        self.fortuneMessageView = fortuneView
+//        fortuneView.fortuneLabel.text = summary
+//
+//        self.fortuneMessageView = fortuneView
         
         // Add subview to top level view.
-        self.view.addSubview(fortuneView)
-        //        fortuneView.fortuneLabel.text = summary
-        fortuneView.fortuneLabel.text = self.fortuneMessage
+//        self.view.addSubview(fortuneView)
+//        fortuneView.fortuneLabel.text = summary
+//        fortuneView.fortuneLabel.text = self.fortuneMessage
         
-        UIView.animate(withDuration: 0.3, animations: {
-            fortuneView.frame.origin.y = self.view.frame.height / 2
-        })
+//        UIView.animate(withDuration: 0.3, animations: {
+//            fortuneView.frame.origin.y = self.view.frame.height / 2
+//        })
+        
+        return summary
     }
     
     // Creates an instance of FortuneImageView and adds it to view stack.
@@ -351,13 +360,28 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
         fortuneView.delegate = self
         self.fortuneMessageView = fortuneView
         
-        // Add subview to top level view.
-        self.view.addSubview(fortuneView)
-        fortuneView.fortuneLabel.text = fortuneMessage
+        // if fortuneMessage is nil use fortune message from core data, otherwise use message from network request.
+        if fortuneMessage == nil {
+           self.fortuneMessage = getRandomFortuneMessageFromCoreData()
+            
+            // Add subview to top level view.
+            self.view.addSubview(fortuneView)
+            fortuneView.fortuneLabel.text = fortuneMessage
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                fortuneView.frame.origin.y = self.view.frame.height / 2
+            })
+        } else {
+            // Add subview to top level view.
+            self.view.addSubview(fortuneView)
+            fortuneView.fortuneLabel.text = fortuneMessage
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                fortuneView.frame.origin.y = self.view.frame.height / 2
+            })
+        }
         
-        UIView.animate(withDuration: 0.3, animations: {
-            fortuneView.frame.origin.y = self.view.frame.height / 2
-        })
+
     }
     
     
