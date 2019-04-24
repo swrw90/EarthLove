@@ -54,11 +54,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EarthLove/ChallengeViewController.swift"
-            timestampString = "577785565.584805"
+            timestampString = "577787406.6133569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "displayFortuneMessageView()"
             landmarkType = "7">
          </BreakpointContent>

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import AVFoundation
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
@@ -18,6 +19,7 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
+    var player = AVAudioPlayer()
     var fortuneMessageView: FortuneMessageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
@@ -234,6 +236,20 @@ class ChallengeViewController: UIViewController {
     }
     
     
+    func buttonSound() {
+        
+        do {
+            
+            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound", ofType: "mp3")
+            
+            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+            
+        } catch {
+            print("Audio playback error.")
+        }
+        player.play()
+    }
+    
     //MARK: - Actions
     
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
@@ -258,6 +274,7 @@ class ChallengeViewController: UIViewController {
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
         impact.impactOccurred()
+        buttonSound()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
         
