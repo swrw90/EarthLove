@@ -18,6 +18,8 @@ protocol FortuneImageViewDelegate: class {
 /// Contains methods and properties for FortuneImageView.
 class FortuneImageView: UIView {
     
+    let impact = UIImpactFeedbackGenerator()
+    
     // MARK: - Properties
     
     // Cancel Fortune network request after completion.
@@ -51,6 +53,7 @@ class FortuneImageView: UIView {
     
     /// Increments numberOfTapsCount each time user taps image.
     @objc func fortuneImageTapped(_ sender: UITapGestureRecognizer) {
+        impact.impactOccurred()
         numberOfTapsCount += 1
         
         // If numberOfTapsCount is 1 update UIImage, if count is 2 reset count to 0, call displayFortuneMessageView and remove fortuneCookieImage from superview.

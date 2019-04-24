@@ -30,6 +30,7 @@ class ChallengeViewController: UIViewController {
     let showPendingViewControllerKey = "showPendingViewController"
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     let secondsInTwentyFourHours: TimeInterval = 60
+    let impact = UIImpactFeedbackGenerator()
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -237,9 +238,11 @@ class ChallengeViewController: UIViewController {
     
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
+        impact.impactOccurred()
         skipCount += 1
         
         if skipCount > 3 {
+            skipButton.isOpaque = true
             showSkipAlert()
         } else {
             displayNewChallenge()
@@ -254,8 +257,10 @@ class ChallengeViewController: UIViewController {
     
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
+        impact.impactOccurred()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
+        
         
         if countUntilFortuneDisplays == 7 {
             performFortuneNetworkRequest()
