@@ -291,24 +291,10 @@ class ChallengeViewController: UIViewController {
     /// Creates an instance of FortuneMessageView, adds it to the view stack and displays a fortune message from CoreData.
     func getRandomFortuneMessageFromCoreData() -> String? {
         
-//        guard fortuneMessageView == nil else { return nil }
-        
         guard let context = managedObjectContext else { return nil }
+        
         guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return nil }
-//        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
-        
-//        fortuneView.fortuneLabel.text = summary
-//
-//        self.fortuneMessageView = fortuneView
-        
-        // Add subview to top level view.
-//        self.view.addSubview(fortuneView)
-//        fortuneView.fortuneLabel.text = summary
-//        fortuneView.fortuneLabel.text = self.fortuneMessage
-        
-//        UIView.animate(withDuration: 0.3, animations: {
-//            fortuneView.frame.origin.y = self.view.frame.height / 2
-//        })
+
         
         return summary
     }
