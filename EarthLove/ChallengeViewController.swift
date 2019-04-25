@@ -240,7 +240,7 @@ class ChallengeViewController: UIViewController {
         
         do {
             
-            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound", ofType: "mp3")
+            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound1", ofType: "mp3")
             
             try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
             

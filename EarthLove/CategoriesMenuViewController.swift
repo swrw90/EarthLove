@@ -46,7 +46,7 @@ class CategoriesMenuViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCell, for: indexPath) as? CategoryCell else { return UITableViewCell() }
         
-        cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue
+        cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue.capitalized
         
         return cell
     }

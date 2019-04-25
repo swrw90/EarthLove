@@ -399,18 +399,18 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR1-g3-ChF">
                                         <rect key="frame" x="0.0" y="5" width="414" height="38"/>
-                                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="tintColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Categories">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Category">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="displayCategoriesMenu:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sJw-99-C2Z"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="GR1-g3-ChF" firstAttribute="centerY" secondItem="TBO-Yk-Utc" secondAttribute="centerY" id="85G-WS-Xgk"/>
                                     <constraint firstItem="GR1-g3-ChF" firstAttribute="leading" secondItem="TBO-Yk-Utc" secondAttribute="leading" id="FND-e8-Npv"/>
@@ -433,7 +433,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="History" id="QVy-On-aIc"/>
+                    <navigationItem key="navigationItem" title="History" id="QVy-On-aIc">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="qih-tF-BDC">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="8rJ-Kc-sve" id="Wki-VE-y3L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>

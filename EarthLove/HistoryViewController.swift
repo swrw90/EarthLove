@@ -142,9 +142,8 @@ class HistoryViewController: UIViewController {
         return Challenge.fetchCompletedChallenges(from: context)
     }
     
-    // Creates and animates an instance of CategoriesMenuViewController.
-    @IBAction func displayCategoriesMenu(_ sender: Any) {
-        
+    
+    @IBAction func filterButtonPressed(_ sender: Any) {
         guard categoriesMenuViewController == nil else {
             UIView.animate(withDuration: 0.3, animations: {
                 self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
@@ -189,9 +188,9 @@ class HistoryViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             blurEffectView.alpha = 1.0
             categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
+            }
         }
     }
-}
 
 
 //MARK: - TableView Data Source
@@ -214,7 +213,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         // Assign at the indexPath to challenge constant to be displayed in the returned cell.
         let challenge = fetchedResultsController.object(at: indexPath)
         cell.titleLabel.text = challenge.title
-        cell.subTitleLabel.text = challenge.category.rawValue
+        cell.subTitleLabel.text = challenge.category.rawValue.capitalized
         cell.categoryImageView.image = challenge.category.iconImage
         
         return cell
@@ -280,10 +279,10 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
         
         if category == .all {
             selectedCategory = nil
-            categoryHeader.setTitle("all", for: .normal)
+            categoryHeader.setTitle("All", for: .normal)
         } else {
             selectedCategory = category
-            categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+            categoryHeader.setTitle(selectedCategory?.rawValue.capitalized, for: .normal)
         }
         
         _fetchedResultsController = nil

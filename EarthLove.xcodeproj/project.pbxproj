@@ -18,6 +18,7 @@
 		C74A325921AFB19B00C8ACE3 /* challengeData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = C74A325621AF774E00C8ACE3 /* challengeData.json */; };
 		C74A325B21B357CB00C8ACE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74A325A21B357CB00C8ACE3 /* Assets.xcassets */; };
 		C75458F0227055DE00B5CCD3 /* challengeCompletedSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C75458EF227055DE00B5CCD3 /* challengeCompletedSound.mp3 */; };
+		C75458F22270573D00B5CCD3 /* challengeCompletedSound1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C75458F12270573D00B5CCD3 /* challengeCompletedSound1.mp3 */; };
 		C759256921E195AB006D04C2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C759256821E195AB006D04C2 /* Category.swift */; };
 		C76C0A5721AB655100AA6071 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76C0A5621AB655100AA6071 /* HistoryCell.xib */; };
 		C76C0A5921AB6DD900AA6071 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76C0A5821AB6DD900AA6071 /* HistoryCell.swift */; };
@@ -68,6 +69,7 @@
 		C74A325621AF774E00C8ACE3 /* challengeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = challengeData.json; sourceTree = "<group>"; };
 		C74A325A21B357CB00C8ACE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C75458EF227055DE00B5CCD3 /* challengeCompletedSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = challengeCompletedSound.mp3; sourceTree = "<group>"; };
+		C75458F12270573D00B5CCD3 /* challengeCompletedSound1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = challengeCompletedSound1.mp3; path = ../../../../Downloads/challengeCompletedSound1.mp3; sourceTree = "<group>"; };
 		C759256821E195AB006D04C2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C76C0A5621AB655100AA6071 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		C76C0A5821AB6DD900AA6071 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				C790033121A37B4600737CBD /* Info.plist */,
 				C74A325A21B357CB00C8ACE3 /* Assets.xcassets */,
 				C75458EF227055DE00B5CCD3 /* challengeCompletedSound.mp3 */,
+				C75458F12270573D00B5CCD3 /* challengeCompletedSound1.mp3 */,
 				C759256821E195AB006D04C2 /* Category.swift */,
 				C71C890521FBB5B000FB119F /* CategoriesMenuViewController.swift */,
 				C71C890721FD2A2700FB119F /* CategoryCell.xib */,
@@ -260,6 +263,7 @@
 				C790033021A37B4600737CBD /* LaunchScreen.storyboard in Resources */,
 				C75458F0227055DE00B5CCD3 /* challengeCompletedSound.mp3 in Resources */,
 				C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */,
+				C75458F22270573D00B5CCD3 /* challengeCompletedSound1.mp3 in Resources */,
 				C76C0A5B21AB882200AA6071 /* NothingFoundCell.xib in Resources */,
 				C77025F12227B95500D9C549 /* FortuneMessageView.xib in Resources */,
 				C7F83C3322349BDE00A61715 /* PendingChallengeTimerView.xib in Resources */,
