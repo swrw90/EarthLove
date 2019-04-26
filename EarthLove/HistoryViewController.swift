@@ -41,7 +41,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var categoryHeader: UIButton!
+    @IBOutlet weak var categoryHeader: UILabel!
     
     
     // MARK: - NSFetchedResultsController
@@ -279,10 +279,10 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
         
         if category == .all {
             selectedCategory = nil
-            categoryHeader.setTitle("All", for: .normal)
+            categoryHeader.text = "All"
         } else {
             selectedCategory = category
-            categoryHeader.setTitle(selectedCategory?.rawValue.capitalized, for: .normal)
+            categoryHeader.text = selectedCategory?.rawValue.capitalized
         }
         
         _fetchedResultsController = nil
