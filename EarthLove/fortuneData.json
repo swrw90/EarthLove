@@ -358,5 +358,365 @@
     {
         "identifier" : 100,
         "summary" : "All promises are either broken or kept."
+    },
+    {
+        "identifier" : 101,
+        "summary" : "All things come to those that wait."
+    },
+    {
+        "identifier" : 102,
+        "summary" : "An eye for an eye and a tooth for a tooth."
+    },
+    {
+        "identifier" : 103,
+        "summary" : "An open door may tempt a saint."
+    },
+    {
+        "identifier" : 104,
+        "summary" : "As one door closes, another always opens."
+    },
+    {
+        "identifier" : 105,
+        "summary" : "As you go through life, make this your goal, watch the doughnut and not the hole."
+    },
+    {
+        "identifier" : 106,
+        "summary" : " Brevity is the soul of wit."
+    },
+    {
+        "identifier" : 107,
+        "summary" : "Cut your coat according to the cloth."
+    },
+    {
+        "identifier" : 108,
+        "summary" : "Discretion is the better part of valor."
+    },
+    {
+        "identifier" : 109,
+        "summary" :  "Do right and fear no one."
+    },
+    {
+        "identifier" : 110,
+        "summary" :  "Easy come, easy go."
+    },
+    {
+        "identifier" : 111,
+        "summary" : "A loveless life is a living death."
+    },
+    {
+        "identifier" : 112,
+        "summary" : "Two cannot fall out if one does not choose."
+    },
+    {
+        "identifier" : 113,
+        "summary" : "To error is human (To forgive is divine)."
+    },
+    {
+        "identifier" : 114,
+        "summary" : "There is no better looking-glass than an old friend."
+    },
+    {
+        "identifier" : 115,
+        "summary" : "A problem shared is a problem halved."
+    },
+    {
+        "identifier" : 116,
+        "summary" : "The best things are not bought and sold."
+    },
+    {
+        "identifier" : 117,
+        "summary" : "The best of friends are the best of friends."
+    },
+    {
+        "identifier" : 118,
+        "summary" : "Old friends and old wine are best."
+    },
+    {
+        "identifier" : 119,
+        "summary" :  "Nothing dries sooner than a tear."
+    },
+    {
+        "identifier" : 120,
+        "summary" : "Memory is the treasure of the mind."
+    },
+    {
+        "identifier" : 121,
+        "summary" : "There is a thin line between love and hate."
+    },
+    {
+        "identifier" : 122,
+        "summary" : "The course of love never did run smooth."
+    },
+    {
+        "identifier" : 123,
+        "summary" : "Marry in haste, repent at leisure."
+    },
+    {
+        "identifier" : 124,
+        "summary" : "Love with life is heaven; and life unloving, hell."
+    },
+    {
+        "identifier" : 125,
+        "summary" : "Love to live and live to love."
+    },
+    {
+        "identifier" : 126,
+        "summary" : "Love sought is good, but given unsought is better."
+    },
+    {
+        "identifier" : 127,
+        "summary" : "Love sees no faults."
+    },
+    {
+        "identifier" : 128,
+        "summary" : "Love makes a good eye squint."
+    },
+    {
+        "identifier" : 129,
+        "summary" :  "Love levels all inequalities."
+    },
+    {
+        "identifier" : 130,
+        "summary" : "Love does much but money does all."
+    },
+    {
+        "identifier" : 131,
+        "summary" : "Love and a cough cannot be hid."
+    },
+    {
+        "identifier" : 132,
+        "summary" : "Hatred is as blind as love."
+    },
+    {
+        "identifier" : 133,
+        "summary" : "First impressions are the most lasting."
+    },
+    {
+        "identifier" : 134,
+        "summary" : "Faint heart never won fair lady."
+    },
+    {
+        "identifier" : 135,
+        "summary" : "Distance makes the heart grow fonder."
+    },
+    {
+        "identifier" : 136,
+        "summary" : "Cold hands, warm heart."
+    },
+    {
+        "identifier" : 137,
+        "summary" : "Better to have loved and lost, than to have never loved at all."
+    },
+    {
+        "identifier" : 138,
+        "summary" : "Before you meet the handsome prince you have to kiss a lot of toads."
+    },
+    {
+        "identifier" : 139,
+        "summary" :  "All's fair in love and war."
+    },
+    {
+        "identifier" : 140,
+        "summary" : "Absence makes the heart grow fonder."
+    },
+    {
+        "identifier" : 141,
+        "summary" : "To the world you may be one person, but to one person, you may be the world."
+    },
+    {
+        "identifier" : 142,
+        "summary" : "Temper is so good a thing that we should never lose it."
+    },
+    {
+        "identifier" : 143,
+        "summary" : "Spare the rod and spoil the child."
+    },
+    {
+        "identifier" : 144,
+        "summary" : "Persuasion is better than force."
+    },
+    {
+        "identifier" : 145,
+        "summary" : "A problem shared is a problem halved."
+    },
+    {
+        "identifier" : 146,
+        "summary" : " Patience is a virtue."
+    },
+    {
+        "identifier" : 147,
+        "summary" : "Out of sight, out of mind."
+    },
+    {
+        "identifier" : 148,
+        "summary" : "Open confession is good for the soul."
+    },
+    {
+        "identifier" : 149,
+        "summary" :  "No man or woman is worth your tears, and the one who is, won't make you cry."
+    },
+    {
+        "identifier" : 150,
+        "summary" : "Never quarrel with one's bread and butter."
+    },
+    {
+        "identifier" : 151,
+        "summary" : "Never let the sun go down on your anger."
+    },
+    {
+        "identifier" : 152,
+        "summary" : "Never let the sun set on angry heart."
+    },
+    {
+        "identifier" : 153,
+        "summary" : "Joy shared is double joy; grief shared is (only) half grief."
+    },
+    {
+        "identifier" : 154,
+        "summary" : "It's not over till it's over."
+    },
+    {
+        "identifier" : 155,
+        "summary" : "If you lose your temper, don't look for it."
+    },
+    {
+        "identifier" : 156,
+        "summary" : "I am rubber and you are glue. Your words bounce off me and stick to you."
+    },
+    {
+        "identifier" : 157,
+        "summary" : "Heavy givers are light complainers."
+    },
+    {
+        "identifier" : 158,
+        "summary" : "He who wronged you will hate you."
+    },
+    {
+        "identifier" : 159,
+        "summary" :  "He that hurts another, hurts himself."
+    },
+    {
+        "identifier" : 160,
+        "summary" : "He bears misery best that hides it most."
+    },
+    {
+        "identifier" : 161,
+        "summary" : "Grow angry slowly; there's plenty of time."
+    },
+    {
+        "identifier" : 162,
+        "summary" : "Do unto others as you would have them do to you."
+    },
+    {
+        "identifier" : 163,
+        "summary" : "Do as you would be done by."
+    },
+    {
+        "identifier" : 164,
+        "summary" : "Don't blow your own trumpet."
+    },
+    {
+        "identifier" : 165,
+        "summary" : "Conscience makes cowards of us all."
+    },
+    {
+        "identifier" : 166,
+        "summary" : "Confess and be hanged."
+    },
+    {
+        "identifier" : 167,
+        "summary" : "Cheerfulness smooths the road of life."
+    },
+    {
+        "identifier" : 168,
+        "summary" : "Blood is thicker than water."
+    },
+    {
+        "identifier" : 169,
+        "summary" :  "Behind every great man stands a strong woman."
+    },
+    {
+        "identifier" : 180,
+        "summary" : "Be slow in choosing, but slower in changing."
+    },
+    {
+        "identifier" : 181,
+        "summary" : "Peace is the best form of defense"
+    },
+    {
+        "identifier" : 182,
+        "summary" : "At a round table there's no dispute about the place."
+    },
+    {
+        "identifier" : 183,
+        "summary" : "Appearances are deceptive."
+    },
+    {
+        "identifier" : 184,
+        "summary" : "Anger and hate hinder good counsel."
+    },
+    {
+        "identifier" : 185,
+        "summary" : "An injury is forgiven better than an injury revenged."
+    },
+    {
+        "identifier" : 186,
+        "summary" : "A wink is as good as a nod, to a blind man."
+    },
+    {
+        "identifier" : 187,
+        "summary" : "A man of straw needs a woman of gold."
+    },
+    {
+        "identifier" : 188,
+        "summary" : "A good friend is one's nearest relation."
+    },
+    {
+        "identifier" : 189,
+        "summary" :  "You can't live on bread alone."
+    },
+    {
+        "identifier" : 190,
+        "summary" : "True beauty lies within."
+    },
+    {
+        "identifier" : 191,
+        "summary" : "Wondrous is the strength of cheerfulness."
+    },
+    {
+        "identifier" : 192,
+        "summary" : "You made your bed, now you must lie in it."
+    },
+    {
+        "identifier" : 193,
+        "summary" : "A bully is always a coward."
+    },
+    {
+        "identifier" : 194,
+        "summary" : "A handsome shoe often pinches the foot."
+    },
+    {
+        "identifier" : 195,
+        "summary" : "A good thing is all the sweeter when won with pain."
+    },
+    {
+        "identifier" : 196,
+        "summary" : "A man too careful of danger lives in continual torment."
+    },
+    {
+        "identifier" : 197,
+        "summary" : "A miss is as good as a mile."
+    },
+    {
+        "identifier" : 198,
+        "summary" : "Adversity flatters no man."
+    },
+    {
+        "identifier" : 199,
+        "summary" :  "Adversity and loss make a man wise."
+    },
+    {
+        "identifier" : 200,
+        "summary" : "All promises are either broken or kept."
     }
 ]
