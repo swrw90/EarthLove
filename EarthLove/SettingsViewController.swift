@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import StoreKit
+//import StoreKit
 
 /// Handles SettingsViewController functions and properties. 
 class SettingsViewController: UIViewController {
@@ -21,7 +21,9 @@ class SettingsViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+
     @IBAction func rateApp(_ sender: Any) {
+        print("I'm a 5 star app!")
     }
     
     

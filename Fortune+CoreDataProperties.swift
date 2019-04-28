@@ -21,5 +21,4 @@ extension Fortune {
 
     @NSManaged public var identifier: Int64
     @NSManaged public var summary: String?
-    @NSManaged  public var hasDisplayed: Bool
 }

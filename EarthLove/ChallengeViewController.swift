@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
-import AVFoundation
+//import AVFoundation
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
@@ -19,7 +19,7 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
-    var player = AVAudioPlayer()
+//    var player = AVAudioPlayer()
     var fortuneMessageView: FortuneMessageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
@@ -235,20 +235,20 @@ class ChallengeViewController: UIViewController {
         skipButton.isOpaque = true
     }
     
-    
-    func buttonSound() {
-        
-        do {
-            
-            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound1", ofType: "mp3")
-            
-            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
-            
-        } catch {
-            print("Audio playback error.")
-        }
-        player.play()
-    }
+//    TODO: - Add audio handling in future version
+//    func buttonSound() {
+//
+//        do {
+//
+//            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound1", ofType: "mp3")
+//
+//            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+//
+//        } catch {
+//            print("Audio playback error.")
+//        }
+//        player.play()
+//    }
     
     //MARK: - Actions
     
@@ -274,7 +274,7 @@ class ChallengeViewController: UIViewController {
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
         impact.impactOccurred()
-        buttonSound()
+//        buttonSound()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
         
