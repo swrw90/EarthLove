@@ -718,5 +718,365 @@
     {
         "identifier" : 200,
         "summary" : "If you don't say it you will not have to unsay it."
-    }
+    },
+    {
+        "identifier" : 201,
+        "summary" : "It takes two to have an argument."
+    },
+    {
+        "identifier" : 202,
+        "summary" : "Listen to the pot calling the kettle black."
+    },
+    {
+        "identifier" : 203,
+        "summary" : "Many a true word spoken in jest."
+    },
+    {
+        "identifier" : 204,
+        "summary" : "No news is good news."
+    },
+    {
+        "identifier" : 205,
+        "summary" : "Nothing is ill said if it is not ill taken."
+    },
+    {
+        "identifier" : 206,
+        "summary" : "One picture is worth a thousand words."
+    },
+    {
+        "identifier" : 207,
+        "summary" : "Say what you mean and mean what you say."
+    },
+    {
+        "identifier" : 208,
+        "summary" : "Self praise is no recommendation."
+    },
+    {
+        "identifier" : 209,
+        "summary" :  "Silence is an excellent remedy against slander."
+    },
+    {
+        "identifier" : 210,
+        "summary" :  "Silence is golden."
+    },
+    {
+        "identifier" : 211,
+        "summary" : "Silence is less injurious than a bad reply."
+    },
+    {
+        "identifier" : 212,
+        "summary" : "Since before cocky was an egg."
+    },
+    {
+        "identifier" : 213,
+        "summary" : "Speak clearly, if you speak at all."
+    },
+    {
+        "identifier" : 214,
+        "summary" : "Sticks and stones may break my bones but words will never hurt me."
+    },
+    {
+        "identifier" : 215,
+        "summary" : "Stop beating around the bush."
+    },
+    {
+        "identifier" : 216,
+        "summary" : "Take your wife's first advice."
+    },
+    {
+        "identifier" : 217,
+        "summary" : "Talking comes by nature, silence by wisdom."
+    },
+    {
+        "identifier" : 218,
+        "summary" : "A change is as good as a rest."
+    },
+    {
+        "identifier" : 219,
+        "summary" :  "A stitch in time saves nine."
+    },
+    {
+        "identifier" : 220,
+        "summary" : "A throne is only a bench covered in purple velvet."
+    },
+    {
+        "identifier" : 221,
+        "summary" : "A wise man shall hold his tongue till he sees his opportunity."
+    },
+    {
+        "identifier" : 222,
+        "summary" : "Accidents happen."
+    },
+    {
+        "identifier" : 223,
+        "summary" : "All's well that ends well."
+    },
+    {
+        "identifier" : 224,
+        "summary" : "Attack is the best means of defense."
+    },
+    {
+        "identifier" : 225,
+        "summary" : "Charity begins at home."
+    },
+    {
+        "identifier" : 226,
+        "summary" : "Different strokes for different folks."
+    },
+    {
+        "identifier" : 227,
+        "summary" : "Do not in an instant what an age cannot recompense."
+    },
+    {
+        "identifier" : 228,
+        "summary" : "Don't knock on death's door, ring the doorbell and run."
+    },
+    {
+        "identifier" : 229,
+        "summary" :  "Don't try to teach your grand-mother to suck eggs."
+    },
+    {
+        "identifier" : 230,
+        "summary" : "Empty vessels make the most sound."
+    },
+    {
+        "identifier" : 231,
+        "summary" : "Empty barrels make the most noise."
+    },
+    {
+        "identifier" : 232,
+        "summary" : "Four eyes are better than two."
+    },
+    {
+        "identifier" : 233,
+        "summary" : "He who fights and runs away, lives to fight another day."
+    },
+    {
+        "identifier" : 234,
+        "summary" : "It's an ill wind that blows no-one some good."
+    },
+    {
+        "identifier" : 235,
+        "summary" : "Necessity is the mother of invention."
+    },
+    {
+        "identifier" : 236,
+        "summary" : "No one can be caught in places he does not visit."
+    },
+    {
+        "identifier" : 237,
+        "summary" : "No wise man ever wishes to be younger."
+    },
+    {
+        "identifier" : 238,
+        "summary" : "Not in a month of Sundays."
+    },
+    {
+        "identifier" : 239,
+        "summary" :  "One mans junk is another man's treasure."
+    },
+    {
+        "identifier" : 240,
+        "summary" : "Out of the frying pan into the fire."
+    },
+    {
+        "identifier" : 241,
+        "summary" : "Show a clean pair of heels."
+    },
+    {
+        "identifier" : 242,
+        "summary" : "Still waters run deep."
+    },
+    {
+        "identifier" : 243,
+        "summary" : "The darkest hour is before the dawn."
+    },
+    {
+        "identifier" : 244,
+        "summary" : "The wise shall understand."
+    },
+    {
+        "identifier" : 245,
+        "summary" : "Those who don't learn from history are doomed to repeat it."
+    },
+    {
+        "identifier" : 246,
+        "summary" : "Tomorrow is a new day."
+    },
+    {
+        "identifier" : 247,
+        "summary" : "Two heads are better than one."
+    },
+    {
+        "identifier" : 248,
+        "summary" : "You can't tell a book by its cover."
+    },
+    {
+        "identifier" : 249,
+        "summary" :  "Where observation is concerned, chance favors only the prepared mind."
+    },
+    {
+        "identifier" : 250,
+        "summary" : "Where there's smoke there's fire."
+    },
+    {
+        "identifier" : 251,
+        "summary" : "Wisdom is better than strength."
+    },
+    {
+        "identifier" : 252,
+        "summary" : "Wisdom is neither inheritance nor a legacy."
+    },
+    {
+        "identifier" : 253,
+        "summary" : "Wisdom is the wealth of the wise."
+    },
+    {
+        "identifier" : 254,
+        "summary" : "Wise it is to comprehend the whole."
+    },
+    {
+        "identifier" : 255,
+        "summary" : "You can't put an old head on young shoulders."
+    },
+    {
+        "identifier" : 256,
+        "summary" : "You never know what you can do till you try."
+    },
+    {
+        "identifier" : 257,
+        "summary" : "Once a task has first begun, never quit until it's done"
+    },
+    {
+        "identifier" : 258,
+        "summary" : "Be the labour great or small, do it well or not at all."
+    },
+    {
+        "identifier" : 259,
+        "summary" :  "A bad workman blames his tools."
+    },
+    {
+        "identifier" : 260,
+        "summary" : "A good reputation is a fair estate."
+    },
+    {
+        "identifier" : 261,
+        "summary" : "All work and no play makes Jack a dull boy."
+    },
+    {
+        "identifier" : 262,
+        "summary" : "An idle man is the devil's playfellow."
+    },
+    {
+        "identifier" : 263,
+        "summary" : "Diligence is the mother of good luck."
+    },
+    {
+        "identifier" : 264,
+        "summary" : "Don't try kicking against the wind."
+    },
+    {
+        "identifier" : 265,
+        "summary" : "Everybody must row with the oars they have."
+    },
+    {
+        "identifier" : 266,
+        "summary" : "Hard work never did anyone any harm."
+    },
+    {
+        "identifier" : 267,
+        "summary" : "If a job is worth doing it is worth doing well."
+    },
+    {
+        "identifier" : 268,
+        "summary" : "If at first you don't succeed, try, try again."
+    },
+    {
+        "identifier" : 269,
+        "summary" :  "If you can't help, don't hinder."
+    },
+    {
+        "identifier" : 280,
+        "summary" : "If you see something you like, take it and make it better."
+    },
+    {
+        "identifier" : 281,
+        "summary" : "All in a daze work."
+    },
+    {
+        "identifier" : 282,
+        "summary" : "Laziness travels so slowly that poverty soon overtakes it."
+    },
+    {
+        "identifier" : 283,
+        "summary" : "Less talk, more work."
+    },
+    {
+        "identifier" : 284,
+        "summary" : "Many hands make light work."
+    },
+    {
+        "identifier" : 285,
+        "summary" : "More haste less speed."
+    },
+    {
+        "identifier" : 286,
+        "summary" : "Needs must when the devil drives."
+    },
+    {
+        "identifier" : 287,
+        "summary" : "Never put off 'til tomorrow what you can do today."
+    },
+    {
+        "identifier" : 288,
+        "summary" : "No life can be dreary when work is a delight."
+    },
+    {
+        "identifier" : 289,
+        "summary" :  "Not to break is better than to mend."
+    },
+    {
+        "identifier" : 290,
+        "summary" : "The hardest work is to do nothing."
+    },
+    {
+        "identifier" : 291,
+        "summary" : "A bird in the hand is worth two in the bush."
+    },
+    {
+        "identifier" : 292,
+        "summary" : "A bird makes his nest little by little."
+    },
+    {
+        "identifier" : 293,
+        "summary" : "A cat has nine lives."
+    },
+    {
+        "identifier" : 294,
+        "summary" : "All cats are grey in the dark."
+    },
+    {
+        "identifier" : 295,
+        "summary" : "An elephant never forgets."
+    },
+    {
+        "identifier" : 296,
+        "summary" : "An old fox need learn no craft."
+    },
+    {
+        "identifier" : 297,
+        "summary" : "Birds of a feather flock together."
+    },
+    {
+        "identifier" : 298,
+        "summary" : "Curiosity killed the cat; Satisfaction brought it back."
+    },
+    {
+        "identifier" : 299,
+        "summary" :  "Curses, like chickens come home to roost."
+    },
+    {
+        "identifier" : 300,
+        "summary" : "Don't count your chickens before they hatch."
+    } //MARK
 ]
