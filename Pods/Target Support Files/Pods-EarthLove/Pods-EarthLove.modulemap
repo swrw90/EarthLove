@@ -1,0 +1,6 @@
+framework module Pods_EarthLove {
+  umbrella header "Pods-EarthLove-umbrella.h"
+
+  export *
+  module * { export * }
+}
