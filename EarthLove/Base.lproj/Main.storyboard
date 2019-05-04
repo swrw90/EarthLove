@@ -71,7 +71,7 @@
                                                     <constraint firstAttribute="width" constant="51" id="1jh-mv-cqH"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="like"/>
+                                                <state key="normal" image="checkmark"/>
                                                 <connections>
                                                     <action selector="completedPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Nyq-oT-YEQ"/>
                                                 </connections>
@@ -615,8 +615,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" width="30" height="30"/>
         <image name="home" width="64" height="64"/>
-        <image name="like" width="64" height="64"/>
         <image name="recreational" width="64" height="64"/>
         <image name="settings" width="32" height="32"/>
         <image name="thumb-down" width="64" height="64"/>
