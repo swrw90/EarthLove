@@ -1,7 +1,7 @@
 [
     {
         "identifier" : 1,
-        "summary" : "A friend's frown is better than a fool's smile."
+        "summary" : "It is the first step that is difficult."
     },
     {
         "identifier" : 2,
@@ -1078,5 +1078,265 @@
     {
         "identifier" : 300,
         "summary" : "Don't count your chickens before they hatch."
-    } //MARK
+    },
+    {
+        "identifier" : 301,
+        "summary" : "Every dog has its day."
+    },
+    {
+        "identifier" : 302,
+        "summary" : "If you lie down with dogs, you'll get up with fleas."
+    },
+    {
+        "identifier" : 303,
+        "summary" : "It's an ill bird that fouls its own nest."
+    },
+    {
+        "identifier" : 304,
+        "summary" : "It's an old dog for a hard road."
+    },
+    {
+        "identifier" : 305,
+        "summary" : "It's no use closing the stable door, after the horse has bolted."
+    },
+    {
+        "identifier" : 306,
+        "summary" : "Let sleeping dogs lie."
+    },
+    {
+        "identifier" : 307,
+        "summary" : "Like a fish out of water."
+    },
+    {
+        "identifier" : 308,
+        "summary" : "Never look a gift horse in the mouth."
+    },
+    {
+        "identifier" : 309,
+        "summary" :  "No sense closing the barn door after the horse has bolted."
+    },
+    {
+        "identifier" : 310,
+        "summary" :  "Nothing falls into the mouth of a sleeping fox."
+    },
+    {
+        "identifier" : 311,
+        "summary" : "Putting the cart before the horse."
+    },
+    {
+        "identifier" : 312,
+        "summary" : "Sauce for the goose is sauce for the gander."
+    },
+    {
+        "identifier" : 313,
+        "summary" : "The early bird catches the worm."
+    },
+    {
+        "identifier" : 314,
+        "summary" : "The leopard does not change his spots."
+    },
+    {
+        "identifier" : 315,
+        "summary" : "The sleepy fox catches no chickens."
+    },
+    {
+        "identifier" : 316,
+        "summary" : "There's no use in flogging a dead horse."
+    },
+    {
+        "identifier" : 317,
+        "summary" : "To scare a bird is not the way to catch it."
+    },
+    {
+        "identifier" : 318,
+        "summary" : "What do you expect from a pig, but a grunt?"
+    },
+    {
+        "identifier" : 319,
+        "summary" :  "When a fox hears a rabbit screaming it comes running, but not to help."
+    },
+    {
+        "identifier" : 320,
+        "summary" : "While the cats away the mice play."
+    },
+    {
+        "identifier" : 321,
+        "summary" : "You can lead a horse to water, but you can't make him drink."
+    },
+    {
+        "identifier" : 322,
+        "summary" : "You can't make a silk purse out of a sow's ear."
+    },
+    {
+        "identifier" : 323,
+        "summary" : "A chain is no stronger than its weakest link."
+    },
+    {
+        "identifier" : 324,
+        "summary" : "A rolling stone gathers no moss."
+    },
+    {
+        "identifier" : 325,
+        "summary" : "After the storm comes the calm."
+    },
+    {
+        "identifier" : 326,
+        "summary" : "All aren't hunters that blow the horn."
+    },
+    {
+        "identifier" : 327,
+        "summary" : "As green as grass."
+    },
+    {
+        "identifier" : 328,
+        "summary" : "As is the gardener so is the garden."
+    },
+    {
+        "identifier" : 329,
+        "summary" :  "As you sow, so shall you reap."
+    },
+    {
+        "identifier" : 330,
+        "summary" : "Best to bend it while it's a twig."
+    },
+    {
+        "identifier" : 331,
+        "summary" : "Better to go back than go wrong."
+    },
+    {
+        "identifier" : 332,
+        "summary" : "Education is the path to success."
+    },
+    {
+        "identifier" : 333,
+        "summary" : "Deeds are fruits, words are but leaves."
+    },
+    {
+        "identifier" : 334,
+        "summary" : "Distance lends enhancement to the view."
+    },
+    {
+        "identifier" : 335,
+        "summary" : "Don't count your chickens before they are hatched."
+    },
+    {
+        "identifier" : 336,
+        "summary" : "Don't cross your bridges until you come to them."
+    },
+    {
+        "identifier" : 337,
+        "summary" : "Empty bags cannot stand upright."
+    },
+    {
+        "identifier" : 338,
+        "summary" : "Every cloud has a silver lining."
+    },
+    {
+        "identifier" : 339,
+        "summary" :  "Every path has its puddle."
+    },
+    {
+        "identifier" : 340,
+        "summary" : "Fresh as a daisy."
+    },
+    {
+        "identifier" : 341,
+        "summary" : "Good company on the road is the shortest cut."
+    },
+    {
+        "identifier" : 342,
+        "summary" : "It is better to be green and growing than ripe and rotten."
+    },
+    {
+        "identifier" : 343,
+        "summary" : "Leave no stone unturned.."
+    },
+    {
+        "identifier" : 344,
+        "summary" : "Like looking for a needle in a haystack."
+    },
+    {
+        "identifier" : 345,
+        "summary" : "Make hay while the sun shines."
+    },
+    {
+        "identifier" : 346,
+        "summary" : "Milk the cow but don't pull off the udder."
+    },
+    {
+        "identifier" : 347,
+        "summary" : "Never cackle unless you lay."
+    },
+    {
+        "identifier" : 348,
+        "summary" : "Oaks may fall when reeds take the storm."
+    },
+    {
+        "identifier" : 349,
+        "summary" :  "Shake the hand before you plough the field."
+    },
+    {
+        "identifier" : 350,
+        "summary" : "Strike while the iron's hot."
+    },
+    {
+        "identifier" : 351,
+        "summary" : "The beaten path is safest."
+    },
+    {
+        "identifier" : 352,
+        "summary" : "The best ground bears weeds as well as flowers."
+    },
+    {
+        "identifier" : 353,
+        "summary" : "The grass is always greener on the other side of the fence."
+    },
+    {
+        "identifier" : 354,
+        "summary" : "The longest journey begins with the first step."
+    },
+    {
+        "identifier" : 355,
+        "summary" : "The longest way round is the sweetest way home."
+    },
+    {
+        "identifier" : 356,
+        "summary" : "The more you stir, the more it stinks."
+    },
+    {
+        "identifier" : 357,
+        "summary" : "The sun shines on both sides of the hedge."
+    },
+    {
+        "identifier" : 358,
+        "summary" : "The worst wheel always creaks most."
+    },
+    {
+        "identifier" : 359,
+        "summary" :  "Too many irons in the fire."
+    },
+    {
+        "identifier" : 360,
+        "summary" : "A spark can start a great fire."
+    },
+    {
+        "identifier" : 361,
+        "summary" : "Big fish eat little fish."
+    },
+    {
+        "identifier" : 362,
+        "summary" : "A friend's frown is better than a fool's smile."
+    },
+    {
+        "identifier" : 363,
+        "summary" : "He who hesitates is lost."
+    },
+    {
+        "identifier" : 364,
+        "summary" : "It's either all or nothing.It's either all or nothing."
+    },
+    {
+        "identifier" : 365,
+        "summary" : "Everything has an end."
+    }
 ]
