@@ -34,6 +34,7 @@ class ChallengeViewController: UIViewController {
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     let secondsInTwentyFourHours: TimeInterval = 60
     let impact = UIImpactFeedbackGenerator()
+    var confettiView: SAConfettiView?
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -178,6 +179,8 @@ class ChallengeViewController: UIViewController {
         let confettiView = SAConfettiView(frame: self.view.bounds)
         confettiView.type = .Diamond
         confettiView.backgroundColor = .init(red: 246, green: 249, blue: 242, alpha: 1)
+        
+        self.confettiView = confettiView
         
         self.view.addSubview(confettiView)
         confettiView.startConfetti()
@@ -351,6 +354,10 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
     
     // Removes pending challenge timer view from superview, sets its value to nil and calls display new challenge function.
     func handleCountdownEnding() {
+        
+        for view in self.view.subviews where view is SAConfettiView {
+            view.removeFromSuperview()
+        }
         pendingChallengeTimerView?.removeFromSuperview()
         pendingChallengeTimerView = nil
         displayNewChallenge()
