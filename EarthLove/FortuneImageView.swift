@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import SAConfettiView
 
 // Contains protocol methods for FortuneImageView.
 protocol FortuneImageViewDelegate: class {
@@ -39,12 +40,28 @@ class FortuneImageView: UIView {
     // Adds tapGestureRecognizer to fortuneCookieImage.
     override func awakeFromNib() {
         super.awakeFromNib()
+    
+        self.backgroundColor = .none
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(fortuneImageTapped))
         tapGestureRecognizer.numberOfTapsRequired = 1
         fortuneCookieImage.addGestureRecognizer(tapGestureRecognizer)
         
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        impact.impactOccurred()
+//        numberOfTapsCount += 1
+//
+//        // If numberOfTapsCount is 1 update UIImage, if count is 2 reset count to 0, call displayFortuneMessageView and remove fortuneCookieImage from superview.
+//        if numberOfTapsCount == 1 {
+//            fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
+//        } else if numberOfTapsCount == 2 {
+//            numberOfTapsCount = 0
+//            delegate?.displayFortuneMessageView()
+//            fortuneCookieImage.removeFromSuperview()
+//        }
+//    }
     
     // Returns an instance of UINibe named FortuneImageView.
     class func instanceOfFortuneImageView() -> UIView {

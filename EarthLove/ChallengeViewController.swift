@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
+import SAConfettiView
 //import AVFoundation
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
@@ -172,6 +173,16 @@ class ChallengeViewController: UIViewController {
         categoryImageView.image = challenge.category.iconImage
     }
     
+    // Create an instance of SAConfettiView
+    func displayConfettiView() {
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        confettiView.type = .Diamond
+        confettiView.backgroundColor = .init(red: 246, green: 249, blue: 242, alpha: 1)
+        
+        self.view.addSubview(confettiView)
+        confettiView.startConfetti()
+    }
+    
     /// Creates an instance of PendingChallengeTimerView if challenge is completed and timer has not lapsed.
     func displayPendingChallengeTimerView() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
@@ -274,7 +285,6 @@ class ChallengeViewController: UIViewController {
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
         impact.impactOccurred()
-//        buttonSound()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
         
@@ -303,6 +313,7 @@ class ChallengeViewController: UIViewController {
                     self.displayFortuneImage()
 
                 } else {
+                self.displayConfettiView()
                 self.displayFortuneImage()
                 }
             }
