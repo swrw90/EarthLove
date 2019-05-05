@@ -33,6 +33,8 @@ class FortuneImageView: UIView {
     weak var delegate: FortuneImageViewDelegate?
     
     @IBOutlet weak var fortuneCookieImage: UIImageView!
+    @IBOutlet weak var congratulatoryMessageTextView: UITextView!
+    
     var fortuneMessage: String?
     var fortuneMessageView: FortuneMessageView?
     var numberOfTapsCount = 0
@@ -80,6 +82,7 @@ class FortuneImageView: UIView {
             numberOfTapsCount = 0
             delegate?.displayFortuneMessageView()
             fortuneCookieImage.removeFromSuperview()
+            congratulatoryMessageTextView.removeFromSuperview()
         }
     }
 }

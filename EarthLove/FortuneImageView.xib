@@ -17,22 +17,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortune-cookie-image" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
-                    <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                    <rect key="frame" x="67.5" y="92" width="240" height="240"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="240" id="9hd-MO-MtA"/>
                         <constraint firstAttribute="width" constant="240" id="BeT-Ca-pVG"/>
                     </constraints>
                 </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Great Job!      You win a fortune cookie!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m7x-EJ-IUu">
+                    <rect key="frame" x="52" y="347" width="314" height="177"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
-            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="90W-pU-U01" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XvC-Fa-Ipx"/>
+                <constraint firstItem="90W-pU-U01" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-121.5" id="XvC-Fa-Ipx"/>
                 <constraint firstItem="90W-pU-U01" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yFA-Ly-6er"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="congratulatoryMessageTextView" destination="m7x-EJ-IUu" id="nqD-mE-Ejn"/>
                 <outlet property="fortuneCookieImage" destination="90W-pU-U01" id="UDO-69-ckV"/>
             </connections>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
     <resources>
