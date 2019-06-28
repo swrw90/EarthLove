@@ -130,7 +130,6 @@
 				5BE17D40FB2BD0F6B4C93859 /* Pods-EarthLove.debug.xcconfig */,
 				77E55965BC75252A32767DD4 /* Pods-EarthLove.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
