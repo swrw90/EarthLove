@@ -32,7 +32,6 @@
                                         <rect key="frame" x="50" y="320" width="314" height="248"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -98,7 +97,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="huF-oX-ePZ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="eim-Jw-GYI"/>
                             <constraint firstItem="huF-oX-ePZ" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="foB-dv-2Po"/>
@@ -107,7 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qC3-Bb-edK">
+                    <navigationItem key="navigationItem" title="Daily Challenge" id="qC3-Bb-edK">
                         <barButtonItem key="rightBarButtonItem" title="Stats" image="settings" id="6kR-DR-iiP">
                             <connections>
                                 <segue destination="dpL-8W-olS" kind="show" id="ReR-bd-nbo"/>
@@ -127,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="2275" y="-285"/>
         </scene>
-        <!--Stats View Controller-->
+        <!--Stats-->
         <scene sceneID="Bei-nP-7CW">
             <objects>
                 <viewController id="UgQ-Lh-R4n" customClass="StatsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
@@ -260,10 +259,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="yXm-HH-Skf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QA0-TW-xa0"/>
+                    <navigationItem key="navigationItem" title="Stats" id="QA0-TW-xa0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="homePercentageLabel" destination="F65-be-vfp" id="6tB-bH-RXb"/>
@@ -281,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="-726" y="1177"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="KLF-mE-NCk">
             <objects>
                 <viewController id="v08-8m-6Cc" customClass="SettingsViewController" customModule="EarthLove" customModuleProvider="target" sceneMemberID="viewController">
@@ -312,7 +311,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm5-kh-NuW">
                                 <rect key="frame" x="87" y="151" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Earth Love was created to challenge everyone to do something for the Earth everyday. The goal is to remind each of us that a little effort everyday can go a long way to protecting and preserving our environment. </string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -324,10 +323,10 @@
                                 <size key="titleShadowOffset" width="0.5" height="1"/>
                                 <state key="normal" title="Rate App">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="rate:" destination="v08-8m-6Cc" eventType="touchUpInside" id="HHb-Og-KWw"/>
+                                    <action selector="rateApp:" destination="v08-8m-6Cc" eventType="touchUpInside" id="3qN-Jg-ykI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-l2-c4b">
@@ -337,7 +336,6 @@
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" title="Contact">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="contact:" destination="v08-8m-6Cc" eventType="touchUpInside" id="3i4-AB-o7C"/>
@@ -349,21 +347,20 @@
                                 <size key="titleShadowOffset" width="0.5" height="1"/>
                                 <state key="normal" title="Terms">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="displayTerms:" destination="v08-8m-6Cc" eventType="touchUpInside" id="g13-70-64O"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hjf-Sc-xtd" firstAttribute="top" secondItem="Ibc-7k-Hvi" secondAttribute="top" constant="24" id="hPL-zP-EhF"/>
                             <constraint firstItem="hjf-Sc-xtd" firstAttribute="leading" secondItem="yxF-P1-9AK" secondAttribute="leading" constant="24" id="jMC-cw-qZ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yxF-P1-9AK"/>
                     </view>
-                    <navigationItem key="navigationItem" id="643-4T-En4">
+                    <navigationItem key="navigationItem" title="Settings" id="643-4T-En4">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="kek-Qa-Go0">
                             <connections>
                                 <action selector="back:" destination="v08-8m-6Cc" id="uxb-22-MFY"/>
@@ -397,26 +394,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-Yk-Utc">
                                 <rect key="frame" x="0.0" y="60" width="414" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR1-g3-ChF">
-                                        <rect key="frame" x="0.0" y="5" width="414" height="38"/>
-                                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="tintColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Categories">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="displayCategoriesMenu:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sJw-99-C2Z"/>
-                                        </connections>
-                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-2d-Iyv">
+                                        <rect key="frame" x="142" y="10" width="130" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstItem="GR1-g3-ChF" firstAttribute="centerY" secondItem="TBO-Yk-Utc" secondAttribute="centerY" id="85G-WS-Xgk"/>
-                                    <constraint firstItem="GR1-g3-ChF" firstAttribute="leading" secondItem="TBO-Yk-Utc" secondAttribute="leading" id="FND-e8-Npv"/>
-                                    <constraint firstAttribute="trailing" secondItem="GR1-g3-ChF" secondAttribute="trailing" id="Gge-IK-oCc"/>
-                                    <constraint firstItem="GR1-g3-ChF" firstAttribute="centerX" secondItem="TBO-Yk-Utc" secondAttribute="centerX" id="ft1-JM-7nW"/>
-                                </constraints>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -433,10 +419,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QVy-On-aIc"/>
+                    <navigationItem key="navigationItem" title="History" id="QVy-On-aIc">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="qih-tF-BDC">
+                            <connections>
+                                <action selector="filterButtonPressed:" destination="8rJ-Kc-sve" id="Wki-VE-y3L"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="categoryHeader" destination="GR1-g3-ChF" id="YOG-aa-BdA"/>
+                        <outlet property="categoryHeader" destination="yXv-2d-Iyv" id="z5e-C0-7jr"/>
                         <outlet property="tableView" destination="JaN-oS-FEa" id="34R-ko-Yzx"/>
                         <segue destination="Snh-Ud-ah5" kind="show" identifier="showChallengeViewController" id="4m0-5g-rYv"/>
                     </connections>
@@ -507,13 +499,13 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Great Job! You completed the daily challenge. A new challenge will be available soon. Keep it up!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JP4-KB-hvu">
                                 <rect key="frame" x="60" y="246" width="254" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.26676441010000002" green="0.58601845850000001" blue="0.3411860612" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IEd-Ck-3CT" firstAttribute="top" secondItem="MIe-aC-TYp" secondAttribute="top" constant="32" id="590-ew-3pH"/>
                             <constraint firstItem="IEd-Ck-3CT" firstAttribute="leading" secondItem="kbb-4G-uDY" secondAttribute="leading" constant="24" id="S78-LJ-WTI"/>
@@ -526,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVV-2O-7qo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2274" y="479"/>
+            <point key="canvasLocation" x="2273.913043478261" y="478.53260869565219"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -547,11 +539,13 @@
             </objects>
             <point key="canvasLocation" x="-349" y="-298"/>
         </scene>
-        <!--Item-->
+        <!--Challenge-->
         <scene sceneID="azp-sU-Mrg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Snh-Ud-ah5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="k24-F2-zZR"/>
+                    <tabBarItem key="tabBarItem" title="Challenge" image="first" id="k24-F2-zZR">
+                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Gll-jM-yEj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aig-Xv-FYm">
@@ -571,7 +565,7 @@
         <scene sceneID="cqZ-RA-r08">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WqV-n8-BeW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
+                    <tabBarItem key="tabBarItem" title="History" image="first" id="fnc-Sx-NY7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W4E-6t-kaZ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -590,7 +584,7 @@
         <scene sceneID="jfI-YS-xrs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjU-2u-GgY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" id="dbx-vd-4Gu"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="first" id="dbx-vd-4Gu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I7O-vN-hUX">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -625,6 +619,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="30" height="30"/>
         <image name="home" width="64" height="64"/>
         <image name="like" width="64" height="64"/>
         <image name="recreational" width="64" height="64"/>

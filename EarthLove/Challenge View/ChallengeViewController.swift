@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import UserNotifications
+import SAConfettiView
+//import AVFoundation
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
@@ -18,6 +20,7 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
+//    var player = AVAudioPlayer()
     var fortuneMessageView: FortuneMessageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
@@ -30,6 +33,8 @@ class ChallengeViewController: UIViewController {
     let showPendingViewControllerKey = "showPendingViewController"
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     let secondsInTwentyFourHours: TimeInterval = 60
+    let impact = UIImpactFeedbackGenerator()
+    var confettiView: SAConfettiView?
     
     // Watches for challenge value to change.
     private var challenge: Challenge? {
@@ -169,6 +174,18 @@ class ChallengeViewController: UIViewController {
         categoryImageView.image = challenge.category.iconImage
     }
     
+    // Create an instance of SAConfettiView
+    func displayConfettiView() {
+        let confettiView = SAConfettiView(frame: self.view.bounds)
+        confettiView.type = .Diamond
+        confettiView.backgroundColor = .init(red: 246, green: 249, blue: 242, alpha: 1)
+        
+        self.confettiView = confettiView
+        
+        self.view.addSubview(confettiView)
+        confettiView.startConfetti()
+    }
+    
     /// Creates an instance of PendingChallengeTimerView if challenge is completed and timer has not lapsed.
     func displayPendingChallengeTimerView() {
         guard let context = managedObjectContext, let id = UserDefaults.standard.value(forKey: challengeIdentifierKey) as? Int64 else { return }
@@ -228,16 +245,34 @@ class ChallengeViewController: UIViewController {
         let action = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
+        skipButton.isOpaque = true
     }
     
+//    TODO: - Add audio handling in future version
+//    func buttonSound() {
+//
+//        do {
+//
+//            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound1", ofType: "mp3")
+//
+//            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+//
+//        } catch {
+//            print("Audio playback error.")
+//        }
+//        player.play()
+//    }
     
     //MARK: - Actions
     
     // Increment skip count, show alert if count is greater than 3, otherwise call displayNewChallenge.
     @IBAction func skipButton(_ sender: Any ) {
+        impact.impactOccurred()
         skipCount += 1
         
         if skipCount > 3 {
+            skipButton.isOpaque = true
             showSkipAlert()
         } else {
             displayNewChallenge()
@@ -252,8 +287,10 @@ class ChallengeViewController: UIViewController {
     
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
+        impact.impactOccurred()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
+        
         
         if countUntilFortuneDisplays == 7 {
             performFortuneNetworkRequest()
@@ -271,35 +308,31 @@ class ChallengeViewController: UIViewController {
     /// Performs network request to get a random fortune from api, if error then it calls displayRandomFortuneMessage.
     private func performFortuneNetworkRequest()  {
         networkRequest = FortuneRequest.getFortune() { fortuneMessage, error in
-            guard error == nil else { print("Fortune network request failed. Random Fortune will be pulled from Core Data.");  self.displayRandomFortuneMessage(); return }
             
             self.fortuneMessage = fortuneMessage
             DispatchQueue.main.async {
+                if (error != nil) {
+                    print("Fortune network request failed. Random Fortune will be pulled from Core Data. \(String(describing: error))");
+                    self.displayFortuneImage()
+
+                } else {
+                self.displayConfettiView()
                 self.displayFortuneImage()
+                }
             }
         }
     }
     
     
     /// Creates an instance of FortuneMessageView, adds it to the view stack and displays a fortune message from CoreData.
-    func displayRandomFortuneMessage() {
+    func getRandomFortuneMessageFromCoreData() -> String? {
         
-        guard fortuneMessageView == nil else { return }
+        guard let context = managedObjectContext else { return nil }
         
-        guard let context = managedObjectContext else { return }
-        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return }
-        guard let fortuneView = FortuneMessageView.instanceOfFortuneNib() as? FortuneMessageView else { return }
+        guard let fortune = Fortune.getRandomFortune(in: context), let summary = fortune.summary else { return nil }
+
         
-        self.fortuneMessageView = fortuneView
-        
-        // Add subview to top level view.
-        self.view.addSubview(fortuneView)
-        //        fortuneView.fortuneLabel.text = summary
-        fortuneView.fortuneLabel.text = self.fortuneMessage
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            fortuneView.frame.origin.y = self.view.frame.height / 2
-        })
+        return summary
     }
     
     // Creates an instance of FortuneImageView and adds it to view stack.
@@ -321,6 +354,10 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
     
     // Removes pending challenge timer view from superview, sets its value to nil and calls display new challenge function.
     func handleCountdownEnding() {
+        
+        for view in self.view.subviews where view is SAConfettiView {
+            view.removeFromSuperview()
+        }
         pendingChallengeTimerView?.removeFromSuperview()
         pendingChallengeTimerView = nil
         displayNewChallenge()
@@ -349,13 +386,28 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
         fortuneView.delegate = self
         self.fortuneMessageView = fortuneView
         
-        // Add subview to top level view.
-        self.view.addSubview(fortuneView)
-        fortuneView.fortuneLabel.text = fortuneMessage
+        // if fortuneMessage is nil use fortune message from core data, otherwise use message from network request.
+        if fortuneMessage == nil {
+           self.fortuneMessage = getRandomFortuneMessageFromCoreData()
+            
+            // Add subview to top level view.
+            self.view.addSubview(fortuneView)
+            fortuneView.fortuneLabel.text = fortuneMessage
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                fortuneView.frame.origin.y = self.view.frame.height / 2
+            })
+        } else {
+            // Add subview to top level view.
+            self.view.addSubview(fortuneView)
+            fortuneView.fortuneLabel.text = fortuneMessage
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                fortuneView.frame.origin.y = self.view.frame.height / 2
+            })
+        }
         
-        UIView.animate(withDuration: 0.3, animations: {
-            fortuneView.frame.origin.y = self.view.frame.height / 2
-        })
+
     }
     
     

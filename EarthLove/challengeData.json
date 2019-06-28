@@ -1,118 +1,234 @@
 [
-    { "title": "Challenge: Unplug Everything",
+    {
+        "title": "Challenge: Unplug Everything",
     "summary": "A study by Alan Meier of the Lawrence Berkeley National Laboratory found that vampire energy, devices and appliances that are powered off but still plugged in, account for 5% of all residential energy use. Equivalent to a year's output of 17 power plants. Unlpug everything in your home whenever it is unused and reduce vampire energy consumption.",
     "identifier": 1,
     "isCompleted": false,
     "category": "home",
     },
-    { "title": "Challenge: Power Down",
+    {
+        "title": "Challenge: Power Down",
         "summary": "Your work computer may go to sleep, but it's still sucking up energy. Turn your computer and monitor off at the end of the work day or during breaks.",
         "identifier": 2,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Print Economically",
+    {
+        "title": "Challenge: Print Economically",
         "summary": "When printing out documents, print on both sides of the paper and use the back sides of old print outs. Also, avoid color printing when possible.",
         "identifier": 3,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Recycle!",
+    {
+        "title": "Challenge: Recycle!",
         "summary": "Place bins in conveniently located areas around the building and clearly mark what can be placed in the bins, such as fax paper, junk mail, old cell phones and PDAs.",
         "identifier": 4,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Cleanup Without Chemicals",
+    {
+        "title": "Challenge: Cleanup Without Chemicals",
         "summary": "Just like at home, you can use nontoxic cleaning products at your office, desk or cubicle. If you have to, bring your own from home.",
         "identifier": 5,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Light's Out",
+    {
+        "title": "Challenge: Light's Out",
         "summary": "Help conserve electricity by turning off the lights in your office whenever you leave for over fifteen minutes.",
         "identifier": 6,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Cleanup Coils",
+    {
+        "title": "Challenge: Cleanup Coils",
         "summary": "Clean your refrigerator coils — vacuum out the dust and wipe with a damp cloth. You'll be surprised at how much nasty stuff accumulates down there. Your refrigerator will run more efficiently saving you money and energy!",
         "identifier": 7,
         "isCompleted": false,
         "category": "home",
     },
-    { "title": "Challenge: Let In The Sun",
+    {
+        "title": "Challenge: Let In The Sun",
         "summary": "During certain times of the day, you might be able to get away with only using natural light. Open the blinds and let the sunshine in!",
         "identifier": 8,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Use Recycled Materials",
+    {
+        "title": "Challenge: Use Recycled Materials",
         "summary": "Encourage your work place to make it a policy to purchase office supplies and furniture made from recycled materials.",
         "identifier": 9,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Moss For Your Boss",
+    {
+        "title": "Challenge: Moss For Your Boss",
         "summary": "Adding a plant or two on your desk will not only add some atmosphere, but will also absorb indoor pollution. Succulents, herbs and moss make great desk plants. So today surprise your boss with a moss!",
         "identifier": 10,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Post-Consumer Paper",
+    {
+        "title": "Challenge: Post-Consumer Paper",
         "summary": "Next time you're at work suggest the use of chlorine-free paper with a higher percentage of post-consumer recycled content and switch to a lighter stock of paper or paper made from bamboo, hemp, organic cotton or kenaf.",
         "identifier": 11,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Energy Saving Lights",
+    {
+        "title": "Challenge: Energy Saving Lights",
         "summary": "Utilize energy saving light bulbs and timers or motion sensors that will automatically shut off when they're not needed. Suggest that your co-workers and employer implement this throughout the whole business!",
         "identifier": 12,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Adopt a Highway",
+    {
+        "title": "Challenge: Adopt a Highway",
         "summary": "Gather a group of friends and work together to clean up a section of the highway. Be sure to wear bright colors and remain cautious of traffic.",
         "identifier": 13,
         "isCompleted": false,
         "category": "volunteer",
     },
-    { "title": "Challenge: Out in the Country",
+    {
+        "title": "Challenge: Out in the Country",
         "summary": "Plan a camping or hiking trip. Connecting with nature is a great reminder of what you're protecting by completing these challenges.",
         "identifier": 14,
         "isCompleted": false,
         "category": "recreational",
     },
-    { "title": "Challenge: Carpool",
+    {
+        "title": "Challenge: Carpool",
         "summary": "Align your schedule with your co-workers and carpool to work together. This reduces carbon emissions and will reduce the amount you spend on gas for your work commute.",
         "identifier": 15,
         "isCompleted": false,
         "category": "work",
     },
-    { "title": "Challenge: Don't Idle",
+    {
+        "title": "Challenge: Don't Idle",
         "summary": "Avoid idling your car for more than 10 seconds unless temperature is below 40°. Idling for longer than 10 seconds uses more fuel than restarting your vehicle.",
         "identifier": 16,
         "isCompleted": false,
         "category": "recreational",
     },
-    { "title": "Challenge: Workout Buddy",
+    {
+        "title": "Challenge: Workout Buddy",
         "summary": "Find a workout buddy and take turns carpooling to the gym. Parking the car for 60 days this year = CO2 savings of 917 pounds.",
         "identifier": 17,
         "isCompleted": false,
         "category": "recreational",
     },
-    { "title": "Challenge: Walk or Bike",
+    {
+        "title": "Challenge: Walk or Bike",
         "summary": "For trips within 3 miles try walking or riding a bike. It's great exercise and it reduces carbon emissions.",
         "identifier": 18,
         "isCompleted": false,
         "category": "recreational",
     },
-    { "title": "Challenge: Drive Sensibly",
+    {
+        "title": "Challenge: Drive Sensibly",
         "summary": "Avoid aggressive driving. “Jack-rabbit” starts and hard braking can increase fuel consumption by as much as 40%",
         "identifier": 19,
         "isCompleted": false,
         "category": "recreational",
-    }
-]
+    },
+    {
+        "title": "Challenge: Get Pumped Up",
+        "summary": "Make sure your tires are properly inflated to prevent increased rolling resistance. Under-inflated tires can cause fuel consumption to increase by as much as 6%.",
+        "identifier": 20,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Play It Cool",
+        "summary": "Use your air conditioner sparingly. Using a vehicle’s air conditioner on a hot summer day can increase fuel consumption by more than 20% in city driving. If it’s cool enough, use the flow-through ventilation on your car instead of the air conditioner.",
+        "identifier": 21,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Tune Up",
+        "summary": "Service your vehicle regularly, according to the manufacturer's instructions. A poorly tuned engine can use up to 50% more fuel and produces up to 50% more emissions than one that is running properly.",
+        "identifier": 22,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Oil Change",
+        "summary": "Change your oil every 5000-8000km for better fuel emissions.",
+        "identifier": 23,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Recycle Coolant",
+        "summary": "Recycle air conditioner coolant - If your car has an air conditioner, make sure you recycle its coolant whenever you have it serviced. You can save thousands of pounds of carbon dioxide each year by doing this.",
+        "identifier": 24,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Car Co-Op",
+        "summary": "Consider joining a car co-op rather than owning your own car. With a car co-op, you can have the convenience of a car when you need one, but will be discouraged from driving unnecessarily.",
+        "identifier": 25,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+        "title": "Challenge: Rent a Car",
+        "summary": "When renting a car, get the most energy efficient vehicle you can and resist the free/discounted “upgrade”.",
+        "identifier": 26,
+        "isCompleted": false,
+        "category": "recreational"
+    },
+    {
+    "title": "Challenge: New Car",
+    "summary": "If you’re buying a new car – buy the most energy efficient car you can. Look for the Energy Guide label posted on all new cars, vans and light-duty trucks.",
+    "identifier": 27,
+    "isCompleted": false,
+    "category": "recreational"
+    },
+    {
+        "title": "Challenge: Use Teleconferences",
+        "summary": "Reduce air travel. Use teleconferences whenever possible rather than attending distant meetings.",
+        "identifier": 28,
+        "isCompleted": false,
+        "category": "work"
+    },
+    {
+        "title": "Challenge: Going Up",
+        "summary": "Take the stairs instead of the elevator.",
+        "identifier": 29,
+        "isCompleted": false,
+        "category": "work"
+    },
+    {
+        "title": "Challenge: Lunch Time",
+        "summary": "Eat local, organic food in minimal packaging whenever possible. Food transportation is one of the fastest growing sources of greenhouse gas emissions.",
+        "identifier": 30,
+        "isCompleted": false,
+        "category": "work"
+    },
+    {
+        "title": "Challenge: Dinner Time",
+        "summary": "Eat local, organic food in minimal packaging for dinner.  According to David Cadman, president of Vancouver's Society Promoting Environmental Conservation, the average morsel of food has travelled 2000 kilometres to get to your plate.",
+        "identifier": 31,
+        "isCompleted": false,
+        "category": "home"
+    },
+    {
+        "title": "Challenge: Home Grown",
+        "summary": "Grow your own garden to supply your meals and reduce damage to the environment from food packaging and transportation.",
+        "identifier": 32,
+        "isCompleted": false,
+        "category": "home"
+    },
+    {
+        "title": "Challenge: Farmers Market",
+        "summary": "Get your groceries at the local farmers market. Buying local can reduce damage to the environment from packaging and transportation.",
+        "identifier": 33,
+        "isCompleted": false,
+        "category": "home"
+    },
 
- 
+]

@@ -1,22 +1,1342 @@
 [
     {
         "identifier" : 1,
-        "hasDisplayed" : false,
-        "summary" : "A friend's frown is better than a fool's smile."
+        "summary" : "It is the first step that is difficult."
     },
     {
         "identifier" : 2,
-        "hasDisplayed" : false,
         "summary" : "A friend in need is a friend indeed."
     },
     {
         "identifier" : 3,
-        "hasDisplayed" : false,
         "summary" : " A friend is easier lost than found."
     },
     {
         "identifier" : 4,
-        "hasDisplayed" : false,
         "summary" : "A friend to everybody is a friend to nobody."
+    },
+    {
+        "identifier" : 5,
+        "summary" : "A problem shared is a problem halved."
+    },
+    {
+        "identifier" : 6,
+        "summary" : " A true friend is someone who reaches for your hand, but touches your heart."
+    },
+    {
+        "identifier" : 7,
+        "summary" : "False friends are worse than open enemies."
+    },
+    {
+        "identifier" : 8,
+        "summary" : "Flattery is all right so long as you don't inhale."
+    },
+    {
+        "identifier" : 9,
+        "summary" :  "Give credit where credit is due."
+    },
+    {
+        "identifier" : 10,
+        "summary" :  " Grief divided is made lighter."
+    },
+    {
+        "identifier" : 11,
+        "summary" : "A loveless life is a living death."
+    },
+    {
+        "identifier" : 12,
+        "summary" : "Two cannot fall out if one does not choose."
+    },
+    {
+        "identifier" : 13,
+        "summary" : "To error is human (To forgive is divine)."
+    },
+    {
+        "identifier" : 14,
+        "summary" : "There is no better looking-glass than an old friend."
+    },
+    {
+        "identifier" : 15,
+        "summary" : "A problem shared is a problem halved."
+    },
+    {
+        "identifier" : 16,
+        "summary" : "The best things are not bought and sold."
+    },
+    {
+        "identifier" : 17,
+        "summary" : "The best of friends are the best of friends."
+    },
+    {
+        "identifier" : 18,
+        "summary" : "Old friends and old wine are best."
+    },
+    {
+        "identifier" : 19,
+        "summary" :  "Nothing dries sooner than a tear."
+    },
+    {
+        "identifier" : 20,
+        "summary" : "Memory is the treasure of the mind."
+    },
+    {
+        "identifier" : 21,
+        "summary" : "There is a thin line between love and hate."
+    },
+    {
+        "identifier" : 22,
+        "summary" : "The course of love never did run smooth."
+    },
+    {
+        "identifier" : 23,
+        "summary" : "Marry in haste, repent at leisure."
+    },
+    {
+        "identifier" : 24,
+        "summary" : "Love with life is heaven; and life unloving, hell."
+    },
+    {
+        "identifier" : 25,
+        "summary" : "Love to live and live to love."
+    },
+    {
+        "identifier" : 26,
+        "summary" : "Love sought is good, but given unsought is better."
+    },
+    {
+        "identifier" : 27,
+        "summary" : "Love sees no faults."
+    },
+    {
+        "identifier" : 28,
+        "summary" : "Love makes a good eye squint."
+    },
+    {
+        "identifier" : 29,
+        "summary" :  "Love levels all inequalities."
+    },
+    {
+        "identifier" : 30,
+        "summary" : "Love does much but money does all."
+    },
+    {
+        "identifier" : 31,
+        "summary" : "Love and a cough cannot be hid."
+    },
+    {
+        "identifier" : 32,
+        "summary" : "Hatred is as blind as love."
+    },
+    {
+        "identifier" : 33,
+        "summary" : "First impressions are the most lasting."
+    },
+    {
+        "identifier" : 34,
+        "summary" : "Faint heart never won fair lady."
+    },
+    {
+        "identifier" : 35,
+        "summary" : "Distance makes the heart grow fonder."
+    },
+    {
+        "identifier" : 36,
+        "summary" : "Cold hands, warm heart."
+    },
+    {
+        "identifier" : 37,
+        "summary" : "Better to have loved and lost, than to have never loved at all."
+    },
+    {
+        "identifier" : 38,
+        "summary" : "Before you meet the handsome prince you have to kiss a lot of toads."
+    },
+    {
+        "identifier" : 39,
+        "summary" :  "All's fair in love and war."
+    },
+    {
+        "identifier" : 40,
+        "summary" : "Absence makes the heart grow fonder."
+    },
+    {
+        "identifier" : 41,
+        "summary" : "To the world you may be one person, but to one person, you may be the world."
+    },
+    {
+        "identifier" : 42,
+        "summary" : "Temper is so good a thing that we should never lose it."
+    },
+    {
+        "identifier" : 43,
+        "summary" : "Spare the rod and spoil the child."
+    },
+    {
+        "identifier" : 44,
+        "summary" : "Persuasion is better than force."
+    },
+    {
+        "identifier" : 45,
+        "summary" : "A problem shared is a problem halved."
+    },
+    {
+        "identifier" : 46,
+        "summary" : " Patience is a virtue."
+    },
+    {
+        "identifier" : 47,
+        "summary" : "Out of sight, out of mind."
+    },
+    {
+        "identifier" : 48,
+        "summary" : "Open confession is good for the soul."
+    },
+    {
+        "identifier" : 49,
+        "summary" :  "No man or woman is worth your tears, and the one who is, won't make you cry."
+    },
+    {
+        "identifier" : 50,
+        "summary" : "Never quarrel with one's bread and butter."
+    },
+    {
+        "identifier" : 51,
+        "summary" : "Never let the sun go down on your anger."
+    },
+    {
+        "identifier" : 52,
+        "summary" : "Never let the sun set on angry heart."
+    },
+    {
+        "identifier" : 53,
+        "summary" : "Joy shared is double joy; grief shared is (only) half grief."
+    },
+    {
+        "identifier" : 54,
+        "summary" : "It's not over till it's over."
+    },
+    {
+        "identifier" : 55,
+        "summary" : "If you lose your temper, don't look for it."
+    },
+    {
+        "identifier" : 56,
+        "summary" : "I am rubber and you are glue. Your words bounce off me and stick to you."
+    },
+    {
+        "identifier" : 57,
+        "summary" : "Heavy givers are light complainers."
+    },
+    {
+        "identifier" : 58,
+        "summary" : "He who wronged you will hate you."
+    },
+    {
+        "identifier" : 59,
+        "summary" :  "He that hurts another, hurts himself."
+    },
+    {
+        "identifier" : 60,
+        "summary" : "He bears misery best that hides it most."
+    },
+    {
+        "identifier" : 61,
+        "summary" : "Grow angry slowly; there's plenty of time."
+    },
+    {
+        "identifier" : 62,
+        "summary" : "Do unto others as you would have them do to you."
+    },
+    {
+        "identifier" : 63,
+        "summary" : "Do as you would be done by."
+    },
+    {
+        "identifier" : 64,
+        "summary" : "Don't blow your own trumpet."
+    },
+    {
+        "identifier" : 65,
+        "summary" : "Conscience makes cowards of us all."
+    },
+    {
+        "identifier" : 66,
+        "summary" : "Confess and be hanged."
+    },
+    {
+        "identifier" : 67,
+        "summary" : "Cheerfulness smooths the road of life."
+    },
+    {
+        "identifier" : 68,
+        "summary" : "Blood is thicker than water."
+    },
+    {
+        "identifier" : 69,
+        "summary" :  "Behind every great man stands a strong woman."
+    },
+    {
+        "identifier" : 80,
+        "summary" : "Be slow in choosing, but slower in changing."
+    },
+    {
+        "identifier" : 81,
+        "summary" : "Peace is the best form of defense"
+    },
+    {
+        "identifier" : 82,
+        "summary" : "At a round table there's no dispute about the place."
+    },
+    {
+        "identifier" : 83,
+        "summary" : "Appearances are deceptive."
+    },
+    {
+        "identifier" : 84,
+        "summary" : "Anger and hate hinder good counsel."
+    },
+    {
+        "identifier" : 85,
+        "summary" : "An injury is forgiven better than an injury revenged."
+    },
+    {
+        "identifier" : 86,
+        "summary" : "A wink is as good as a nod, to a blind man."
+    },
+    {
+        "identifier" : 87,
+        "summary" : "A man of straw needs a woman of gold."
+    },
+    {
+        "identifier" : 88,
+        "summary" : "A good friend is one's nearest relation."
+    },
+    {
+        "identifier" : 89,
+        "summary" :  "You can't live on bread alone."
+    },
+    {
+        "identifier" : 90,
+        "summary" : "True beauty lies within."
+    },
+    {
+        "identifier" : 91,
+        "summary" : "Wondrous is the strength of cheerfulness."
+    },
+    {
+        "identifier" : 92,
+        "summary" : "You made your bed, now you must lie in it."
+    },
+    {
+        "identifier" : 93,
+        "summary" : "A bully is always a coward."
+    },
+    {
+        "identifier" : 94,
+        "summary" : "A handsome shoe often pinches the foot."
+    },
+    {
+        "identifier" : 95,
+        "summary" : "A good thing is all the sweeter when won with pain."
+    },
+    {
+        "identifier" : 96,
+        "summary" : "A man too careful of danger lives in continual torment."
+    },
+    {
+        "identifier" : 97,
+        "summary" : "A miss is as good as a mile."
+    },
+    {
+        "identifier" : 98,
+        "summary" : "Adversity flatters no man."
+    },
+    {
+        "identifier" : 99,
+        "summary" :  "Adversity and loss make a man wise."
+    },
+    {
+        "identifier" : 100,
+        "summary" : "All promises are either broken or kept."
+    },
+    {
+        "identifier" : 101,
+        "summary" : "All things come to those that wait."
+    },
+    {
+        "identifier" : 102,
+        "summary" : "An eye for an eye and a tooth for a tooth."
+    },
+    {
+        "identifier" : 103,
+        "summary" : "An open door may tempt a saint."
+    },
+    {
+        "identifier" : 104,
+        "summary" : "As one door closes, another always opens."
+    },
+    {
+        "identifier" : 105,
+        "summary" : "As you go through life, make this your goal, watch the doughnut and not the hole."
+    },
+    {
+        "identifier" : 106,
+        "summary" : " Brevity is the soul of wit."
+    },
+    {
+        "identifier" : 107,
+        "summary" : "Cut your coat according to the cloth."
+    },
+    {
+        "identifier" : 108,
+        "summary" : "Discretion is the better part of valor."
+    },
+    {
+        "identifier" : 109,
+        "summary" :  "Do right and fear no one."
+    },
+    {
+        "identifier" : 110,
+        "summary" :  "Easy come, easy go."
+    },
+    {
+        "identifier" : 111,
+        "summary" : "Experience is the hardest teacher. She gives the test first and the lesson afterwards."
+    },
+    {
+        "identifier" : 112,
+        "summary" : "Familiarity breeds contempt."
+    },
+    {
+        "identifier" : 113,
+        "summary" : "Fortune favors the brave."
+    },
+    {
+        "identifier" : 114,
+        "summary" : "He who laughs last, laughs longest."
+    },
+    {
+        "identifier" : 115,
+        "summary" : "Home is where the heart is."
+    },
+    {
+        "identifier" : 116,
+        "summary" : "Hope for the best and prepare for the worst."
+    },
+    {
+        "identifier" : 117,
+        "summary" : "If wishes were horses, beggars would ride."
+    },
+    {
+        "identifier" : 118,
+        "summary" : "In the land of the blind the one eyed man is king."
+    },
+    {
+        "identifier" : 119,
+        "summary" :  "Leave tomorrow till tomorrow."
+    },
+    {
+        "identifier" : 120,
+        "summary" : "Life’s trials may be hard to bear, but patience can outlive them."
+    },
+    {
+        "identifier" : 121,
+        "summary" : "Live and learn."
+    },
+    {
+        "identifier" : 122,
+        "summary" : "Have good manners."
+    },
+    {
+        "identifier" : 123,
+        "summary" : "No man is worse for knowing the worst of himself."
+    },
+    {
+        "identifier" : 124,
+        "summary" : "Procrastination is the thief of time."
+    },
+    {
+        "identifier" : 125,
+        "summary" : "The best things in life are free."
+    },
+    {
+        "identifier" : 126,
+        "summary" : "The longer you live the more you see."
+    },
+    {
+        "identifier" : 127,
+        "summary" : "The meek shall inherit the earth."
+    },
+    {
+        "identifier" : 128,
+        "summary" : "The receiver is as bad as the thief."
+    },
+    {
+        "identifier" : 129,
+        "summary" :  "To wait and be patient soothes many a pang."
+    },
+    {
+        "identifier" : 130,
+        "summary" : "Up and down like a fiddler's elbow."
+    },
+    {
+        "identifier" : 131,
+        "summary" : "We cannot erase the sad records from our past."
+    },
+    {
+        "identifier" : 132,
+        "summary" : "What the eye doesn't see, the heart doesn't grieve over."
+    },
+    {
+        "identifier" : 133,
+        "summary" : "While there's life there's hope."
+    },
+    {
+        "identifier" : 134,
+        "summary" : "After dinner rest a while, after supper walk a mile."
+    },
+    {
+        "identifier" : 135,
+        "summary" : "An apple a day keeps the doctor away."
+    },
+    {
+        "identifier" : 136,
+        "summary" : "A drowning man will clutch at a straw."
+    },
+    {
+        "identifier" : 137,
+        "summary" : "An onion a day keeps everyone away."
+    },
+    {
+        "identifier" : 138,
+        "summary" : "Another pot! Try the teapot."
+    },
+    {
+        "identifier" : 139,
+        "summary" :  "As fit as a fiddle."
+    },
+    {
+        "identifier" : 140,
+        "summary" : "As hard as nails."
+    },
+    {
+        "identifier" : 141,
+        "summary" : "As sick as a dog."
+    },
+    {
+        "identifier" : 142,
+        "summary" : "Be not a baker if your head is made of butter."
+    },
+    {
+        "identifier" : 143,
+        "summary" : "Beauty is but skin deep."
+    },
+    {
+        "identifier" : 144,
+        "summary" : "Better to be poor and healthy rather than rich and sick."
+    },
+    {
+        "identifier" : 145,
+        "summary" : "Better to wear out than rust out."
+    },
+    {
+        "identifier" : 146,
+        "summary" : "Bread never falls but on its buttered side."
+    },
+    {
+        "identifier" : 147,
+        "summary" : "Content is health to the sick and riches to the poor."
+    },
+    {
+        "identifier" : 148,
+        "summary" : "Don't bite the hand that feeds you."
+    },
+    {
+        "identifier" : 149,
+        "summary" :  "Drink like a fish, water only."
+    },
+    {
+        "identifier" : 150,
+        "summary" : "Early to bed, early to rise, makes you healthy, wealthy & wise."
+    },
+    {
+        "identifier" : 151,
+        "summary" : "Fair words butter no cabbage."
+    },
+    {
+        "identifier" : 152,
+        "summary" : "Good wine ruins the purse, and bad wine ruins the stomach."
+    },
+    {
+        "identifier" : 153,
+        "summary" : "Greediness burst the bag."
+    },
+    {
+        "identifier" : 154,
+        "summary" : "Grumbling makes the loaf no larger."
+    },
+    {
+        "identifier" : 155,
+        "summary" : "Half a loaf is better than none."
+    },
+    {
+        "identifier" : 156,
+        "summary" : "He who drinks a little too much drinks much too much."
+    },
+    {
+        "identifier" : 157,
+        "summary" : "He who rises late must trot all day."
+    },
+    {
+        "identifier" : 158,
+        "summary" : "His eyes are bigger than his belly."
+    },
+    {
+        "identifier" : 159,
+        "summary" :  "Hunger is the best sauce."
+    },
+    {
+        "identifier" : 160,
+        "summary" : "It is no use crying over spilt milk."
+    },
+    {
+        "identifier" : 161,
+        "summary" : "Old friends and old wine are best."
+    },
+    {
+        "identifier" : 162,
+        "summary" : "One man's meat is another man's poison."
+    },
+    {
+        "identifier" : 163,
+        "summary" : "Ready money is ready medicine."
+    },
+    {
+        "identifier" : 164,
+        "summary" : "Sound as a bell."
+    },
+    {
+        "identifier" : 165,
+        "summary" : "The nearer the bone the sweeter the meat."
+    },
+    {
+        "identifier" : 166,
+        "summary" : "The proof of the pudding is in the eating."
+    },
+    {
+        "identifier" : 167,
+        "summary" : "There's many a slip, twixt cup and the lip."
+    },
+    {
+        "identifier" : 168,
+        "summary" : "To add insult to injury."
+    },
+    {
+        "identifier" : 169,
+        "summary" :  "To look as if butter will not melt in his mouth."
+    },
+    {
+        "identifier" : 180,
+        "summary" : "Too many cooks spoil the broth."
+    },
+    {
+        "identifier" : 181,
+        "summary" : "What can't be cured must be endured."
+    },
+    {
+        "identifier" : 182,
+        "summary" : "What you eat today walks and talks tomorrow."
+    },
+    {
+        "identifier" : 183,
+        "summary" : "You are what you eat."
+    },
+    {
+        "identifier" : 184,
+        "summary" : "You can't have your cake and eat it too."
+    },
+    {
+        "identifier" : 185,
+        "summary" : "You can eat an elephant if you do it one mouthful at a time."
+    },
+    {
+        "identifier" : 186,
+        "summary" : "You can't unscramble a scrambled egg."
+    },
+    {
+        "identifier" : 187,
+        "summary" : "Wondrous is the strength of cheerfulness."
+    },
+    {
+        "identifier" : 188,
+        "summary" : "A fool speaks all his mind."
+    },
+    {
+        "identifier" : 189,
+        "summary" :  "A bad excuse is better than none."
+    },
+    {
+        "identifier" : 190,
+        "summary" : "Actions speak louder than words."
+    },
+    {
+        "identifier" : 191,
+        "summary" : "Angry words fan the fire like wind."
+    },
+    {
+        "identifier" : 192,
+        "summary" : "Bad news travels fast."
+    },
+    {
+        "identifier" : 193,
+        "summary" : "Call a spade a spade."
+    },
+    {
+        "identifier" : 194,
+        "summary" : "Do as I say not as I do."
+    },
+    {
+        "identifier" : 195,
+        "summary" : "Don't advertise: Tell it to a gossip."
+    },
+    {
+        "identifier" : 196,
+        "summary" : "Don't go off half-cocked."
+    },
+    {
+        "identifier" : 197,
+        "summary" : "Few words and many deeds."
+    },
+    {
+        "identifier" : 198,
+        "summary" : "Gossips are frogs, they drink and talk."
+    },
+    {
+        "identifier" : 199,
+        "summary" :  "He who sings drives away sorrow."
+    },
+    {
+        "identifier" : 200,
+        "summary" : "If you don't say it you will not have to unsay it."
+    },
+    {
+        "identifier" : 201,
+        "summary" : "It takes two to have an argument."
+    },
+    {
+        "identifier" : 202,
+        "summary" : "Listen to the pot calling the kettle black."
+    },
+    {
+        "identifier" : 203,
+        "summary" : "Many a true word spoken in jest."
+    },
+    {
+        "identifier" : 204,
+        "summary" : "No news is good news."
+    },
+    {
+        "identifier" : 205,
+        "summary" : "Nothing is ill said if it is not ill taken."
+    },
+    {
+        "identifier" : 206,
+        "summary" : "One picture is worth a thousand words."
+    },
+    {
+        "identifier" : 207,
+        "summary" : "Say what you mean and mean what you say."
+    },
+    {
+        "identifier" : 208,
+        "summary" : "Self praise is no recommendation."
+    },
+    {
+        "identifier" : 209,
+        "summary" :  "Silence is an excellent remedy against slander."
+    },
+    {
+        "identifier" : 210,
+        "summary" :  "Silence is golden."
+    },
+    {
+        "identifier" : 211,
+        "summary" : "Silence is less injurious than a bad reply."
+    },
+    {
+        "identifier" : 212,
+        "summary" : "Since before cocky was an egg."
+    },
+    {
+        "identifier" : 213,
+        "summary" : "Speak clearly, if you speak at all."
+    },
+    {
+        "identifier" : 214,
+        "summary" : "Sticks and stones may break my bones but words will never hurt me."
+    },
+    {
+        "identifier" : 215,
+        "summary" : "Stop beating around the bush."
+    },
+    {
+        "identifier" : 216,
+        "summary" : "Take your wife's first advice."
+    },
+    {
+        "identifier" : 217,
+        "summary" : "Talking comes by nature, silence by wisdom."
+    },
+    {
+        "identifier" : 218,
+        "summary" : "A change is as good as a rest."
+    },
+    {
+        "identifier" : 219,
+        "summary" :  "A stitch in time saves nine."
+    },
+    {
+        "identifier" : 220,
+        "summary" : "A throne is only a bench covered in purple velvet."
+    },
+    {
+        "identifier" : 221,
+        "summary" : "A wise man shall hold his tongue till he sees his opportunity."
+    },
+    {
+        "identifier" : 222,
+        "summary" : "Accidents happen."
+    },
+    {
+        "identifier" : 223,
+        "summary" : "All's well that ends well."
+    },
+    {
+        "identifier" : 224,
+        "summary" : "Attack is the best means of defense."
+    },
+    {
+        "identifier" : 225,
+        "summary" : "Charity begins at home."
+    },
+    {
+        "identifier" : 226,
+        "summary" : "Different strokes for different folks."
+    },
+    {
+        "identifier" : 227,
+        "summary" : "Do not in an instant what an age cannot recompense."
+    },
+    {
+        "identifier" : 228,
+        "summary" : "Don't knock on death's door, ring the doorbell and run."
+    },
+    {
+        "identifier" : 229,
+        "summary" :  "Don't try to teach your grand-mother to suck eggs."
+    },
+    {
+        "identifier" : 230,
+        "summary" : "Empty vessels make the most sound."
+    },
+    {
+        "identifier" : 231,
+        "summary" : "Empty barrels make the most noise."
+    },
+    {
+        "identifier" : 232,
+        "summary" : "Four eyes are better than two."
+    },
+    {
+        "identifier" : 233,
+        "summary" : "He who fights and runs away, lives to fight another day."
+    },
+    {
+        "identifier" : 234,
+        "summary" : "It's an ill wind that blows no-one some good."
+    },
+    {
+        "identifier" : 235,
+        "summary" : "Necessity is the mother of invention."
+    },
+    {
+        "identifier" : 236,
+        "summary" : "No one can be caught in places he does not visit."
+    },
+    {
+        "identifier" : 237,
+        "summary" : "No wise man ever wishes to be younger."
+    },
+    {
+        "identifier" : 238,
+        "summary" : "Not in a month of Sundays."
+    },
+    {
+        "identifier" : 239,
+        "summary" :  "One mans junk is another man's treasure."
+    },
+    {
+        "identifier" : 240,
+        "summary" : "Out of the frying pan into the fire."
+    },
+    {
+        "identifier" : 241,
+        "summary" : "Show a clean pair of heels."
+    },
+    {
+        "identifier" : 242,
+        "summary" : "Still waters run deep."
+    },
+    {
+        "identifier" : 243,
+        "summary" : "The darkest hour is before the dawn."
+    },
+    {
+        "identifier" : 244,
+        "summary" : "The wise shall understand."
+    },
+    {
+        "identifier" : 245,
+        "summary" : "Those who don't learn from history are doomed to repeat it."
+    },
+    {
+        "identifier" : 246,
+        "summary" : "Tomorrow is a new day."
+    },
+    {
+        "identifier" : 247,
+        "summary" : "Two heads are better than one."
+    },
+    {
+        "identifier" : 248,
+        "summary" : "You can't tell a book by its cover."
+    },
+    {
+        "identifier" : 249,
+        "summary" :  "Where observation is concerned, chance favors only the prepared mind."
+    },
+    {
+        "identifier" : 250,
+        "summary" : "Where there's smoke there's fire."
+    },
+    {
+        "identifier" : 251,
+        "summary" : "Wisdom is better than strength."
+    },
+    {
+        "identifier" : 252,
+        "summary" : "Wisdom is neither inheritance nor a legacy."
+    },
+    {
+        "identifier" : 253,
+        "summary" : "Wisdom is the wealth of the wise."
+    },
+    {
+        "identifier" : 254,
+        "summary" : "Wise it is to comprehend the whole."
+    },
+    {
+        "identifier" : 255,
+        "summary" : "You can't put an old head on young shoulders."
+    },
+    {
+        "identifier" : 256,
+        "summary" : "You never know what you can do till you try."
+    },
+    {
+        "identifier" : 257,
+        "summary" : "Once a task has first begun, never quit until it's done"
+    },
+    {
+        "identifier" : 258,
+        "summary" : "Be the labour great or small, do it well or not at all."
+    },
+    {
+        "identifier" : 259,
+        "summary" :  "A bad workman blames his tools."
+    },
+    {
+        "identifier" : 260,
+        "summary" : "A good reputation is a fair estate."
+    },
+    {
+        "identifier" : 261,
+        "summary" : "All work and no play makes Jack a dull boy."
+    },
+    {
+        "identifier" : 262,
+        "summary" : "An idle man is the devil's playfellow."
+    },
+    {
+        "identifier" : 263,
+        "summary" : "Diligence is the mother of good luck."
+    },
+    {
+        "identifier" : 264,
+        "summary" : "Don't try kicking against the wind."
+    },
+    {
+        "identifier" : 265,
+        "summary" : "Everybody must row with the oars they have."
+    },
+    {
+        "identifier" : 266,
+        "summary" : "Hard work never did anyone any harm."
+    },
+    {
+        "identifier" : 267,
+        "summary" : "If a job is worth doing it is worth doing well."
+    },
+    {
+        "identifier" : 268,
+        "summary" : "If at first you don't succeed, try, try again."
+    },
+    {
+        "identifier" : 269,
+        "summary" :  "If you can't help, don't hinder."
+    },
+    {
+        "identifier" : 280,
+        "summary" : "If you see something you like, take it and make it better."
+    },
+    {
+        "identifier" : 281,
+        "summary" : "All in a daze work."
+    },
+    {
+        "identifier" : 282,
+        "summary" : "Laziness travels so slowly that poverty soon overtakes it."
+    },
+    {
+        "identifier" : 283,
+        "summary" : "Less talk, more work."
+    },
+    {
+        "identifier" : 284,
+        "summary" : "Many hands make light work."
+    },
+    {
+        "identifier" : 285,
+        "summary" : "More haste less speed."
+    },
+    {
+        "identifier" : 286,
+        "summary" : "Needs must when the devil drives."
+    },
+    {
+        "identifier" : 287,
+        "summary" : "Never put off 'til tomorrow what you can do today."
+    },
+    {
+        "identifier" : 288,
+        "summary" : "No life can be dreary when work is a delight."
+    },
+    {
+        "identifier" : 289,
+        "summary" :  "Not to break is better than to mend."
+    },
+    {
+        "identifier" : 290,
+        "summary" : "The hardest work is to do nothing."
+    },
+    {
+        "identifier" : 291,
+        "summary" : "A bird in the hand is worth two in the bush."
+    },
+    {
+        "identifier" : 292,
+        "summary" : "A bird makes his nest little by little."
+    },
+    {
+        "identifier" : 293,
+        "summary" : "A cat has nine lives."
+    },
+    {
+        "identifier" : 294,
+        "summary" : "All cats are grey in the dark."
+    },
+    {
+        "identifier" : 295,
+        "summary" : "An elephant never forgets."
+    },
+    {
+        "identifier" : 296,
+        "summary" : "An old fox need learn no craft."
+    },
+    {
+        "identifier" : 297,
+        "summary" : "Birds of a feather flock together."
+    },
+    {
+        "identifier" : 298,
+        "summary" : "Curiosity killed the cat; Satisfaction brought it back."
+    },
+    {
+        "identifier" : 299,
+        "summary" :  "Curses, like chickens come home to roost."
+    },
+    {
+        "identifier" : 300,
+        "summary" : "Don't count your chickens before they hatch."
+    },
+    {
+        "identifier" : 301,
+        "summary" : "Every dog has its day."
+    },
+    {
+        "identifier" : 302,
+        "summary" : "If you lie down with dogs, you'll get up with fleas."
+    },
+    {
+        "identifier" : 303,
+        "summary" : "It's an ill bird that fouls its own nest."
+    },
+    {
+        "identifier" : 304,
+        "summary" : "It's an old dog for a hard road."
+    },
+    {
+        "identifier" : 305,
+        "summary" : "It's no use closing the stable door, after the horse has bolted."
+    },
+    {
+        "identifier" : 306,
+        "summary" : "Let sleeping dogs lie."
+    },
+    {
+        "identifier" : 307,
+        "summary" : "Like a fish out of water."
+    },
+    {
+        "identifier" : 308,
+        "summary" : "Never look a gift horse in the mouth."
+    },
+    {
+        "identifier" : 309,
+        "summary" :  "No sense closing the barn door after the horse has bolted."
+    },
+    {
+        "identifier" : 310,
+        "summary" :  "Nothing falls into the mouth of a sleeping fox."
+    },
+    {
+        "identifier" : 311,
+        "summary" : "Putting the cart before the horse."
+    },
+    {
+        "identifier" : 312,
+        "summary" : "Sauce for the goose is sauce for the gander."
+    },
+    {
+        "identifier" : 313,
+        "summary" : "The early bird catches the worm."
+    },
+    {
+        "identifier" : 314,
+        "summary" : "The leopard does not change his spots."
+    },
+    {
+        "identifier" : 315,
+        "summary" : "The sleepy fox catches no chickens."
+    },
+    {
+        "identifier" : 316,
+        "summary" : "There's no use in flogging a dead horse."
+    },
+    {
+        "identifier" : 317,
+        "summary" : "To scare a bird is not the way to catch it."
+    },
+    {
+        "identifier" : 318,
+        "summary" : "What do you expect from a pig, but a grunt?"
+    },
+    {
+        "identifier" : 319,
+        "summary" :  "When a fox hears a rabbit screaming it comes running, but not to help."
+    },
+    {
+        "identifier" : 320,
+        "summary" : "While the cats away the mice play."
+    },
+    {
+        "identifier" : 321,
+        "summary" : "You can lead a horse to water, but you can't make him drink."
+    },
+    {
+        "identifier" : 322,
+        "summary" : "You can't make a silk purse out of a sow's ear."
+    },
+    {
+        "identifier" : 323,
+        "summary" : "A chain is no stronger than its weakest link."
+    },
+    {
+        "identifier" : 324,
+        "summary" : "A rolling stone gathers no moss."
+    },
+    {
+        "identifier" : 325,
+        "summary" : "After the storm comes the calm."
+    },
+    {
+        "identifier" : 326,
+        "summary" : "All aren't hunters that blow the horn."
+    },
+    {
+        "identifier" : 327,
+        "summary" : "As green as grass."
+    },
+    {
+        "identifier" : 328,
+        "summary" : "As is the gardener so is the garden."
+    },
+    {
+        "identifier" : 329,
+        "summary" :  "As you sow, so shall you reap."
+    },
+    {
+        "identifier" : 330,
+        "summary" : "Best to bend it while it's a twig."
+    },
+    {
+        "identifier" : 331,
+        "summary" : "Better to go back than go wrong."
+    },
+    {
+        "identifier" : 332,
+        "summary" : "Education is the path to success."
+    },
+    {
+        "identifier" : 333,
+        "summary" : "Deeds are fruits, words are but leaves."
+    },
+    {
+        "identifier" : 334,
+        "summary" : "Distance lends enhancement to the view."
+    },
+    {
+        "identifier" : 335,
+        "summary" : "Don't count your chickens before they are hatched."
+    },
+    {
+        "identifier" : 336,
+        "summary" : "Don't cross your bridges until you come to them."
+    },
+    {
+        "identifier" : 337,
+        "summary" : "Empty bags cannot stand upright."
+    },
+    {
+        "identifier" : 338,
+        "summary" : "Every cloud has a silver lining."
+    },
+    {
+        "identifier" : 339,
+        "summary" :  "Every path has its puddle."
+    },
+    {
+        "identifier" : 340,
+        "summary" : "Fresh as a daisy."
+    },
+    {
+        "identifier" : 341,
+        "summary" : "Good company on the road is the shortest cut."
+    },
+    {
+        "identifier" : 342,
+        "summary" : "It is better to be green and growing than ripe and rotten."
+    },
+    {
+        "identifier" : 343,
+        "summary" : "Leave no stone unturned.."
+    },
+    {
+        "identifier" : 344,
+        "summary" : "Like looking for a needle in a haystack."
+    },
+    {
+        "identifier" : 345,
+        "summary" : "Make hay while the sun shines."
+    },
+    {
+        "identifier" : 346,
+        "summary" : "Milk the cow but don't pull off the udder."
+    },
+    {
+        "identifier" : 347,
+        "summary" : "Never cackle unless you lay."
+    },
+    {
+        "identifier" : 348,
+        "summary" : "Oaks may fall when reeds take the storm."
+    },
+    {
+        "identifier" : 349,
+        "summary" :  "Shake the hand before you plough the field."
+    },
+    {
+        "identifier" : 350,
+        "summary" : "Strike while the iron's hot."
+    },
+    {
+        "identifier" : 351,
+        "summary" : "The beaten path is safest."
+    },
+    {
+        "identifier" : 352,
+        "summary" : "The best ground bears weeds as well as flowers."
+    },
+    {
+        "identifier" : 353,
+        "summary" : "The grass is always greener on the other side of the fence."
+    },
+    {
+        "identifier" : 354,
+        "summary" : "The longest journey begins with the first step."
+    },
+    {
+        "identifier" : 355,
+        "summary" : "The longest way round is the sweetest way home."
+    },
+    {
+        "identifier" : 356,
+        "summary" : "The more you stir, the more it stinks."
+    },
+    {
+        "identifier" : 357,
+        "summary" : "The sun shines on both sides of the hedge."
+    },
+    {
+        "identifier" : 358,
+        "summary" : "The worst wheel always creaks most."
+    },
+    {
+        "identifier" : 359,
+        "summary" :  "Too many irons in the fire."
+    },
+    {
+        "identifier" : 360,
+        "summary" : "A spark can start a great fire."
+    },
+    {
+        "identifier" : 361,
+        "summary" : "Big fish eat little fish."
+    },
+    {
+        "identifier" : 362,
+        "summary" : "A friend's frown is better than a fool's smile."
+    },
+    {
+        "identifier" : 363,
+        "summary" : "He who hesitates is lost."
+    },
+    {
+        "identifier" : 364,
+        "summary" : "It's either all or nothing.It's either all or nothing."
+    },
+    {
+        "identifier" : 365,
+        "summary" : "Everything has an end."
     }
 ]

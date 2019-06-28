@@ -41,7 +41,7 @@ class HistoryViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var categoryHeader: UIButton!
+    @IBOutlet weak var categoryHeader: UILabel!
     
     
     // MARK: - NSFetchedResultsController
@@ -93,6 +93,23 @@ class HistoryViewController: UIViewController {
         displayZeroStateView()
     }
     
+    // Dismiss CategoriesMenuVC if touch outside of CategoriesMenuVC.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        // Remove categoriesMenuViewController and blurEffectView from view stack.
+        UIView.animate(withDuration: 0.3, animations: {
+            self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
+            self.blurEffectView?.alpha = 0.0
+        }, completion: { _ in
+            
+            // Remove categoriesMenuVC from view stack.
+            self.categoriesMenuViewController?.willMove(toParent: nil)
+            self.categoriesMenuViewController = nil
+            self.blurEffectView?.removeFromSuperview()
+        })
+    }
+    
+    
     /// Display zeroStateView if no challenges completed, else display history table view.
     private func displayZeroStateView() {
         guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
@@ -101,6 +118,7 @@ class HistoryViewController: UIViewController {
         
         if hasCompletedAChallenge == false {
             self.view.addSubview(zeroStateView)
+            zeroStateView.pinFrameToSuperView()
             
         } else if hasCompletedAChallenge == true {
             
@@ -124,9 +142,8 @@ class HistoryViewController: UIViewController {
         return Challenge.fetchCompletedChallenges(from: context)
     }
     
-    // Creates and animates an instance of CategoriesMenuViewController.
-    @IBAction func displayCategoriesMenu(_ sender: Any) {
-        
+    
+    @IBAction func filterButtonPressed(_ sender: Any) {
         guard categoriesMenuViewController == nil else {
             UIView.animate(withDuration: 0.3, animations: {
                 self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
@@ -171,9 +188,9 @@ class HistoryViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             blurEffectView.alpha = 1.0
             categoriesMenuVC.view.frame.origin.y = self.view.frame.height / 2
+            }
         }
     }
-}
 
 
 //MARK: - TableView Data Source
@@ -196,7 +213,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         // Assign at the indexPath to challenge constant to be displayed in the returned cell.
         let challenge = fetchedResultsController.object(at: indexPath)
         cell.titleLabel.text = challenge.title
-        cell.subTitleLabel.text = challenge.category.rawValue
+        cell.subTitleLabel.text = challenge.category.rawValue.capitalized
         cell.categoryImageView.image = challenge.category.iconImage
         
         return cell
@@ -252,9 +269,9 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
             self.categoriesMenuViewController?.view.frame.origin.y = self.view.frame.maxY
             self.blurEffectView?.alpha = 0.0
         }, completion: { _ in
+            
             // Remove categoriesMenuVC from view stack.
             self.categoriesMenuViewController?.willMove(toParent: nil)
-            
             self.categoriesMenuViewController = nil
             
             self.blurEffectView?.removeFromSuperview()
@@ -262,10 +279,10 @@ extension HistoryViewController: CategoriesMenuViewControllerDelegate {
         
         if category == .all {
             selectedCategory = nil
-            categoryHeader.setTitle("all", for: .normal)
+            categoryHeader.text = "All"
         } else {
             selectedCategory = category
-            categoryHeader.setTitle(selectedCategory?.rawValue, for: .normal)
+            categoryHeader.text = selectedCategory?.rawValue.capitalized
         }
         
         _fetchedResultsController = nil

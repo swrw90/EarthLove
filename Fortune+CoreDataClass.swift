@@ -33,8 +33,7 @@ public class Fortune: NSManagedObject {
     class func fortune(from json: JSON, in context: NSManagedObjectContext) -> Fortune? {
         // Make sure these properties are coming from the json. If it's not Fortune cannot exist
         // so return nil.
-        guard let identifier = json["identifier"] as? Int64,
-            let hasDisplayed = json["hasDisplayed"] as? Bool
+        guard let identifier = json["identifier"] as? Int64
             else { return nil }
         
         // Fetch the fortune with identifier, if it doesn't exist create a new one.
@@ -43,7 +42,6 @@ public class Fortune: NSManagedObject {
         
         // Hydrate fortune.
         fortune.identifier = identifier
-        fortune.hasDisplayed = hasDisplayed
         fortune.summary = summary
         
         return fortune

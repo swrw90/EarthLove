@@ -14,6 +14,7 @@ protocol CategoriesMenuViewControllerDelegate: AnyObject {
     func handleSelectedCategory(category: Category)
     
 }
+
 /// UITableViewController used to display each challenge category.
 class CategoriesMenuViewController: UITableViewController {
     
@@ -46,7 +47,7 @@ class CategoriesMenuViewController: UITableViewController {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: categoryCell, for: indexPath) as? CategoryCell else { return UITableViewCell() }
         
-        cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue
+        cell.categoryLabel.text = Category.allCases[indexPath.row].rawValue.capitalized
         
         return cell
     }
@@ -54,5 +55,5 @@ class CategoriesMenuViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.handleSelectedCategory(category: Category.allCases[indexPath.row])
     }
+    
 }
-
