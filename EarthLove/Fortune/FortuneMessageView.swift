@@ -22,7 +22,7 @@ class FortuneMessageView: UIView {
     // Dismisses fortune message view.
     private func setupDismissButton() {
         dismissButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        dismissButton.setBackgroundImage(UIImage(named: "first"), for: UIControl.State.normal)
+        dismissButton.setBackgroundImage(UIImage(named: "diamond"), for: UIControl.State.normal)
         self.dismissButton.addTarget(self, action: #selector(dismissFortuneView(sender:)), for: .touchUpInside)
         self.addSubview(dismissButton)
     }

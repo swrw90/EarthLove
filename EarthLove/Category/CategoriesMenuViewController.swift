@@ -14,6 +14,7 @@ protocol CategoriesMenuViewControllerDelegate: AnyObject {
     func handleSelectedCategory(category: Category)
     
 }
+
 /// UITableViewController used to display each challenge category.
 class CategoriesMenuViewController: UITableViewController {
     

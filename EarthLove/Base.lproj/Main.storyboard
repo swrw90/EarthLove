@@ -71,7 +71,7 @@
                                                     <constraint firstAttribute="width" constant="51" id="1jh-mv-cqH"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" image="checkmark"/>
+                                                <state key="normal" image="like"/>
                                                 <connections>
                                                     <action selector="completedPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Nyq-oT-YEQ"/>
                                                 </connections>
@@ -393,15 +393,17 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBO-Yk-Utc">
                                 <rect key="frame" x="0.0" y="60" width="414" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-2d-Iyv">
+                                        <rect key="frame" x="142" y="10" width="130" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-2d-Iyv">
-                                <rect key="frame" x="159" y="70" width="96" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -537,11 +539,13 @@
             </objects>
             <point key="canvasLocation" x="-349" y="-298"/>
         </scene>
-        <!--Item-->
+        <!--Challenge-->
         <scene sceneID="azp-sU-Mrg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Snh-Ud-ah5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="k24-F2-zZR"/>
+                    <tabBarItem key="tabBarItem" title="Challenge" image="first" id="k24-F2-zZR">
+                        <color key="badgeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Gll-jM-yEj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aig-Xv-FYm">
@@ -561,7 +565,7 @@
         <scene sceneID="cqZ-RA-r08">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WqV-n8-BeW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="fnc-Sx-NY7"/>
+                    <tabBarItem key="tabBarItem" title="History" image="first" id="fnc-Sx-NY7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W4E-6t-kaZ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -580,7 +584,7 @@
         <scene sceneID="jfI-YS-xrs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZjU-2u-GgY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Stats" id="dbx-vd-4Gu"/>
+                    <tabBarItem key="tabBarItem" title="Stats" image="first" id="dbx-vd-4Gu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I7O-vN-hUX">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -615,8 +619,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark" width="30" height="30"/>
+        <image name="first" width="30" height="30"/>
         <image name="home" width="64" height="64"/>
+        <image name="like" width="64" height="64"/>
         <image name="recreational" width="64" height="64"/>
         <image name="settings" width="32" height="32"/>
         <image name="thumb-down" width="64" height="64"/>
