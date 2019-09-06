@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		17828F2849ECF4BF89DCA178 /* Pods_EarthLove.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78A2DD7952A682EADE7C1B9C /* Pods_EarthLove.framework */; };
+		C709D6602320C7A300061AF2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C709D65F2320C7A300061AF2 /* UIImage+Extension.swift */; };
 		C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7119AD32234B7D300BFA59A /* UIView+Extension.swift */; };
 		C71C890621FBB5B000FB119F /* CategoriesMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71C890521FBB5B000FB119F /* CategoriesMenuViewController.swift */; };
 		C71C890821FD2A2700FB119F /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C71C890721FD2A2700FB119F /* CategoryCell.xib */; };
@@ -64,6 +65,7 @@
 		5BE17D40FB2BD0F6B4C93859 /* Pods-EarthLove.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthLove.debug.xcconfig"; path = "Target Support Files/Pods-EarthLove/Pods-EarthLove.debug.xcconfig"; sourceTree = "<group>"; };
 		77E55965BC75252A32767DD4 /* Pods-EarthLove.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthLove.release.xcconfig"; path = "Target Support Files/Pods-EarthLove/Pods-EarthLove.release.xcconfig"; sourceTree = "<group>"; };
 		78A2DD7952A682EADE7C1B9C /* Pods_EarthLove.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthLove.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C709D65F2320C7A300061AF2 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C7119AD32234B7D300BFA59A /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		C71C890521FBB5B000FB119F /* CategoriesMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesMenuViewController.swift; sourceTree = "<group>"; };
 		C71C890721FD2A2700FB119F /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
@@ -133,6 +135,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C709D65C2320B84B00061AF2 /* Core Data Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C709D65E2320B86B00061AF2 /* Challenge */,
+				C709D65D2320B86000061AF2 /* Fortune */,
+			);
+			path = "Core Data Entities";
+			sourceTree = "<group>";
+		};
+		C709D65D2320B86000061AF2 /* Fortune */ = {
+			isa = PBXGroup;
+			children = (
+				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
+				C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */,
+			);
+			path = Fortune;
+			sourceTree = "<group>";
+		};
+		C709D65E2320B86B00061AF2 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */,
+				C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
 		C70AE13F22C5FE6000B65EEF /* Fortune */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				C7119AD32234B7D300BFA59A /* UIView+Extension.swift */,
+				C709D65F2320C7A300061AF2 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,10 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				C755CBF3227E4E2600E45615 /* Podfile */,
-				C77025E62215670600D9C549 /* Fortune+CoreDataClass.swift */,
-				C77025E72215670600D9C549 /* Fortune+CoreDataProperties.swift */,
-				C74A325221AF315500C8ACE3 /* Challenge+CoreDataClass.swift */,
-				C74A325321AF315500C8ACE3 /* Challenge+CoreDataProperties.swift */,
 				C790032221A37B4500737CBD /* EarthLove */,
 				C790032121A37B4500737CBD /* Products */,
 				B843EB8909F18487AEB499B6 /* Pods */,
@@ -230,6 +256,7 @@
 		C790032221A37B4500737CBD /* EarthLove */ = {
 			isa = PBXGroup;
 			children = (
+				C709D65C2320B84B00061AF2 /* Core Data Entities */,
 				C7119AD22234B7C300BFA59A /* Extensions */,
 				C7119AD12234B78C00BFA59A /* History View */,
 				C7119AD02234B77F00BFA59A /* Stats View */,
@@ -393,6 +420,7 @@
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
 				C7119AD42234B7D300BFA59A /* UIView+Extension.swift in Sources */,
+				C709D6602320C7A300061AF2 /* UIImage+Extension.swift in Sources */,
 				C77025EF2227B82800D9C549 /* FortuneMessageView.swift in Sources */,
 				C790032421A37B4500737CBD /* AppDelegate.swift in Sources */,
 				C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */,

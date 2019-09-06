@@ -364,18 +364,9 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
     }
 }
 
-/// Handles delegation methods for FortuneImageView and FortuneMessageView.
-extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewDelegate {
+/// Handles delegation methods for FortuneImageView
+extension ChallengeViewController: FortuneImageViewDelegate {
     
-    // Removes FortuneImageView and FortuneMessageView from view stack and calls displayPendingChallengeTimerView function.
-    func clearViewStack() {
-        
-        for view in self.view.subviews where view is FortuneImageView || view is FortuneMessageView {
-            view.removeFromSuperview()
-        }
-        fortuneMessageView = nil
-        displayPendingChallengeTimerView()
-    }
     
     //  Creates an instance of FortuneMessageView, animates it and adds it to view stack.
     func displayFortuneMessageView() {
@@ -411,4 +402,16 @@ extension ChallengeViewController: FortuneImageViewDelegate, FortuneMessageViewD
     }
     
     
+}
+
+
+// MARK: - FortuneMessageViewDelegate
+
+extension ChallengeViewController: FortuneMessageViewDelegate {
+    // Removes FortuneImageView and FortuneMessageView from view stack and calls displayPendingChallengeTimerView function.
+    func didTapDismiss(with messageView: FortuneMessageView) {
+        messageView.removeFromSuperview()
+        fortuneMessageView = nil
+        displayPendingChallengeTimerView()
+    }
 }

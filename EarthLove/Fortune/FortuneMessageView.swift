@@ -10,7 +10,7 @@ import UIKit
 
 /// Contains clearViewStack function to be called after fortuneMessageView is dismissed.
 protocol FortuneMessageViewDelegate: class {
-    func clearViewStack()
+    func didTapDismiss(with messageView: FortuneMessageView)
 }
 
 /// UIView used to display the fortune message.
@@ -43,7 +43,6 @@ class FortuneMessageView: UIView {
     }
     
     @objc func dismissFortuneView(sender: UIButton) {
-        
-        delegate?.clearViewStack()
+        delegate?.didTapDismiss(with: self)
     }
 }
