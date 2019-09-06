@@ -32,6 +32,8 @@
 		C77025EF2227B82800D9C549 /* FortuneMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77025EE2227B82800D9C549 /* FortuneMessageView.swift */; };
 		C77025F12227B95500D9C549 /* FortuneMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C77025F02227B95500D9C549 /* FortuneMessageView.xib */; };
 		C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */; };
+		C789F36323221B9B00F03766 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789F36223221B9B00F03766 /* UserDefaults+Extension.swift */; };
+		C789F3652322273800F03766 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C789F3642322273800F03766 /* AppDefaults.swift */; };
 		C790032421A37B4500737CBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032321A37B4500737CBD /* AppDelegate.swift */; };
 		C790032621A37B4500737CBD /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032521A37B4500737CBD /* ChallengeViewController.swift */; };
 		C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C790032721A37B4500737CBD /* HistoryViewController.swift */; };
@@ -88,6 +90,8 @@
 		C77025EE2227B82800D9C549 /* FortuneMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortuneMessageView.swift; sourceTree = "<group>"; };
 		C77025F02227B95500D9C549 /* FortuneMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FortuneMessageView.xib; sourceTree = "<group>"; };
 		C7741A1D21C635E4008794D3 /* PendingChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingChallengeViewController.swift; sourceTree = "<group>"; };
+		C789F36223221B9B00F03766 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		C789F3642322273800F03766 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		C790032021A37B4500737CBD /* EarthLove.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthLove.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C790032321A37B4500737CBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C790032521A37B4500737CBD /* ChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			children = (
 				C7119AD32234B7D300BFA59A /* UIView+Extension.swift */,
 				C709D65F2320C7A300061AF2 /* UIImage+Extension.swift */,
+				C789F36223221B9B00F03766 /* UserDefaults+Extension.swift */,
+				C789F3642322273800F03766 /* AppDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -416,6 +422,7 @@
 				C790033821A3F1AE00737CBD /* StatsViewController.swift in Sources */,
 				C72CC70F21ACAB7E0025FC32 /* SettingsViewController.swift in Sources */,
 				C71C890621FBB5B000FB119F /* CategoriesMenuViewController.swift in Sources */,
+				C789F3652322273800F03766 /* AppDefaults.swift in Sources */,
 				C77025E92215670600D9C549 /* Fortune+CoreDataProperties.swift in Sources */,
 				C790032821A37B4500737CBD /* HistoryViewController.swift in Sources */,
 				C790036021A4A6DE00737CBD /* EarthLove.xcdatamodeld in Sources */,
@@ -426,6 +433,7 @@
 				C7A635B22249F7580041FB39 /* FortuneImageView.swift in Sources */,
 				C7BD0CBB2238B282004EE67E /* FortuneRequest.swift in Sources */,
 				C7741A1E21C635E4008794D3 /* PendingChallengeViewController.swift in Sources */,
+				C789F36323221B9B00F03766 /* UserDefaults+Extension.swift in Sources */,
 				C7DEEA3B22631E490001B7B5 /* ZeroStateView.swift in Sources */,
 				C74A325421AF315500C8ACE3 /* Challenge+CoreDataClass.swift in Sources */,
 				C7F83C3522349D2300A61715 /* PendingChallengeTimerView.swift in Sources */,

@@ -146,7 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             // Register the hasCompletedAChallenge initial value for from ChallengeVC to UserDefaults.
             if UserDefaults.standard.object(forKey: "hasCompletedAChallenge") == nil {
-                UserDefaults.standard.register(defaults: ["hasCompletedAChallenge" : false])
+//                UserDefaults.standard.register(defaults: ["hasCompletedAChallenge" : false])
+                UserDefaults.standard.register(with: AppDefaultsBool.hasCompletedChallenge(false))
             }
             return true
         }
