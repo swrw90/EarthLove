@@ -14,8 +14,8 @@ protocol AppDefaults {
 }
 
 enum AppDefaultsBool: AppDefaults {
-    case firstLaunch(Bool)
-    case hasCompletedChallenge(Bool)
+    case firstLaunch(Bool?)
+    case hasCompletedChallenge(Bool?)
     
     /// Key to be used with UserDefaults to pull out or insert values from disk.
     var defaultKeys: String {
@@ -26,7 +26,7 @@ enum AppDefaultsBool: AppDefaults {
     }
     
     /// Actual value that will be stored in the disk using UserDefaults.
-    var value: Bool {
+    var value: Bool? {
         switch self {
         case .firstLaunch(let booleanValue), .hasCompletedChallenge(let booleanValue): return booleanValue
         }
@@ -43,10 +43,10 @@ enum AppDefaultsBool: AppDefaults {
 }
 
 enum AppDefaultsInt: AppDefaults {
-    case skipCount(Int)
-    case numberOfTimesCompleted(Int)
-    case countUntilFortuneDisplays(Int)
-    case challengeIdentifier(Int)
+    case skipCount(Int?)
+    case numberOfTimesCompleted(Int?)
+    case countUntilFortuneDisplays(Int?)
+    case challengeIdentifier(Int?)
     
     var defaultKeys: String {
         switch self {
@@ -58,7 +58,7 @@ enum AppDefaultsInt: AppDefaults {
     }
     
     
-    var value: Int {
+    var value: Int? {
         switch self {
         case .skipCount(let integerValue), .numberOfTimesCompleted(let integerValue), .countUntilFortuneDisplays(let integerValue), .challengeIdentifier(let integerValue): return integerValue
         }
@@ -72,7 +72,7 @@ enum AppDefaultsInt: AppDefaults {
 }
 
 enum AppDefaultsDate: AppDefaults {
-    case creationTime(Date)
+    case creationTime(Date?)
     
     var defaultKeys: String {
         switch self {
@@ -80,7 +80,7 @@ enum AppDefaultsDate: AppDefaults {
         }
     }
     
-    var value: Date {
+    var value: Date? {
         switch self {
         case .creationTime(let date): return date
         }

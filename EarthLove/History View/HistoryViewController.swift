@@ -35,6 +35,10 @@ class HistoryViewController: UIViewController {
     private var categoriesMenuViewController: CategoriesMenuViewController?
     private var blurEffectView: UIView?
     
+    private lazy var zeroStateView: ZeroStateView = {
+       return ZeroStateView.instanceOfZeroStateViewNib() 
+    }()
+    
     let hasCompletedAChallengeKey = "hasCompletedAChallenge"
     
     
@@ -85,12 +89,18 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureTableView()
+        displayZeroStateViewIfNeeded()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
+    private func configureTableView() {
+        tableView.rowHeight = 80
         
-        displayZeroStateView()
+        var cellNib = UINib(nibName: historyCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: historyCell)
+        
+        cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
     }
     
     // Dismiss CategoriesMenuVC if touch outside of CategoriesMenuVC.
@@ -111,28 +121,12 @@ class HistoryViewController: UIViewController {
     
     
     /// Display zeroStateView if no challenges completed, else display history table view.
-    private func displayZeroStateView() {
-        guard let hasCompletedAChallenge = UserDefaults.standard.value(forKey: hasCompletedAChallengeKey) as? Bool else { return }
-        
-        guard let zeroStateView = ZeroStateView.instanceOfZeroStateViewNib() as? ZeroStateView else { return }
-        
-        if hasCompletedAChallenge == false {
+    private func displayZeroStateViewIfNeeded() {
+        if fetchedResultsController.fetchedObjects?.isEmpty == true {
             self.view.addSubview(zeroStateView)
             zeroStateView.pinFrameToSuperView()
-            
-        } else if hasCompletedAChallenge == true {
-            
-            for view in self.view.subviews where view is ZeroStateView {
-                view.removeFromSuperview()
-            }
-            
-            tableView.rowHeight = 80
-            
-            var cellNib = UINib(nibName: historyCell, bundle: nil)
-            tableView.register(cellNib, forCellReuseIdentifier: historyCell)
-            
-            cellNib = UINib(nibName: nothingFoundCell, bundle: nil)
-            tableView.register(cellNib, forCellReuseIdentifier: nothingFoundCell)
+        } else {
+            zeroStateView.removeFromSuperview()
         }
     }
     
@@ -253,6 +247,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 /// Reloads tableView if HistoryVC content has changed.
 extension HistoryViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        displayZeroStateViewIfNeeded()
         tableView.reloadData()
     }
 }

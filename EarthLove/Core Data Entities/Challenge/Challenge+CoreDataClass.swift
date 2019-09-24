@@ -86,15 +86,11 @@ public class Challenge: NSManagedObject {
     class func getAllChallengesCount(in context: NSManagedObjectContext, with category: Category? = nil) -> Int? {
         var fetchRequest: NSFetchRequest<Challenge> = Challenge.fetchRequest()
         
-        do {
-            if let category = category {
-                fetchRequest = allChallengesFetchRequest(with: category)
-                
-                return try? context.count(for: fetchRequest)
-            } else {
-                return try? context.count(for: fetchRequest)
-            }
+        if let category = category {
+            fetchRequest = allChallengesFetchRequest(with: category)
         }
+        
+        return try? context.count(for: fetchRequest)
     }
     
     /// Get count of all completed Challenge objects in context or count of all completed Challenge objects by filtered by category.
