@@ -1,5 +1,5 @@
 //
-//  FortuneImageView.swift
+//  FortuneView.swift
 //  EarthLove
 //
 //  Created by Seth Watson on 3/26/19.
@@ -7,18 +7,16 @@
 //
 
 import UIKit
-//import SAConfettiView
 
-// Contains protocol methods for FortuneImageView.
-protocol FortuneImageViewDelegate: class {
+// Contains protocol methods for FortuneView.
+protocol FortuneViewDelegate: class {
     
     func displayFortuneMessageView()
     
 }
 
-/// Contains methods and properties for FortuneImageView.
-// TODO: FIX! Rename this to maybe FortuneView. Since this whole view is not an imageView. But it does contain an Image View.
-class FortuneImageView: UIView {
+/// Contains methods and properties for FortuneView.
+class FortuneView: UIView {
     
     enum FortuneCookieState {
         case unopened
@@ -38,7 +36,7 @@ class FortuneImageView: UIView {
         }
     }
     
-    weak var delegate: FortuneImageViewDelegate?
+    weak var delegate: FortuneViewDelegate?
     
     @IBOutlet weak var fortuneCookieImage: UIImageView!
     @IBOutlet weak var congratulatoryMessageTextView: UITextView!
@@ -69,39 +67,15 @@ class FortuneImageView: UIView {
         fortuneCookieImage.layer.shadowRadius = 5
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        impact.impactOccurred()
-//        numberOfTapsCount += 1
-//
-//        // If numberOfTapsCount is 1 update UIImage, if count is 2 reset count to 0, call displayFortuneMessageView and remove fortuneCookieImage from superview.
-//        if numberOfTapsCount == 1 {
-//            fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
-//        } else if numberOfTapsCount == 2 {
-//            numberOfTapsCount = 0
-//            delegate?.displayFortuneMessageView()
-//            fortuneCookieImage.removeFromSuperview()
-//        }
-//    }
-    
-    // Returns an instance of UINib named FortuneImageView.
-    class func instanceOfFortuneImageView() -> UIView {
-        return UINib(nibName: "FortuneImageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    // Returns an instance of UINib named FortuneView.
+    class func instanceOfFortuneView() -> UIView {
+        return UINib(nibName: "FortuneView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
     /// Increments numberOfTapsCount each time user taps image.
     @objc func fortuneImageTapped(_ sender: UITapGestureRecognizer) {
         impact.impactOccurred()
         numberOfTapsCount += 1
-//
-//        // If numberOfTapsCount is 1 update UIImage, if count is 2 reset count to 0, call displayFortuneMessageView and remove fortuneCookieImage from superview.
-//        if numberOfTapsCount == 1 {
-//            fortuneCookieImage.image = UIImage(named: "open-fortune-cookie-image")
-//        } else if numberOfTapsCount == 2 {
-//            numberOfTapsCount = 0
-//            delegate?.displayFortuneMessageView()
-//            fortuneCookieImage.removeFromSuperview()
-//            congratulatoryMessageTextView.removeFromSuperview()
-//        }
         
         switch fortuneCookieState {
         case .unopened:

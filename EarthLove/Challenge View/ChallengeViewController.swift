@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import UserNotifications
 import SAConfettiView
-//import AVFoundation
 
 /// Handles displaying Challenge object, skiping and completing Challenges.
 class ChallengeViewController: UIViewController {
@@ -20,7 +19,6 @@ class ChallengeViewController: UIViewController {
     
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
-//    var player = AVAudioPlayer()
     var fortuneMessageView: FortuneMessageView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
@@ -249,20 +247,6 @@ class ChallengeViewController: UIViewController {
         skipButton.isOpaque = true
     }
     
-//    TODO: - Add audio handling in future version
-//    func buttonSound() {
-//
-//        do {
-//
-//            let audioPath = Bundle.main.path(forResource: "challengeCompletedSound1", ofType: "mp3")
-//
-//            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
-//
-//        } catch {
-//            print("Audio playback error.")
-//        }
-//        player.play()
-//    }
     
     //MARK: - Actions
     
@@ -287,7 +271,7 @@ class ChallengeViewController: UIViewController {
     
     /// Whenever completed button is pressed, countUntilFortuneDisplays increments, if countUntilFortuneDisplays equals 7 perform FortuneRequest network call, pendingChallengeTimerView displays, Challenge completion status updates, .
     @IBAction private func completedPressed(_ sender: UIButton) {
-        impact.impactOccurred()
+//        impact.impactOccurred()
         numberOfTimesCompleted += 1
         countUntilFortuneDisplays = 7
         
@@ -335,16 +319,16 @@ class ChallengeViewController: UIViewController {
         return summary
     }
     
-    // Creates an instance of FortuneImageView and adds it to view stack.
+    // Creates an instance of FortuneView and adds it to view stack.
     private func displayFortuneImage() {
-        guard let fortuneImageView = FortuneImageView.instanceOfFortuneImageView() as? FortuneImageView else { return }
+        guard let fortuneView = FortuneView.instanceOfFortuneView() as? FortuneView else { return }
         
-        fortuneImageView.delegate = self
-        fortuneImageView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
-        fortuneImageView.fortuneMessage = self.fortuneMessage
+        fortuneView.delegate = self
+        fortuneView.fortuneCookieImage.image = UIImage(named: "fortune-cookie-image")
+        fortuneView.fortuneMessage = self.fortuneMessage
         
-        self.view.addSubview(fortuneImageView)
-        fortuneImageView.pinFrameToSuperView()
+        self.view.addSubview(fortuneView)
+        fortuneView.pinFrameToSuperView()
     }
     
 }
@@ -364,8 +348,8 @@ extension ChallengeViewController: PendingChallengeTimerViewDelegate {
     }
 }
 
-/// Handles delegation methods for FortuneImageView
-extension ChallengeViewController: FortuneImageViewDelegate {
+/// Handles delegation methods for FortuneView
+extension ChallengeViewController: FortuneViewDelegate {
     
     
     //  Creates an instance of FortuneMessageView, animates it and adds it to view stack.
@@ -408,7 +392,7 @@ extension ChallengeViewController: FortuneImageViewDelegate {
 // MARK: - FortuneMessageViewDelegate
 
 extension ChallengeViewController: FortuneMessageViewDelegate {
-    // Removes FortuneImageView and FortuneMessageView from view stack and calls displayPendingChallengeTimerView function.
+    // Removes FortuneView and FortuneMessageView from view stack and calls displayPendingChallengeTimerView function.
     func didTapDismiss(with messageView: FortuneMessageView) {
         messageView.removeFromSuperview()
         fortuneMessageView = nil

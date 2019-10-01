@@ -111,6 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     // Uses UserDefaults to determine if the app has previously launched. If it's first launch, set UserDefault initial values.
+    //TODO: Move out of App Delegate
     var isFirstLaunch: Bool {
         let defaults = UserDefaults.standard
         
