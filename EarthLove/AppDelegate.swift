@@ -119,59 +119,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     private func firstLaunchSetup() {
-        parseChallengeJSON()
-        parseFortuneJSON()
+        
+        Challenge.parseChallengeJSON(in: managedObjectContext)
+        Fortune.parseFortuneJSON(in: managedObjectContext)
         UserDefaults.setUpForFirstLaunch()
         UserDefaults.standard.set(false, forKey: "firstLaunch")
     }
     
     private func registerFirstLaunchValue() {
         UserDefaults.standard.register(defaults: ["firstLaunch": true])
-    }
-    
-    // Handles parsing of challenge json and saves it to context.
-    private func parseChallengeJSON() {
-        // Find path to json, make path into URL, get data from json, parse json data.
-        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-        if let path = Bundle.main.path(forResource: "challengeData", ofType: "json") {
-            do {
-                let pathURL = URL(fileURLWithPath: path)
-                let data = try Data(contentsOf: pathURL)
-                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
-                    Challenge.insertToStore(from: jsonResult, in: managedObjectContext)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    // Handles parsing of Fortune json and saves it to context.
-    private func parseFortuneJSON() {
-        // Find path to json, make path into URL, get data from json, parse json data.
-        // TODO: - Use conditional to determine if app has already loaded previously, if so do ot repeat json parse.
-        
-        DispatchQueue.global(qos: .background).async {
-            if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
-                do {
-                    let pathURL = URL(fileURLWithPath: path)
-                    let data = try Data(contentsOf: pathURL)
-                    DispatchQueue.main.async {
-                        do {
-                            try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                        } catch {
-                            print(error)
-                        }
-                        
-                        guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON], let json = jsonResult else { return }
-                        Fortune.insertToStore(from: json, in: self.managedObjectContext)
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

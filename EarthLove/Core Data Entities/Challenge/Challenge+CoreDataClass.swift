@@ -229,3 +229,24 @@ public class Challenge: NSManagedObject {
         return NSPredicate(format: "%K = YES AND category = %@", #keyPath(Challenge.isCompleted), category.rawValue)
     }
 }
+
+extension Challenge {
+    // Handles parsing of challenge json and saves it to context.
+    class func parseChallengeJSON(in context: NSManagedObjectContext) {
+
+        // Find path to json, make path into URL, get data from json, parse json data.
+        if let path = Bundle.main.path(forResource: "challengeData", ofType: "json") {
+            do {
+                let pathURL = URL(fileURLWithPath: path)
+                let data = try Data(contentsOf: pathURL)
+                if let jsonResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON] {
+                    Challenge.insertToStore(from: jsonResult, in: context)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+

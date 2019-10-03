@@ -95,3 +95,35 @@ public class Fortune: NSManagedObject {
         }
     }
 }
+
+
+// MARK: Fortune extension to handle parsing fortuneJson
+extension Fortune {
+    
+    // Handles parsing of Fortune json and saves it to context.
+    class func parseFortuneJSON(in context: NSManagedObjectContext) {
+        
+        // Find path to json, make path into URL, get data from json, parse json data.
+        DispatchQueue.global(qos: .background).async {
+            if let path = Bundle.main.path(forResource: "fortuneData", ofType: "json") {
+                do {
+                    let pathURL = URL(fileURLWithPath: path)
+                    let data = try Data(contentsOf: pathURL)
+                    DispatchQueue.main.async {
+                        do {
+                            try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                        } catch {
+                            print(error)
+                        }
+                        
+                        guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [JSON], let json = jsonResult else { return }
+                        Fortune.insertToStore(from: json, in: context)
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
+    }
+}
