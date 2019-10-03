@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         customizeAppearance()
+        registerFirstLaunchValue()
         
         // Notification Authorization
         let center = UNUserNotificationCenter.current()
@@ -99,10 +100,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
         }
         
+        
         // If it's the apps first launch call functions to parse challenge and fortune json.
         if isFirstLaunch {
-            parseChallengeJSON()
-            parseFortuneJSON()
+            firstLaunchSetup()
         } else {
             print("App has already previously launched.")
         }
@@ -110,48 +111,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    
     // Uses UserDefaults to determine if the app has previously launched. If it's first launch, set UserDefault initial values.
     //TODO: Move out of App Delegate
     var isFirstLaunch: Bool {
-        let defaults = UserDefaults.standard
-        
-        if let firstLaunch = defaults.string(forKey: "firstLaunch") {
-            print("App has already launched : \(firstLaunch)")
-            
-            return false
-        } else {
-            print("App launched for first time")
-            defaults.set(true, forKey: "firstLaunch")
-            
-            // Register the initial skipCount value from ChallangeVC to UserDefaults.
-            if UserDefaults.standard.object(forKey: "skipCount") == nil {
-                UserDefaults.standard.register(defaults: ["skipCount" : 0])
-            }
-            
-            // Register the initial numberOfTimesCompleted value from ChallengeVC to UserDefaults.
-            if UserDefaults.standard.object(forKey: "numberOfTimesCompleted") == nil {
-                UserDefaults.standard.register(defaults: ["numberOfTimesCompleted" : 0])
-            }
-            
-            // Register the initial countUntilFortuneDisplays value from ChallengeVC to UserDefaults.
-            if UserDefaults.standard.object(forKey: "countUntilFortuneDisplays") == nil {
-                UserDefaults.standard.register(defaults: ["countUntilFortuneDisplays" : 0])
-            }
-            
-            // Register initial Challenge for ChallengeVC to UserDefaults
-            UserDefaults.standard.register(defaults: ["identifier" : 1])
-            
-            // Set initial Challenge creation time.
-            // TODO: - Move this logic outside of App Delegate.
-            UserDefaults.standard.set(Date(), forKey: "creationTime")
-            
-            // Register the hasCompletedAChallenge initial value for from ChallengeVC to UserDefaults.
-            if UserDefaults.standard.object(forKey: "hasCompletedAChallenge") == nil {
-//                UserDefaults.standard.register(defaults: ["hasCompletedAChallenge" : false])
-                UserDefaults.standard.register(with: AppDefaultsBool.hasCompletedChallenge(false))
-            }
-            return true
-        }
+        return UserDefaults.standard.bool(forKey: "firstLaunch") == true
+    }
+    
+    private func firstLaunchSetup() {
+        parseChallengeJSON()
+        parseFortuneJSON()
+        UserDefaults.setUpForFirstLaunch()
+        UserDefaults.standard.set(false, forKey: "firstLaunch")
+    }
+    
+    private func registerFirstLaunchValue() {
+        UserDefaults.standard.register(defaults: ["firstLaunch": true])
     }
     
     // Handles parsing of challenge json and saves it to context.

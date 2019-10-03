@@ -57,7 +57,6 @@ enum AppDefaultsInt: AppDefaults {
         }
     }
     
-    
     var value: Int? {
         switch self {
         case .skipCount(let integerValue), .numberOfTimesCompleted(let integerValue), .countUntilFortuneDisplays(let integerValue), .challengeIdentifier(let integerValue): return integerValue
