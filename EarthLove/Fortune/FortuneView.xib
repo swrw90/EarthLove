@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,25 +15,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fortune-cookie-image" translatesAutoresizingMaskIntoConstraints="NO" id="90W-pU-U01">
-                    <rect key="frame" x="67.5" y="80" width="240" height="240"/>
+                    <rect key="frame" x="67.5" y="60" width="240" height="240"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="240" id="9hd-MO-MtA"/>
                         <constraint firstAttribute="width" constant="240" id="BeT-Ca-pVG"/>
+                        <constraint firstAttribute="width" secondItem="90W-pU-U01" secondAttribute="height" multiplier="1:1" id="a8m-Jq-tDE"/>
                     </constraints>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Great Job!      You win a fortune cookie!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m7x-EJ-IUu">
-                    <rect key="frame" x="30" y="344" width="315" height="303"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="m7x-EJ-IUu">
+                    <rect key="frame" x="30" y="324" width="315" height="323"/>
+                    <string key="text">Great Job! 
+You win a fortune cookie!</string>
                     <color key="textColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
             <constraints>
-                <constraint firstItem="90W-pU-U01" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="67.5" id="3Xr-lA-w0h"/>
+                <constraint firstItem="90W-pU-U01" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="3vF-GA-fwD"/>
                 <constraint firstItem="m7x-EJ-IUu" firstAttribute="top" secondItem="90W-pU-U01" secondAttribute="bottom" constant="24" id="CIw-oi-HAo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="m7x-EJ-IUu" secondAttribute="bottom" constant="20" id="VXp-9c-6Ks"/>
                 <constraint firstItem="90W-pU-U01" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="YsE-hD-Rja"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="90W-pU-U01" secondAttribute="trailing" constant="67.5" id="f98-gi-c9W"/>
                 <constraint firstItem="m7x-EJ-IUu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="fgL-Uh-Tq9"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="m7x-EJ-IUu" secondAttribute="trailing" constant="30" id="yjg-ay-khO"/>
             </constraints>

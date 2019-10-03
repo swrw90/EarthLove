@@ -23,7 +23,7 @@ class FortuneMessageView: UIView {
     private func setupDismissButton() {
         dismissButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         dismissButton.setBackgroundImage(UIImage(named: "diamond"), for: UIControl.State.normal)
-        self.dismissButton.addTarget(self, action: #selector(dismissFortuneView(sender:)), for: .touchUpInside)
+        self.dismissButton.addTarget(self, action: #selector(dismissTapped(sender:)), for: .touchUpInside)
         self.addSubview(dismissButton)
     }
     
@@ -42,7 +42,7 @@ class FortuneMessageView: UIView {
         return UINib(nibName: "FortuneMessageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
-    @objc func dismissFortuneView(sender: UIButton) {
+    @objc func dismissTapped(sender: UIButton) {
         delegate?.didTapDismiss(with: self)
     }
 }

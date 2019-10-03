@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Great Job! You completed the daily challenge. A new challenge will be available soon. Keep it up!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uMp-dc-XUv">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Great Job! You completed the daily challenge. A new challenge will be available soon. Keep it up!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMp-dc-XUv">
                     <rect key="frame" x="58" y="358" width="259" height="167"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>

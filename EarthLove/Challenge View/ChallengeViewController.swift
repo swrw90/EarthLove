@@ -20,6 +20,7 @@ class ChallengeViewController: UIViewController {
     var managedObjectContext: NSManagedObjectContext?
     var completedChallenge: Challenge?
     var fortuneMessageView: FortuneMessageView?
+    var fortuneView: FortuneView?
     var fortuneMessage: String?
     var pendingChallengeTimerView: PendingChallengeTimerView?
     let challengeIdentifierKey = "identifier"
@@ -329,6 +330,7 @@ class ChallengeViewController: UIViewController {
         
         self.view.addSubview(fortuneView)
         fortuneView.pinFrameToSuperView()
+        self.fortuneView = fortuneView
     }
     
 }
@@ -397,5 +399,6 @@ extension ChallengeViewController: FortuneMessageViewDelegate {
         messageView.removeFromSuperview()
         fortuneMessageView = nil
         displayPendingChallengeTimerView()
+        fortuneView?.removeFromSuperview()
     }
 }
